@@ -1,17 +1,19 @@
 import "./App.css";
-import Header from "./components/Header";
-import Introduction from "./components/Introduction";
-import Footer from "./components/Footer";
-import BlogsWrapper from "./components/Hero-Blogs/BlogsWrapper";
+import Header from "./components/Header/Header";
+import Introduction from "./components/Hero-Page/Hero-Introduction/Introduction";
+import Footer from "./components/Footer/Footer";
+import ItemsWrapper from "./components/Hero-Page/Hero-Top-Sellers/ItemsWrapper";
+import SearchBar from "./components/Search-Bar/SearchBar";
 
 function App() {
   return (
     <>
       <Header />
 
-      <main className="flex w-full flex-col items-center p-[4rem_0] lg:p-[12rem_0]">
+      <main className="flex w-full flex-col items-center gap-[3rem] p-[4rem_0] lg:gap-[5rem] lg:p-[8rem_0]">
+        <SearchBar />
         <Introduction />
-        <BlogsWrapper />
+        <ItemsWrapper />
       </main>
 
       <Footer />

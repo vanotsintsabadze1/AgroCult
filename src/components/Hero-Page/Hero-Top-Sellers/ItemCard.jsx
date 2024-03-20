@@ -1,7 +1,7 @@
 function ItemCard({ itemData: { imageUrl, id, name, description, price } }) {
   return (
     <div className="flex h-full w-full snap-center items-center justify-center ">
-      <div className="lg:row-gap relative flex h-[48rem] w-[38rem] flex-col gap-[1rem] rounded-[1rem] bg-white shadow-blog-card xs:w-[32rem] md:w-[35rem] lg:w-[35rem]">
+      <div className="lg:row-gap shadow-soft relative flex h-[48rem] w-[38rem] flex-col gap-[1rem] rounded-[1rem] bg-white xs:w-[32rem] md:w-[35rem] lg:w-[35rem]">
         <div className="flex h-[20rem] w-full items-center justify-center rounded-tl-[1rem] rounded-tr-[1rem] p-[1rem]">
           <img src={imageUrl} alt={`blog-${id}`} className="h-full max-w-full rounded-[1rem] object-fill" />
         </div>

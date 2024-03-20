@@ -14,14 +14,14 @@ function Header() {
         <div className="hidden h-full w-[20rem] items-center justify-center gap-[2.5rem] lg:flex">
           <button>
             <img
-              src="/images/icons/theme-toggle.webp"
+              src="/images/icons/header-icons/theme-toggle.webp"
               alt="theme-toggle-icon"
               className="easeOut h-[2.2rem] w-[2.2rem] duration-200 hover:scale-110"
             />
           </button>
           <button>
             <img
-              src="/images/icons/user-profile.webp"
+              src="/images/icons/header-icons/user-profile.webp"
               alt="user-profile-icon"
               className="easeOut h-[2.2rem] w-[2.2rem] duration-200 hover:scale-110"
             />

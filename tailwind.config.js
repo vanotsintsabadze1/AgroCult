@@ -8,7 +8,7 @@ export const theme = {
       footer: "#212529",
     },
     boxShadow: {
-      "blog-card": "0rem 0.2rem .5rem 0.6rem rgba(169,169,169,0.5)",
+      soft: "0rem 0.2rem .5rem 0.6rem rgba(169,169,169,0.5)",
     },
   },
   screens: {

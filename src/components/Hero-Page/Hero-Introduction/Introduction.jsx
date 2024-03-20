@@ -1,5 +1,3 @@
-import SearchBar from "../../Search-Bar/SearchBar";
-
 function Introduction() {
   return (
     <section className="flex w-full flex-col items-center gap-[1rem]">
@@ -10,7 +8,7 @@ function Introduction() {
       <p className="mt-[.5rem] text-center text-[1.3rem] font-medium">A place where you can find whatever you want</p>
       <button className="mt-[1rem] flex h-[4rem] w-[15rem] items-center justify-center gap-[.5rem] bg-black duration-150 ease-out hover:scale-110">
         <img
-          src="/images/icons/shopping-bag.webp"
+          src="/images/icons/misc/shopping-bag.webp"
           className="mb-[.2rem] h-[1.5rem] w-[1.5rem]"
           alt="shopping-bag-icon"
         />

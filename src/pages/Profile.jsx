@@ -12,7 +12,10 @@ function Profile() {
           >
             <div className="flex flex-col gap-[2rem]">
               <p className="text-[1.3rem]">
-                <b>Username:</b>: Vano
+                <b>Name:</b>: Vano
+              </p>
+              <p className="text-[1.3rem]">
+                <b>Lastname:</b>: Tsintsabadze
               </p>
               <p className="text-[1.3rem]">
                 <b>Email:</b>: dummyemail@gmail.com

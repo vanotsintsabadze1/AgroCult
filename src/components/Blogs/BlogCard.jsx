@@ -1,4 +1,4 @@
-function BlogCard({ title, description, imageUrl, publishDate }) {
+function BlogCard({ title, description, imageUrl, publishdate }) {
   return (
     <div className="flex h-full w-full snap-center items-center justify-center lg:h-auto lg:w-auto">
       <div className="lg:row-gap relative flex h-[50rem] w-[38rem] flex-col gap-[1rem] rounded-[1rem] bg-white shadow-soft xs:w-[32rem] md:w-[35rem] lg:w-[35rem]">
@@ -12,7 +12,7 @@ function BlogCard({ title, description, imageUrl, publishDate }) {
           </p>
         </div>
         <div className="flex items-center justify-center p-[.5rem]">
-          <p className="text-[1.5rem] font-bold">{publishDate}</p>
+          <p className="text-[1.2rem] font-bold">Publish Date: {publishdate}</p>
         </div>
         <div className="flex h-[5rem] w-full items-center justify-center p-[1rem]">
           <button className="h-[4rem] w-[14rem] rounded-[.5rem] bg-footer text-[1.1rem] font-bold uppercase text-white">

@@ -7,7 +7,11 @@ function Header() {
         <div className="relative flex w-full items-center justify-center lg:w-[20rem]">
           <img src="/images/logos/main-logo-black.webp" alt="header-logo" className="h-[3.5rem] w-[3.5rem]" />
           <button className="absolute right-[2rem] top-[50%] translate-y-[-50%] lg:hidden">
-            <img src="/images/icons/burger-menu.webp" className="h-[3rem] w-[2.2rem]" alt="burger-menu-icon" />
+            <img
+              src="/images/icons/header-icons/burger-menu.webp"
+              className="h-[3rem] w-[2.2rem]"
+              alt="burger-menu-icon"
+            />
           </button>
         </div>
         <Navigation />

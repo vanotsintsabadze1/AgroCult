@@ -1,7 +1,6 @@
-import { topSellingItems } from "../../../data/topSellingItems";
 import ItemCard from "./ItemCard";
 
-function ItemsWrapper() {
+function ItemsWrapper({ itemList }) {
   return (
     <section className="overflow mt-[5rem] w-full">
       <div className="flex w-full items-center justify-center">
@@ -9,9 +8,13 @@ function ItemsWrapper() {
       </div>
       <div className="flex w-full items-center justify-center p-[0_1rem]">
         <div className=" flex w-full snap-x snap-mandatory gap-[5rem] overflow-auto p-[2rem] lg:gap-[8rem] xl:w-[130rem]">
-          {topSellingItems.map((item, index) => {
-            return <ItemCard itemData={item} key={index} />;
-          })}
+          {itemList.length > 0 ? (
+            itemList.map((item, index) => {
+              return <ItemCard itemData={item} key={index} />;
+            })
+          ) : (
+            <div className="h-full w-full items-center text-center text-[2rem]">Couldn't find anything {`:(`}</div>
+          )}
         </div>
       </div>
     </section>

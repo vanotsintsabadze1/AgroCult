@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 const links = [
   {
@@ -33,7 +33,7 @@ function Navigation() {
       {links.map((link, idx) => (
         <Link
           key={idx}
-          to={link.path}
+          href={link.path}
           className="easeOut text-[1.25rem] font-bold uppercase duration-200 hover:scale-110"
         >
           {link.title}

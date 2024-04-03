@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
-import { topSellingItems } from "../../data/topSellingItems";
-import { debounce } from "../../scripts/debounce";
+"use client";
+import { useState } from "react";
+import { topSellingItems } from "@/data/topSellingItems";
+import { debounce } from "@/scripts/debounce";
 
 function SearchBar({ setItems }) {
   const [sorted, setSorted] = useState(false);

@@ -1,10 +1,11 @@
-import SearchBar from "../components/Search-Bar/SearchBar";
-import Introduction from "../components/Hero-Page/Hero-Introduction/Introduction";
-import ItemsWrapper from "../components/Hero-Page/Hero-Top-Sellers/ItemsWrapper";
-import { topSellingItems } from "../data/topSellingItems";
+'use client'
+import SearchBar from "@/components/Search-Bar/SearchBar";
+import Introduction from "@/components/Hero-Page/Hero-Introduction/Introduction";
+import ItemsWrapper from "@/components/Hero-Page/Hero-Top-Sellers/ItemsWrapper";
 import { useState } from "react";
+import { topSellingItems } from "../data/topSellingItems";
 
-function Hero() {
+export default function Hero() {
   const [items, setItems] = useState(topSellingItems);
 
   return (
@@ -16,4 +17,3 @@ function Hero() {
   );
 }
 
-export default Hero;

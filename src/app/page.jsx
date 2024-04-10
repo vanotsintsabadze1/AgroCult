@@ -1,5 +1,6 @@
 import Introduction from "@/components/Hero-Page/Hero-Introduction/Introduction";
 import ItemsWrapper from "@/components/Hero-Page/Hero-Top-Sellers/ItemsWrapper";
+import Loading from "./loading";
 
 async function fetchItems() {
   const response = await fetch("https://dummyjson.com/products");

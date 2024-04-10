@@ -1,4 +1,4 @@
-import plugin from 'tailwindcss/plugin'
+import plugin from "tailwindcss/plugin";
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -12,8 +12,13 @@ module.exports = {
       backgroundColor: {
         footer: "#212529",
       },
+      dropShadow: {
+        "text-soft": "0.1rem 0.1rem 0.4rem rgba(0,0,0,0.4)",
+        "text-medium": "0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.6)",
+        "text-heavy": "0 0 1rem rgba(0, 0, 0, 0.7)",
+      },
       boxShadow: {
-        soft: "0rem 0.2rem .5rem 0.6rem rgba(169,169,169,0.5)",
+        soft: "0rem 0.2rem .5rem .5rem rgba(169,169,169,0.5)",
       },
     },
     screens: {
@@ -24,9 +29,9 @@ module.exports = {
       xl: "1280px",
     },
   },
-  
+
   plugins: [
-    plugin(function({addUtilities}) {
+    plugin(function ({ addUtilities }) {
       addUtilities({
         ".scrollbar-hide::-webkit-scrollbar": {
           display: "none",
@@ -35,7 +40,7 @@ module.exports = {
           "-ms-overflow-style": "none",
           "scrollbar-width": "none",
         },
-      })
-    })
+      });
+    }),
   ],
 };

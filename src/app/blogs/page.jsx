@@ -1,16 +1,23 @@
 import BlogCard from "@/components/Blogs/BlogCard";
-import { blogs } from "@/data/blogs";
 
-function Blogs() {
+async function getPosts() {
+  const response = await fetch("https://dummyjson.com/posts");
+  const data = await response.json();
+  return data.posts;
+}
+
+export default async function Blogs() {
+  const blogs = await getPosts();
+
   return (
-    <main className="mb-[10rem] flex h-[80rem] w-full items-center justify-center p-[1rem] xl:p-[3rem]">
-      <div className="flex h-full flex-col items-center gap-[5rem] overflow-y-auto p-[2rem] xs:w-full sm:w-[40rem] md:w-[60rem] lg:w-full lg:flex-row lg:flex-wrap lg:justify-center lg:gap-x-[10rem] lg:gap-y-[10rem] xl:w-[140rem] scrollbar-hide">
-        {blogs.map((blog) => {
-          return <BlogCard key={blog.id} {...blog} />;
-        })}
+    <main className="mb-[10rem] flex w-full items-center justify-center p-[2rem] xl:p-[3rem]">
+      <div className="w-full flex justify-center">
+        <div className="h-[80rem] scrollbar-hide flex flex-col items-center gap-[10rem] lg:grid lg:grid-cols-2 xl:grid-cols-3 overflow-y-auto p-[2rem]">
+          {blogs.map((blog) => {
+            return <BlogCard key={blog.id} {...blog} />;
+          })}
+        </div>
       </div>
     </main>
   );
 }
-
-export default Blogs;

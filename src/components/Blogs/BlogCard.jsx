@@ -1,25 +1,32 @@
-function BlogCard({ title, description, imageUrl, publishdate }) {
+import Image from "next/image";
+import Link from "next/link";
+
+function BlogCard({ title, body, tags, id }) {
   return (
-    <div className="flex h-full w-full snap-center items-center justify-center lg:h-auto lg:w-auto">
-      <div className="lg:row-gap relative flex h-[50rem] w-[38rem] flex-col gap-[1rem] rounded-[1rem] bg-white shadow-soft xs:w-[32rem] md:w-[35rem] lg:w-[35rem]">
-        <div className="mt-[1rem] flex h-[20rem] w-full items-center justify-center rounded-tl-[1rem] rounded-tr-[1rem] p-[1rem]">
-          <img src={imageUrl} alt={`blog-${title}`} className="h-full max-w-full rounded-[1rem] object-fill" />
+    <div className="w-[35rem] xs:w-full flex flex-col items-center shadow-soft rounded-[1rem] pb-[2rem]">
+      <section className="w-full pt-[2rem] flex justify-center p-[1rem_2rem]">
+        <div className="w-[35rem] h-[20rem] relative shadow-xs rounded-[.5rem]">
+          <Image src="https://picsum.photos/seed/picsum/600/414" alt={title} fill className="rounded-[.5rem]" />
         </div>
-        <div className="flex min-h-[10rem] w-full flex-col items-center gap-[1.5rem] text-center">
-          <h1 className="w-[30rem] text-[2rem] font-bold">{title}</h1>
-          <p className="line-clamp-3 w-[35rem] text-center text-[1.2rem] font-medium xs:w-[25rem] sm:w-[30rem] md:w-[30rem] lg:w-[30rem] lg:text-[1.1rem]">
-            {description}...
+      </section>
+      <section className="w-full flex justify-center">
+        <div className="p-[.5rem_2rem] text-center w-[35rem]">
+          <h2 className="text-[1.8rem] font-bold line-clamp-1">{title}</h2>
+          <p className="font-medium text-[1.2rem] line-clamp-3 mt-[1rem]">{body}</p>
+          <p className="font-bold text-[1.2rem] line-clamp-3 mt-[2rem]">
+            {tags.map((tag) => (
+              <span key={tag}>#{tag}, </span>
+            ))}
           </p>
         </div>
-        <div className="flex items-center justify-center p-[.5rem]">
-          <p className="text-[1.2rem] font-bold">Publish Date: {publishdate}</p>
-        </div>
-        <div className="flex h-[5rem] w-full items-center justify-center p-[1rem]">
-          <button className="h-[4rem] w-[14rem] rounded-[.5rem] bg-footer text-[1.1rem] font-bold uppercase text-white">
-            Read More
-          </button>
-        </div>
-      </div>
+      </section>
+      <section className="p-[2rem_0] flex justify-center w-full">
+        <button className="w-[17rem] h-[4.2rem] text-[1.2rem] font-bold rounded-[.5rem] bg-black text-white">
+          <Link href={`/blogs/${id}`} className="flex items-center justify-center w-full h-full">
+            See More
+          </Link>
+        </button>
+      </section>
     </div>
   );
 }

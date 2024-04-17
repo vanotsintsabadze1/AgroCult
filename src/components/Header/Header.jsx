@@ -1,6 +1,7 @@
 import Navigation from "./Navigation";
+import SettingsBar from "../../components/Header/SettingsBar";
 
-function Header() {
+export default function Header() {
   return (
     <header className="flex h-[6rem] w-full items-center justify-center">
       <div className="flex w-full items-center justify-center lg:justify-between">
@@ -16,24 +17,9 @@ function Header() {
         </div>
         <Navigation />
         <div className="hidden h-full w-[20rem] items-center justify-center gap-[2.5rem] lg:flex">
-          <button>
-            <img
-              src="/images/icons/header-icons/theme-toggle.webp"
-              alt="theme-toggle-icon"
-              className="easeOut h-[2.2rem] w-[2.2rem] duration-200 hover:scale-110"
-            />
-          </button>
-          <button>
-            <img
-              src="/images/icons/header-icons/user-profile.webp"
-              alt="user-profile-icon"
-              className="easeOut h-[2.2rem] w-[2.2rem] duration-200 hover:scale-110"
-            />
-          </button>
+          <SettingsBar />
         </div>
       </div>
     </header>
   );
 }
-
-export default Header;

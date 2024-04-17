@@ -18,7 +18,8 @@ module.exports = {
         "text-heavy": "0 0 1rem rgba(0, 0, 0, 0.7)",
       },
       boxShadow: {
-        soft: "0rem 0.2rem .5rem .5rem rgba(169,169,169,0.5)",
+        soft: "0rem 0rem .3rem .2rem rgba(169,169,169,0.3)",
+        md: "0rem 0rem .5rem .3rem rgba(169,169,169,0.3)",
       },
     },
     screens: {

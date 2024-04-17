@@ -1,6 +1,6 @@
-import Introduction from "@/components/Hero-Page/Hero-Introduction/Introduction";
-import ItemsWrapper from "@/components/Hero-Page/Hero-Top-Sellers/ItemsWrapper";
-import Loading from "./loading";
+import Introduction from "../../components/Hero-Page/Hero-Introduction/Introduction";
+import ItemWrapper from "../../components/Hero-Page/Hero-Top-Sellers/ItemsWrapper";
+import Footer from "../../components/Footer/Footer";
 
 async function fetchItems() {
   const response = await fetch("https://dummyjson.com/products");
@@ -15,7 +15,7 @@ export default async function Hero() {
   return (
     <main className="flex w-full flex-col items-center gap-[3rem] p-[4rem_0] lg:gap-[5rem] lg:p-[8rem_0]">
       <Introduction />
-      <ItemsWrapper items={items} />
+      <ItemWrapper items={items} />
     </main>
   );
 }

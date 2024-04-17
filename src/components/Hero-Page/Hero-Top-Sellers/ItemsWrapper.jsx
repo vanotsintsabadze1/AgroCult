@@ -1,7 +1,7 @@
 "use client";
 
 import ItemCard from "./ItemCard";
-import SearchBar from "@/components/Search-Bar/SearchBar";
+import SearchBar from "../../Search-Bar/SearchBar";
 import { useState } from "react";
 
 function ItemsWrapper({ items }) {

@@ -1,4 +1,4 @@
-import BlogCard from "@/components/Blogs/BlogCard";
+import BlogCard from "../../../components/Blogs/BlogCard";
 
 async function getPosts() {
   const response = await fetch("https://dummyjson.com/posts");

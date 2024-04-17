@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { debounce } from "@/scripts/debounce";
+import { debounce } from "../../scripts/debounce";
 
 function SearchBar({ items, setItems, originalItems }) {
   const [search, setSearch] = useState("");

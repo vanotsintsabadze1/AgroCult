@@ -1,0 +1,191 @@
+export const lang = {
+  en: {
+    login: {
+      login: "Login",
+      username: "Username",
+      password: "Password",
+      rememberMe: "Remember Me",
+      forgotPassword: "Forgot Password?",
+      createAccount: "Create a new Account",
+      logInWithGoogle: "Log In With Google",
+      logInWithFacebook: "Log In With Facebook",
+      submit: "Submit",
+    },
+    searchBar: {
+      placeholder: "Search for products...",
+    },
+    landing: {
+      welcome: "Welcome To VUENNO",
+      phrase: "Your Digital One-Stop Shop for Everything",
+      subphrase: "A place where you can find everything you need",
+      goToStore: "Go To The Store",
+      topSelling: "Top Sellers",
+      startPayingPhrase: "Start Paying monthly for",
+      buy: "Buy",
+    },
+    navigation: {
+      home: "Home",
+      store: "Store",
+      profile: "Profile",
+      blogs: "Blogs",
+      about: "About",
+      contact: "Contact",
+      logout: "Log Out",
+    },
+    blogs: {
+      seeMore: "See More",
+      goBack: "Go Back",
+    },
+    profile: {
+      title: "Edit Your Profile",
+      username: "username",
+      email: "email",
+      currentPassword: "Current Password",
+      newPassword: "New Password",
+      confirmPassword: "Confirm Password",
+      submit: "Submit",
+    },
+    contact: {
+      firstPhrase: {
+        main: "Is it urgent? Have a live chat with our assistant!",
+        sub: "Click Here",
+      },
+      secondPhrase: {
+        main: "Call us on our hotline and we will answer you ASAP!",
+        sub: "+(XXX)-XXX-XXX",
+      },
+      thirdPhrase: {
+        main: "Email us at our support email and we will answer you ASAP!",
+      },
+      form: {
+        title: "Contact Us",
+        name: "Name",
+        email: "Email",
+        description: "Description",
+        topicLabel: "Topic",
+        topics: {
+          billing: "Billing Issue",
+          transportation: "Transportation Issue",
+          account: "Problem with an account",
+        },
+        submit: "Submit",
+      },
+    },
+    footer: {
+      rights: "© 2024 VUENNO. All Rights Reserved",
+      copyright:
+        "All content, including text, graphics, logos, icons, images, and software, is the property of VUENNO. Unauthorized copying, distribution, modification, transmission, or publication of any content without permissionis strictly prohibited.",
+      newsletterSubscribe: "Subscribe to our newsletter",
+      inputPlaceholder: "Email Address",
+      links: {
+        phrase: "Quick Navigation",
+        home: "Home",
+        store: "Store",
+        yourStore: "Your Store",
+        contact: "Contact",
+      },
+      socials: {
+        phrase: "Follow Us",
+        facebook: "Facebook",
+        instagram: "Instagram",
+        twitter: "Twitter",
+        tiktok: "Tiktok",
+      },
+    },
+  },
+
+  ka: {
+    login: {
+      login: "ავტორიზაცია",
+      username: "სახელი",
+      password: "პაროლი",
+      rememberMe: "დამიმახსოვრე",
+      forgotPassword: "პაროლი დაგავიწყდათ?",
+      createAccount: "შექმენით ახალი ანგარიში",
+      logInWithGoogle: "შესვლა Google-ით",
+      logInWithFacebook: "შესვლა Facebook-ით",
+      submit: "შესვლა",
+    },
+    searchBar: {
+      placeholder: "ძიება...",
+    },
+    landing: {
+      welcome: "მოგესალმებით VUENNO-ში",
+      phrase: "შენი სწრაფი და მოსახერხებელი დიჯიტალური მაღაზია",
+      subphrase: "ადგილი, სადაც შეგიძლიათ იპოვოთ ყველაფერი რაც გჭირდებათ",
+      goToStore: "მაღაზიაში გადასვლა",
+      topSelling: "ტოპ გაყიდვადი",
+      startPayingPhrase: "გადაიხადე თვიური ფასი",
+      buy: "ყიდვა",
+    },
+    navigation: {
+      home: "მთავარი",
+      store: "მაღაზია",
+      profile: "პროფილი",
+      blogs: "ბლოგები",
+      about: "ჩვენს შესახებ",
+      contact: "კონტაქტი",
+      logout: "გასვლა",
+    },
+    blogs: {
+      seeMore: "მეტის ნახვა",
+      goBack: "უკან დაბრუნება",
+    },
+    profile: {
+      title: "პროფილის რედაქტირება",
+      username: "სახელი",
+      email: "ელ. ფოსტა",
+      currentPassword: "ამჯამინდელი პაროლი",
+      newPassword: "ახალი პაროლი",
+      confirmPassword: "გაიმეორეთ ახალი პაროლი",
+      submit: "შენახვა",
+    },
+    contact: {
+      firstPhrase: {
+        main: "სასწრაფოა? მიიღეთ დახმარება ლაივ ჩატით!",
+        sub: "დააჭირეთ აქ",
+      },
+      secondPhrase: {
+        main: "დაგვიკავშირდით ჩვენს ცხელ ხაზზე და გიპასუხებთ მალე!",
+        sub: "+(XXX)-XXX-XXX",
+      },
+      thirdPhrase: {
+        main: "მოგვწერეთ ელექტრონულ ფოსტაზე და მიიღეთ დახმარება!",
+      },
+      form: {
+        title: "დაგვიკავშირდით",
+        name: "სახელი",
+        email: "ელ. ფოსტა",
+        description: "აღწერა",
+        topicLabel: "თემა",
+        topics: {
+          billing: "გადახდის პრობლემა",
+          transportation: "ტრანსპორტირების პრობლემა",
+          account: "ანგარიშის პრობლემა",
+        },
+        submit: "გაგზავნა",
+      },
+    },
+    footer: {
+      rights: "© 2024 VUENNO. ყველა უფლება დაცულია",
+      copyright:
+        "მთელი კონტენტი, მათ შორის ტექსტი, გრაფიკა, ლოგოები, სურათები და პროგრამული უზრუნველყოფა, არის VUENNO-ს საკუთრება. ნებისმიერი შინაარსის უნებართვო კოპირება, გავრცელება, მოდიფიკაცია, გადაცემა ან გამოქვეყნება ნებართვის გარეშე მკაცრად აკრძალულია.",
+      newsletterSubscribe: "გამოიწერეთ ჩვენი სიახლეები",
+      inputPlaceholder: "ელ. ფოსტა",
+      links: {
+        phrase: "სწრაფი ნავიგაცია",
+        home: "მთავარი",
+        store: "მაღაზია",
+        yourStore: "თქვენი მაღაზია",
+        contact: "კონტაქტი",
+      },
+      socials: {
+        phrase: "გამოგვიწერეთ",
+        facebook: "Facebook",
+        instagram: "Instagram",
+        twitter: "Twitter",
+        tiktok: "Tiktok",
+      },
+    },
+  },
+};

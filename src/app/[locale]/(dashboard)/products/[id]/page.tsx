@@ -35,7 +35,7 @@ async function ItemPage({ params: { id, locale } }: Props) {
         </div>
         <div className="w-full flex mt-[2rem] items-center justify-center">
           <button className="h-[4rem] w-[14rem] rounded-[.5rem] bg-footer text-[1.1rem] font-bold uppercase text-white">
-            {word.landing.buy}
+            {word?.landing.buy}
           </button>
         </div>
       </div>

@@ -27,7 +27,7 @@ export default function Header({ locale }: Props) {
           </button>
         </div>
         <Navigation locale={locale} />
-        <SettingsBar />
+        <SettingsBar locale={locale} />
       </div>
     </header>
   );

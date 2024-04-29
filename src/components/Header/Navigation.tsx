@@ -10,27 +10,27 @@ function Navigation({ locale }: Props) {
 
   const links = [
     {
-      title: words.navigation.home,
+      title: words?.navigation.home,
       path: "/",
     },
     {
-      title: words.navigation.about,
+      title: words?.navigation.about,
       path: "/",
     },
     {
-      title: words.navigation.store,
+      title: words?.navigation.store,
       path: "/",
     },
     {
-      title: words.navigation.blogs,
+      title: words?.navigation.blogs,
       path: "/blogs",
     },
     {
-      title: words.navigation.profile,
+      title: words?.navigation.profile,
       path: "/profile",
     },
     {
-      title: words.navigation.contact,
+      title: words?.navigation.contact,
       path: "/contact",
     },
   ];

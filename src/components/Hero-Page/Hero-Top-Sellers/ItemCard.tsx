@@ -19,7 +19,7 @@ function ItemCard({ images, id, title, description, price, locale }: Props) {
       <div className="w-full flex flex-col p-[1rem_2rem]">
         <p className="font-bold text-[1.7rem]">${price}</p>
         <p className="font-medium text-[1.1rem]">
-          {word.landing.startPayingPhrase} {""} $
+          {word?.landing.startPayingPhrase} {""} $
           <span className="text-orange-600 tracking-wider font-semibold">{Math.round(price / 24)}</span>
         </p>
         <p className="font-semibold text-[1.3rem] mt-[1rem]">{title}</p>
@@ -28,7 +28,7 @@ function ItemCard({ images, id, title, description, price, locale }: Props) {
       <div className="w-full flex justify-center left-1/2 translate-x-[-50%] absolute bottom-[3rem]">
         <button className="w-[14rem] h-[3.5rem] rounded-[.5rem] bg-black text-white font-bold">
           <Link className="flex w-full h-full justify-center items-center" href={`/${locale}/products/${id}`}>
-            {word.landing.buy}
+            {word?.landing.buy}
           </Link>
         </button>
       </div>

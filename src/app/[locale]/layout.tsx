@@ -1,4 +1,5 @@
 import "./globals.css";
+import { cookies } from "next/headers";
 
 export const metadata = {
   title: "Create Next App",
@@ -13,8 +14,10 @@ interface Props {
 }
 
 export default function RootLayout({ children, params: { locale } }: Props) {
+  const theme = cookies().get("theme");
+
   return (
-    <html lang={locale}>
+    <html lang={locale} className={theme ? theme.value : ""}>
       <body className="dark:bg-[#282828]">{children}</body>
     </html>
   );

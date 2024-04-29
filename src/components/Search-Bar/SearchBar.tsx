@@ -43,7 +43,7 @@ function SearchBar({ setItems, originalItems }: Props) {
       <div className="relative h-[4rem] w-[30rem] lg:w-[40rem]">
         <input
           type="text"
-          placeholder={word.searchBar.placeholder}
+          placeholder={word?.searchBar.placeholder}
           className="h-full w-full rounded-[.5rem] border-[.2rem] border-gray-400 p-[1rem_1.2rem] text-[1.2rem] text-black placeholder:text-gray-500"
           onChange={handleChange}
           value={search}

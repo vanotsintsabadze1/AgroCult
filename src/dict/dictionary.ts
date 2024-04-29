@@ -110,7 +110,7 @@ export const lang = {
       placeholder: "ძიება...",
     },
     landing: {
-      welcome: "მოგესალმებით VUENNO-ში",
+      welcome: "იშოპინგე VUENNO-ში",
       phrase: "შენი სწრაფი და მოსახერხებელი დიჯიტალური მაღაზია",
       subphrase: "ადგილი, სადაც შეგიძლიათ იპოვოთ ყველაფერი რაც გჭირდებათ",
       goToStore: "მაღაზიაში გადასვლა",

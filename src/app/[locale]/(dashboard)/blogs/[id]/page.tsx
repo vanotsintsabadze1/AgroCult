@@ -46,7 +46,7 @@ export default async function IndividualBlogPage({ params: { id, locale } }: Pro
         <div className="p-[2rem_0] flex justify-center w-full">
           <button className="w-[17rem] h-[4.2rem] text-[1.2rem] font-bold rounded-[.5rem] bg-black text-white">
             <Link href={`/${locale}/blogs`} className="flex items-center justify-center w-full h-full">
-              {word.blogs.goBack}
+              {word?.blogs.goBack}
             </Link>
           </button>
         </div>

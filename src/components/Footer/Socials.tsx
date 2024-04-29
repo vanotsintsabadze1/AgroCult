@@ -9,7 +9,7 @@ function Socials({ locale }: Props) {
   return (
     <div className="flex h-[20rem] w-1/2 justify-center lg:w-auto">
       <div className="flex flex-col items-end gap-[2.5rem]">
-        <p className="text-[1.2rem] font-bold text-white">{word.footer.socials.phrase}</p>
+        <p className="text-[1.2rem] font-bold text-white">{word?.footer.socials.phrase}</p>
         <a className="text-[1.1rem] font-semibold uppercase text-gray-400 underline" href="/">
           Facebook
         </a>

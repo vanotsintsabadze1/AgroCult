@@ -31,7 +31,7 @@ function BlogCard({ title, body, tags, id, locale }: Props) {
       <section className="p-[2rem_0] flex justify-center w-full">
         <button className="w-[17rem] h-[4.2rem] text-[1.2rem] font-bold rounded-[.5rem] bg-black text-white">
           <Link href={`/${locale}/blogs/${id}`} className="flex items-center justify-center w-full h-full">
-            {word.blogs.seeMore}
+            {word?.blogs.seeMore}
           </Link>
         </button>
       </section>

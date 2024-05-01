@@ -3,10 +3,6 @@ import Links from "./Links";
 import Socials from "./Socials";
 import { getScopedI18n } from "@/locales/server";
 
-interface Props {
-  locale: string;
-}
-
 export default async function Footer() {
   const word = await getScopedI18n("footer");
   return (

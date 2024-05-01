@@ -3,13 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { useScopedI18n } from "@/locales/client";
 
-interface Props {
-  params: {
-    locale: string;
-  };
-}
-
-function Profile({ params: { locale } }: Props) {
+function Profile() {
   const [user, setUser] = useState({
     username: "Vano Tsintsabadze",
     email: "testmail@gmail.com",

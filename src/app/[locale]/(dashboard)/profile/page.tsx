@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
-import { lang } from "../../../../dict/dictionary";
+import { useScopedI18n } from "@/locales/client";
 
 interface Props {
   params: {
@@ -17,38 +17,38 @@ function Profile({ params: { locale } }: Props) {
     newPassword: "",
     newConfirmedPassword: "",
   });
-  const word = lang[locale as keyof typeof lang];
+  const word = useScopedI18n("profile");
 
   const inputFields = [
     {
       type: "text",
       value: user.username,
       updates: "username",
-      placeholder: word?.profile.username,
+      placeholder: word("username"),
     },
     {
       type: "text",
       value: user.email,
       updates: "email",
-      placeholder: word?.profile.email,
+      placeholder: word("email"),
     },
     {
       type: "password",
       value: user.currentPassword,
       updates: "currentPassword",
-      placeholder: word?.profile.currentPassword,
+      placeholder: word("currentPassword"),
     },
     {
       type: "password",
       value: user.newPassword,
       updates: "newPassword",
-      placeholder: word?.profile.newPassword,
+      placeholder: word("newPassword"),
     },
     {
       type: "password",
       value: user.newConfirmedPassword,
       updates: "newConfirmedPassword",
-      placeholder: word?.profile.confirmPassword,
+      placeholder: word("confirmPassword"),
     },
   ];
 
@@ -59,7 +59,7 @@ function Profile({ params: { locale } }: Props) {
           <div className="w-[10rem] h-[10rem] relative">
             <Image src="/images/icons/profile-icons/user-profile.webp" fill alt="user-profile-icon" />
           </div>
-          <h2 className="font-bold text-[2rem]">{word?.profile.title}</h2>
+          <h2 className="font-bold text-[2rem]">{word("title")}</h2>
         </section>
         <section className="w-full flex justify-center flex-grow">
           <form className="w-full p-[2rem] flex items-center flex-col gap-[3.5rem]">
@@ -75,7 +75,7 @@ function Profile({ params: { locale } }: Props) {
             ))}
             <input
               type="submit"
-              value={word?.profile.submit}
+              value={word("submit")}
               className="w-[15rem] h-[4rem] text-white bg-black rounded-lg uppercase tracking-wider font-semibold text-[1.2rem] cursor-pointer"
             />
           </form>

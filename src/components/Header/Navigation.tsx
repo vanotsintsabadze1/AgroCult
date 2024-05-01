@@ -1,36 +1,32 @@
 import Link from "next/link";
-import { lang } from "../../dict/dictionary";
+import { getScopedI18n } from "@/locales/server";
 
-interface Props {
-  locale: string;
-}
-
-function Navigation({ locale }: Props) {
-  const words = lang[locale as keyof typeof lang];
+async function Navigation() {
+  const words = await getScopedI18n("navigation");
 
   const links = [
     {
-      title: words?.navigation.home,
+      title: words("home"),
       path: "/",
     },
     {
-      title: words?.navigation.about,
+      title: words("about"),
       path: "/",
     },
     {
-      title: words?.navigation.store,
+      title: words("store"),
       path: "/",
     },
     {
-      title: words?.navigation.blogs,
+      title: words("blogs"),
       path: "/blogs",
     },
     {
-      title: words?.navigation.profile,
+      title: words("profile"),
       path: "/profile",
     },
     {
-      title: words?.navigation.contact,
+      title: words("contact"),
       path: "/contact",
     },
   ];
@@ -40,7 +36,7 @@ function Navigation({ locale }: Props) {
       {links.map((link, idx) => (
         <Link
           key={idx}
-          href={`/${locale}${link.path}`}
+          href={`${link.path}`}
           className="easeOut text-[1.25rem] font-bold uppercase duration-200 hover:scale-110 dark:text-dark-mode"
         >
           {link.title}

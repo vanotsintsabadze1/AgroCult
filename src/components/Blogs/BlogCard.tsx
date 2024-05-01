@@ -1,14 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Blog } from "../../types/types";
-import { lang } from "../../dict/dictionary";
+import { getScopedI18n } from "@/locales/server";
 
 interface Props extends Blog {
   locale: string;
 }
 
-function BlogCard({ title, body, tags, id, locale }: Props) {
-  const word = lang[locale as keyof typeof lang];
+async function BlogCard({ title, body, tags, id, locale }: Props) {
+  const word = await getScopedI18n("blogs");
 
   return (
     <div className="w-[35rem] xs:w-full flex flex-col items-center shadow-soft rounded-[1rem] pb-[2rem] dark:bg-white">
@@ -31,7 +31,7 @@ function BlogCard({ title, body, tags, id, locale }: Props) {
       <section className="p-[2rem_0] flex justify-center w-full">
         <button className="w-[17rem] h-[4.2rem] text-[1.2rem] font-bold rounded-[.5rem] bg-black text-white">
           <Link href={`/${locale}/blogs/${id}`} className="flex items-center justify-center w-full h-full">
-            {word?.blogs.seeMore}
+            {word("seeMore")}
           </Link>
         </button>
       </section>

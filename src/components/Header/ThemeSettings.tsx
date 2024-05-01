@@ -22,7 +22,7 @@ function ThemeSettings() {
       </button>
       <button
         className="w-full font-medium text-[1.2rem] z-[4] uppercase hover:bg-slate-200 duration-200 easeOut flex-grow"
-        onClick={() => setTheme("")}
+        onClick={() => setTheme("system")}
       >
         <b>system</b>:
       </button>

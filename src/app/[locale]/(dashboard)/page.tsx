@@ -24,7 +24,7 @@ export default async function Hero({ params: { locale } }: Props) {
 
   return (
     <main className="flex w-full flex-col items-center gap-[3rem] p-[4rem_0] lg:gap-[5rem] lg:p-[8rem_0]">
-      <Introduction locale={locale} />
+      <Introduction />
       <ItemWrapper items={items} locale={locale} />
     </main>
   );

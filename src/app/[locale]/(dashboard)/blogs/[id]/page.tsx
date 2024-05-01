@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Blog } from "../../../../../types/types";
-import { lang } from "../../../../../dict/dictionary";
+import { getScopedI18n } from "../../../../../locales/server";
 
 interface Props {
   params: {
@@ -26,7 +26,7 @@ async function getPostById(number: number) {
 
 export default async function IndividualBlogPage({ params: { id, locale } }: Props) {
   const { title, body, tags } = await getPostById(id);
-  const word = lang[locale as keyof typeof lang];
+  const word = await getScopedI18n("blogs");
 
   return (
     <main className="w-full flex items-center justify-center h-[80rem] p-[2rem]">
@@ -46,7 +46,7 @@ export default async function IndividualBlogPage({ params: { id, locale } }: Pro
         <div className="p-[2rem_0] flex justify-center w-full">
           <button className="w-[17rem] h-[4.2rem] text-[1.2rem] font-bold rounded-[.5rem] bg-black text-white">
             <Link href={`/${locale}/blogs`} className="flex items-center justify-center w-full h-full">
-              {word?.blogs.goBack}
+              {word("goBack")}
             </Link>
           </button>
         </div>

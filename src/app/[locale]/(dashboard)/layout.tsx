@@ -13,7 +13,7 @@ export default function DashboardLayout({ children, params: { locale } }: Props)
     <>
       <Header locale={locale} />
       {children}
-      <Footer locale={locale} />
+      <Footer />
     </>
   );
 }

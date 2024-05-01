@@ -1,10 +1,6 @@
 import Image from "next/image";
 import { getScopedI18n } from "../../locales/server";
 
-interface Props {
-  locale: string;
-}
-
 async function ContactDetails() {
   const word = await getScopedI18n("contact");
 

@@ -1,10 +1,6 @@
 import { getScopedI18n } from "@/locales/server";
 
-interface Props {
-  locale: string;
-}
-
-async function ContactForm({ locale }: Props) {
+async function ContactForm() {
   const word = await getScopedI18n("contact");
 
   return (

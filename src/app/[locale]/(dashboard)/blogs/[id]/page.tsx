@@ -24,7 +24,7 @@ async function getPostById(number: number) {
   return response.json();
 }
 
-export default async function IndividualBlogPage({ params: { id, locale } }: Props) {
+export default async function IndividualBlogPage({ params: { id } }: Props) {
   const { title, body, tags } = await getPostById(id);
   const word = await getScopedI18n("blogs");
 
@@ -45,7 +45,7 @@ export default async function IndividualBlogPage({ params: { id, locale } }: Pro
         </div>
         <div className="p-[2rem_0] flex justify-center w-full">
           <button className="w-[17rem] h-[4.2rem] text-[1.2rem] font-bold rounded-[.5rem] bg-black text-white">
-            <Link href={`/${locale}/blogs`} className="flex items-center justify-center w-full h-full">
+            <Link href={`/blogs`} className="flex items-center justify-center w-full h-full">
               {word("goBack")}
             </Link>
           </button>

@@ -5,7 +5,6 @@ import { getScopedI18n } from "@/locales/server";
 interface Props {
   params: {
     id: number;
-    locale: string;
   };
 }
 

@@ -3,8 +3,7 @@ import { useState } from "react";
 import { debounce } from "../../scripts/debounce";
 import Image from "next/image";
 import { ShopItem } from "../../types/types";
-import { usePathname } from "next/navigation";
-import { lang } from "../../dict/dictionary";
+import { useScopedI18n } from "@/locales/client";
 
 interface Props {
   setItems: React.Dispatch<React.SetStateAction<ShopItem[]>>;
@@ -14,8 +13,7 @@ interface Props {
 function SearchBar({ setItems, originalItems }: Props) {
   const [search, setSearch] = useState("");
   const [sorted, setSorted] = useState(false);
-  const path = usePathname().split("/")[1];
-  const word = lang[path as keyof typeof lang];
+  const word = useScopedI18n("searchBar");
 
   const handleSort = () => {
     if (sorted) {
@@ -43,7 +41,7 @@ function SearchBar({ setItems, originalItems }: Props) {
       <div className="relative h-[4rem] w-[30rem] lg:w-[40rem]">
         <input
           type="text"
-          placeholder={word?.searchBar.placeholder}
+          placeholder={word("placeholder")}
           className="h-full w-full rounded-[.5rem] border-[.2rem] border-gray-400 p-[1rem_1.2rem] text-[1.2rem] text-black placeholder:text-gray-500"
           onChange={handleChange}
           value={search}

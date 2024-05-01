@@ -4,7 +4,7 @@ import ItemCard from "./ItemCard";
 import SearchBar from "../../Search-Bar/SearchBar";
 import { useState } from "react";
 import { ShopItem } from "../../../types/types";
-import { lang } from "@/dict/dictionary";
+import { useScopedI18n } from "../../../locales/client";
 
 interface Props {
   items: ShopItem[];
@@ -13,13 +13,13 @@ interface Props {
 
 function ItemsWrapper({ items, locale }: Props) {
   const [itemList, setItemList] = useState(items);
-  const word = lang[locale as keyof typeof lang];
+  const word = useScopedI18n("landing");
 
   return (
     <section className="overflow mt-[2rem] w-full flex items-center flex-col">
       <div className="flex w-full items-center justify-center mt-[2rem]">
         <h2 className="mb-[2rem] text-[2.2rem] font-bold uppercase tracking-wide dark:text-dark-mode">
-          {word?.landing.topSelling}
+          {word("topSelling")}
         </h2>
       </div>
       <SearchBar setItems={setItemList} originalItems={items} />

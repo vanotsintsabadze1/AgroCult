@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { ShopItem } from "../../../../../types/types";
-import { lang } from "../../../../../dict/dictionary";
+import { getScopedI18n } from "@/locales/server";
 
 interface Props {
   params: {
@@ -15,9 +15,9 @@ async function fetchItem(id: number) {
   return data;
 }
 
-async function ItemPage({ params: { id, locale } }: Props) {
+async function ItemPage({ params: { id } }: Props) {
   const item: ShopItem = await fetchItem(id);
-  const word = lang[locale as keyof typeof lang];
+  const word = await getScopedI18n("landing");
 
   return (
     <section className="w-full h-[80rem] flex items-center justify-center">
@@ -35,7 +35,7 @@ async function ItemPage({ params: { id, locale } }: Props) {
         </div>
         <div className="w-full flex mt-[2rem] items-center justify-center">
           <button className="h-[4rem] w-[14rem] rounded-[.5rem] bg-footer text-[1.1rem] font-bold uppercase text-white">
-            {word?.landing.buy}
+            {word("buy")}
           </button>
         </div>
       </div>

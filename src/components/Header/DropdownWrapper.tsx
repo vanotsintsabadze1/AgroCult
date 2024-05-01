@@ -3,16 +3,25 @@ import Image from "next/image";
 import DropdownSettings from "./DropdownSettings";
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
+import { useScopedI18n } from "../../locales/client";
+import { logout } from "../../scripts/auth/logout";
 
 interface Props {
   locale: string;
+  theme?: string;
 }
 
-function DropdownWrapper({ locale }: Props) {
+function DropdownWrapper({ locale, theme }: Props) {
   const [userPreferences, setUserPreferences] = useState(false);
+  const word = useScopedI18n("navigation");
 
   function handleEnablePreferences() {
     setUserPreferences(!userPreferences);
+  }
+
+  async function handleLogOut() {
+    await logout();
+    window.location.reload();
   }
 
   return (
@@ -34,8 +43,11 @@ function DropdownWrapper({ locale }: Props) {
           alt="user-preferences-icon"
         />
       </button>
+      <button className="text-[1.4rem] font-bold dark:text-dark-mode" onClick={handleLogOut}>
+        {word("logout")}
+      </button>
 
-      <AnimatePresence>{userPreferences && <DropdownSettings locale={locale} />}</AnimatePresence>
+      <AnimatePresence>{userPreferences && <DropdownSettings locale={locale} theme={theme} />}</AnimatePresence>
     </>
   );
 }

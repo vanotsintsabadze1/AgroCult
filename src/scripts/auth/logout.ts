@@ -1,4 +1,4 @@
-export async function deleteUser() {
+export async function logout() {
   try {
     const res = await fetch("http://localhost:3000/api/logout", {
       method: "POST",

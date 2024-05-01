@@ -1,12 +1,13 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useRouter, usePathname } from "next/navigation";
 import ThemeSettings from "./ThemeSettings";
 import { useState } from "react";
+import { changeLanguage } from "../../scripts/language/changeLanguage";
 
 interface Props {
   locale: string;
+  theme?: string;
 }
 
 const divAnimation = {
@@ -14,21 +15,17 @@ const divAnimation = {
   visible: { opacity: 1, y: 0 },
 };
 
-function DropdownSettings({ locale }: Props) {
-  const router = useRouter();
-  const path = usePathname();
+function DropdownSettings({ locale, theme }: Props) {
   const [themeDropdown, setThemeDropdown] = useState(false);
-
-  function changeLanguage() {
-    const pathArr = path.split("/");
-    pathArr[1] = pathArr[1] === "en" ? "ka" : "en";
-    const newPath = pathArr.join("/");
-    router.replace(newPath);
-  }
 
   function enableThemeDropdown() {
     setThemeDropdown(!themeDropdown);
   }
+
+  const handleChangeLanguage = async () => {
+    await changeLanguage();
+    window.location.reload();
+  };
 
   return (
     <motion.div
@@ -41,7 +38,7 @@ function DropdownSettings({ locale }: Props) {
       <div className="flex flex-col items-center justify-evenly h-full w-full relative">
         <button
           className="w-full font-medium text-[1.2rem] z-[4] uppercase hover:bg-slate-200 duration-200 easeOut flex-grow"
-          onClick={changeLanguage}
+          onClick={handleChangeLanguage}
         >
           <b>Language</b>: {locale}
         </button>
@@ -49,7 +46,7 @@ function DropdownSettings({ locale }: Props) {
           className="w-full font-medium text-[1.2rem] z-[4] uppercase hover:bg-slate-200 duration-200 easeOut flex-grow"
           onClick={enableThemeDropdown}
         >
-          <b>Theme</b>: {locale}
+          <b>Theme</b>: {!theme ? "System" : theme}
         </button>
         <AnimatePresence>{themeDropdown && <ThemeSettings />}</AnimatePresence>
         <button className="w-full font-medium text-[1.2rem] z-[4] uppercase hover:bg-slate-200 duration-200 easeOut flex-grow">

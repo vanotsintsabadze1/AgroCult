@@ -1,5 +1,6 @@
 import "./globals.css";
 import { cookies } from "next/headers";
+import { I18nProviderClient } from "@/locales/client";
 
 export const metadata = {
   title: "Create Next App",
@@ -18,7 +19,9 @@ export default function RootLayout({ children, params: { locale } }: Props) {
 
   return (
     <html lang={locale} className={theme ? theme.value : ""}>
-      <body className="dark:bg-[#282828]">{children}</body>
+      <body className="dark:bg-[#282828]">
+        <I18nProviderClient locale={locale}>{children}</I18nProviderClient>
+      </body>
     </html>
   );
 }

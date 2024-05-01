@@ -1,18 +1,17 @@
-import { lang } from "../../dict/dictionary";
 import DropdownWrapper from "./DropdownWrapper";
+import { cookies } from "next/headers";
 
 interface Props {
   locale: string;
 }
 
-function SettingsBar({ locale }: Props) {
-  const word = lang[locale as keyof typeof lang];
+async function SettingsBar({ locale }: Props) {
+  const theme = cookies().get("theme");
 
   return (
     <>
       <div className="hidden h-full items-center justify-center gap-[2.5rem] lg:flex p-[0_3rem] relative">
-        <DropdownWrapper locale={locale} />
-        <button className="text-[1.4rem] font-bold dark:text-dark-mode">{word?.navigation.logout}</button>
+        <DropdownWrapper locale={locale} theme={theme?.value} />
       </div>
     </>
   );

@@ -11,7 +11,13 @@ const config: Config = {
   theme: {
     extend: {
       backgroundColor: {
-        footer: "#212529",
+        primary: "#f2e9e4",
+        secondary: "#283618",
+        dark: "#081c15",
+      },
+      borderColor: {
+        primary: "#FEFAE0",
+        secondary: "#606C38",
       },
       colors: {
         "dark-mode": "#fffff8",

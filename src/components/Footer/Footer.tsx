@@ -6,7 +6,7 @@ import { getScopedI18n } from "@/locales/server";
 export default async function Footer() {
   const word = await getScopedI18n("footer");
   return (
-    <footer className="flex w-full flex-grow justify-center bg-secondary p-[2rem_0] lg:p-[0rem]">
+    <footer className="flex w-full flex-grow justify-center bg-secondary p-[2rem_0] lg:p-[0rem] dark:bg-[#212529]">
       <div className="flex w-full flex-col items-center lg:flex-row-reverse lg:items-start lg:justify-center lg:gap-[5rem]">
         <section className="flex w-[32rem] justify-center md:w-[45rem] lg:h-[40rem] lg:w-[40rem] lg:items-center lg:justify-start lg:gap-[10rem]">
           <Links />

@@ -3,38 +3,32 @@ import Link from "next/link";
 import { Blog } from "../../types/types";
 import { getScopedI18n } from "@/locales/server";
 
-interface Props extends Blog {
-  locale: string;
-}
-
-async function BlogCard({ title, body, tags, id }: Props) {
+async function BlogCard({ title, body, tags, id }: Blog) {
   const word = await getScopedI18n("blogs");
 
   return (
-    <div className="w-[35rem] xs:w-full flex flex-col items-center shadow-soft rounded-[1rem] pb-[2rem] dark:bg-white">
-      <section className="w-full pt-[2rem] flex justify-center p-[1rem_2rem]">
-        <div className="w-[35rem] h-[20rem] relative shadow-xs rounded-[.5rem]">
-          <Image src="https://picsum.photos/seed/picsum/600/414" alt={title} fill className="rounded-[.5rem]" />
+    <div className="w-[38rem] shadow-soft rounded-[.8rem] py-[2rem] px-[1rem] flex flex-col items-center dark:bg-white">
+      <div className="w-[35rem] h-[20rem] relative shadow-xs rounded-[.5rem]">
+        <Image src="https://picsum.photos/seed/picsum/600/414" alt={title} fill className="rounded-[1rem]" />
+      </div>
+      <div className="flex flex-col gap-[.5rem] w-full items-start px-[1rem]  py-[1rem]">
+        <div className="flex gap-[1rem] py-[.5rem]">
+          {tags.map((tag, idx) => (
+            <p key={idx} className="font-bold text-[1.2rem]">
+              #{tag}
+            </p>
+          ))}
         </div>
-      </section>
-      <section className="w-full flex justify-center">
-        <div className="p-[.5rem_2rem] text-center w-[35rem]">
-          <h2 className="text-[1.8rem] font-bold line-clamp-1">{title}</h2>
-          <p className="font-medium text-[1.2rem] line-clamp-3 mt-[1rem]">{body}</p>
-          <p className="font-bold text-[1.2rem] line-clamp-3 mt-[2rem]">
-            {tags.map((tag: string) => (
-              <span key={tag}>#{tag}, </span>
-            ))}
-          </p>
-        </div>
-      </section>
-      <section className="p-[2rem_0] flex justify-center w-full">
-        <button className="w-[17rem] h-[4.2rem] text-[1.2rem] font-bold rounded-[.5rem] bg-black text-white">
-          <Link href={`/blogs/${id}`} className="flex items-center justify-center w-full h-full">
+        <h2 className="font-bold text-[1.8rem] line-clamp-1">{title}</h2>
+        <p className="font-medium text-[1.2rem] line-clamp-3 w-[30rem]">{body}</p>
+        <div className="pt-[2rem] flex justify-between w-full items-center">
+          <button className="w-[12rem] h-[4rem] text-[1.3rem] text-slate-800 shadow-sm font-medium bg-gray-400 rounded-[1rem]">
             {word("seeMore")}
-          </Link>
-        </button>
-      </section>
+          </button>
+
+          <p className="font-medium text-[1.3rem] mr-[2rem]">02, Jan, 2024</p>
+        </div>
+      </div>
     </div>
   );
 }

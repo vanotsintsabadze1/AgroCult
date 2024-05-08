@@ -6,15 +6,15 @@ async function Card() {
   const word = await getScopedI18n("landing");
 
   return (
-    <div className="w-full bg-primary flex flex-col items-center pb-[3rem] shadow-soft lg:flex-row-reverse lg:justify-center">
+    <div className="w-full bg-primary flex flex-col items-center pb-[3rem] shadow-soft lg:flex-row-reverse lg:justify-center dark:bg-dark-secondary">
       <div className="relative w-[35rem] xs:w-full h-[30rem] md:w-[45rem] md:h-[40rem] lg:w-[50rem] lg:h-[45rem]">
         <Image src="/images/mockups/macbook-homepage-mockup.webp" fill alt="macbook-mockup" />
       </div>
       <div className="w-full flex flex-col items-center justify-center gap-[1rem] lg:w-[50rem]">
-        <h3 className="text-[4rem] font-bold text-black drop-shadow-text-soft tracking-widest md:text-[5rem] lg:text-[9rem]">
+        <h3 className="text-[4rem] font-bold text-black drop-shadow-text-soft tracking-widest md:text-[5rem] lg:text-[9rem] dark:text-white">
           VUENNO
         </h3>
-        <p className="text-black text-center w-[30rem] drop-shadow-text-soft text-[1.3rem] leading-[2.3rem] md:text-[1.6rem] md:w-[40rem]">
+        <p className="text-black text-center w-[30rem] drop-shadow-text-soft text-[1.3rem] leading-[2.3rem] md:text-[1.6rem] md:w-[40rem] dark:text-white xl:text-[1.4rem] xl:w-[40rem]">
           {word("phrase")}
         </p>
         <button className="flex h-[4rem] w-[15rem] items-center justify-center gap-[.5rem] bg-black duration-150 ease-out hover:scale-110 mt-[1.8rem] md:h-[5rem] md:w-[20rem]">

@@ -13,7 +13,8 @@ const config: Config = {
       backgroundColor: {
         primary: "#f2e9e4",
         secondary: "#283618",
-        dark: "#081c15",
+        "dark-primary": "#051923",
+        "dark-secondary": "#3d405b",
       },
       borderColor: {
         primary: "#FEFAE0",

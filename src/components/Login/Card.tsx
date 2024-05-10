@@ -4,15 +4,17 @@ import Link from "next/link";
 import { loginUser } from "../../scripts/auth/login";
 import { useState } from "react";
 import { useScopedI18n } from "@/locales/client";
+import { useRouter } from "next/navigation";
 
 export default function Card() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const words = useScopedI18n("login");
+  const router = useRouter();
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    loginUser(username, password).then(() => window.location.reload());
+    loginUser(username, password).then(() => router.refresh());
   }
 
   return (

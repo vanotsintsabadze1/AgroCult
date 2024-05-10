@@ -15,7 +15,7 @@ function SearchBar() {
       <input
         type="text"
         placeholder={word("placeholder")}
-        className="h-full w-[40rem] rounded-[3rem] bg-gray-100 border-secondary dark:border-4 border-[.2rem] px-[1.5rem] py-[2rem] text-[1.2rem] text-black placeholder:text-gray-500 outline-none xs:w-[30rem] md:w-[60rem] md:h-[5rem] md:text-[1.5rem] lg:w-[80rem] lg:text-[1.7rem] lg:h-[6rem] lg:px-[2rem]"
+        className="h-full w-[40rem] rounded-[3rem] bg-gray-100 border-secondary dark:border border-[.2rem] px-[1.5rem] py-[2rem] text-[1.2rem] text-black placeholder:text-gray-500 outline-none xs:w-[30rem] md:w-[60rem] md:h-[5rem] md:text-[1.5rem] lg:w-[80rem] lg:text-[1.7rem] lg:h-[6rem] lg:px-[2rem]"
         onChange={changeSearch}
         value={search}
       />

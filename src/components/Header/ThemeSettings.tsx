@@ -12,7 +12,7 @@ function ThemeSettings() {
       initial="hidden"
       animate="visible"
       variants={divAnimation}
-      className="absolute w-[10rem] h-[11rem] flex flex-col dark:bg-white"
+      className="absolute w-[10rem] h-[11rem] flex flex-col bg-white"
     >
       <button
         className="w-full font-medium text-[1.2rem] z-[4] uppercase hover:bg-slate-200 duration-200 easeOut flex-grow"

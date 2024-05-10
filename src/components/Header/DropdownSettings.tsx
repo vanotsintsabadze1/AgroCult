@@ -22,10 +22,14 @@ function DropdownSettings({ locale, theme }: Props) {
     setThemeDropdown(!themeDropdown);
   }
 
-  const handleChangeLanguage = async () => {
+  async function handleChangeLanguage() {
     await changeLanguage();
     window.location.reload();
-  };
+  }
+
+  function redirectAdminPanel() {
+    window.location.href = "/admin";
+  }
 
   return (
     <motion.div
@@ -33,7 +37,7 @@ function DropdownSettings({ locale, theme }: Props) {
       animate="visible"
       exit="hidden"
       variants={divAnimation}
-      className="absolute top-[3.2rem] right-[5.5rem] bg-white shadow-sm rounded-[.3rem] w-[14rem] h-[11rem]"
+      className="absolute top-[3.2rem] right-[5.5rem] bg-white shadow-sm rounded-[.3rem] w-[14rem] h-[15rem]"
     >
       <div className="flex flex-col items-center justify-evenly h-full w-full relative">
         <button
@@ -51,6 +55,12 @@ function DropdownSettings({ locale, theme }: Props) {
         <AnimatePresence>{themeDropdown && <ThemeSettings />}</AnimatePresence>
         <button className="w-full font-medium text-[1.2rem] z-[4] uppercase hover:bg-slate-200 duration-200 easeOut flex-grow">
           <b>Settings</b>
+        </button>
+        <button
+          className="w-full font-medium text-[1.2rem] z-[4] uppercase hover:bg-slate-200 duration-200 easeOut flex-grow"
+          onClick={redirectAdminPanel}
+        >
+          <b>APanel</b>
         </button>
       </div>
     </motion.div>

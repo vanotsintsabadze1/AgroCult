@@ -1,6 +1,6 @@
 export async function logout() {
   try {
-    const res = await fetch("http://localhost:3000/api/logout", {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/logout`, {
       method: "POST",
     });
 

@@ -15,9 +15,16 @@ export default {
   },
   landing: {
     welcome: "Welcome To VUENNO",
-    phrase: "Your Digital One-Stop Shop for Everything",
-    subphrase: "A place where you can find everything you need",
+    phrase: "Find, Buy, and Enjoy the Best Products Online Provided by Authorized Sellers",
     goToStore: "Go To The Store",
+    stages: {
+      first: "Browse through our diverse catalogue and find your perfect match with ease.",
+      second:
+        "Choose your preferred payment method worry-free. Our secure gateway accepts major providers for your convenience.",
+      third: "Swift delivery guaranteed. Receive your order within 2 business days or 5 days out of town.",
+    },
+  },
+  store: {
     topSelling: "Top Sellers",
     startPayingPhrase: "Start Paying monthly for",
     buy: "Buy",

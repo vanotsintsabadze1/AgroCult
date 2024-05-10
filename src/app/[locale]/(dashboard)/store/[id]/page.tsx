@@ -16,7 +16,7 @@ async function fetchItem(id: number) {
 
 async function ItemPage({ params: { id } }: Props) {
   const item: ShopItem = await fetchItem(id);
-  const word = await getScopedI18n("landing");
+  const word = await getScopedI18n("store");
 
   return (
     <section className="w-full h-[80rem] flex items-center justify-center">
@@ -33,7 +33,7 @@ async function ItemPage({ params: { id } }: Props) {
           <p className="text-[1.5rem] font-bold mt-[2rem]">${item.price}</p>
         </div>
         <div className="w-full flex mt-[2rem] items-center justify-center">
-          <button className="h-[4rem] w-[14rem] rounded-[.5rem] bg-footer text-[1.1rem] font-bold uppercase text-white">
+          <button className="h-[4rem] w-[14rem] rounded-[.5rem] text-[1.1rem] bg-black font-bold uppercase text-white">
             {word("buy")}
           </button>
         </div>

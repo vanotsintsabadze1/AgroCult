@@ -10,7 +10,7 @@ interface Props extends ShopItem {
 }
 
 function ItemCard({ images, id, title, description, price }: Props) {
-  const word = useScopedI18n("landing");
+  const word = useScopedI18n("store");
   return (
     <div className="w-[30rem] bg-white flex-shrink-0 rounded-[1rem] pt-[1.5rem] flex flex-col h-[42rem] items-center pb-[3rem] relative shadow-soft">
       <div className="w-full p-[0rem_2rem]">
@@ -29,7 +29,7 @@ function ItemCard({ images, id, title, description, price }: Props) {
       </div>
       <div className="w-full flex justify-center left-1/2 translate-x-[-50%] absolute bottom-[3rem]">
         <button className="w-[14rem] h-[3.5rem] rounded-[.5rem] bg-black text-white font-bold">
-          <Link className="flex w-full h-full justify-center items-center" href={`/products/${id}`}>
+          <Link className="flex w-full h-full justify-center items-center" href={`/store/${id}`}>
             {word("buy")}
           </Link>
         </button>

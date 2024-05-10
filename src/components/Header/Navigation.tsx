@@ -15,7 +15,7 @@ async function Navigation() {
     },
     {
       title: words("store"),
-      path: "/",
+      path: "/store",
     },
     {
       title: words("blogs"),

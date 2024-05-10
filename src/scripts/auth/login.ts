@@ -10,7 +10,7 @@ async function loginUser(username: string, password: string) {
     return;
   } else {
     try {
-      await fetch("http://localhost:3000/api/login", {
+      await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

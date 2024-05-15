@@ -3,7 +3,10 @@
 import { AnimatePresence, motion } from "framer-motion";
 import ThemeSettings from "./ThemeSettings";
 import { useState } from "react";
-import { changeLanguage } from "../../scripts/language/changeLanguage";
+import { changeLanguage } from "../../../scripts/language/changeLanguage";
+import { useScopedI18n } from "../../../locales/client";
+import { logout } from "../../../scripts/auth/logout";
+import { useRouter } from "next/navigation";
 
 interface Props {
   locale: string;
@@ -17,6 +20,8 @@ const divAnimation = {
 
 function DropdownSettings({ locale, theme }: Props) {
   const [themeDropdown, setThemeDropdown] = useState(false);
+  const word = useScopedI18n("navigation");
+  const router = useRouter();
 
   function enableThemeDropdown() {
     setThemeDropdown(!themeDropdown);
@@ -24,11 +29,16 @@ function DropdownSettings({ locale, theme }: Props) {
 
   async function handleChangeLanguage() {
     await changeLanguage();
-    window.location.reload();
+    router.refresh();
   }
 
   function redirectAdminPanel() {
-    window.location.href = "/admin";
+    router.push("/admin");
+  }
+
+  async function handleLogOut() {
+    await logout();
+    router.refresh();
   }
 
   return (
@@ -37,7 +47,7 @@ function DropdownSettings({ locale, theme }: Props) {
       animate="visible"
       exit="hidden"
       variants={divAnimation}
-      className="absolute top-[3.2rem] right-[5.5rem] bg-white shadow-sm rounded-[.3rem] w-[14rem] h-[15rem]"
+      className="absolute top-[3.2rem] right-[5.5rem] bg-white shadow-sm rounded-[.3rem] w-[14rem] h-[18rem]"
     >
       <div className="flex flex-col items-center justify-evenly h-full w-full relative">
         <button
@@ -61,6 +71,12 @@ function DropdownSettings({ locale, theme }: Props) {
           onClick={redirectAdminPanel}
         >
           <b>APanel</b>
+        </button>
+        <button
+          className="w-full font-medium text-[1.2rem] z-[4] uppercase hover:bg-slate-200 duration-200 easeOut flex-grow"
+          onClick={handleLogOut}
+        >
+          <b>{word("logout")}</b>
         </button>
       </div>
     </motion.div>

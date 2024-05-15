@@ -13,6 +13,10 @@ export interface ShopItem {
   id: number;
 }
 
+export interface CartItem extends ShopItem {
+  quantity: number;
+}
+
 export interface User {
   id: number;
   name: string;

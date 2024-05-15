@@ -7,7 +7,7 @@ export default function CompanyVerificationCard() {
         <Image src="/images/vector-images/company-verification.webp" fill alt="company-verification" />
       </div>
       <div className="flex flex-col gap-[.5rem] items-center">
-        <h2 className="text-[1.8rem] font-bold md:text-[2.2rem] lg:text-[2.7rem] dark:text-white">
+        <h2 className="text-[1.8rem] font-bold md:text-[2.2rem] lg:text-[2.7rem] dark:text-white text-center">
           Want to get your company verified?
         </h2>
         <p className="text-[1.2rem] text-center w-[30rem] font-medium mt-[.5rem] md:text-[1.4rem] lg:text-[1.6rem] lg:w-[40rem] dark:text-white">

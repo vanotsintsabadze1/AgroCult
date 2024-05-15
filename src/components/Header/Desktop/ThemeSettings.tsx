@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { setTheme } from "../../scripts/theme/themeSetter";
+import { setTheme } from "../../../scripts/theme/themeSetter";
 
 const divAnimation = {
   hidden: { opacity: 0, y: 0, x: 0 },
@@ -18,19 +18,19 @@ function ThemeSettings() {
         className="w-full font-medium text-[1.2rem] z-[4] uppercase hover:bg-slate-200 duration-200 easeOut flex-grow"
         onClick={() => setTheme("dark")}
       >
-        <b>dark</b>:
+        <b>dark</b>
       </button>
       <button
         className="w-full font-medium text-[1.2rem] z-[4] uppercase hover:bg-slate-200 duration-200 easeOut flex-grow"
         onClick={() => setTheme("system")}
       >
-        <b>system</b>:
+        <b>system</b>
       </button>
       <button
         className="w-full font-medium text-[1.2rem] z-[4] uppercase hover:bg-slate-200 duration-200 easeOut flex-grow"
         onClick={() => setTheme("light")}
       >
-        <b>light</b>:
+        <b>light</b>
       </button>
     </motion.div>
   );

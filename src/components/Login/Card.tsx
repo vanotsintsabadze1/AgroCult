@@ -29,7 +29,7 @@ export default function Card() {
           </div>
           <div className="w-full flex flex-col items-center justify-center gap-[3.5rem] p-[1rem]">
             <input
-              className="p-[1.5rem_1.2rem] border-b-black border-b-2 text-[1.3rem] placeholder:uppercase w-[30rem] outline-none"
+              className="p-[1.5rem_1.2rem] border-b-black border-b-2 text-[1.3rem] placeholder:uppercase xs:w-full w-[30rem] outline-none"
               placeholder={words("username")}
               type="text"
               name="username"
@@ -37,14 +37,14 @@ export default function Card() {
               value={username}
             />
             <input
-              className="p-[1.5rem_1.2rem] border-b-black border-b-2 text-[1.3rem] placeholder:uppercase w-[30rem] outline-none"
+              className="p-[1.5rem_1.2rem] border-b-black border-b-2 text-[1.3rem] placeholder:uppercase xs:w-full  w-[30rem] outline-none"
               placeholder={words("password")}
               type="password"
               name="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <div className="w-[30rem] flex items-center justify-between">
+            <div className="w-[30rem] flex items-center justify-between xs:w-full">
               <div className="flex items-center gap-[.5rem]">
                 <input type="checkbox" className="w-[1.5rem] h-[1.5rem] cursor-pointer lg:w-[1.3rem] lg:h-[1.3rem]" />
                 <p className="text-[1.3rem] font-medium lg:text-[1.2rem]">Remember Me</p>

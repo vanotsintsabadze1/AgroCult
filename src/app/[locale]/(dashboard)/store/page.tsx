@@ -1,11 +1,5 @@
-import ItemsWrapper from "@/components/Hero-Page/Hero-Top-Sellers/ItemsWrapper";
+import ItemsWrapper from "@/components/Store/ItemsWrapper";
 import { ShopItem } from "../../../../types/types";
-
-interface Props {
-  params: {
-    locale: string;
-  };
-}
 
 interface Items {
   products: ShopItem[];
@@ -18,8 +12,12 @@ async function fetchItems() {
   return sortedProducts;
 }
 
-export default async function page({ params: { locale } }: Props) {
+export default async function page() {
   const items = await fetchItems();
 
-  return <ItemsWrapper items={items} locale={locale} />;
+  return (
+    <main className="w-full flex justify-center">
+      <ItemsWrapper items={items} />
+    </main>
+  );
 }

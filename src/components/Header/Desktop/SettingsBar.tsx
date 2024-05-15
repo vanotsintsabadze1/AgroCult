@@ -10,7 +10,7 @@ async function SettingsBar({ locale }: Props) {
 
   return (
     <>
-      <div className="hidden h-full items-center justify-center gap-[2.5rem] lg:flex p-[0_3rem] relative">
+      <div className="hidden h-full w-[20rem] items-center justify-end gap-[2.5rem] lg:flex px-[3rem] relative">
         <DropdownWrapper locale={locale} theme={theme?.value} />
       </div>
     </>

@@ -12,7 +12,7 @@ const config: Config = {
     extend: {
       backgroundColor: {
         primary: "#f2e9e4",
-        secondary: "#283618",
+        secondary: "#463f3a",
         "dark-primary": "#051923",
         "dark-secondary": "#3d405b",
       },

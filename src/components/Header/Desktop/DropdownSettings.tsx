@@ -5,7 +5,7 @@ import ThemeSettings from "./ThemeSettings";
 import { useState } from "react";
 import { changeLanguage } from "../../../scripts/language/changeLanguage";
 import { useScopedI18n } from "../../../locales/client";
-import { logout } from "../../../scripts/auth/logout";
+import { logout } from "../../../scripts/actions/auth/logout";
 import { useRouter } from "next/navigation";
 
 interface Props {

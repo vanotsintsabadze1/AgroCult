@@ -6,10 +6,19 @@ export default {
     rememberMe: "Remember Me",
     forgotPassword: "Forgot Password?",
     createAccount: "Create a new Account",
-    logInWithGoogle: "Log In With Google",
-    logInWithFacebook: "Log In With Facebook",
+    loginUsing: "Log In Using",
     submit: "Submit",
   },
+  register: {
+    register: "Register",
+    username: "Username",
+    email: "Email",
+    password: "Password",
+    confirmPassword: "Confirm Password",
+    submit: "Submit",
+    alreadyHaveAnAccount: "Already have an account?",
+  },
+
   searchBar: {
     placeholder: "Search for products...",
   },
@@ -19,8 +28,7 @@ export default {
     goToStore: "Go To The Store",
     stages: {
       first: "Browse through our diverse catalogue and find your perfect match with ease.",
-      second:
-        "Choose your preferred payment method worry-free. Our secure gateway accepts major providers for your convenience.",
+      second: "Choose your preferred payment method worry-free. Our secure gateway accepts major providers for your convenience.",
       third: "Swift delivery guaranteed. Receive your order within 2 business days or 5 days out of town.",
     },
   },

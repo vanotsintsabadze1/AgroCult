@@ -1,5 +1,4 @@
-import { cookies } from "next/headers";
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
   const { username, password } = await req.json();
@@ -16,8 +15,8 @@ export async function POST(req: NextRequest) {
   const data = await res.json();
 
   if (res.ok) {
-    cookies().set("user", JSON.stringify(data.token));
+    return NextResponse.json({ message: "Logged In", token: data.token }, { status: 200 });
   }
 
-  return Response.json({ data, username });
+  return NextResponse.json({ message: data }, { status: 400 });
 }

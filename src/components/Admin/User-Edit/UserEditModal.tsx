@@ -1,6 +1,6 @@
 import { User } from "../../../types/types";
 import { useState } from "react";
-import { editUserAction } from "../../../scripts/actions/editUserAction";
+import { editUserAction } from "../../../scripts/actions/admin-panel/editUserAction";
 import { useRouter } from "next/navigation";
 
 interface Props {

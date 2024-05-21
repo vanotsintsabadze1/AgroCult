@@ -6,8 +6,6 @@ export const revalidate = 0;
 export async function POST(request: NextRequest) {
   const { username, email, password, role } = await request.json();
 
-  // const encryptedPw = await encrypt(password);
-
   try {
     if (!username || !email || !password || !role) {
       throw new Error("Missing required fields");

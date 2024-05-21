@@ -2,7 +2,7 @@
 
 import { User } from "../../../types/types";
 import Image from "next/image";
-import { deleteUser } from "../../../scripts/actions/deleteUser";
+import { deleteUser } from "../../../scripts/actions/admin-panel/deleteUser";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import UserEditModal from "../User-Edit/UserEditModal";

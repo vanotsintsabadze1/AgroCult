@@ -1,4 +1,4 @@
-import { createUserAction } from "../../../scripts/actions/createUserAction";
+import { createUserAction } from "../../../scripts/actions/admin-panel/createUserAction";
 import Button from "./Button";
 
 export default function UserCreationModal() {

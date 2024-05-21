@@ -6,29 +6,29 @@ interface Props {
 }
 
 async function Navigation({ usedFor }: Props) {
-  const words = await getScopedI18n("navigation");
+  const word = await getScopedI18n("navigation");
   const desktop = "hidden h-full items-center justify-center gap-[3.5rem] lg:flex";
   const mobile = "flex flex-col lg:hidden w-full items-end px-[2rem] mt-[10rem] gap-[5rem] text-white";
 
   const links = [
     {
-      title: words("home"),
+      title: word("home"),
       path: "/",
     },
     {
-      title: words("about"),
+      title: word("about"),
       path: "/",
     },
     {
-      title: words("store"),
+      title: word("store"),
       path: "/store",
     },
     {
-      title: words("profile"),
+      title: word("profile"),
       path: "/profile",
     },
     {
-      title: words("contact"),
+      title: word("contact"),
       path: "/contact",
     },
   ];

@@ -1,4 +1,4 @@
-import { getAllUsers } from "../../../scripts/actions/getAllUsers";
+import { getAllUsers } from "../../../scripts/actions/admin-panel/getAllUsers";
 import { User } from "../../../types/types";
 import UserList from "./UserList";
 

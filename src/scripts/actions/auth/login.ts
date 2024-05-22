@@ -1,12 +1,9 @@
 "use server";
-
 import { cookies } from "next/headers";
 
 async function loginUser(formData: FormData) {
   const username = formData.get("username");
   const password = formData.get("password");
-
-  console.log(`Logging in with username: ${username} and password: ${password}`);
 
   if (username === "" || password === "" || username === undefined || username === null || password === undefined || password === null) {
     return;

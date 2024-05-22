@@ -18,7 +18,7 @@ export default function Sidebar({ children }: Props) {
       animate="visible"
       exit="hidden"
       transition={{ duration: 0.7, ease: "easeInOut" }}
-      className="fixed lg:hidden w-[15rem] bg-dark-primary top-0 right-0 h-screen flex flex-col items-end"
+      className="fixed right-0 top-0 flex h-screen w-[16rem] flex-col items-end bg-dark-primary lg:hidden"
     >
       {children}
     </motion.div>

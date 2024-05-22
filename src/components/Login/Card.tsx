@@ -11,11 +11,11 @@ export default async function Card({ locale }: Props) {
   async function loginAction(formData: FormData) {
     "use server";
     await loginUser(formData);
-    redirect("/");
+    redirect(`/${locale}`);
   }
 
   return (
-    <div className="xs:w-full w-[40rem] shadow-xl rounded-2xl bg-white py-[3rem] px-[2rem] z-[4] lg:w-[60rem] lg:p-[3rem_0]">
+    <div className="z-[4] w-[40rem] rounded-2xl bg-white px-[2rem] py-[3rem] shadow-xl xs:w-full lg:w-[60rem] lg:p-[3rem_0]">
       <form action={loginAction}>
         <CredFields locale={locale} />
         <ThirdPartyLogin />

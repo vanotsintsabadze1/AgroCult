@@ -2,10 +2,10 @@ import Link from "next/link";
 import { getScopedI18n } from "@/locales/server";
 
 interface Props {
-  usedFor: string;
+  className: string;
 }
 
-async function Navigation({ usedFor }: Props) {
+async function Navigation({ className }: Props) {
   const word = await getScopedI18n("navigation");
   const desktop = "hidden h-full items-center justify-center gap-[3.5rem] lg:flex";
   const mobile = "flex flex-col lg:hidden w-full items-end px-[2rem] mt-[10rem] gap-[5rem] text-white";
@@ -34,13 +34,9 @@ async function Navigation({ usedFor }: Props) {
   ];
 
   return (
-    <nav className={usedFor === "desktop" ? desktop : mobile}>
+    <nav className={className}>
       {links.map((link, idx) => (
-        <Link
-          key={idx}
-          href={`${link.path}`}
-          className="easeOut lg:text-[1.25rem] text-[1.4rem] font-bold uppercase duration-200 hover:scale-110 dark:text-dark-mode"
-        >
+        <Link key={idx} href={`${link.path}`} className="easeOut font-bold uppercase duration-200 hover:scale-110 dark:text-dark-mode">
           {link.title}
         </Link>
       ))}

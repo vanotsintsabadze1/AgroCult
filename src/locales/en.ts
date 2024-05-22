@@ -24,19 +24,25 @@ export default {
   },
   landing: {
     welcome: "Welcome To VUENNO",
-    phrase: "Find, Buy, and Enjoy the Best Products Online Provided by Authorized Sellers",
+    phrase: "World's finest farming machinery now available for you anywhere. We bring you the best quality products at the best prices.",
     goToStore: "Go To The Store",
+    getStarted: "How To Get Started",
     stages: {
-      first: "Browse through our diverse catalogue and find your perfect match with ease.",
-      second: "Choose your preferred payment method worry-free. Our secure gateway accepts major providers for your convenience.",
-      third: "Swift delivery guaranteed. Receive your order within 2 business days or 5 days out of town.",
+      first: "Find the desired equipment or agricultural tool, add it to the cart or contact a sales consultant",
+      second: "Pay with any bank and take advantage of up to 5 years of installments",
+      third: "Receive the purchased product and enjoy the highest quality",
     },
+    customOfferTitle: "Have a custom offer?",
+    customOfferPhrase: "Contact us and we will make special arrangements for you!",
+    contactUs: "Contact Our Sales Team",
   },
+
   store: {
     topSelling: "Top Sellers",
     startPayingPhrase: "Start Paying monthly for",
     buy: "Buy",
   },
+
   navigation: {
     home: "Home",
     store: "Store",

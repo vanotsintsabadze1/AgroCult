@@ -3,7 +3,7 @@ import Image from "next/image";
 import DropdownSettings from "./DropdownSettings";
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
-import Cart from "../Cart";
+import Cart from "../Cart/Cart";
 
 interface Props {
   locale: string;
@@ -19,8 +19,7 @@ function DropdownWrapper({ locale, theme }: Props) {
 
   return (
     <>
-      <Cart usedFor="desktop" />
-      <button className="easeOut h-[2.2rem] w-[2.2rem] duration-200 hover:scale-110 relative" onClick={handleEnablePreferences}>
+      <button className="easeOut relative h-[2.2rem] w-[2.2rem] duration-200 hover:scale-110" onClick={handleEnablePreferences}>
         <Image fill src={`/images/icons/header-icons/user-profile.webp`} alt="user-preferences-icon" className="dark:hidden" />
         <Image fill src={`/images/icons/header-icons/user-profile-white.webp`} className="hidden dark:block" alt="user-preferences-icon" />
       </button>

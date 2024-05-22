@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CartItem } from "../../types/types";
+import { CartItem } from "../../../types/types";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import CartIndividualItem from "./CartIndividualItem";
@@ -46,30 +46,30 @@ export default function CartMiniList({ cart, usedFor }: Props) {
       exit="hidden"
       className={`${
         usedFor === "mobile" ? "lg:hidden" : "xs:hidden sm:hidden md:hidden"
-      } min-w-[40rem] xs:w-[27rem] xs:right-0 shadow-soft h-[40rem] sm:right-0  rounded-[.5rem] bg-white top-[4.5rem] right-[2rem] absolute flex flex-col items-center overflow-y-auto px-[1rem] py-[2rem]`}
+      } absolute right-[2rem] top-[4.5rem] flex h-[40rem] min-w-[40rem]  flex-col items-center overflow-y-auto rounded-[.5rem] bg-white px-[1rem] py-[2rem] shadow-soft xs:right-0 xs:w-[27rem] sm:right-0`}
     >
       {cart && cart.length > 0 ? (
         <>
-          <h4 className="font-bold text-[2rem]">YOUR CART</h4>
+          <h4 className="text-[2rem] font-bold">YOUR CART</h4>
           {cart.map((item, idx) => {
             return <CartIndividualItem key={idx} idx={idx} item={item} cart={cart} />;
           })}
-          <div className="w-full flex items-center justify-between mt-[2rem]">
-            <div className="flex flex-col gap-[.5rem] ml-[2rem]">
+          <div className="mt-[2rem] flex w-full items-center justify-between">
+            <div className="ml-[2rem] flex flex-col gap-[.5rem]">
               <p className="text-[1.5rem] font-bold">Items: {totalInformation.items}</p>
               <p className="text-[1.5rem] font-bold">Total: ${totalInformation.total}</p>
               <p className="text-[1.5rem] font-bold">Tax: ${totalInformation.tax.toFixed(2)}</p>
             </div>
             <button
               onClick={redirectToCheckOut}
-              className="w-[20rem] rounded-[.5rem] bg-orange-500 py-[1rem] text-[1.5rem] text-white font-bold"
+              className="w-[20rem] rounded-[.5rem] bg-orange-500 py-[1rem] text-[1.5rem] font-bold text-white"
             >
               Checkout
             </button>
           </div>
         </>
       ) : (
-        <p className="mt-[4rem] font-bold text-[1.5rem] text-gray-400">Cart is empty</p>
+        <p className="mt-[4rem] text-[1.5rem] font-bold text-gray-400">Cart is empty</p>
       )}
     </motion.div>
   );

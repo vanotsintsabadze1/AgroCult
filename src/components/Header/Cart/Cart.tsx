@@ -1,9 +1,9 @@
 "use client";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import CartMiniList from "./CartMiniList";
-import { AnimatePresence } from "framer-motion";
-import { ShopItem } from "../../types/types";
+// import CartMiniList from "../Cart/CartMiniList";
+// import { AnimatePresence } from "framer-motion";
+import { ShopItem } from "../../../types/types";
 import { usePathname } from "next/navigation";
 
 interface CartItem extends ShopItem {
@@ -11,10 +11,10 @@ interface CartItem extends ShopItem {
 }
 
 interface Props {
-  usedFor: string;
+  className: string;
 }
 
-export default function Cart({ usedFor }: Props) {
+export default function Cart({ className }: Props) {
   const [isCartModalVisible, setCartModalVisible] = useState(false);
   const [cart, setCart] = useState<CartItem[] | []>([]);
   const [cartItemAmount, setCartItemAmount] = useState(0);
@@ -51,24 +51,20 @@ export default function Cart({ usedFor }: Props) {
 
   return (
     <>
-      <div
-        className={`absolute top-[50%] translate-y-[-50%] right-[8rem] ${
-          usedFor === "mobile" ? "lg:hidden" : "sm:hidden xs:hidden md:hidden"
-        }`}
-      >
+      <div className={className}>
         <div className="relative">
-          <button className="w-[3rem] h-[3rem] relative" onClick={showCartItems}>
+          <button className="relative h-[3rem] w-[3rem]" onClick={showCartItems}>
             <Image src="/images/icons/header-icons/cart.webp" fill alt="cart-black" className="dark:hidden" />
             <Image src="/images/icons/header-icons/cart-white.webp" fill alt="cart-black" className="hidden dark:block" />
           </button>
           {cart !== undefined && cart !== null && cartItemAmount > 0 ? (
-            <div className="absolute -top-1 -right-1 min-w-[1.5rem] p-[.3rem] h-[1.5rem] bg-orange-600 rounded-full flex justify-center items-center">
-              <p className="text-white font-semibold text-[1.0rem]">{cartItemAmount > 10 ? "10+" : cartItemAmount}</p>
+            <div className="absolute -right-1 -top-1 flex h-[1.5rem] min-w-[1.5rem] items-center justify-center rounded-full bg-orange-600 p-[.3rem]">
+              <p className="text-[1.0rem] font-semibold text-white">{cartItemAmount > 10 ? "10+" : cartItemAmount}</p>
             </div>
           ) : null}
         </div>
       </div>
-      <AnimatePresence>{isCartModalVisible && <CartMiniList cart={cart} usedFor={usedFor} />}</AnimatePresence>
+      {/* <AnimatePresence>{isCartModalVisible && <CartMiniList cart={cart} usedFor={usedFor} />}</AnimatePresence> */}
     </>
   );
 }

@@ -23,14 +23,11 @@ export default function BurgerMenu({ children }: Props) {
 
   return (
     <>
-      <button
-        className="absolute right-[3rem] top-[50%] translate-y-[-50%] lg:hidden z-[10]"
-        onClick={handleBurgerMenuClick}
-      >
-        <div className={`h-[3rem] w-[2.2rem] relative dark:hidden ${isSideBarOpen ? "hidden" : ""}`}>
+      <button className="absolute right-[3rem] top-[50%] z-[10] translate-y-[-50%] lg:hidden" onClick={handleBurgerMenuClick}>
+        <div className={`relative h-[3.5rem] w-[2.8rem] dark:hidden ${isSideBarOpen ? "hidden" : ""}`}>
           <Image fill src="/images/icons/header-icons/burger-menu.webp" alt="burger-menu-icon" />
         </div>
-        <div className={`h-[3rem] w-[2.2rem] relative ${isSideBarOpen ? "block" : "hidden"} dark:block`}>
+        <div className={`relative h-[3.5rem] w-[2.8rem] ${isSideBarOpen ? "block" : "hidden"} dark:block`}>
           <Image fill src="/images/icons/header-icons/burger-menu-white.webp" alt="burger-menu-icon" />
         </div>
       </button>

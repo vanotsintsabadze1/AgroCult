@@ -20,7 +20,7 @@ export default function RootLayout({ children, params: { locale } }: Props) {
 
   return (
     <html lang={locale} className={theme ? theme.value : ""}>
-      <body className="dark:bg-dark-primary">
+      <body className="dark:bg-dark-primary bg-body">
         <I18nProviderClient locale={locale}>
           <PageAnimationWrapper>{children}</PageAnimationWrapper>
         </I18nProviderClient>

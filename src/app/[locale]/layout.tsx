@@ -19,8 +19,8 @@ export default function RootLayout({ children, params: { locale } }: Props) {
   const theme = cookies().get("theme");
 
   return (
-    <html lang={locale} className={theme ? theme.value : ""}>
-      <body className="dark:bg-dark-primary">
+    <html lang={locale} className={`${theme ? theme.value : ""} !scroll-smooth`}>
+      <body className="bg-body dark:bg-dark-primary">
         <I18nProviderClient locale={locale}>
           <PageAnimationWrapper>{children}</PageAnimationWrapper>
         </I18nProviderClient>

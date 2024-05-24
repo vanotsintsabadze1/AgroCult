@@ -1,35 +1,35 @@
-import { createUserAction } from "../../../scripts/actions/createUserAction";
+import { createUserAction } from "../../../scripts/actions/admin-panel/createUser";
 import Button from "./Button";
 
 export default function UserCreationModal() {
   return (
-    <form action={createUserAction} className="w-full py-[2rem] flex flex-col gap-[2rem] items-center mt-[1rem]">
+    <form action={createUserAction} className="mt-[1rem] flex w-full flex-col items-center gap-[2rem] py-[2rem]">
       <input
         name="username"
         type="text"
-        className="w-[30rem] h-[3.5rem] border-2 border-black text-[1.3rem] px-[1.4rem] rounded-[.3rem] py-[1.7rem]"
+        className="h-[3.5rem] w-[30rem] rounded-[.3rem] border-2 border-black px-[1.4rem] py-[1.7rem] text-[1.3rem]"
         placeholder="Username"
       />
       <input
         name="email"
         type="email"
-        className="w-[30rem] h-[3.5rem] border-2 border-black text-[1.3rem] px-[1.4rem] rounded-[.3rem] py-[1.7rem]"
+        className="h-[3.5rem] w-[30rem] rounded-[.3rem] border-2 border-black px-[1.4rem] py-[1.7rem] text-[1.3rem]"
         placeholder="Email"
       />
       <input
         name="password"
         type="password"
-        className="w-[30rem] h-[3.5rem] border-2 border-black text-[1.3rem] px-[1.4rem] rounded-[.3rem] py-[1.7rem]"
+        className="h-[3.5rem] w-[30rem] rounded-[.3rem] border-2 border-black px-[1.4rem] py-[1.7rem] text-[1.3rem]"
         placeholder="Password"
       />
-      <div className="flex w-full justify-center items-center gap-[2rem]">
-        <p className="text-[1.4rem] uppercase font-semibold tracking-wide ">Select Role:</p>
-        <select className="px-[2rem] py-[.5rem] text-[1.2rem] rounded-[.4rem] border border-black" name="role">
+      <div className="flex w-full items-center justify-center gap-[2rem]">
+        <p className="text-[1.4rem] font-semibold uppercase tracking-wide ">Select Role:</p>
+        <select className="rounded-[.4rem] border border-black px-[2rem] py-[.5rem] text-[1.2rem]" name="role">
           <option id="roleOptions">Member</option>
           <option id="roleOptions">Admin</option>
         </select>
       </div>
-      <div className="w-full flex justify-center">
+      <div className="flex w-full justify-center">
         <Button />
       </div>
     </form>

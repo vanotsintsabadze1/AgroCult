@@ -1,8 +1,7 @@
 "use client";
 
-import { User } from "../../../types/types";
 import Image from "next/image";
-import { deleteUser } from "../../../scripts/actions/deleteUser";
+import { deleteUser } from "../../../scripts/actions/admin-panel/deleteUser";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import UserEditModal from "../User-Edit/UserEditModal";
@@ -32,17 +31,17 @@ export default function UserList({ user }: Props) {
   return (
     <>
       <tr className="text-center">
-        <td className="text-[1.3rem] border border-black p-[2rem]">{user.id}</td>
-        <td className="text-[1.3rem] border border-black p-[2rem]">{user.name}</td>
-        <td className="text-[1.3rem] border border-black p-[2rem]">{user.email}</td>
-        <td className="text-[1.3rem] border border-black p-[2rem] xs:hidden md:hidden sm:hidden">{user.password}</td>
-        <td className="text-[1.3rem] border border-black p-[2rem] xs:hidden md:hidden sm:hidden">{user.role}</td>
-        <td className="text-[1.3rem] border border-black p-[2rem] relative">
-          <div className="gap-[1.5rem] flex justify-center items-center">
+        <td className="border border-black p-[2rem] text-[1.3rem]">{user.id}</td>
+        <td className="border border-black p-[2rem] text-[1.3rem]">{user.name}</td>
+        <td className="border border-black p-[2rem] text-[1.3rem]">{user.email}</td>
+        <td className="border border-black p-[2rem] text-[1.3rem] xs:hidden sm:hidden md:hidden">{user.password}</td>
+        <td className="border border-black p-[2rem] text-[1.3rem] xs:hidden sm:hidden md:hidden">{user.role}</td>
+        <td className="relative border border-black p-[2rem] text-[1.3rem]">
+          <div className="flex items-center justify-center gap-[1.5rem]">
             <button onClick={editSelectedUser}>
               <Image
                 src="/images/actions/edit-icon.webp"
-                className="cursor-pointer hover:scale-110 duration-200 ease-out"
+                className="cursor-pointer duration-200 ease-out hover:scale-110"
                 width={17}
                 height={17}
                 alt="edit-icon"
@@ -51,7 +50,7 @@ export default function UserList({ user }: Props) {
             <button onClick={deleteSelectedUser}>
               <Image
                 src="/images/actions/delete-icon.webp"
-                className="cursor-pointer hover:scale-110 duration-200 ease-out"
+                className="cursor-pointer duration-200 ease-out hover:scale-110"
                 width={17}
                 height={17}
                 alt="delete-icon"
@@ -63,10 +62,10 @@ export default function UserList({ user }: Props) {
       {isEditing && (
         <tr>
           <td>
-            <div className="fixed w-screen h-screen top-0 left-0 flex justify-center items-center z-[10]">
-              <canvas className="w-full h-screen bg-black opacity-50 z-[4] absolute"></canvas>
-              <div className="w-[40rem] xs:w-full bg-white rounded-[.5rem] z-[10] h-[40rem]">
-                <div className="w-full flex justify-end px-[3rem] font-semibold text-gray-400 py-[1rem]">
+            <div className="fixed left-0 top-0 z-[10] flex h-screen w-screen items-center justify-center">
+              <canvas className="absolute z-[4] h-screen w-full bg-black opacity-50"></canvas>
+              <div className="z-[10] h-[40rem] w-[40rem] rounded-[.5rem] bg-white xs:w-full">
+                <div className="flex w-full justify-end px-[3rem] py-[1rem] font-semibold text-gray-400">
                   <button onClick={closeEditModal} className="cursor-pointer text-[2rem]">
                     X
                   </button>

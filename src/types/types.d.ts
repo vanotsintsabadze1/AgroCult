@@ -1,11 +1,11 @@
-export interface Blog {
+interface Blog {
   title: string;
   body: string;
   tags: string[];
   id: number;
 }
 
-export interface ShopItem {
+interface ShopItem {
   images: string[];
   title: string;
   description: string;
@@ -13,11 +13,16 @@ export interface ShopItem {
   id: number;
 }
 
-export interface CartItem extends ShopItem {
+interface CartItem extends ShopItem {
   quantity: number;
 }
 
-export interface User {
+interface CartItemDB {
+  id: number;
+  quantity: number;
+}
+
+interface User {
   id: number;
   name: string;
   email: string;

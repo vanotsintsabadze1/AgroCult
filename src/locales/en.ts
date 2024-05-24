@@ -6,29 +6,43 @@ export default {
     rememberMe: "Remember Me",
     forgotPassword: "Forgot Password?",
     createAccount: "Create a new Account",
-    logInWithGoogle: "Log In With Google",
-    logInWithFacebook: "Log In With Facebook",
+    loginUsing: "Log In Using",
     submit: "Submit",
   },
+  register: {
+    register: "Register",
+    username: "Username",
+    email: "Email",
+    password: "Password",
+    confirmPassword: "Confirm Password",
+    submit: "Submit",
+    alreadyHaveAnAccount: "Already have an account?",
+  },
+
   searchBar: {
     placeholder: "Search for products...",
   },
   landing: {
     welcome: "Welcome To VUENNO",
-    phrase: "Find, Buy, and Enjoy the Best Products Online Provided by Authorized Sellers",
+    phrase: "World's finest farming machinery now available for you anywhere. We bring you the best quality products at the best prices.",
     goToStore: "Go To The Store",
+    getStarted: "How To Get Started",
     stages: {
-      first: "Browse through our diverse catalogue and find your perfect match with ease.",
-      second:
-        "Choose your preferred payment method worry-free. Our secure gateway accepts major providers for your convenience.",
-      third: "Swift delivery guaranteed. Receive your order within 2 business days or 5 days out of town.",
+      first: "Find the desired equipment or agricultural tool, add it to the cart or contact a sales consultant",
+      second: "Pay with any bank and take advantage of up to 5 years of installments",
+      third: "Receive the purchased product and enjoy the highest quality",
     },
+    customOfferTitle: "Have a custom offer?",
+    customOfferPhrase: "Contact us and we will make special arrangements for you!",
+    contactUs: "Contact Our Sales Team",
   },
+
   store: {
     topSelling: "Top Sellers",
     startPayingPhrase: "Start Paying monthly for",
     buy: "Buy",
   },
+
   navigation: {
     home: "Home",
     store: "Store",
@@ -78,24 +92,12 @@ export default {
     },
   },
   footer: {
-    rights: "© 2024 VUENNO. All Rights Reserved",
-    copyright:
-      "All content, including text, graphics, logos, icons, images, and software, is the property of VUENNO. Unauthorized copying, distribution, modification, transmission, or publication of any content without permissionis strictly prohibited.",
-    newsletterSubscribe: "Subscribe to our newsletter",
-    inputPlaceholder: "Email Address",
+    rights: "© 2024 Agrocult. All Rights Reserved",
     links: {
-      phrase: "Quick Navigation",
-      home: "Home",
-      store: "Store",
-      yourStore: "Your Store",
+      trackShipment: "Track Shipment",
+      about: "About",
       contact: "Contact",
-    },
-    socials: {
-      phrase: "Follow Us",
-      facebook: "Facebook",
-      instagram: "Instagram",
-      twitter: "Twitter",
-      tiktok: "Tiktok",
+      profile: "Profile",
     },
   },
 } as const;

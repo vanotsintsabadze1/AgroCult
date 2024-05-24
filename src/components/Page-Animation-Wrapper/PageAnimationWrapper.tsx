@@ -14,7 +14,7 @@ interface Props {
 export default function PageAnimationWrapper({ children }: Props) {
   return (
     <motion.div
-      className="w-full h-full flex flex-grow flex-col"
+      className="flex h-full w-full flex-grow flex-col"
       initial="hidden"
       animate="visible"
       variants={divAnimation}

@@ -14,7 +14,9 @@ async function Card() {
         <h4 className="mt-[1rem] bg-gradient-to-r from-green-500 to-orange-300 bg-clip-text text-[6rem] font-bold tracking-wider text-transparent drop-shadow-sm lg:text-[12rem]">
           AgroCult
         </h4>
-        <p className="w-[35rem] text-center text-[1.4rem] font-medium text-[#152030] xs:w-[30rem] lg:text-left">{word("phrase")}</p>
+        <p className="w-[35rem] text-center text-[1.4rem] font-medium text-[#152030] xs:w-[30rem] lg:text-left dark:text-white">
+          {word("phrase")}
+        </p>
         <button className="mt-[3rem] flex items-center justify-center gap-[.5rem] rounded-[.5rem] bg-green-600 px-[2rem] py-[1rem] text-[1.3rem] font-bold text-white shadow-md">
           <Image src="/images/icons/misc/tractor-icon.webp" width={25} height={25} alt="tractor-icon" />
           <p>{word("goToStore")}</p>

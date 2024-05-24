@@ -2,10 +2,6 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-interface Props {
-  locale: string;
-}
-
 export default function LoginButton() {
   const router = useRouter();
 

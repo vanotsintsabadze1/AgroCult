@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 
 export async function createUserAction(formData: FormData) {
-  await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/createUser`, {
+  await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/create-user`, {
     method: "POST",
     body: JSON.stringify({
       username: formData.get("username"),

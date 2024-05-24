@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CartItem } from "../../../types/types";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import CartIndividualItem from "./CartIndividualItem";

@@ -3,7 +3,6 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 // import CartMiniList from "../Cart/CartMiniList";
 // import { AnimatePresence } from "framer-motion";
-import { ShopItem } from "../../../types/types";
 import { usePathname } from "next/navigation";
 
 interface CartItem extends ShopItem {

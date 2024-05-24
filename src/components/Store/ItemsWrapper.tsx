@@ -1,23 +1,20 @@
-"use client";
-
 import ItemCard from "./ItemCard";
-import { ShopItem } from "../../types/types";
-import { useScopedI18n } from "../../locales/client";
+import { getScopedI18n } from "../../locales/server";
 
 interface Props {
   items: ShopItem[];
 }
 
-function ItemsWrapper({ items }: Props) {
-  const word = useScopedI18n("store");
+export default async function ItemsWrapper({ items }: Props) {
+  const word = await getScopedI18n("store");
 
   return (
-    <section className="overflow mt-[2rem] w-full flex items-center flex-col">
-      <div className="flex w-full items-center justify-center mt-[2rem]">
+    <section className="overflow mt-[2rem] flex w-full flex-col items-center">
+      <div className="mt-[2rem] flex w-full items-center justify-center">
         <h2 className="mb-[2rem] text-[2.2rem] font-bold uppercase tracking-wide dark:text-dark-mode">{word("topSelling")}</h2>
       </div>
-      <div className="w-full flex items-center gap-x-[6rem] p-[4rem_2rem] justify-center xs:gap-x-0">
-        <div className="grid xl:grid-cols-4 gap-[7rem] lg:grid-cols-3 md:grid-cols-2 px-[3rem] xs:px-0">
+      <div className="flex w-full items-center justify-center gap-x-[6rem] p-[4rem_2rem] xs:gap-x-0">
+        <div className="grid gap-[7rem] px-[3rem] xs:px-0 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {items.map((item) => {
             return <ItemCard {...item} key={item.id} />;
           })}
@@ -26,5 +23,3 @@ function ItemsWrapper({ items }: Props) {
     </section>
   );
 }
-
-export default ItemsWrapper;

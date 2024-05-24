@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { CartItem } from "../../../types/types";
 import ItemAmountChanger from "./ItemAmountChanger";
 
 interface Props {

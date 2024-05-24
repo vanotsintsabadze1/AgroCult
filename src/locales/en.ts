@@ -92,24 +92,12 @@ export default {
     },
   },
   footer: {
-    rights: "© 2024 VUENNO. All Rights Reserved",
-    copyright:
-      "All content, including text, graphics, logos, icons, images, and software, is the property of VUENNO. Unauthorized copying, distribution, modification, transmission, or publication of any content without permissionis strictly prohibited.",
-    newsletterSubscribe: "Subscribe to our newsletter",
-    inputPlaceholder: "Email Address",
+    rights: "© 2024 Agrocult. All Rights Reserved",
     links: {
-      phrase: "Quick Navigation",
-      home: "Home",
-      store: "Store",
-      yourStore: "Your Store",
+      trackShipment: "Track Shipment",
+      about: "About",
       contact: "Contact",
-    },
-    socials: {
-      phrase: "Follow Us",
-      facebook: "Facebook",
-      instagram: "Instagram",
-      twitter: "Twitter",
-      tiktok: "Tiktok",
+      profile: "Profile",
     },
   },
 } as const;

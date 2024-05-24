@@ -1,6 +1,5 @@
-import { User } from "../../../types/types";
 import { useState } from "react";
-import { editUserAction } from "../../../scripts/actions/admin-panel/editUserAction";
+import { editUser } from "../../../scripts/actions/admin-panel/editUser";
 import { useRouter } from "next/navigation";
 
 interface Props {
@@ -15,21 +14,21 @@ export default function UserEditModal({ user, closeEditModal }: Props) {
   const [role, setRole] = useState(user.role);
   const router = useRouter();
 
-  async function editUser(e: React.MouseEvent<HTMLButtonElement>) {
+  async function handleEditUser(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
-    await editUserAction(user.id, username, email, password, role);
+    await editUser(user.id, username, email, password, role);
     closeEditModal();
     router.refresh();
   }
 
   return (
-    <form className="w-full py-[2rem] flex flex-col gap-[2rem] items-center mt-[1rem]">
+    <form className="mt-[1rem] flex w-full flex-col items-center gap-[2rem] py-[2rem]">
       <input
         name="username"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
         type="text"
-        className="w-[30rem] h-[3.5rem] border-2 border-black text-[1.3rem] px-[1.4rem] rounded-[.3rem] py-[1.7rem]"
+        className="h-[3.5rem] w-[30rem] rounded-[.3rem] border-2 border-black px-[1.4rem] py-[1.7rem] text-[1.3rem]"
         placeholder="Username"
       />
       <input
@@ -37,7 +36,7 @@ export default function UserEditModal({ user, closeEditModal }: Props) {
         value={email}
         type="email"
         onChange={(e) => setEmail(e.target.value)}
-        className="w-[30rem] h-[3.5rem] border-2 border-black text-[1.3rem] px-[1.4rem] rounded-[.3rem] py-[1.7rem]"
+        className="h-[3.5rem] w-[30rem] rounded-[.3rem] border-2 border-black px-[1.4rem] py-[1.7rem] text-[1.3rem]"
         placeholder="Email"
       />
       <input
@@ -45,14 +44,14 @@ export default function UserEditModal({ user, closeEditModal }: Props) {
         value={password}
         type="text"
         onChange={(e) => setPassword(e.target.value)}
-        className="w-[30rem] h-[3.5rem] border-2 border-black text-[1.3rem] px-[1.4rem] rounded-[.3rem] py-[1.7rem]"
+        className="h-[3.5rem] w-[30rem] rounded-[.3rem] border-2 border-black px-[1.4rem] py-[1.7rem] text-[1.3rem]"
         placeholder="Password"
       />
-      <div className="flex w-full justify-center items-center gap-[2rem]">
-        <p className="text-[1.4rem] uppercase font-semibold tracking-wide">Select Role:</p>
+      <div className="flex w-full items-center justify-center gap-[2rem]">
+        <p className="text-[1.4rem] font-semibold uppercase tracking-wide">Select Role:</p>
         <select
           value={role}
-          className="px-[2rem] py-[.5rem] text-[1.2rem] rounded-[.4rem] border border-black"
+          className="rounded-[.4rem] border border-black px-[2rem] py-[.5rem] text-[1.2rem]"
           name="role"
           onChange={(e) => setRole(e.target.value)}
         >
@@ -60,11 +59,11 @@ export default function UserEditModal({ user, closeEditModal }: Props) {
           <option id="roleOptions">Admin</option>
         </select>
       </div>
-      <div className="w-full flex justify-center">
+      <div className="flex w-full justify-center">
         <button
           type="submit"
-          onClick={editUser}
-          className="w-[15rem] h-[3.5rem] bg-black rounded-[.5rem] shadow-sm font-bold text-white text-[1.2rem] tracking-wide"
+          onClick={handleEditUser}
+          className="h-[3.5rem] w-[15rem] rounded-[.5rem] bg-black text-[1.2rem] font-bold tracking-wide text-white shadow-sm"
         >
           Submit
         </button>

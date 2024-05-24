@@ -6,12 +6,15 @@ import { useEffect, useState } from "react";
 import { setTheme } from "../../../scripts/theme/themeSetter";
 import { retrieveTheme } from "../../../scripts/theme/themeRetriever";
 
-const divAnimaton = {
-  hidden: { opacity: 0, width: 0 },
-  visible: { opacity: 1, width: "90%" },
-};
+interface Props {
+  className?: string;
+  animationVariant: {
+    hidden: { [key: string]: number | string };
+    visible: { [key: string]: number | string };
+  };
+}
 
-export default function ThemeSwitcher() {
+export default function ThemeSwitcher({ className, animationVariant }: Props) {
   const [isThemeSwitcherVisible, setThemeSwitcherVisible] = useState(false);
   const [image, setImage] = useState("");
 
@@ -35,7 +38,7 @@ export default function ThemeSwitcher() {
   }, []);
 
   return (
-    <div className="relative mt-[3rem] flex h-[2rem] w-full justify-end px-[1.5rem]">
+    <div className={className}>
       <button
         onClick={showThemeSwitcher}
         className="flex h-[3.8rem] w-[3.8rem] items-center justify-center rounded-[50%] bg-white p-[1rem]"
@@ -45,7 +48,7 @@ export default function ThemeSwitcher() {
       <AnimatePresence>
         {isThemeSwitcherVisible && (
           <motion.div
-            variants={divAnimaton}
+            variants={animationVariant}
             initial="hidden"
             animate="visible"
             exit="hidden"
@@ -54,7 +57,7 @@ export default function ThemeSwitcher() {
             {["light", "dark", "system"].map((theme) => {
               return (
                 <button key={theme} onClick={() => setDesiredTheme(theme)}>
-                  <Image src={`/images/icons/header-icons/${theme}-mode.webp`} width={20} height={20} alt="mode" />
+                  <Image src={`/images/icons/header-icons/${theme}-mode.webp`} width={20} height={20} alt={`mode-${theme}`} />
                 </button>
               );
             })}

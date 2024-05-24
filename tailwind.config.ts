@@ -7,15 +7,15 @@ const config: Config = {
   theme: {
     extend: {
       backgroundColor: {
-        primary: "#152232",
+        primary: "#051923",
         secondary: "#5ebc67",
         "dark-primary": "#051923",
-        "dark-secondary": "#3d405b",
+        "dark-secondary": "#344e41",
         body: "#f5f5f5",
       },
       borderColor: {
-        primary: "#FEFAE0",
-        secondary: "#606C38",
+        primary: "#051923",
+        secondary: "#5ebc67",
       },
       colors: {
         "dark-mode": "#fffff8",

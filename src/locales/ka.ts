@@ -95,24 +95,12 @@ export default {
     },
   },
   footer: {
-    rights: "© 2024 VUENNO. ყველა უფლება დაცულია",
-    copyright:
-      "მთელი კონტენტი, მათ შორის ტექსტი, გრაფიკა, ლოგოები, სურათები და პროგრამული უზრუნველყოფა, არის VUENNO-ს საკუთრება. ნებისმიერი შინაარსის უნებართვო კოპირება, გავრცელება, მოდიფიკაცია, გადაცემა ან გამოქვეყნება ნებართვის გარეშე მკაცრად აკრძალულია.",
-    newsletterSubscribe: "გამოიწერეთ ჩვენი სიახლეები",
-    inputPlaceholder: "ელ. ფოსტა",
+    rights: "© 2024 Agrocult. ყველა უფლება დაცულია",
     links: {
-      phrase: "სწრაფი ნავიგაცია",
-      home: "მთავარი",
-      store: "მაღაზია",
-      yourStore: "თქვენი მაღაზია",
+      trackShipment: "ამანათის ლოკაცია",
+      about: "ჩვენს შესახებ",
       contact: "კონტაქტი",
-    },
-    socials: {
-      phrase: "გამოგვიწერეთ",
-      facebook: "Facebook",
-      instagram: "Instagram",
-      twitter: "Twitter",
-      tiktok: "Tiktok",
+      profile: "პროფილი",
     },
   },
 } as const;

@@ -1,5 +1,4 @@
 import ItemsWrapper from "@/components/Store/ItemsWrapper";
-import { ShopItem } from "../../../../types/types";
 
 interface Items {
   products: ShopItem[];
@@ -16,7 +15,7 @@ export default async function page() {
   const items = await fetchItems();
 
   return (
-    <main className="w-full flex justify-center">
+    <main className="flex w-full justify-center">
       <ItemsWrapper items={items} />
     </main>
   );

@@ -1,6 +1,5 @@
 "use client";
 
-import { CartItem } from "../../../types/types";
 import Image from "next/image";
 
 interface Props {

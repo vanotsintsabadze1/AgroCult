@@ -3,15 +3,12 @@ import Footer from "../../../components/Footer/Footer";
 
 interface Props {
   children: React.ReactNode;
-  params: {
-    locale: string;
-  };
 }
 
-export default function DashboardLayout({ children, params: { locale } }: Props) {
+export default function DashboardLayout({ children }: Props) {
   return (
     <>
-      <Header locale={locale} />
+      <Header />
       {children}
       <Footer />
     </>

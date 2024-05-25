@@ -3,8 +3,6 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
   const { userId, productId } = await request.json();
-  console.log("POST  productId:", productId);
-  console.log("POST  userId:", userId);
 
   if (!userId || !productId) {
     throw new Error("Invalid user or product id");

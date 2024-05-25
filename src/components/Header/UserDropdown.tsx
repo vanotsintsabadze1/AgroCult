@@ -1,6 +1,5 @@
 "use client";
 import { motion } from "framer-motion";
-import { logout } from "../../scripts/actions/auth/logout";
 import { useRouter } from "next/navigation";
 
 const divAnimations = {
@@ -12,9 +11,7 @@ export default function UserDropdown() {
   const router = useRouter();
 
   async function handleLogout() {
-    console.log("something");
-    await logout();
-    router.refresh();
+    router.push(""); // TBA: Add the path to the logout page
   }
 
   return (

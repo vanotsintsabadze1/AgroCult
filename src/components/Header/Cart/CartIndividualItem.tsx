@@ -1,5 +1,6 @@
 import Image from "next/image";
 import ItemAmountChanger from "./ItemAmountChanger";
+import { useState } from "react";
 
 interface Props {
   idx: number;
@@ -8,6 +9,8 @@ interface Props {
 }
 
 export default function CartIndividualItem({ idx, item, cart }: Props) {
+  const [quantity, setQuantity] = useState<number>(item.quantity);
+
   return (
     <>
       {cart && (
@@ -20,13 +23,13 @@ export default function CartIndividualItem({ idx, item, cart }: Props) {
             <p className="line-clamp-2 text-[1.2rem] font-medium">{item.description}</p>
             <div className="mt-[2rem] flex gap-[1rem]">
               <p className="mt-[.5rem] text-[1.2rem] font-medium">
-                <b>QTY</b>: {item.quantity}
+                <b>QTY</b>: {quantity}
               </p>
               <p className="mt-[.5rem] text-[1.2rem] font-medium">
                 <b>Price</b>: ${Number(item.quantity * item.price).toFixed(2)}
               </p>
             </div>
-            <ItemAmountChanger cart={cart} item={item} idx={idx} />
+            <ItemAmountChanger cart={cart} item={item} idx={idx} quantity={quantity} setQuantity={setQuantity} />
           </div>
         </div>
       )}

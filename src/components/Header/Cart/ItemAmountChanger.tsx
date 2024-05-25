@@ -1,21 +1,27 @@
-"use client";
-
+import { addToCart } from "../../../scripts/actions/cart/addToCart";
 import Image from "next/image";
 
 interface Props {
   cart: CartItem[] | [];
   item: CartItem;
   idx: number;
+  quantity: number;
+  setQuantity: React.Dispatch<React.SetStateAction<number>>;
 }
 
 //  @ts-ignore
-export default function ItemAmountChanger({ cart, idx }: Props) {
+export default function ItemAmountChanger({ cart, idx, item, quantity, setQuantity }: Props) {
   function increaseItemAmount() {
-    //
+    setQuantity((prev) => prev + 1);
+    addToCart(1, item.product_id);
   }
 
   function decreaseItemAmount() {
-    //
+    if (quantity === 1) {
+      return;
+    } else {
+      setQuantity((prev) => prev - 1);
+    }
   }
 
   function deleteItem() {

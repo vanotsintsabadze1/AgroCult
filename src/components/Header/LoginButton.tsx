@@ -6,7 +6,7 @@ export default function LoginButton() {
   const router = useRouter();
 
   function handleClick() {
-    router.push("/login");
+    router.push(""); // TBA: Add the path to the login page
   }
 
   return (

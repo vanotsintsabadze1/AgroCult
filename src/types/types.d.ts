@@ -29,9 +29,8 @@ interface CartItemDB {
 }
 
 interface User {
-  id: number;
+  user_id: string;
   name: string;
   email: string;
-  password: string;
-  role: string;
+  image: string;
 }

@@ -30,7 +30,11 @@ async function Navigation({ className }: Props) {
   return (
     <nav className={className}>
       {links.map((link, idx) => (
-        <Link key={idx} href={link.path} className="easeOut font-bold uppercase duration-200 hover:scale-110 dark:text-dark-mode ">
+        <Link
+          key={idx}
+          href={link.path}
+          className="easeOut font-bold uppercase duration-200 hover:scale-110 dark:text-dark-mode "
+        >
           {link.title}
         </Link>
       ))}

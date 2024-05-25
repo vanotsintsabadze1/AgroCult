@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
-import { useEffect, useState, memo } from "react";
+import { useEffect, useState } from "react";
 import CartIndividualItem from "./CartIndividualItem";
 
 const mainContainerAnimation = {

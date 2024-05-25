@@ -24,6 +24,13 @@ export default function UserDropdown() {
     >
       <button
         className="h-[4rem] w-full duration-150 ease-out hover:bg-gray-100"
+        onClick={() => router.push("/profile")}
+      >
+        Profile
+      </button>
+
+      <button
+        className="h-[4rem] w-full duration-150 ease-out hover:bg-gray-100"
         onClick={() => router.push("/settings")}
       >
         Settings

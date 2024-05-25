@@ -12,7 +12,7 @@ export const GET = async (_: NextRequest) => {
     id = data.user.sub;
     email = data.user.email;
     avatar = data.user.picture;
-    name = data.user.name;
+    name = data.user.nickname;
     console.log(data);
   }
 
@@ -26,5 +26,5 @@ export const GET = async (_: NextRequest) => {
     return NextResponse.json({ err }, { status: 500 });
   }
 
-  return redirect("/profile");
+  return redirect("/");
 };

@@ -1,19 +1,24 @@
-interface Blog {
-  title: string;
-  body: string;
-  tags: string[];
-  id: number;
-}
-
 interface ShopItem {
-  images: string[];
+  id: number;
   title: string;
   description: string;
   price: number;
-  id: number;
+  images: string[];
+  brand: string;
+  extra_details: {
+    s: string;
+  };
+  category: string[];
+  discount: number;
+  amount: number;
 }
 
-interface CartItem extends ShopItem {
+interface CartItem {
+  title: string;
+  description: string;
+  price: number;
+  discount: number;
+  images: string[];
   quantity: number;
 }
 

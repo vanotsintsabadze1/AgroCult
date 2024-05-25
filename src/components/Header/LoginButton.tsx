@@ -11,7 +11,7 @@ export default function LoginButton() {
 
   return (
     <button
-      className="flex h-[3.5rem] w-[12rem] items-center justify-center gap-[1rem] rounded-[.5rem] bg-white text-[1.5rem] font-bold  shadow-soft"
+      className="flex h-[3.5rem] items-center justify-center gap-[1rem] rounded-[.5rem] bg-white px-[2rem] text-[1.5rem] font-bold  shadow-soft"
       onClick={handleClick}
     >
       <p>Log In</p>

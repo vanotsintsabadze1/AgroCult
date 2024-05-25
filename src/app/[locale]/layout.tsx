@@ -2,6 +2,7 @@ import "./globals.css";
 import { cookies } from "next/headers";
 import { I18nProviderClient } from "@/locales/client";
 import PageAnimationWrapper from "@/components/Page-Animation-Wrapper/PageAnimationWrapper";
+import CartContext from "@/contexts/CartContext";
 
 export const metadata = {
   title: "Create Next App",
@@ -22,7 +23,9 @@ export default function RootLayout({ children, params: { locale } }: Props) {
     <html lang={locale} className={`${theme ? theme.value : ""} !scroll-smooth`}>
       <body className="bg-body dark:bg-dark-primary">
         <I18nProviderClient locale={locale}>
-          <PageAnimationWrapper>{children}</PageAnimationWrapper>
+          <PageAnimationWrapper>
+            {children}
+          </PageAnimationWrapper>
         </I18nProviderClient>
       </body>
     </html>

@@ -12,7 +12,7 @@ export default function Button() {
     <button
       type="submit"
       onClick={handleClick}
-      className="w-[15rem] h-[3.5rem] bg-black rounded-[.5rem] shadow-sm font-bold text-white text-[1.2rem] tracking-wide"
+      className="h-[3.5rem] w-[15rem] rounded-[.5rem] bg-black text-[1.2rem] font-bold tracking-wide text-white shadow-sm"
     >
       Submit
     </button>

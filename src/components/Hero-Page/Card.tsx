@@ -8,7 +8,7 @@ async function Card() {
   return (
     <div className="flex w-full flex-col items-center justify-center py-[2rem] lg:flex-row-reverse lg:gap-[6rem] lg:py-[4rem] xl:gap-[10rem]">
       <div className="relative h-[30rem] w-[30rem] lg:h-[40rem] lg:w-[40rem]">
-        <Image src="/images/mockups/combine.webp" fill alt="tractor-mockup" className="z-[2] rounded-[50%] drop-shadow-md" />
+        <Image priority src="/images/mockups/combine.webp" fill alt="tractor-mockup" className="z-[2] rounded-[50%] drop-shadow-md" />
       </div>
       <div className="flex flex-col items-center gap-[1rem] lg:items-start">
         <h4 className="mt-[1rem] bg-gradient-to-r from-green-500 to-orange-300 bg-clip-text text-[6rem] font-bold tracking-wider text-transparent drop-shadow-sm lg:text-[12rem]">

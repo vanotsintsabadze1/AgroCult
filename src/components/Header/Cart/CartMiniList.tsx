@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, memo } from "react";
 import CartIndividualItem from "./CartIndividualItem";
 
 const mainContainerAnimation = {
@@ -45,7 +45,7 @@ export default function CartMiniList({ cart, usedFor }: Props) {
       exit="hidden"
       className={`${
         usedFor === "mobile" ? "lg:hidden" : "xs:hidden sm:hidden md:hidden"
-      } absolute right-[2rem] top-[4.5rem] flex h-[40rem] min-w-[40rem]  flex-col items-center overflow-y-auto rounded-[.5rem] bg-white px-[1rem] py-[2rem] shadow-soft xs:right-0 xs:w-[27rem] sm:right-0`}
+      } absolute right-0 top-[6rem] flex h-[40rem] min-w-[40rem]  flex-col items-center overflow-y-auto rounded-[.5rem] bg-white px-[1rem] py-[2rem] shadow-soft xs:right-0 xs:w-[27rem] sm:right-0`}
     >
       {cart && cart.length > 0 ? (
         <>

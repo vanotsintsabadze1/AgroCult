@@ -5,10 +5,10 @@ interface Items {
 }
 
 async function fetchItems() {
-  const response = await fetch("https://dummyjson.com/products");
-  const data: Items = await response.json();
-  const sortedProducts = data.products.sort((a, b) => (a.price < b.price ? 1 : -1));
-  return sortedProducts;
+  const response = await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-all-items`);
+  const data: ShopItem[] = await response.json();
+
+  return data;
 }
 
 export default async function page() {

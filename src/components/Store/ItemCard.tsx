@@ -5,6 +5,7 @@ import { useScopedI18n } from "../../locales/client";
 import { useRouter } from "next/navigation";
 import { addToCart } from "../../scripts/actions/cart/addToCart";
 
+// @ts-ignore
 function ItemCard({ images, id, title, description, price }: ShopItem) {
   const word = useScopedI18n("store");
   const router = useRouter();
@@ -17,7 +18,7 @@ function ItemCard({ images, id, title, description, price }: ShopItem) {
     <div className="relative flex h-[42rem] w-[30rem] flex-shrink-0 flex-col items-center rounded-[1rem] bg-white pb-[3rem] pt-[1.5rem] shadow-soft">
       <div className="w-full p-[0rem_2rem]">
         <div className="relative flex h-[18rem] w-full flex-col items-center ">
-          <Image src={images[0]} className="rounded-[1rem]" fill alt={`${title}-image`} />
+          {/* <Image src={images[0]} className="rounded-[1rem]" fill alt={`${title}-image`} /> */}
         </div>
       </div>
       <div className="flex w-full flex-col p-[1rem_2rem]">
@@ -30,13 +31,15 @@ function ItemCard({ images, id, title, description, price }: ShopItem) {
       </div>
       <div className="absolute bottom-[4rem] left-1/2 flex w-full translate-x-[-50%] justify-center">
         <button
-          className="h-[3.5rem] w-[14rem] rounded-bl-[.5rem] rounded-tl-[.5rem]  bg-black font-bold text-white"
+          className="h-[3.5rem] w-[14rem] rounded-bl-[.5rem] rounded-tl-[.5rem]  bg-black text-[1.3rem] font-bold text-white"
           onClick={redirectOnClick}
         >
           {word("buy")}
         </button>
         <button
-          onClick={() => addToCart(1, id)}
+          onClick={() => {
+            addToCart(1, id);
+          }}
           className="flex h-[3.5rem] w-[4rem] items-center justify-center rounded-br-[.5rem] rounded-tr-[.5rem] bg-gray-300"
         >
           <Image src="/images/icons/header-icons/add-to-cart.webp" width={20} height={20} alt="add-to-cart" />

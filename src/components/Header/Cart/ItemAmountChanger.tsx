@@ -8,32 +8,18 @@ interface Props {
   idx: number;
 }
 
+//  @ts-ignore
 export default function ItemAmountChanger({ cart, idx }: Props) {
   function increaseItemAmount() {
-    const updatedCart = Array.from(cart);
-    updatedCart[idx].quantity += 1;
-    window.localStorage.setItem("cart", JSON.stringify(updatedCart));
-    window.dispatchEvent(new Event("storage"));
+    //
   }
 
   function decreaseItemAmount() {
-    let updatedCart = Array.from(cart);
-    if (updatedCart[idx].quantity === 1) {
-      updatedCart = updatedCart.filter((selectedProduct) => selectedProduct !== updatedCart[idx]);
-      window.localStorage.setItem("cart", JSON.stringify(updatedCart));
-    } else {
-      updatedCart[idx].quantity -= 1;
-      window.localStorage.setItem("cart", JSON.stringify(updatedCart));
-    }
-
-    window.dispatchEvent(new Event("storage"));
+    //
   }
 
   function deleteItem() {
-    let updatedCart = Array.from(cart);
-    updatedCart = updatedCart.filter((selectedProduct, idx) => selectedProduct !== updatedCart[idx]);
-    window.localStorage.setItem("cart", JSON.stringify(updatedCart));
-    window.dispatchEvent(new Event("storage"));
+    //
   }
 
   return (

@@ -4,13 +4,27 @@ import Navigation from "./Navigation";
 import Cart from "./Cart/Cart";
 import LoginButton from "./LoginButton";
 import UserButton from "./UserButton";
-import { cookies } from "next/headers";
 import LocaleSwitcher from "./LocaleSwitcher";
-import { getCurrentLocale } from "../../locales/server";
 import ThemeSwitcher from "./Burger-Menu/ThemeSwitcher";
+import { cookies } from "next/headers";
+import { getCurrentLocale } from "../../locales/server";
 
-export default function Header() {
+async function getCartItems() {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-cart-items`, {
+    method: "POST",
+    body: JSON.stringify({ userId: 1 }),
+    next: {
+      tags: ["cart"],
+    },
+  });
+
+  return await res.json();
+}
+
+export default async function Header() {
   const user = cookies().get("user")?.value;
+  const cart: CartItem[] = await getCartItems();
+
   const locale = getCurrentLocale();
 
   return (
@@ -33,10 +47,10 @@ export default function Header() {
             animationVariant={{ hidden: { opacity: 0, width: "0" }, visible: { opacity: 1, width: "15rem" } }}
           />
           <LocaleSwitcher locale={locale} />
-          <Cart className="hidden lg:block" />
+          <Cart className="relative hidden lg:block" usedFor="desktop" cart={cart} />
           {user ? <UserButton /> : <LoginButton />}
         </section>
-        <Cart className="absolute right-[7rem] " />
+        <Cart className="absolute right-[7rem] lg:hidden" usedFor="mobile" cart={cart} />
         <MobileMenu />
       </div>
     </header>

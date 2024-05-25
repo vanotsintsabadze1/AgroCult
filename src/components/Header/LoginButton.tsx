@@ -6,7 +6,7 @@ export default function LoginButton() {
   const router = useRouter();
 
   function handleClick() {
-    router.push(""); // TBA: Add the path to the login page
+    router.push("/api/auth/login"); // TBA: Add the path to the login page
   }
 
   return (
@@ -15,7 +15,12 @@ export default function LoginButton() {
       onClick={handleClick}
     >
       <p>Log In</p>
-      <Image src="/images/icons/header-icons/user-profile.webp" width={20} height={20} alt="user-profile-icon" />
+      <Image
+        src="/images/icons/header-icons/user-profile.webp"
+        width={20}
+        height={20}
+        alt="user-profile-icon"
+      />
     </button>
   );
 }

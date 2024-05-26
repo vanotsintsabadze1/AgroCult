@@ -1,26 +1,36 @@
-export interface Blog {
-  title: string;
-  body: string;
-  tags: string[];
+interface ShopItem {
   id: number;
-}
-
-export interface ShopItem {
-  images: string[];
   title: string;
   description: string;
   price: number;
-  id: number;
+  images: string[];
+  brand: string;
+  extra_details: {
+    s: string;
+  };
+  category: string[];
+  discount: number;
+  amount: number;
 }
 
-export interface CartItem extends ShopItem {
+interface CartItem {
+  product_id: number;
+  title: string;
+  description: string;
+  price: number;
+  discount: number;
+  images: string[];
   quantity: number;
 }
 
-export interface User {
+interface CartItemDB {
   id: number;
+  quantity: number;
+}
+
+interface User {
+  user_id: string;
   name: string;
   email: string;
-  password: string;
-  role: string;
+  image: string;
 }

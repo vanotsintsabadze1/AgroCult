@@ -1,11 +1,8 @@
 "use client";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import CartMiniList from "../Cart/CartMiniList";
 import { AnimatePresence } from "framer-motion";
-import { usePathname } from "next/navigation";
-import { setItemAmount } from "../../../scripts/actions/cart/setItemAmount";
-
 interface Props {
   className: string;
   usedFor: string;

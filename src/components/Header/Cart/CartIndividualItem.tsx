@@ -2,11 +2,10 @@ import Image from "next/image";
 import ItemAmountChanger from "./ItemAmountChanger";
 
 interface Props {
-  idx: number;
   item: CartItem;
 }
 
-export default function CartIndividualItem({ idx, item }: Props) {
+export default function CartIndividualItem({ item }: Props) {
   return (
     <>
       {item && (

@@ -6,8 +6,8 @@ import LoginButton from "./LoginButton";
 import UserButton from "./UserButton";
 import LocaleSwitcher from "./LocaleSwitcher";
 import ThemeSwitcher from "./Burger-Menu/ThemeSwitcher";
-import { cookies } from "next/headers";
 import { getCurrentLocale } from "../../locales/server";
+import { getSession } from "@auth0/nextjs-auth0";
 
 async function getCartItems() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-cart-items`, {
@@ -22,8 +22,9 @@ async function getCartItems() {
 }
 
 export default async function Header() {
-  const user = cookies().get("user")?.value;
   const cart: CartItem[] = await getCartItems();
+  const session = await getSession();
+  const user = session?.user;
 
   const locale = getCurrentLocale();
 

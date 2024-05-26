@@ -12,9 +12,13 @@ export async function POST(request: NextRequest) {
     const res = await sql`SELECT * FROM cart WHERE product_id = ${Number(productId)} AND user_id = ${String(userId)}`;
 
     if (res.rowCount > 0) {
-      await sql`UPDATE cart SET quantity = quantity + 1 WHERE product_id = ${Number(productId)} AND user_id = ${String(userId)}`;
+      await sql`UPDATE cart SET quantity = quantity + 1 WHERE product_id = ${Number(productId)} AND user_id = ${String(userId)}`.catch(
+        (e) => console.log(e)
+      );
     } else {
-      await sql`INSERT INTO cart (user_id, product_id, quantity, created_at, updated_at) VALUES (${String(userId)}, ${Number(productId)}, ${Number(1)}, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)`;
+      await sql`INSERT INTO cart (user_id, product_id, quantity, created_at) VALUES (${String(userId)}, ${Number(productId)}, ${Number(1)}, CURRENT_TIMESTAMP)`.catch(
+        (e) => console.log(e)
+      );
     }
 
     return NextResponse.json({ message: "Added to cart" }, { status: 200 });

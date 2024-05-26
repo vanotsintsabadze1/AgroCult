@@ -9,10 +9,10 @@ import ThemeSwitcher from "./Burger-Menu/ThemeSwitcher";
 import { getCurrentLocale } from "../../locales/server";
 import { getSession } from "@auth0/nextjs-auth0";
 
-async function getCartItems() {
+async function getCartItems(userId: string) {
   const res = await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-cart-items`, {
     method: "POST",
-    body: JSON.stringify({ userId: 1 }),
+    body: JSON.stringify({ userId }),
     next: {
       tags: ["cart"],
     },
@@ -22,10 +22,9 @@ async function getCartItems() {
 }
 
 export default async function Header() {
-  const cart: CartItem[] = await getCartItems();
   const session = await getSession();
   const user = session?.user;
-
+  const cart: CartItem[] = await getCartItems(user?.sub);
   const locale = getCurrentLocale();
 
   return (
@@ -33,10 +32,22 @@ export default async function Header() {
       <div className="relative flex w-full items-center justify-center px-[2rem] lg:justify-between">
         <section className="flex items-center gap-[2rem] px-[1rem] py-[1rem]">
           <div>
-            <Image src="/images/logos/main-logo-colored.webp" width={150} height={150} alt="company-logo" className="dark:hidden" />
+            <Image
+              src="/images/logos/main-logo-colored.webp"
+              width={150}
+              height={150}
+              alt="company-logo"
+              className="dark:hidden"
+            />
           </div>
           <div>
-            <Image src="/images/logos/main-logo-white.webp" width={150} height={150} alt="company-logo" className="hidden dark:block" />
+            <Image
+              src="/images/logos/main-logo-white.webp"
+              width={150}
+              height={150}
+              alt="company-logo"
+              className="hidden dark:block"
+            />
           </div>
           <div className="hidden lg:block">
             <Navigation className="flex items-center justify-center gap-[3rem] px-[2rem] py-[1rem] text-[1.4rem] text-black" />
@@ -48,10 +59,10 @@ export default async function Header() {
             animationVariant={{ hidden: { opacity: 0, width: "0" }, visible: { opacity: 1, width: "15rem" } }}
           />
           <LocaleSwitcher locale={locale} />
-          <Cart className="relative hidden lg:block" usedFor="desktop" cart={cart} />
+          {user && <Cart className="relative hidden lg:block" usedFor="desktop" cart={cart} />}
           {user ? <UserButton /> : <LoginButton />}
         </section>
-        <Cart className="absolute right-[7rem] lg:hidden" usedFor="mobile" cart={cart} />
+        {user && <Cart className="absolute right-[7rem] lg:hidden" usedFor="mobile" cart={cart} />}
         <MobileMenu />
       </div>
     </header>

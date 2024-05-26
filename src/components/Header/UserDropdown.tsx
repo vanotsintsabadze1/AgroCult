@@ -10,10 +10,6 @@ const divAnimations = {
 export default function UserDropdown() {
   const router = useRouter();
 
-  async function handleLogout() {
-    router.push("/api/auth/logout"); // TBA: Add the path to the logout page
-  }
-
   return (
     <motion.div
       variants={divAnimations}
@@ -28,17 +24,14 @@ export default function UserDropdown() {
       >
         Settings
       </button>
-      <button
-        className="h-[4rem] w-full duration-150 ease-out hover:bg-gray-100"
-        onClick={() => router.push("/admin")}
-      >
+      <button className="h-[4rem] w-full duration-150 ease-out hover:bg-gray-100" onClick={() => router.push("/admin")}>
         Admin
       </button>
-      <button
-        className="h-[4rem] w-full duration-150 ease-out hover:bg-gray-100"
-        onClick={handleLogout}
-      >
-        Log Out
+
+      <button className="h-[4rem] w-full duration-150 ease-out hover:bg-gray-100">
+        <a href="/api/auth/logout" className="w-full h-full flex items-center justify-center">
+          Log Out
+        </a>
       </button>
     </motion.div>
   );

@@ -51,7 +51,7 @@ export default function CartMiniList({ cart, usedFor }: Props) {
         <>
           <h4 className="text-[2rem] font-bold">YOUR CART</h4>
           {cart.map((item, idx) => {
-            return <CartIndividualItem key={idx} idx={idx} item={item} cart={cart} />;
+            return <CartIndividualItem key={idx} idx={idx} item={item} />;
           })}
           <div className="mt-[2rem] flex w-full items-center justify-between">
             <div className="ml-[2rem] flex flex-col gap-[.5rem]">

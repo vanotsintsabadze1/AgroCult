@@ -1,15 +1,23 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import UserDropdown from "./UserDropdown";
 import { AnimatePresence } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 export default function UserButton() {
   const [isUserDropdownVisible, setUserDropdownVisible] = useState(false);
+  const pathname = usePathname();
 
   function showUserDropdown() {
     setUserDropdownVisible(!isUserDropdownVisible);
   }
+
+  useEffect(() => {
+    if (isUserDropdownVisible) {
+      setUserDropdownVisible(false);
+    }
+  }, [pathname]);
 
   return (
     <>

@@ -16,8 +16,6 @@ async function getProfileInfo(userId: string) {
   );
   const data = await res.json();
 
-  console.log(data);
-
   return data;
 }
 
@@ -29,19 +27,44 @@ export default async function ProfileCard() {
   return (
     <div className="w-full min-h-[65rem] shadow-soft rounded-[1rem] flex flex-col items-center p-[2rem] lg:w-[80rem] md:w-[65rem] sm:w-[40rem] dark:bg-white">
       <section className="w-full flex  justify-center items-center p-[1rem] flex-col gap-[2rem] mt-[2rem]">
-        <div className="w-[10rem] h-[10rem] relative">
-          <Image src={profile.image} fill alt="user-profile-icon" />
+        <div className="w-[15rem] h-[15rem] relative">
+          <Image
+            src={profile.image}
+            fill
+            className="rounded-[50%]"
+            alt="user-profile-icon"
+          />
         </div>
-        <h2 className="font-bold text-[2rem]">{word("title")}</h2>
+        <h2 className="font-bold text-[2rem] bg-gradient-to-r from-green-500 to-orange-300 bg-clip-text text-transparent">
+          {word("title")}
+        </h2>
       </section>
-      <section className="w-full flex flex-col items-center gap-[4rem] justify-center flex-grow">
+      <section className="w-full flex flex-col gap-[2rem] mt-[2rem] flex-grow lg:w-[40rem]">
         <ImageUpload />
-        <p>{profile.name}</p>
-        <p>{profile.email}</p>
+        <div className="flex flex-col gap-[0.5rem]">
+          <p className="font-bold text-[1.4rem]">Username:</p>
+          <input
+            type="text"
+            value={profile.name}
+            readOnly
+            disabled
+            className="w-[24rem] px-[1.2rem] py-[0.5rem] text-[1.4rem] border-2 border-gray-400 rounded-[0.5rem] bg-gray-300 text-gray-500"
+          />
+        </div>
+        <div className="flex flex-col gap-[0.5rem]">
+          <p className="font-bold text-[1.4rem]">Email:</p>
+          <input
+            type="text"
+            value={profile.email}
+            readOnly
+            disabled
+            className="w-[24rem] px-[1.2rem] py-[0.5rem] text-[1.4rem] border-2 border-gray-400 rounded-[0.5rem] bg-gray-300 text-gray-500"
+          />
+        </div>
         <input
           type="submit"
           value={word("submit")}
-          className="w-[15rem] h-[4rem] text-white bg-black rounded-lg uppercase tracking-wider font-semibold text-[1.2rem] cursor-pointer"
+          className="w-[15rem] h-[4rem] text-white bg-green-500 rounded-lg uppercase tracking-wider font-semibold text-[1.2rem] cursor-pointer self-center my-[2rem] "
         />
       </section>
     </div>

@@ -41,9 +41,16 @@ export default function ThemeSwitcher({ className, animationVariant }: Props) {
     <div className={className}>
       <button
         onClick={showThemeSwitcher}
-        className="flex h-[3.8rem] w-[3.8rem] items-center justify-center rounded-[50%] bg-white p-[1rem]"
+        className={`flex h-[3.8rem] w-[3.8rem] items-center justify-center rounded-[50%] ${!isThemeSwitcherVisible ? "border border-black" : ""} bg-white p-[1rem]`}
       >
-        <Image src={image === "" ? "/images/icons/header-icons/system-mode.webp" : image} width={20} height={20} alt="mode" />
+        <Image
+          src={
+            image === "" ? "/images/icons/header-icons/system-mode.webp" : image
+          }
+          width={20}
+          height={20}
+          alt="mode"
+        />
       </button>
       <AnimatePresence>
         {isThemeSwitcherVisible && (
@@ -57,7 +64,12 @@ export default function ThemeSwitcher({ className, animationVariant }: Props) {
             {["light", "dark", "system"].map((theme) => {
               return (
                 <button key={theme} onClick={() => setDesiredTheme(theme)}>
-                  <Image src={`/images/icons/header-icons/${theme}-mode.webp`} width={20} height={20} alt={`mode-${theme}`} />
+                  <Image
+                    src={`/images/icons/header-icons/${theme}-mode.webp`}
+                    width={20}
+                    height={20}
+                    alt={`mode-${theme}`}
+                  />
                 </button>
               );
             })}

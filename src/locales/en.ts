@@ -24,17 +24,35 @@ export default {
   },
   landing: {
     welcome: "Welcome To VUENNO",
-    phrase: "World's finest farming machinery now available for you anywhere. We bring you the best quality products at the best prices.",
+    phrase:
+      "World's finest farming machinery now available for you anywhere. We bring you the best quality products at the best prices.",
     goToStore: "Go To The Store",
     getStarted: "How To Get Started",
     stages: {
-      first: "Find the desired equipment or agricultural tool, add it to the cart or contact a sales consultant",
-      second: "Pay with any bank and take advantage of up to 5 years of installments",
-      third: "Receive the purchased product and enjoy the highest quality",
+      first: {
+        borderTitle: "Finest Machinery",
+        title: "Restore, Enhance, Protect",
+        first:
+          "We are dedicated to providing top-quality agricultural machinery that ensures the well-being of the land, the farmers, our customers, and the environment.",
+        second:
+          "Our continuous innovation shows promising advancements as we develop machinery that supports sustainable farming practices, contributing to reduced environmental impact and enhanced productivity.",
+      },
+      second: {
+        borderTitle: "Environment",
+        title: "Sustainable Energy Initiatives",
+        first:
+          "We prioritize energy efficiency and water conservation through our cutting-edge machinery. Our latest irrigation systems drastically reduce water usage while our energy-efficient tractors and harvesters help lower the carbon footprint of farming operations.",
+      },
+      third: {
+        borderTitle: "The Team",
+        title: "Our Dedicated Agricultural Experts",
+        first:
+          "Our team members are more than just employees; they’re the backbone of our company. We invest in their growth and well-being, knowing that their expertise and dedication drive our success. Our shared commitment to excellence in agricultural technology makes us a strong and innovative partner for farmers everywhere.",
+      },
     },
-    customOfferTitle: "Have a custom offer?",
-    customOfferPhrase: "Contact us and we will make special arrangements for you!",
-    contactUs: "Contact Our Sales Team",
+    aboutCompany: "About The Company",
+    aboutUs:
+      "AgroCult was founded in 1980 by visionary agricultural engineer Amiran Zhvania, who had a dream to revolutionize farming practices. With a deep passion for the land and a relentless drive for innovation, Amiran set out to create a company that would provide farmers with the most advanced and reliable agricultural machinery available.",
   },
 
   store: {

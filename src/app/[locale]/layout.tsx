@@ -1,7 +1,6 @@
 import "./globals.css";
 import { cookies } from "next/headers";
 import { I18nProviderClient } from "@/locales/client";
-import PageAnimationWrapper from "@/components/Page-Animation-Wrapper/PageAnimationWrapper";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
 
 export const metadata = {
@@ -20,12 +19,13 @@ export default function RootLayout({ children, params: { locale } }: Props) {
   const theme = cookies().get("theme");
 
   return (
-    <html lang={locale} className={`${theme ? theme.value : ""} !scroll-smooth`}>
+    <html
+      lang={locale}
+      className={`${theme ? theme.value : ""} !scroll-smooth`}
+    >
       <UserProvider>
         <body className="bg-body dark:bg-dark-primary">
-          <I18nProviderClient locale={locale}>
-            <PageAnimationWrapper>{children}</PageAnimationWrapper>
-          </I18nProviderClient>
+          <I18nProviderClient locale={locale}>{children}</I18nProviderClient>
         </body>
       </UserProvider>
     </html>

@@ -2,7 +2,11 @@ import type { Config } from "tailwindcss";
 import plugin from "tailwindcss/plugin";
 
 const config: Config = {
-  content: ["./src/pages/**/*.{js,ts,jsx,tsx,mdx}", "./src/components/**/*.{js,ts,jsx,tsx,mdx}", "./src/app/**/*.{js,ts,jsx,tsx,mdx}"],
+  content: [
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
   darkMode: ["variant", ["@media (prefers-color-scheme: dark) { &:not(.light *) }", "&:is(.dark *)"]],
   theme: {
     extend: {
@@ -24,10 +28,6 @@ const config: Config = {
         "text-soft": "0.1rem 0.1rem 0.2rem rgba(0,0,0,0.4)",
         "text-medium": "0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.6)",
         "text-heavy": "0 0 1rem rgba(0, 0, 0, 0.7)",
-      },
-      boxShadow: {
-        soft: "0px .1rem .3rem -0.1rem rgba(0,0,0,0.1)",
-        md: "0px .1rem .3rem 0.02rem rgba(0,0,0,0.1)",
       },
     },
     screens: {

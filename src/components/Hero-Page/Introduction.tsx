@@ -23,7 +23,7 @@ async function Introduction() {
       <section className="mt-[3rem] flex w-full flex-col items-center gap-[1rem]">
         <ContactCard />
       </section>
-      <section className="mt-[2rem] flex w-full flex-col items-center bg-gray-100 py-[3rem] lg:mt-[8rem] dark:bg-dark-primary">
+      <section className="mt-[2rem] flex w-full flex-col items-center bg-gray-100 py-[3rem]  dark:bg-dark-primary">
         <h2 className="text-[2.3rem] font-bold uppercase tracking-wide text-gray-400">
           Our Partners
         </h2>

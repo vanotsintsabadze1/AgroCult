@@ -26,6 +26,7 @@ export default async function Stages() {
       title: word("stages.second.title"),
       imageUrl: "/images/landing-stages/second-stage.webp",
       firstPhrase: word("stages.second.first"),
+      secondPhrase: word("stages.second.second"),
     },
     {
       borderTitle: word("stages.third.borderTitle"),
@@ -37,10 +38,13 @@ export default async function Stages() {
 
   return (
     <div className="flex w-full flex-col items-center justify-center py-[2rem] sm:px-[5rem]">
-      <section className="flex w-full flex-col items-center justify-center gap-y-[4rem] px-[2rem] py-[2rem]">
+      <section className="flex w-full flex-col items-center justify-center gap-y-[4rem] px-[2rem] py-[2rem] lg:gap-y-[8rem]">
         {stages.map((stage, index) => (
-          <div key={index} className="flex flex-col items-start gap-[1rem]">
-            <div className="relative h-[28rem] w-[38rem]">
+          <div
+            key={index}
+            className={`flex w-[40rem] flex-col items-center gap-[1rem] lg:w-auto lg:items-start lg:justify-between lg:gap-x-[3rem] ${index === 1 ? "lg:flex-row-reverse" : "lg:flex-row"}`}
+          >
+            <div className="relative h-[28rem] w-[38rem] lg:h-[35rem] lg:w-[45rem]">
               <Image
                 src={stage.imageUrl}
                 alt={`pic-${index}`}
@@ -54,14 +58,14 @@ export default async function Stages() {
               </div>
             </div>
             <div className="pl-[1rem]">
-              <h4 className="mt-[1.5rem] text-[3rem] font-bold text-[#121212] drop-shadow-lg">
+              <h4 className="mt-[1.5rem] text-[3rem] font-bold text-[#121212] drop-shadow-lg lg:text-green-800">
                 {stage.title}
               </h4>
-              <p className="mt-[1rem] text-[1.5rem] font-medium">
+              <p className="mt-[1rem] max-w-[40rem] text-[1.5rem] font-medium">
                 {stage.firstPhrase}
               </p>
               {stage.secondPhrase && (
-                <p className="mt-[2rem] text-[1.5rem] font-medium">
+                <p className="mt-[2rem] max-w-[40rem] text-[1.5rem] font-medium">
                   {stage.secondPhrase}
                 </p>
               )}

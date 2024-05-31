@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Partners() {
   return (
     <>
-      <div className="flex w-full flex-col items-center gap-[3rem] p-[2rem] lg:flex-row lg:justify-center ">
+      <div className="flex w-full flex-col items-center gap-[3rem] p-[2rem] lg:flex-row lg:justify-center lg:pb-[4rem]">
         <div className="relative h-[8rem] w-[31rem]">
           <Image
             src="/images/partners/john_deere.webp"

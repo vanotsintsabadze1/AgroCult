@@ -41,7 +41,9 @@ export default {
         borderTitle: "Environment",
         title: "Sustainable Energy Initiatives",
         first:
-          "We prioritize energy efficiency and water conservation through our cutting-edge machinery. Our latest irrigation systems drastically reduce water usage while our energy-efficient tractors and harvesters help lower the carbon footprint of farming operations.",
+          "At AgroCult, we are deeply committed to the principles of sustainability and environmental stewardship. Recognizing the critical importance of water and energy conservation in modern agriculture, we have developed a range of innovative machinery designed to address these vital issues.",
+        second:
+          "Our latest irrigation systems represent a significant leap forward in water management technology. Utilizing precision drip irrigation techniques, these systems ensure that water is delivered directly to the plant roots, minimizing evaporation and runoff.",
       },
       third: {
         borderTitle: "The Team",
@@ -52,7 +54,9 @@ export default {
     },
     aboutCompany: "About The Company",
     aboutUs:
-      "AgroCult was founded in 1980 by visionary agricultural engineer Amiran Zhvania, who had a dream to revolutionize farming practices. With a deep passion for the land and a relentless drive for innovation, Amiran set out to create a company that would provide farmers with the most advanced and reliable agricultural machinery available.",
+      "AgroCult was founded in 1980 by visionary agricultural engineer Amiran Zhvania, who had a dream to revolutionize farming practices.",
+    aboutUsSecond:
+      " With a deep passion for the land and a relentless drive for innovation, Amiran set out to create a company that would provide farmers with the most advanced and reliable agricultural machinery available.",
   },
 
   store: {

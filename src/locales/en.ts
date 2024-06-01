@@ -1,3 +1,5 @@
+import { title } from "process";
+
 export default {
   login: {
     login: "Login",
@@ -59,6 +61,25 @@ export default {
       " With a deep passion for the land and a relentless drive for innovation, Amiran set out to create a company that would provide farmers with the most advanced and reliable agricultural machinery available.",
   },
 
+  about: {
+    title: "About Us",
+    openingParagraph:
+      "AgroCult is a leading provider of agricultural machinery and equipment, dedicated to supporting farmers and agricultural businesses worldwide. Our mission is to help farmers achieve greater productivity, efficiency, and sustainability through the use of innovative technology and advanced machinery.",
+    secondOpeningParagraph:
+      "We offer a wide range of products and services designed to meet the diverse needs of modern agriculture, from precision irrigation systems to cutting-edge harvesting equipment. Our team of agricultural experts is committed to providing the highest level of service and support to our customers, ensuring that they have the tools and resources they need to succeed.",
+    charities: {
+      title: "AgroCult Charities",
+      openingParagraph:
+        "AgroCult’s commitment to the community extends beyond technological innovation. In 2005, the company established AgroCult Charities, a non-profit organization dedicated to supporting agricultural communities worldwide. Through this initiative, AgroCult has funded numerous projects, including the construction of wells in drought-stricken areas, the development of educational programs for young farmers, and the provision of emergency aid to regions affected by natural disasters.",
+    },
+    futureGoals: {
+      title: "Future of AgroCult",
+      openingParagraph:
+        "As we look to the future, AgroCult remains committed to its core values of innovation, sustainability, and community. We are constantly exploring new technologies and techniques to improve the efficiency and productivity of modern agriculture, while also working to reduce the environmental impact of farming practices. Our goal is to be a leader in the development of sustainable agricultural solutions, helping farmers around the world to feed their communities and protect the planet for future generations.",
+      secondOpeningParagraph:
+        "We invite you to join us on this journey as we work together to build a brighter, more sustainable future for agriculture.",
+    },
+  },
   store: {
     topSelling: "Top Sellers",
     startPayingPhrase: "Start Paying monthly for",

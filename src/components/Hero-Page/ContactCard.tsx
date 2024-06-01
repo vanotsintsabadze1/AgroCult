@@ -6,10 +6,10 @@ export default async function CompanyVerificationCard() {
   return (
     <div className="flex w-full flex-col items-center bg-green-800/50 py-[2rem] lg:flex-row lg:items-start lg:justify-center lg:pt-[3rem]">
       <div className="p-[2rem] lg:px-[3rem]">
-        <h2 className="text-[4rem] font-medium text-teal-700 lg:text-[4rem] ">
+        <h2 className="text-[4rem] font-medium text-teal-700 lg:text-[4rem] dark:text-teal-400">
           {word("aboutCompany")}
         </h2>
-        <p className="mt-[1rem] max-w-[45rem] text-[1.6rem] font-medium text-teal-800 lg:w-[30rem] lg:text-[2rem]">
+        <p className="mt-[1rem] max-w-[45rem] text-[1.6rem] font-medium text-teal-800 lg:w-[30rem] lg:text-[2rem] dark:text-teal-500">
           {word("aboutUs")}
           <br />
           <br />

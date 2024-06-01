@@ -71,6 +71,8 @@ export default {
       title: "AgroCult Charities",
       openingParagraph:
         "AgroCult’s commitment to the community extends beyond technological innovation. In 2005, the company established AgroCult Charities, a non-profit organization dedicated to supporting agricultural communities worldwide. Through this initiative, AgroCult has funded numerous projects, including the construction of wells in drought-stricken areas, the development of educational programs for young farmers, and the provision of emergency aid to regions affected by natural disasters.",
+      secondOpeningParagraph:
+        "We are also proud supporters of global hunger relief efforts. Partnering with international organizations, AgroCult helps to provide food and resources to regions affected by food insecurity. Our goal is to leverage our expertise and resources to make a meaningful impact on global food supply chains. Our efforts include:",
     },
     futureGoals: {
       title: "Future of AgroCult",

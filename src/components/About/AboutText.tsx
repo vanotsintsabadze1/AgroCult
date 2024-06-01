@@ -14,9 +14,9 @@ export default async function AboutText() {
           {word("secondOpeningParagraph")}
         </p>
       </div>
-      <div className="relative h-[25rem] w-[35rem] lg:h-[30rem] lg:w-[45rem]">
+      <div className="relative h-[25rem] w-[35rem] shadow-2xl lg:h-[30rem]  lg:w-[45rem]">
         <Image
-          src="/images/landing-stages/first-stage.webp"
+          src="/images/showout-images/about-us-first.webp"
           className="rounded-[.8rem]"
           alt="test"
           fill

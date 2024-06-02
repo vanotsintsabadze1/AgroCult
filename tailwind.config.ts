@@ -7,7 +7,13 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  darkMode: ["variant", ["@media (prefers-color-scheme: dark) { &:not(.light *) }", "&:is(.dark *)"]],
+  darkMode: [
+    "variant",
+    [
+      "@media (prefers-color-scheme: dark) { &:not(.light *) }",
+      "&:is(.dark *)",
+    ],
+  ],
   theme: {
     extend: {
       backgroundColor: {
@@ -36,6 +42,7 @@ const config: Config = {
       md: { min: "768px", max: "1023px" },
       lg: "1024px",
       xl: "1280px",
+      "2xl": "1370px",
     },
   },
 

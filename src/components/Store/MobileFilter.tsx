@@ -1,9 +1,12 @@
 import { brands } from "../../data/brands";
+import { categories } from "../../data/categories";
+import SortPreference from "./SortPreference";
 
 export default function MobileFilter() {
   return (
-    <div className="mt-[2rem] flex h-[50rem] w-[40rem] flex-col overflow-y-auto rounded-lg bg-white p-[1rem] shadow-md xs:w-full">
-      <section className="flex flex-col px-[1rem]">
+    <div className="mt-[2rem] flex h-[50rem] w-[40rem] flex-col overflow-y-auto rounded-lg bg-white p-[1rem] shadow-md xs:w-full lg:hidden">
+      <SortPreference />
+      <section className="mt-[2rem] flex flex-col px-[1rem]">
         <h4 className="text-[1.8rem] font-bold">Price:</h4>
         <div className="mt-[1rem] flex items-center justify-center gap-[1rem]">
           <input
@@ -19,17 +22,11 @@ export default function MobileFilter() {
       <section className="mt-[2rem] flex flex-col px-[1rem]">
         <h4 className="text-[1.8rem] font-bold">Category:</h4>
         <div className="mt-[1rem] flex items-center">
-          <select className="shado-md h-[4rem] overflow-y-auto rounded-lg bg-gray-200 px-[1rem] py-[.5rem] text-[1.6rem] text-black">
+          <select className="h-[4rem] overflow-y-auto rounded-lg bg-gray-200 px-[1rem] py-[.5rem] text-[1.6rem] text-black shadow-sm outline-none">
             <option>Any</option>
-            <option>Tractors</option>
-            <option>Plowers</option>
-            <option>Heavy machinery</option>
-            <option>Accessories</option>
-            <option>Fertillizers</option>
-            <option>Pesticides & Herbicides</option>
-            <option>Seeds</option>
-            <option>Tools & Supplies</option>
-            <option>Livestock Equipment</option>
+            {categories.map((item, idx) => (
+              <option key={idx}>{item.category}</option>
+            ))}
           </select>
         </div>
       </section>

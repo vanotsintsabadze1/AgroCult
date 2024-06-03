@@ -29,7 +29,6 @@ export default {
     phrase:
       "World's finest farming machinery now available for you anywhere. We bring you the best quality products at the best prices.",
     goToStore: "Go To The Store",
-    getStarted: "How To Get Started",
     stages: {
       first: {
         borderTitle: "Finest Machinery",
@@ -37,7 +36,7 @@ export default {
         first:
           "We are dedicated to providing top-quality agricultural machinery that ensures the well-being of the land, the farmers, our customers, and the environment.",
         second:
-          "Our continuous innovation shows promising advancements as we develop machinery that supports sustainable farming practices, contributing to reduced environmental impact and enhanced productivity.",
+          "The machinery we offer promises advancements as we support sustainable farming practices, contributing to reduced envornmental impact and enhanced productivity.",
       },
       second: {
         borderTitle: "Environment",
@@ -85,7 +84,7 @@ export default {
   store: {
     topSelling: "Top Sellers",
     startPayingPhrase: "Start Paying monthly for",
-    buy: "Buy",
+    buy: "Buy Now",
   },
 
   navigation: {

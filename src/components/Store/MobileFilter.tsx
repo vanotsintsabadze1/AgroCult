@@ -4,7 +4,7 @@ import SortPreference from "./SortPreference";
 
 export default function MobileFilter() {
   return (
-    <div className="mt-[2rem] flex h-[50rem] w-[40rem] flex-col overflow-y-auto rounded-lg bg-white p-[1rem] shadow-md xs:w-full lg:hidden">
+    <div className="mt-[2rem] flex h-[50rem] w-[40rem] flex-col overflow-y-auto rounded-lg bg-white px-[1rem] py-[3rem] shadow-md xs:w-full lg:hidden">
       <SortPreference />
       <section className="mt-[2rem] flex flex-col px-[1rem]">
         <h4 className="text-[1.8rem] font-bold">Price:</h4>

@@ -57,7 +57,7 @@ export default async function Stages() {
               </div>
             </div>
             <div className="pl-[1rem] dark:text-white">
-              <h4 className="mt-[1.5rem] text-[3rem] font-bold text-[#121212] drop-shadow-lg lg:text-green-800 dark:text-green-600 ">
+              <h4 className="mt-[1.5rem] max-w-[35rem] break-words text-[3rem] font-bold text-[#121212] drop-shadow-lg lg:text-green-800 dark:text-green-600">
                 {stage.title}
               </h4>
               <p className="mt-[1rem] max-w-[40rem] text-[1.5rem] font-medium">

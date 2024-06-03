@@ -12,6 +12,7 @@ interface Props {
 
 export default function StoreWrapper({ items }: Props) {
   const [shouldMobileFilterOpen, setShouldMobileFilterOpen] = useState(false);
+  const [layout, setLayout] = useState("multi");
 
   function handleMobileFilter() {
     setShouldMobileFilterOpen(!shouldMobileFilterOpen);
@@ -19,8 +20,7 @@ export default function StoreWrapper({ items }: Props) {
 
   return (
     <section className="overflow mt-[2rem] flex w-full flex-col items-center">
-      <SearchBar />
-
+      <SearchBar setLayout={setLayout} />
       <button
         onClick={handleMobileFilter}
         className="mt-[3rem] flex h-[4rem] w-[35rem] items-center justify-center gap-[.5rem] rounded-lg bg-green-600 text-[1.6rem] font-bold text-white shadow-md xs:w-[25rem] lg:hidden"
@@ -36,9 +36,9 @@ export default function StoreWrapper({ items }: Props) {
 
       {shouldMobileFilterOpen && <MobileFilter />}
 
-      <div className="mt-[2rem] flex w-full justify-center gap-[2rem] py-[4rem]">
+      <div className="flex w-full justify-center gap-[2rem] py-[4rem] lg:px-[4rem]">
         <DesktopFilter />
-        <ItemsWrapper items={items} />
+        <ItemsWrapper items={items} layout={layout} />
       </div>
     </section>
   );

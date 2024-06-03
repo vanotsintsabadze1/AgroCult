@@ -44,6 +44,15 @@ const config: Config = {
       xl: "1280px",
       "2xl": "1370px",
     },
+    animation: {
+      "loop-scroll": "loop-scroll 5s linear infinite",
+    },
+    keyframes: {
+      "loop-scroll": {
+        from: { transform: "translateX(0)" },
+        to: { transform: "translateX(-100%)" },
+      },
+    },
   },
 
   plugins: [

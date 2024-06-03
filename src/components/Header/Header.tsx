@@ -8,7 +8,7 @@ import LocaleSwitcher from "./LocaleSwitcher";
 import ThemeSwitcher from "./Burger-Menu/ThemeSwitcher";
 import { getCurrentLocale } from "../../locales/server";
 import { getSession } from "@auth0/nextjs-auth0";
-import { redirect } from "next/navigation";
+// import { redirect } from "next/navigation";
 
 async function getCartItems(userId: string) {
   if (!userId) {
@@ -34,10 +34,6 @@ export default async function Header() {
   const user = session?.user;
   const cart: CartItem[] = await getCartItems(user?.sub);
   const locale = getCurrentLocale();
-
-  function onLogoClickRedirect() {
-    redirect("/");
-  }
 
   return (
     <header className="sticky top-0 z-[10] flex w-full items-center justify-center bg-body py-[1rem] lg:py-[1rem] dark:bg-dark-primary">

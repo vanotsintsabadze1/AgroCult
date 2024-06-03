@@ -35,6 +35,15 @@ const config: Config = {
         "text-medium": "0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.6)",
         "text-heavy": "0 0 1rem rgba(0, 0, 0, 0.7)",
       },
+      animation: {
+        "loop-scroll": "loop-scroll 5s linear infinite",
+      },
+      keyframes: {
+        "loop-scroll": {
+          from: { transform: "translateX(0%)" },
+          to: { transform: "translateX(-100%)" },
+        },
+      },
     },
     screens: {
       xs: { min: "320px", max: "399px" },
@@ -43,15 +52,6 @@ const config: Config = {
       lg: "1024px",
       xl: "1280px",
       "2xl": "1370px",
-    },
-    animation: {
-      "loop-scroll": "loop-scroll 5s linear infinite",
-    },
-    keyframes: {
-      "loop-scroll": {
-        from: { transform: "translateX(0)" },
-        to: { transform: "translateX(-100%)" },
-      },
     },
   },
 

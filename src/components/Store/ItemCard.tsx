@@ -2,9 +2,9 @@
 
 import Image from "next/image";
 import { useScopedI18n } from "../../locales/client";
-import { useRouter } from "next/navigation";
-import { addToCart } from "../../scripts/actions/cart/addToCart";
-import { useUser } from "@auth0/nextjs-auth0/client";
+// import { useRouter } from "next/navigation";
+// import { addToCart } from "../../scripts/actions/cart/addToCart";
+// import { useUser } from "@auth0/nextjs-auth0/client";
 
 interface Props extends ShopItem {
   layout: string;
@@ -17,18 +17,18 @@ function ItemCard({ images, id, title, description, price, layout }: Props) {
   const singleColView =
     "flex w-[32rem] flex-col items-center rounded-lg bg-white px-[2rem] pb-[3rem] pt-[2rem] shadow-md lg:min-w-[60rem] xl:min-w-[80rem] lg:flex-row lg:gap-x-[2rem]";
   const word = useScopedI18n("store");
-  const router = useRouter();
-  const { user } = useUser();
+  // const router = useRouter();
+  // const { user } = useUser();
 
-  function redirectOnClick() {
-    router.push(`/store/${id}`);
-  }
+  // function redirectOnClick() {
+  //   router.push(`/store/${id}`);
+  // }
 
-  function onAddToCart() {
-    if (user) {
-      addToCart(user.sub as string, id);
-    }
-  }
+  // function onAddToCart() {
+  //   if (user) {
+  //     addToCart(user.sub as string, id);
+  //   }
+  // }
 
   return (
     <div className={layout === "multi" ? multiColView : singleColView}>

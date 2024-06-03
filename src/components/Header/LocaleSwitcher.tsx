@@ -30,10 +30,15 @@ export default function LocaleSwitcher({ locale }: Props) {
     <div className="relative">
       <button
         onClick={handleDropdown}
-        className={`flex items-center justify-center gap-[.5rem] rounded-t-[1rem] dark:bg-white ${isDropdownOpen ? "border-l-2 border-r-2 border-t-2" : "rounded-b-[1rem] border-2"} border-gray-600 px-[.6rem] py-[.4rem] text-[1.5rem] uppercase shadow-soft`}
+        className={`flex items-center justify-center gap-[.5rem] rounded-t-[1rem] dark:bg-white ${isDropdownOpen ? "border-l-2 border-r-2 border-t-2" : "rounded-b-[1rem] border-2"} shadow-soft border-gray-600 px-[.6rem] py-[.4rem] text-[1.5rem] uppercase`}
       >
         <p> {locale}</p>
-        <Image src="/images/icons/misc/caret.webp" width={10} height={10} alt="lang-caret" />
+        <Image
+          src="/images/icons/misc/caret.webp"
+          width={10}
+          height={10}
+          alt="lang-caret"
+        />
       </button>
 
       <AnimatePresence>
@@ -43,11 +48,11 @@ export default function LocaleSwitcher({ locale }: Props) {
             initial="hidden"
             animate="visible"
             exit="hidden"
-            className="absolute left-0 top-0 flex w-[4.9rem] items-center justify-center rounded-b-[.5rem] border-2 border-gray-600 py-[.5rem] dark:bg-white"
+            className="absolute left-0 top-0 z-10 flex w-[4.9rem] items-center justify-center rounded-b-[.5rem] border-2 border-gray-600 bg-body py-[.5rem] dark:bg-white"
           >
             <button
               onClick={handleLocaleChange}
-              className="flex h-full w-full items-center justify-center gap-[.5rem] text-[1.5rem] uppercase shadow-soft"
+              className="shadow-soft flex h-full w-full items-center justify-center gap-[.5rem] text-[1.5rem] uppercase"
             >
               <p> {locale === "ka" ? "en" : "ka"}</p>
             </button>

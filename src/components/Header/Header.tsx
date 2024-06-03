@@ -8,15 +8,23 @@ import LocaleSwitcher from "./LocaleSwitcher";
 import ThemeSwitcher from "./Burger-Menu/ThemeSwitcher";
 import { getCurrentLocale } from "../../locales/server";
 import { getSession } from "@auth0/nextjs-auth0";
+// import { redirect } from "next/navigation";
 
 async function getCartItems(userId: string) {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-cart-items`, {
-    method: "POST",
-    body: JSON.stringify({ userId }),
-    next: {
-      tags: ["cart"],
+  if (!userId) {
+    return [];
+  }
+
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-cart-items`,
+    {
+      method: "POST",
+      body: JSON.stringify({ userId }),
+      next: {
+        tags: ["cart"],
+      },
     },
-  });
+  );
 
   return await res.json();
 }
@@ -56,13 +64,28 @@ export default async function Header() {
         <section className="relative hidden items-center justify-center gap-[2rem] px-[1rem] lg:flex">
           <ThemeSwitcher
             className="relative"
-            animationVariant={{ hidden: { opacity: 0, width: "0" }, visible: { opacity: 1, width: "15rem" } }}
+            animationVariant={{
+              hidden: { opacity: 0, width: "0" },
+              visible: { opacity: 1, width: "15rem" },
+            }}
           />
           <LocaleSwitcher locale={locale} />
-          {user && <Cart className="relative hidden lg:block" usedFor="desktop" cart={cart} />}
+          {user && (
+            <Cart
+              className="relative hidden lg:block"
+              usedFor="desktop"
+              cart={cart}
+            />
+          )}
           {user ? <UserButton /> : <LoginButton />}
         </section>
-        {user && <Cart className="absolute right-[7rem] lg:hidden" usedFor="mobile" cart={cart} />}
+        {user && (
+          <Cart
+            className="absolute right-[7rem] lg:hidden"
+            usedFor="mobile"
+            cart={cart}
+          />
+        )}
         <MobileMenu />
       </div>
     </header>

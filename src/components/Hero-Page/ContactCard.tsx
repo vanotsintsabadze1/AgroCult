@@ -1,27 +1,36 @@
 import { getScopedI18n } from "../../locales/server";
 import Image from "next/image";
+import FadeWrapper from "../Animation-Wrappers/FadeWrapper";
 
 export default async function CompanyVerificationCard() {
   const word = await getScopedI18n("landing");
   return (
-    <div
-      id="test"
-      className="flex w-full flex-col items-center justify-center gap-[2rem] rounded-[2rem] bg-primary py-[3rem] text-white md:w-[50rem] lg:w-auto lg:flex-row-reverse lg:gap-x-[8rem] lg:px-[6rem] lg:py-[4rem] dark:bg-dark-secondary"
-    >
-      <div className="relative h-[15rem] w-[15rem] md:h-[20rem] md:w-[20rem] lg:h-[23rem] lg:w-[23rem]">
-        <Image src="/images/vector-images/company-verification.webp" fill alt="company-verification" />
+    <FadeWrapper delay={0} duration={500} direction="up" className="w-full">
+      <div className="flex w-full flex-col items-center bg-green-800/50 py-[2rem] lg:flex-row lg:items-start lg:justify-center lg:pt-[3rem]">
+        <FadeWrapper duration={1000} delay={300} direction="left">
+          <div className="p-[2rem] lg:px-[3rem]">
+            <h2 className="text-[4rem] font-medium text-teal-700 lg:text-[4rem] dark:text-teal-400">
+              {word("aboutCompany")}
+            </h2>
+            <p className="mt-[1rem] max-w-[45rem] text-[1.6rem] font-medium text-teal-800 lg:w-[30rem] lg:text-[2rem] dark:text-teal-500">
+              {word("aboutUs")}
+              <br />
+              <br />
+              {word("aboutUsSecond")}
+            </p>
+          </div>
+        </FadeWrapper>
+        <FadeWrapper delay={300} duration={1000} direction="right">
+          <div className="relative h-[40rem] w-[38rem] lg:mt-[3rem] lg:h-[58rem] lg:w-[56rem]">
+            <Image
+              src="/images/vector-images/founder.webp"
+              className="rounded-[2rem] bg-center opacity-75 blur-[.1rem]"
+              fill
+              alt="founder"
+            />
+          </div>
+        </FadeWrapper>
       </div>
-      <div className="flex flex-col items-center gap-[.5rem]">
-        <h2 className="px-[1rem text-center text-[2.2rem] font-bold xs:text-[2rem] md:text-[2.2rem] lg:text-[2.7rem] dark:text-white">
-          {word("customOfferTitle")}
-        </h2>
-        <p className="mt-[.5rem] w-[30rem] px-[1rem] text-center text-[1.4rem] font-medium md:text-[1.4rem] lg:w-[40rem] lg:text-[1.6rem] dark:text-white">
-          {word("customOfferPhrase")}
-        </p>
-        <button className="mt-[2rem] h-[4rem] bg-black px-[2rem] text-[1.3rem] font-bold text-white md:mb-[.5rem] md:mt-[2.5rem]">
-          {word("contactUs")}
-        </button>
-      </div>
-    </div>
+    </FadeWrapper>
   );
 }

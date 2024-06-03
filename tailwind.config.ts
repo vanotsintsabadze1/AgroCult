@@ -2,8 +2,18 @@ import type { Config } from "tailwindcss";
 import plugin from "tailwindcss/plugin";
 
 const config: Config = {
-  content: ["./src/pages/**/*.{js,ts,jsx,tsx,mdx}", "./src/components/**/*.{js,ts,jsx,tsx,mdx}", "./src/app/**/*.{js,ts,jsx,tsx,mdx}"],
-  darkMode: ["variant", ["@media (prefers-color-scheme: dark) { &:not(.light *) }", "&:is(.dark *)"]],
+  content: [
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  darkMode: [
+    "variant",
+    [
+      "@media (prefers-color-scheme: dark) { &:not(.light *) }",
+      "&:is(.dark *)",
+    ],
+  ],
   theme: {
     extend: {
       backgroundColor: {
@@ -25,9 +35,14 @@ const config: Config = {
         "text-medium": "0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.6)",
         "text-heavy": "0 0 1rem rgba(0, 0, 0, 0.7)",
       },
-      boxShadow: {
-        soft: "0px .1rem .3rem -0.1rem rgba(0,0,0,0.1)",
-        md: "0px .1rem .3rem 0.02rem rgba(0,0,0,0.1)",
+      animation: {
+        "loop-scroll": "loop-scroll 5s linear infinite",
+      },
+      keyframes: {
+        "loop-scroll": {
+          from: { transform: "translateX(0%)" },
+          to: { transform: "translateX(-100%)" },
+        },
       },
     },
     screens: {
@@ -36,6 +51,7 @@ const config: Config = {
       md: { min: "768px", max: "1023px" },
       lg: "1024px",
       xl: "1280px",
+      "2xl": "1370px",
     },
   },
 

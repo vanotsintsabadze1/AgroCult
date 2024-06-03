@@ -1,25 +1,21 @@
 import ItemCard from "./ItemCard";
-import { getScopedI18n } from "../../locales/server";
 
 interface Props {
   items: ShopItem[];
+  layout: string;
 }
 
-export default async function ItemsWrapper({ items }: Props) {
-  const word = await getScopedI18n("store");
+export default function ItemsWrapper({ items, layout }: Props) {
+  const multiColView =
+    "relative grid grid-cols-1 gap-[5rem] pr-[1rem] md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3";
+  const singleColView =
+    "relative grid grid-cols-1 gap-[5rem] pr-[1rem] md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3 lg:flex lg:flex-col lg:items-center lg:w-auto";
 
   return (
-    <section className="overflow mt-[2rem] flex w-full flex-col items-center">
-      <div className="mt-[2rem] flex w-full items-center justify-center">
-        <h2 className="mb-[2rem] text-[2.2rem] font-bold uppercase tracking-wide dark:text-dark-mode">{word("topSelling")}</h2>
-      </div>
-      <div className="flex w-full items-center justify-center gap-x-[6rem] p-[4rem_2rem] xs:gap-x-0">
-        <div className="grid gap-[7rem] px-[3rem] xs:px-0 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {items.map((item) => {
-            return <ItemCard {...item} key={item.id} />;
-          })}
-        </div>
-      </div>
-    </section>
+    <div className={layout === "multi" ? multiColView : singleColView}>
+      {items.map((item, idx) => (
+        <ItemCard key={idx} {...item} layout={layout} />
+      ))}
+    </div>
   );
 }

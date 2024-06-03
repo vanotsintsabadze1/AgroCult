@@ -24,23 +24,65 @@ export default {
   },
   landing: {
     welcome: "Welcome To VUENNO",
-    phrase: "World's finest farming machinery now available for you anywhere. We bring you the best quality products at the best prices.",
+    phrase:
+      "World's finest farming machinery now available for you anywhere. We bring you the best quality products at the best prices.",
     goToStore: "Go To The Store",
-    getStarted: "How To Get Started",
     stages: {
-      first: "Find the desired equipment or agricultural tool, add it to the cart or contact a sales consultant",
-      second: "Pay with any bank and take advantage of up to 5 years of installments",
-      third: "Receive the purchased product and enjoy the highest quality",
+      first: {
+        borderTitle: "Finest Machinery",
+        title: "Restore, Enhance, Protect",
+        first:
+          "We are dedicated to providing top-quality agricultural machinery that ensures the well-being of the land, the farmers, our customers, and the environment.",
+        second:
+          "The machinery we offer promises advancements as we support sustainable farming practices, contributing to reduced envornmental impact and enhanced productivity.",
+      },
+      second: {
+        borderTitle: "Environment",
+        title: "Sustainable Energy Initiatives",
+        first:
+          "At AgroCult, we are deeply committed to the principles of sustainability and environmental stewardship. Recognizing the critical importance of water and energy conservation in modern agriculture, we have developed a range of innovative machinery designed to address these vital issues.",
+        second:
+          "Our latest irrigation systems represent a significant leap forward in water management technology. Utilizing precision drip irrigation techniques, these systems ensure that water is delivered directly to the plant roots, minimizing evaporation and runoff.",
+      },
+      third: {
+        borderTitle: "The Team",
+        title: "Our Dedicated Agricultural Experts",
+        first:
+          "Our team members are more than just employees; they’re the backbone of our company. We invest in their growth and well-being, knowing that their expertise and dedication drive our success. Our shared commitment to excellence in agricultural technology makes us a strong and innovative partner for farmers everywhere.",
+      },
     },
-    customOfferTitle: "Have a custom offer?",
-    customOfferPhrase: "Contact us and we will make special arrangements for you!",
-    contactUs: "Contact Our Sales Team",
+    aboutCompany: "About The Company",
+    aboutUs:
+      "AgroCult was founded in 1980 by visionary agricultural engineer Amiran Zhvania, who had a dream to revolutionize farming practices.",
+    aboutUsSecond:
+      " With a deep passion for the land and a relentless drive for innovation, Amiran set out to create a company that would provide farmers with the most advanced and reliable agricultural machinery available.",
   },
 
+  about: {
+    title: "About Us",
+    openingParagraph:
+      "AgroCult is a leading provider of agricultural machinery and equipment, dedicated to supporting farmers and agricultural businesses worldwide. Our mission is to help farmers achieve greater productivity, efficiency, and sustainability through the use of innovative technology and advanced machinery.",
+    secondOpeningParagraph:
+      "We offer a wide range of products and services designed to meet the diverse needs of modern agriculture, from precision irrigation systems to cutting-edge harvesting equipment. Our team of agricultural experts is committed to providing the highest level of service and support to our customers, ensuring that they have the tools and resources they need to succeed.",
+    charities: {
+      title: "AgroCult Charities",
+      openingParagraph:
+        "AgroCult’s commitment to the community extends beyond technological innovation. In 2005, the company established AgroCult Charities, a non-profit organization dedicated to supporting agricultural communities worldwide. Through this initiative, AgroCult has funded numerous projects, including the construction of wells in drought-stricken areas, the development of educational programs for young farmers, and the provision of emergency aid to regions affected by natural disasters.",
+      secondOpeningParagraph:
+        "We are also proud supporters of global hunger relief efforts. Partnering with international organizations, AgroCult helps to provide food and resources to regions affected by food insecurity. Our goal is to leverage our expertise and resources to make a meaningful impact on global food supply chains. Our efforts include:",
+    },
+    futureGoals: {
+      title: "Future of AgroCult",
+      openingParagraph:
+        "As we look to the future, AgroCult remains committed to its core values of innovation, sustainability, and community. We are constantly exploring new technologies and techniques to improve the efficiency and productivity of modern agriculture, while also working to reduce the environmental impact of farming practices. Our goal is to be a leader in the development of sustainable agricultural solutions, helping farmers around the world to feed their communities and protect the planet for future generations.",
+      secondOpeningParagraph:
+        "We invite you to join us on this journey as we work together to build a brighter, more sustainable future for agriculture.",
+    },
+  },
   store: {
     topSelling: "Top Sellers",
     startPayingPhrase: "Start Paying monthly for",
-    buy: "Buy",
+    buy: "Buy Now",
   },
 
   navigation: {

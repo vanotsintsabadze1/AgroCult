@@ -1,47 +1,80 @@
 import Image from "next/image";
 import { getScopedI18n } from "@/locales/server";
+import FadeWrapper from "../Animation-Wrappers/FadeWrapper";
 
 export default async function Stages() {
   const word = await getScopedI18n("landing");
 
-  const stages = [
+  interface Stage {
+    borderTitle: string;
+    title: string;
+    imageUrl: string;
+    firstPhrase: string;
+    secondPhrase?: string;
+  }
+
+  const stages: Stage[] = [
     {
-      imageUrl: "/images/landing-stages/stage-one.webp",
-      description: word("stages.first"),
+      borderTitle: word("stages.first.borderTitle"),
+      title: word("stages.first.title"),
+      imageUrl: "/images/landing-stages/first-stage.webp",
+      firstPhrase: word("stages.first.first"),
+      secondPhrase: word("stages.first.second"),
     },
     {
-      imageUrl: "/images/landing-stages/stage-two.webp",
-      description: word("stages.second"),
+      borderTitle: word("stages.second.borderTitle"),
+      title: word("stages.second.title"),
+      imageUrl: "/images/landing-stages/second-stage.webp",
+      firstPhrase: word("stages.second.first"),
+      secondPhrase: word("stages.second.second"),
     },
     {
-      imageUrl: "/images/landing-stages/stage-three.webp",
-      description: word("stages.third"),
+      borderTitle: word("stages.third.borderTitle"),
+      title: word("stages.third.title"),
+      imageUrl: "/images/landing-stages/third-stage.webp",
+      firstPhrase: word("stages.third.first"),
     },
   ];
+
   return (
-    <div className="flex w-full flex-col items-center justify-center py-[2rem] lg:w-[100rem] xl:w-[130rem]">
-      <div className="mt-[2rem] flex w-full items-center justify-center py-[3rem]">
-        <h4 className="text-[2.5rem] font-bold uppercase xl:text-[4rem] dark:text-white">{word("getStarted")}</h4>
-      </div>
-      <div className="mt-[1rem] flex w-full flex-col items-center justify-center gap-[3rem] px-[2rem] xs:gap-x-0 xs:p-[1rem] md:gap-y-[5rem] lg:flex-row lg:flex-wrap lg:gap-x-[15rem]">
-        {stages.map((stage, idx) => {
-          return (
+    <div className="flex w-full flex-col items-center justify-center py-[2rem] sm:px-[5rem]">
+      <section className="flex w-full flex-col items-center justify-center gap-y-[4rem] px-[2rem] py-[2rem] lg:gap-y-[8rem]">
+        <FadeWrapper direction="up" delay={0} duration={1000}>
+          {stages.map((stage, index) => (
             <div
-              key={idx}
-              className={`flex w-full items-center justify-center ${
-                idx === 1 ? "flex-row-reverse" : ""
-              } gap-[2rem] md:gap-[3rem] lg:my-[4rem] lg:w-auto lg:flex-row lg:gap-[2rem]`}
+              key={index}
+              className={`flex w-[40rem] flex-col items-center gap-[1rem] lg:w-auto lg:items-start lg:justify-between lg:gap-x-[3rem] ${index === 1 ? "lg:flex-row-reverse" : "lg:flex-row"}`}
             >
-              <p className="w-[25rem] text-center text-[1.4rem] font-medium md:text-[1.4rem] lg:w-[30rem] lg:text-[1.5rem] dark:text-white">
-                {stage.description}
-              </p>
-              <div className="relative h-[12rem] w-[12rem] xs:h-[7rem] xs:w-[8rem] md:h-[15rem] md:w-[15rem] lg:h-[14rem] lg:w-[14rem] xl:h-[17rem] xl:w-[17rem]">
-                <Image src={stage.imageUrl} fill alt={`${idx}-stage`} />
+              <div className="relative h-[28rem] w-[38rem] lg:h-[35rem] lg:w-[45rem] xl:h-[45rem] xl:w-[55rem]">
+                <Image
+                  src={stage.imageUrl}
+                  alt={`pic-${index}`}
+                  fill
+                  className=" rounded-[1rem] shadow-lg  shadow-gray-500/50"
+                />
+                <div className="absolute bottom-0 z-[6] flex h-[6rem] w-full items-center rounded-b-[1rem] bg-green-700 px-[1rem]">
+                  <h2 className="text-[1.8rem] text-white shadow-green-500">
+                    {stage.borderTitle}
+                  </h2>
+                </div>
+              </div>
+              <div className="pl-[1rem] dark:text-white">
+                <h4 className="mt-[1.5rem] max-w-[35rem] break-words text-[3rem] font-bold text-[#121212] drop-shadow-lg lg:text-green-800 dark:text-green-600">
+                  {stage.title}
+                </h4>
+                <p className="mt-[1rem] max-w-[40rem] text-[1.5rem] font-medium">
+                  {stage.firstPhrase}
+                </p>
+                {stage.secondPhrase && (
+                  <p className="mt-[2rem] max-w-[40rem] text-[1.5rem] font-medium">
+                    {stage.secondPhrase}
+                  </p>
+                )}
               </div>
             </div>
-          );
-        })}
-      </div>
+          ))}
+        </FadeWrapper>
+      </section>
     </div>
   );
 }

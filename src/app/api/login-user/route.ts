@@ -13,7 +13,6 @@ export const GET = async (_: NextRequest) => {
     email = data.user.email;
     avatar = data.user.picture;
     name = data.user.nickname;
-    console.log(data);
   }
 
   try {

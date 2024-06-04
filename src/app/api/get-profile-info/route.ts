@@ -3,7 +3,6 @@ import { NextResponse, NextRequest } from "next/server";
 
 export async function POST(req: NextRequest) {
   const { userId } = await req.json();
-  console.log("userId", userId);
 
   try {
     const res = await sql`SELECT * FROM users WHERE user_id = ${userId}`;

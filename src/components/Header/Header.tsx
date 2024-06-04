@@ -8,7 +8,6 @@ import LocaleSwitcher from "./LocaleSwitcher";
 import ThemeSwitcher from "./Burger-Menu/ThemeSwitcher";
 import { getCurrentLocale } from "../../locales/server";
 import { getSession } from "@auth0/nextjs-auth0";
-import { redirect } from "next/navigation";
 
 async function getCartItems(userId: string) {
   if (!userId) {

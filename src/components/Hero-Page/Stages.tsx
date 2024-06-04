@@ -53,22 +53,16 @@ export default async function Stages() {
                   className=" rounded-[1rem] shadow-lg  shadow-gray-500/50"
                 />
                 <div className="absolute bottom-0 z-[6] flex h-[6rem] w-full items-center rounded-b-[1rem] bg-green-700 px-[1rem]">
-                  <h2 className="text-[1.8rem] text-white shadow-green-500">
-                    {stage.borderTitle}
-                  </h2>
+                  <h2 className="text-[1.8rem] text-white shadow-green-500">{stage.borderTitle}</h2>
                 </div>
               </div>
               <div className="pl-[1rem] dark:text-white">
                 <h4 className="mt-[1.5rem] max-w-[35rem] break-words text-[3rem] font-bold text-[#121212] drop-shadow-lg lg:text-green-800 dark:text-green-600">
                   {stage.title}
                 </h4>
-                <p className="mt-[1rem] max-w-[40rem] text-[1.5rem] font-medium">
-                  {stage.firstPhrase}
-                </p>
+                <p className="mt-[1rem] max-w-[40rem] text-[1.5rem] font-medium">{stage.firstPhrase}</p>
                 {stage.secondPhrase && (
-                  <p className="mt-[2rem] max-w-[40rem] text-[1.5rem] font-medium">
-                    {stage.secondPhrase}
-                  </p>
+                  <p className="mt-[2rem] max-w-[40rem] text-[1.5rem] font-medium">{stage.secondPhrase}</p>
                 )}
               </div>
             </div>

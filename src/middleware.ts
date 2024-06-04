@@ -12,8 +12,18 @@ export async function middleware(request: NextRequest) {
   const session = await getSession();
   const user = session?.user;
 
-  if ((!user && pathname === "/en/profile") || pathname === "/ka/profile") {
+  if (!user && (pathname === "/en/profile" || pathname === "/ka/profile")) {
     return NextResponse.redirect(new URL("/", request.url));
+  }
+
+  if (!user && (pathname === "/en/admin" || pathname === "/ka/admin")) {
+    return NextResponse.redirect(new URL("/", request.url));
+  }
+
+  if (user) {
+    if (!user.role.includes("admin") && (pathname === "/en/admin" || pathname === "/ka/admin")) {
+      return NextResponse.redirect(new URL("/", request.url));
+    }
   }
 
   return I18nMiddleware(request);

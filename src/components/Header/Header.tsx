@@ -8,23 +8,20 @@ import LocaleSwitcher from "./LocaleSwitcher";
 import ThemeSwitcher from "./Burger-Menu/ThemeSwitcher";
 import { getCurrentLocale } from "../../locales/server";
 import { getSession } from "@auth0/nextjs-auth0";
-// import { redirect } from "next/navigation";
+import { redirect } from "next/navigation";
 
 async function getCartItems(userId: string) {
   if (!userId) {
     return [];
   }
 
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-cart-items`,
-    {
-      method: "POST",
-      body: JSON.stringify({ userId }),
-      next: {
-        tags: ["cart"],
-      },
+  const res = await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-cart-items`, {
+    method: "POST",
+    body: JSON.stringify({ userId }),
+    next: {
+      tags: ["cart"],
     },
-  );
+  });
 
   return await res.json();
 }
@@ -39,23 +36,11 @@ export default async function Header() {
     <header className="sticky top-0 z-[10] flex w-full items-center justify-center bg-body py-[1rem] lg:py-[1rem] dark:bg-dark-primary">
       <div className="relative flex w-full items-center justify-center px-[2rem] lg:justify-between">
         <section className="flex items-center gap-[2rem] px-[1rem] py-[1rem]">
-          <div>
-            <Image
-              src="/images/logos/main-logo-colored.webp"
-              width={150}
-              height={150}
-              alt="company-logo"
-              className="dark:hidden"
-            />
+          <div className="relative h-[5rem] w-[18rem] dark:hidden">
+            <Image src="/images/logos/main-logo-colored.webp" fill alt="company-logo" />
           </div>
-          <div>
-            <Image
-              src="/images/logos/main-logo-white.webp"
-              width={150}
-              height={150}
-              alt="company-logo"
-              className="hidden dark:block"
-            />
+          <div className="relative hidden h-[5rem] w-[18rem] dark:block">
+            <Image src="/images/logos/main-logo-white.webp" fill alt="company-logo-dark" />
           </div>
           <div className="hidden lg:block">
             <Navigation className="flex items-center justify-center gap-[3rem] px-[2rem] py-[1rem] text-[1.4rem] text-black" />
@@ -70,22 +55,10 @@ export default async function Header() {
             }}
           />
           <LocaleSwitcher locale={locale} />
-          {user && (
-            <Cart
-              className="relative hidden lg:block"
-              usedFor="desktop"
-              cart={cart}
-            />
-          )}
+          {user && <Cart className="relative hidden lg:block" usedFor="desktop" cart={cart} />}
           {user ? <UserButton /> : <LoginButton />}
         </section>
-        {user && (
-          <Cart
-            className="absolute right-[7rem] lg:hidden"
-            usedFor="mobile"
-            cart={cart}
-          />
-        )}
+        {user && <Cart className="absolute right-[7rem] lg:hidden" usedFor="mobile" cart={cart} />}
         <MobileMenu />
       </div>
     </header>

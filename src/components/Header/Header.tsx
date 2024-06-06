@@ -45,7 +45,7 @@ export default async function Header() {
             <Navigation className="flex items-center justify-center gap-[3rem] px-[2rem] py-[1rem] text-[1.4rem] text-black" />
           </div>
         </section>
-        <section className="relative hidden items-center justify-center gap-[2rem] px-[1rem] lg:flex">
+        <section className="relative hidden items-center justify-center gap-[2.5rem] px-[1rem] lg:flex">
           <ThemeSwitcher
             className="relative"
             animationVariant={{

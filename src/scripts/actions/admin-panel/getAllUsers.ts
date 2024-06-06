@@ -1,11 +1,20 @@
 "use server";
-
-import { revalidatePath } from "next/cache";
+import { sql } from "@vercel/postgres";
+import { getSession } from "@auth0/nextjs-auth0";
 
 export async function getAllUsers() {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-all-users`);
-  const { users } = await response.json();
-  revalidatePath("/admin");
+  const session = await getSession();
+  const role = session?.user?.role;
 
-  return users.rows;
+  if (!role || !role.includes("Admin")) {
+    return [];
+  }
+
+  try {
+    const users = await sql`SELECT * FROM users`;
+    return users.rows;
+  } catch (err) {
+    console.error(err);
+    return [];
+  }
 }

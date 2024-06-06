@@ -21,7 +21,7 @@ export default function Cart({ className, usedFor, cart: cartItems }: Props) {
     <>
       <div className={className}>
         <div className="relative">
-          <button className="relative h-[3rem] w-[3rem]" onClick={showCartItems}>
+          <button className="relative h-[2rem] w-[2rem]" onClick={showCartItems}>
             <Image src="/images/icons/header-icons/cart.webp" fill alt="cart-black" className="dark:hidden" />
             <Image
               src="/images/icons/header-icons/cart-white.webp"

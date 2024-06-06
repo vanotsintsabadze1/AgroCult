@@ -1,11 +1,14 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { sql } from "@vercel/postgres";
 
-export async function deleteUser(id: number) {
-  await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/delete-user`, {
-    method: "DELETE",
-    body: JSON.stringify({ id }),
-  });
-  revalidatePath("/admin");
+export async function deleteUser(id: string) {
+  try {
+    await sql`DELETE FROM users WHERE user_id = ${String(id)}`;
+  } catch (err) {
+    console.error(err);
+  }
+
+  revalidatePath("/admin/users");
 }

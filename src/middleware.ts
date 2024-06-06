@@ -21,7 +21,7 @@ export async function middleware(request: NextRequest) {
   }
 
   if (user) {
-    if (!user.role.includes("admin") && (pathname === "/en/admin" || pathname === "/ka/admin")) {
+    if (!user.role.includes("Admin") && (pathname === "/en/admin" || pathname === "/ka/admin")) {
       return NextResponse.redirect(new URL("/", request.url));
     }
   }

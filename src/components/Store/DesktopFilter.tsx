@@ -5,7 +5,7 @@ import SortPreference from "./SortPreference";
 
 export default function DesktopFilter() {
   return (
-    <div className="sticky hidden w-[40rem] flex-col rounded-md px-[2rem] lg:flex">
+    <div className="hidden w-[40rem] flex-col rounded-md px-[2rem] pt-[3rem] lg:flex dark:bg-body">
       <div className="mb-[2rem] flex w-[35rem] flex-col divide-y divide-gray-200 border border-gray-200 bg-white">
         {categories.map((item, idx) => (
           <div

@@ -3,8 +3,8 @@
 import Image from "next/image";
 import { useScopedI18n } from "../../locales/client";
 // import { useRouter } from "next/navigation";
-// import { addToCart } from "../../scripts/actions/cart/addToCart";
-// import { useUser } from "@auth0/nextjs-auth0/client";
+import { addToCart } from "../../scripts/actions/cart/addToCart";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 interface Props extends ShopItem {
   layout: string;
@@ -18,17 +18,17 @@ function ItemCard({ images, id, title, description, price, layout }: Props) {
     "flex w-[32rem] flex-col items-center rounded-lg bg-white px-[2rem] pb-[3rem] pt-[2rem] shadow-md lg:min-w-[60rem] xl:min-w-[80rem] lg:flex-row lg:gap-x-[2rem]";
   const word = useScopedI18n("store");
   // const router = useRouter();
-  // const { user } = useUser();
+  const { user } = useUser();
 
   // function redirectOnClick() {
   //   router.push(`/store/${id}`);
   // }
 
-  // function onAddToCart() {
-  //   if (user) {
-  //     addToCart(user.sub as string, id);
-  //   }
-  // }
+  function onAddToCart() {
+    if (user) {
+      addToCart(user.sub as string, id);
+    } else {}
+  }
 
   return (
     <div className={layout === "multi" ? multiColView : singleColView}>
@@ -53,7 +53,7 @@ function ItemCard({ images, id, title, description, price, layout }: Props) {
           <button className="min-w-[17rem] rounded-lg bg-green-700 py-[.7rem] text-[1.4rem] font-bold text-white">
             {word("buy")}
           </button>
-          <button className="rounded-md bg-gray-200 p-[.5rem] px-[1rem] shadow-sm">
+          <button className="rounded-md bg-gray-200 p-[.5rem] px-[1rem] shadow-sm" onClick={onAddToCart}>
             <Image
               width={25}
               height={25}

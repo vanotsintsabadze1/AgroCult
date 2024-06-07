@@ -32,6 +32,14 @@ interface User {
   user_id: string;
   name: string;
   email: string;
-  image: string;
+  image?: string;
   role: string[];
+}
+
+interface UserDB {
+  user_id: string;
+  name: string;
+  email: string;
+  image?: string;
+  role: string;
 }

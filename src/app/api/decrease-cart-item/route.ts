@@ -13,13 +13,9 @@ export async function POST(request: NextRequest) {
       await sql`SELECT cart.quantity FROM cart WHERE product_id = ${Number(productId)} AND user_id = ${String(userId)}`;
 
     if (res.rows[0].quantity === 1) {
-      await sql`DELETE FROM cart WHERE product_id = ${Number(productId)} AND user_id = ${String(userId)}`.catch((e) =>
-        console.log(e)
-      );
+      await sql`DELETE FROM cart WHERE product_id = ${Number(productId)} AND user_id = ${String(userId)}`;
     } else {
-      await sql`UPDATE cart SET quantity = quantity - 1 WHERE product_id = ${Number(productId)} AND user_id = ${String(userId)}`.catch(
-        (e) => console.log(e)
-      );
+      await sql`UPDATE cart SET quantity = quantity - 1 WHERE product_id = ${Number(productId)} AND user_id = ${String(userId)}`;
     }
 
     return NextResponse.json({ message: "Decreased cart item" }, { status: 200 });

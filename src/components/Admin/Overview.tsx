@@ -1,6 +1,17 @@
-import { getAllUsers } from "../../scripts/actions/admin-panel/getAllUsers";
+import { sql } from "@vercel/postgres";
+
+async function getUsers() {
+  try {
+    const res = await sql`SELECT * FROM users`;
+    return res.rows;
+  } catch (error) {
+    console.error(error)
+    return [];
+  }
+}
+
 export default async function UserInformation() {
-  const users = await getAllUsers();
+  const users = await getUsers();
   const amountOfUsers = users.length;
 
   const data = [

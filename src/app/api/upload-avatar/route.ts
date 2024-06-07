@@ -10,8 +10,7 @@ export async function POST(request: Request): Promise<NextResponse> {
   const { searchParams } = new URL(request.url);
   const filename = searchParams.get("filename");
   const session = await getSession();
-  const name = session?.user.nickname;
-  console.log(name);
+  const name = session?.user.name;
 
   if (!filename || !request.body) {
     return NextResponse.json(new Error("Error while uploading image"), {
@@ -26,9 +25,7 @@ export async function POST(request: Request): Promise<NextResponse> {
   const userId = session?.user.sub;
 
   try {
-    await sql`UPDATE users SET image = ${url} WHERE user_id = ${userId}`.catch(
-      (e) => console.log(e)
-    );
+    await sql`UPDATE users SET image = ${url} WHERE user_id = ${userId}`;
   } catch (err) {
     NextResponse.json({ err }, { status: 500 });
   }

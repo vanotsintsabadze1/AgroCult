@@ -1,8 +1,15 @@
 import { getAllUsers } from "../../../../../scripts/actions/admin-panel/getAllUsers";
 import InteractionWrapper from "../../../../../components/Admin/Users/InteractionWrapper";
 
-export default async function page() {
-  const users = await getAllUsers();
+interface Props {
+  searchParams: {
+    searchName: string;
+  };
+}
 
-  return <InteractionWrapper users={users as User[]} />;
+export default async function page({ searchParams }: Props) {
+  const searchName = searchParams.searchName;
+  const users = await getAllUsers(searchName ? { searchName } : {});
+
+  return <InteractionWrapper users={users as UserDB[]} />;
 }

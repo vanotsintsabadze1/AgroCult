@@ -10,7 +10,7 @@ export default async function AdminLayout({ children }: Props) {
   const user = session?.user;
 
   return (
-    <main className="flex w-full">
+    <main>
       <SideBar name={user?.name} profilePicture={user?.picture} />
       {children}
     </main>

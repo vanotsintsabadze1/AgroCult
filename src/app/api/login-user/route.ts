@@ -6,20 +6,19 @@ import { NextResponse } from "next/server";
 export async function GET() {
   const data = await getSession();
 
-  let id, email, avatar, name, role;
+  let id, email, avatar, name;
 
   if (data) {
     id = data.user.sub;
     email = data.user.email;
     avatar = data.user.picture;
-    name = data.user.nickname;
-    role = data.user.role;
+    name = data.user.name;
   }
 
   try {
     const res = await sql`SELECT * FROM users WHERE user_id = ${String(id)}`;
     if (res.rowCount === 0) {
-      await sql`INSERT INTO users (user_id, name, email, image, role) VALUES (${String(id)}, ${String(name)}, ${String(email)}, ${String(avatar)}, ${String(role)})
+      await sql`INSERT INTO users (user_id, name, email, image) VALUES (${String(id)}, ${String(name)}, ${String(email)}, ${String(avatar)})
         `;
     }
   } catch (err) {

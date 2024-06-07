@@ -1,14 +1,34 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
 import { sql } from "@vercel/postgres";
+import { getAuthToken } from "./getAuthToken";
 
 export async function deleteUser(id: string) {
-  try {
-    await sql`DELETE FROM users WHERE user_id = ${String(id)}`;
-  } catch (err) {
-    console.error(err);
+  const url = process.env.AUTH0_ISSUER_BASE_URL;
+  const token = await getAuthToken();
+
+  if (token === "") {
+    return { message: "Invalid Token", status: 500 };
   }
 
-  revalidatePath("/admin/users");
+  try {
+    const res = await fetch(`${url}/api/v2/users/${id}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      redirect: "follow",
+    });
+    console.log(res.status);
+
+    if (!res.ok) {
+      return { message: "Failed to delete the user", status: res.status };
+    }
+
+    await sql`DELETE FROM users WHERE user_id = ${String(id)}`;
+    return { message: "User deleted successfully!", status: 200 };
+  } catch (err) {
+    console.error(err);
+    return { message: "Failed to delete the user", status: 500 };
+  }
 }

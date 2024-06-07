@@ -1,100 +1,42 @@
-import { useEffect, useState } from "react";
-import { deleteUser } from "../../../scripts/actions/admin-panel/deleteUser";
-import { useRouter } from "next/navigation";
-import { useUser } from "@auth0/nextjs-auth0/client";
-
-interface ModalMessage {
-  type: string;
-  message: string;
-}
+import UserActions from "./UserActions";
 
 interface Props {
-  users: User[];
-  search: string;
-  setShouldLoadingModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  setModalMessage: React.Dispatch<React.SetStateAction<ModalMessage>>;
+  users: UserDB[];
 }
 
-export default function UserList({ users, search, setShouldLoadingModalOpen, setModalMessage }: Props) {
-  const [userList, setUserList] = useState<User[]>(users);
-  const router = useRouter();
-  const session = useUser();
-
-  useEffect(() => {
-    if (search === "") {
-      if (userList.length !== users.length) {
-        setUserList(users);
-      }
-    }
-
-    if (search !== "") {
-      const filteredUsers = users.filter((user) => user.name.includes(search));
-      setUserList(filteredUsers);
-    }
-  }, [search]);
-
-  useEffect(() => {
-    console.log(userList);
-  }, [userList]);
-
-  function handleUserDelete(id: string) {
-    if (session) {
-      setShouldLoadingModalOpen(true);
-      if (session.user?.sub === id) {
-        setModalMessage({ type: "error", message: "You cannot delete yourself!" });
-        setTimeout(() => {
-          setShouldLoadingModalOpen(false);
-        }, 3500);
-        return;
-      }
-
-      const filteredList = userList.filter((user) => user.user_id !== id);
-      setUserList(filteredList);
-      setModalMessage({ type: "success", message: "User deleted successfully!" });
-      deleteUser(id);
-      router.refresh();
-    }
-  }
-
+export default function UserList({ users }: Props) {
   return (
-    <>
-      <div className="relative mt-[2rem] flex w-full flex-col gap-[1rem] overflow-x-auto pr-[2rem]">
-        <div className="flex w-[75rem] px-[1rem] text-[1.3rem] font-medium text-gray-400">
-          <div className="w-[15rem]">User ID</div>
-          <div className="w-[15rem]">Name</div>
-          <div className="w-[15rem]">Email Addr.</div>
-          <div className="flex w-[13rem] justify-center">Role</div>
-          <div className="ml-[2rem] flex flex-grow items-center justify-center">Action</div>
-        </div>
-        {userList.map((user) => (
-          <div
-            key={user.user_id}
-            className="flex w-[75rem] items-center gap-[5rem] overflow-hidden rounded-lg border border-gray-300 bg-white px-[1rem] py-[1rem] text-[1.5rem] shadow-md"
-          >
-            <div className="w-[10rem]">
-              <p className="truncate">{user.user_id}</p>
-            </div>
-            <div className="w-[10rem]">
-              <p className="truncate">{user.name}</p>
-            </div>
-            <div className="w-[15rem] flex-grow">
-              <p className="truncate ">{user.email}</p>
-            </div>
-            <div className="w-[5rem] flex-grow">
-              <p className="truncate ">{user.role}</p>
-            </div>
-            <div className="flex w-[15rem] flex-grow justify-end gap-[1rem]">
-              <button className="rounded-lg bg-green-500 px-[1rem] py-[.5rem] text-white">Edit</button>
-              <button
-                className="rounded-lg bg-red-500 px-[1rem] py-[.5rem] text-white"
-                onClick={() => handleUserDelete(user.user_id)}
-              >
-                Delete
-              </button>
-            </div>
-          </div>
-        ))}
+    <div className="m-auto mt-[2rem] flex h-full w-full flex-col overflow-x-auto px-[1rem] lg:items-center">
+      <div className="grid w-[90rem] grid-cols-5 rounded-t-3xl bg-green-600 px-[1rem] py-[1.5rem] text-white">
+        <div className="cols-span-1 m-auto text-[1.5rem]">ID</div>
+        <div className="cols-span-1 m-auto text-[1.5rem]">Name</div>
+        <div className="cols-span-1 m-auto text-[1.5rem]">Email</div>
+        <div className="cols-span-1 m-auto text-[1.5rem]">Role</div>
+        <div className="cols-span-1 m-auto text-[1.5rem]">Action</div>
       </div>
-    </>
+
+      {users.map((user) => (
+        <div
+          key={user.user_id}
+          className="grid w-[90rem] grid-cols-5 bg-gray-200 px-[1rem] py-[1.5rem] last:rounded-b-3xl"
+        >
+          <div className="cols-span-1 m-auto text-[1.5rem]">
+            <p className="w-[10rem] truncate">{user.user_id}</p>
+          </div>
+          <div className="cols-span-1 m-auto text-[1.5rem]">
+            <p className="w-[10rem] truncate">{user.name}</p>
+          </div>
+          <div className="cols-span-1 m-auto text-[1.5rem]">
+            <p className="w-[10rem] truncate">{user.email}</p>
+          </div>
+          <div className="cols-span-1 m-auto text-[1.5rem]">
+            <p className="truncate">{user.role}</p>
+          </div>
+          <div className="cols-span-1 m-auto flex items-center justify-center gap-[1rem] text-[1.5rem]">
+            <UserActions user_id={user.user_id} name={user.name} email={user.email} role={user.role} />
+          </div>
+        </div>
+      ))}
+    </div>
   );
 }

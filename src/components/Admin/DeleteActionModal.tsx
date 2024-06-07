@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-const parentAnimations = {
+const parentModalAnimations = {
   hidden: { opacity: 0 },
   visible: { opacity: 1 },
 };
@@ -22,21 +22,22 @@ interface Props {
   };
 }
 
-export default function ActionModal({ modalMessage }: Props) {
+export default function DeleteActionModal({ modalMessage }: Props) {
   return (
     <motion.div
-      variants={parentAnimations}
+      variants={parentModalAnimations}
       initial="hidden"
       animate="visible"
       exit="hidden"
-      className="fixed top-0 z-[8] flex h-screen w-screen items-center justify-center bg-gray-300 pl-[6rem] opacity-70"
+      className="absolute left-0 top-0 z-[8] flex h-screen w-screen items-center justify-center"
     >
+      <canvas className="absolute h-full w-full bg-gray-300 opacity-50" />
       <motion.div
         variants={childModalAnimations}
         initial="hidden"
         animate="visible"
         exit="hidden"
-        className="flex h-[30rem] w-[30rem] flex-col items-center justify-center rounded-lg bg-white shadow-md"
+        className="z-[8] flex h-[30rem] w-[30rem] flex-col items-center justify-center rounded-lg bg-white shadow-md"
       >
         <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-6 -5 36 36">
           <motion.circle

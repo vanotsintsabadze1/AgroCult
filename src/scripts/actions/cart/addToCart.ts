@@ -10,7 +10,6 @@ export async function addToCart(userId: string, productId: number) {
 
   if (res.ok) {
     const data = await res.json();
-    console.log(data);
   }
 
   revalidateTag("cart");

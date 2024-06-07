@@ -1,16 +1,41 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
+import { getAuthToken } from "./getAuthToken";
+import { sql } from "@vercel/postgres";
 
-export async function editUser(id: number, name: string, email: string, password: string, role: string) {
-  try {
-    await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/update-user`, {
-      method: "PUT",
-      body: JSON.stringify({ id, name, email, password, role }),
-    });
-  } catch (err) {
-    console.error(err);
+export async function editUser(id: string, name: string, email: string, role: string) {
+  const url = process.env.AUTH0_ISSUER_BASE_URL;
+  const token = await getAuthToken();
+
+  if (token === "") {
+    return { message: "Invalid Token", status: 500 };
   }
 
-  revalidatePath("/admin");
+  try {
+    const res = await fetch(`${url}/api/v2/users/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        name,
+      }),
+      redirect: "follow",
+    });
+
+    if (!res.ok) {
+      return { message: "Failed to edit user", status: 500 };
+    } else {
+      try {
+        await sql`UPDATE users SET name = ${String(name)}, email = ${String(email)}, role = ${String(role)} WHERE user_id = ${String(id)}`;
+        return { message: "User edited successfully", status: 200 };
+      } catch (error) {
+        return { message: "Failed to edit user", status: 500 };
+      }
+    }
+  } catch (error) {
+    return { message: "Failed to edit user", status: 500 };
+  }
 }

@@ -8,27 +8,23 @@ import { AnimatePresence } from "framer-motion";
 import EditUserModal from "./EditUserModal";
 import DeleteActionModal from "../DeleteActionModal";
 import ConfirmationModal from "./ConfirmationModal";
+import Image from "next/image";
+import UserInformation from "./UserInformation";
 
 interface ModalMessage {
   type: string;
   message: string;
 }
 
-interface Props {
-  user_id: string;
-  name: string;
-  email: string;
-  role: string;
-}
-
-export default function UserActions({ user_id, name, email, role }: Props) {
+export default function UserActions({ user_id, name, email, role, image, created_at }: UserDB) {
   const session = useUser();
   const router = useRouter();
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [shouldLoadingModalOpen, setShouldLoadingModalOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState<ModalMessage>({ type: "loading", message: "" });
   const [confirmationModal, setConfirmationModal] = useState(false);
-
+  const [userDetailsModal, setUserDetailsModal] = useState(false);
+  const initialUserData: UserDB = { user_id, name, email, role };
   const [userDetails, setUserDetails] = useState({
     user_id: user_id,
     name: name,
@@ -85,16 +81,51 @@ export default function UserActions({ user_id, name, email, role }: Props) {
         {editModalOpen && (
           <EditUserModal
             userDetails={userDetails}
+            initialUserData={initialUserData}
             setUserDetails={setUserDetails}
             setEditModalOpen={setEditModalOpen}
           />
         )}
       </AnimatePresence>
-      <button className="rounded-lg bg-green-600 px-[1rem] py-[.5rem] text-white" onClick={handleUserEdit}>
-        Edit
+      <AnimatePresence>
+        {userDetailsModal && (
+          <UserInformation
+            user_id={user_id}
+            name={name}
+            email={email}
+            role={role}
+            image={image}
+            created_at={created_at}
+            setModal={setUserDetailsModal}
+          />
+        )}
+      </AnimatePresence>
+      <button onClick={() => setUserDetailsModal(true)}>
+        <Image
+          src="/images/icons/admin-icons/actions-icons/see-details.webp"
+          alt={`edit-icon.webp-${user_id}`}
+          width={20}
+          height={20}
+          className="brighthness-100 grayscale invert duration-500 ease-in-out hover:scale-110 hover:brightness-75 hover:grayscale-0 hover:invert-0"
+        />
       </button>
-      <button className="rounded-lg bg-red-600 px-[1rem] py-[.5rem] text-white" onClick={() => onDeleteButtonClick()}>
-        Delete
+      <button onClick={handleUserEdit}>
+        <Image
+          src="/images/icons/admin-icons/actions-icons/edit.webp"
+          alt={`edit-icon.webp-${user_id}`}
+          width={20}
+          height={20}
+          className="brighthness-100 grayscale invert duration-500 ease-in-out hover:scale-110 hover:brightness-75 hover:grayscale-0 hover:invert-0"
+        />
+      </button>
+      <button onClick={() => onDeleteButtonClick()}>
+        <Image
+          src="/images/icons/admin-icons/actions-icons/delete.webp"
+          alt={`edit-icon.webp-${user_id}`}
+          width={20}
+          height={20}
+          className="brighthness-100 grayscale invert duration-500 ease-in-out hover:scale-110 hover:brightness-75 hover:grayscale-0 hover:invert-0"
+        />
       </button>
     </>
   );

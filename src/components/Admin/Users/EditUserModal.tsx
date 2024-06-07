@@ -15,14 +15,30 @@ const childModalAnimations = {
 
 interface Props {
   userDetails: UserDB;
+  initialUserData: UserDB;
   setUserDetails: React.Dispatch<React.SetStateAction<UserDB>>;
   setEditModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function EditUserModal({ userDetails, setUserDetails, setEditModalOpen }: Props) {
+export default function EditUserModal({ userDetails, initialUserData, setUserDetails, setEditModalOpen }: Props) {
   const router = useRouter();
 
   async function onEditSubmit() {
+    if (userDetails.name === "" || userDetails.email === "") {
+      setEditModalOpen(false);
+      setUserDetails(initialUserData);
+      return;
+    }
+
+    if (
+      userDetails.name === initialUserData.name &&
+      userDetails.email === initialUserData.email &&
+      userDetails.role === initialUserData.role
+    ) {
+      setEditModalOpen(false);
+      return;
+    }
+
     await editUser(userDetails.user_id, userDetails.name, userDetails.email, userDetails.role);
     setEditModalOpen(false);
     setTimeout(() => {
@@ -88,12 +104,20 @@ export default function EditUserModal({ userDetails, setUserDetails, setEditModa
             </select>
           </div>
         </div>
-        <button
-          onClick={onEditSubmit}
-          className="my-[2rem] h-[4rem] w-[15rem] rounded-lg bg-green-600 text-[1.5rem] text-white shadow-md"
-        >
-          Submit
-        </button>
+        <div className="flex w-full flex-col items-center gap-[2rem] py-[2rem]">
+          <button
+            onClick={onEditSubmit}
+            className="h-[4rem] w-[15rem] rounded-lg bg-green-600 text-[1.5rem] text-white shadow-md"
+          >
+            Submit
+          </button>
+          <button
+            onClick={() => setEditModalOpen(false)}
+            className="h-[4rem] w-[15rem] rounded-lg border-2 border-green-600 text-[1.5rem] text-black shadow-md"
+          >
+            Close
+          </button>
+        </div>
       </motion.div>
     </motion.div>
   );

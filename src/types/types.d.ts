@@ -32,7 +32,7 @@ interface User {
   user_id: string;
   name: string;
   email: string;
-  image?: string;
+  image: string;
   role: string[];
 }
 
@@ -42,4 +42,5 @@ interface UserDB {
   email: string;
   image?: string;
   role: string;
+  created_at?: Date;
 }

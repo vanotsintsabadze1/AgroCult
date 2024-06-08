@@ -10,6 +10,7 @@ import DeleteActionModal from "../DeleteActionModal";
 import ConfirmationModal from "./ConfirmationModal";
 import Image from "next/image";
 import UserInformation from "./UserInformation";
+import { addLog } from "../../../scripts/actions/admin-panel/addLog";
 
 interface ModalMessage {
   type: string;
@@ -53,6 +54,7 @@ export default function UserActions({ user_id, name, email, role, image, created
       const res = await deleteUser(id);
       if (res.status === 200) {
         setModalMessage({ type: "success", message: "User deleted successfully!" });
+        addLog("Delete", `Deleted user - ${user_id}`)
       } else {
         setModalMessage({ type: "error", message: "Failed to delete user!" });
       }

@@ -44,3 +44,12 @@ interface UserDB {
   role: string;
   created_at?: Date;
 }
+
+interface Logs {
+  id: number;
+  performer_name: string;
+  performer_id: string;
+  type: string;
+  description: string;
+  performed_at: Date;
+}

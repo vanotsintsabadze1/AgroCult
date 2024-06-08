@@ -19,7 +19,6 @@ export async function deleteUser(id: string) {
       },
       redirect: "follow",
     });
-    console.log(res.status);
 
     if (!res.ok) {
       return { message: "Failed to delete the user", status: res.status };

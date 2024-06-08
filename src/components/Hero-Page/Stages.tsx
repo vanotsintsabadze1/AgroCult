@@ -45,7 +45,7 @@ export default async function Stages() {
               key={index}
               className={`flex w-[40rem] flex-col items-center gap-[1rem] lg:w-auto lg:items-start lg:justify-between lg:gap-x-[3rem] ${index === 1 ? "lg:flex-row-reverse" : "lg:flex-row"}`}
             >
-              <div className="relative h-[28rem] w-[38rem] lg:h-[35rem] lg:w-[45rem] xl:h-[45rem] xl:w-[55rem]">
+              <div className="relative h-[28rem] w-[38rem] lg:h-[35rem] lg:w-[45rem] xl:h-[40rem] xl:w-[55rem]">
                 <Image
                   src={stage.imageUrl}
                   alt={`pic-${index}`}

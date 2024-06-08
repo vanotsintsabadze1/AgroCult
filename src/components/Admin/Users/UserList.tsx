@@ -6,7 +6,6 @@ interface Props {
 }
 
 export default function UserList({ users }: Props) {
-  console.log(users);
   return (
     <div className="m-auto mt-[2rem] flex h-full w-full flex-col overflow-x-auto px-[1rem] lg:items-center">
       <div className="grid w-[90rem] grid-cols-5 rounded-t-xl bg-green-600 px-[1rem] py-[1.5rem] text-white">

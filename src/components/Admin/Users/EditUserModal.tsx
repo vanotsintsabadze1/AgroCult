@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { editUser } from "../../../scripts/actions/admin-panel/editUser";
 import { useRouter } from "next/navigation";
 import React from "react";
+import { addLog } from "../../../scripts/actions/admin-panel/addLog";
 
 const parentModalAnimations = {
   hidden: { opacity: 0 },
@@ -39,7 +40,11 @@ export default function EditUserModal({ userDetails, initialUserData, setUserDet
       return;
     }
 
-    await editUser(userDetails.user_id, userDetails.name, userDetails.email, userDetails.role);
+    const res = await editUser(userDetails.user_id, userDetails.name, userDetails.email, userDetails.role);
+    if (res.status === 200) {
+      addLog("Edit", `Edited user - ${userDetails.user_id}`);
+    }
+
     setEditModalOpen(false);
     setTimeout(() => {
       router.refresh();
@@ -64,7 +69,7 @@ export default function EditUserModal({ userDetails, initialUserData, setUserDet
       initial="hidden"
       animate="visible"
       exit="hidden"
-      className="absolute left-0 top-0 z-[8] flex h-screen w-full items-center justify-center"
+      className="absolute left-0 top-0 z-[8] flex h-screen w-full items-center justify-center pl-[6rem]"
     >
       <canvas className="absolute h-full w-full bg-gray-300 opacity-50" />
       <motion.div

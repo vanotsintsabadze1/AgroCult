@@ -10,15 +10,19 @@ const childModalAnimations = {
   visible: { y: 0 },
 };
 
-interface Props extends UserDB {
+interface Props extends Logs {
   setModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function UserInformation({ user_id, name, email, role, image, created_at, setModal }: Props) {
-  function onCopyUserId() {
-    navigator.clipboard.writeText(user_id);
-  }
-
+export default function LogInformation({
+  id,
+  performer_name,
+  performer_id,
+  type,
+  description,
+  performed_at,
+  setModal,
+}: Props) {
   return (
     <motion.div
       variants={parentModalAnimations}
@@ -35,33 +39,32 @@ export default function UserInformation({ user_id, name, email, role, image, cre
         exit="hidden"
         className="z-[8] flex flex-col items-center justify-center rounded-lg bg-white px-[1rem] py-[2.5rem] shadow-md"
       >
-        <img src={image} alt={name} className="h-[10rem] w-[10rem] rounded-[50%]" />
         <div className="mt-[2rem] flex w-full flex-col gap-[1rem] px-[1rem]">
           <div className="w-[30rem] overflow-x-auto">
-            <p className="text-[1.3rem] font-bold text-gray-500">User ID:</p>
-            <p>{user_id}</p>
-            <button
-              className="mt-[.5rem] cursor-pointer text-[1.3rem] font-bold text-blue-400 underline"
-              onClick={onCopyUserId}
-            >
-              Copy
-            </button>
+            <p className="text-[1.3rem] font-bold text-gray-500">Action ID:</p>
+            <p>{id}</p>
+            <button className="mt-[.5rem] cursor-pointer text-[1.3rem] font-bold text-blue-400 underline">Copy</button>
           </div>
           <p className="text-[1.5rem]">
-            <span className="text-[1.3rem] text-gray-500">Name</span>: <br />
-            {name}
+            <span className="text-[1.3rem] text-gray-500">Performer</span>: <br />
+            {performer_name}
           </p>
           <p className="text-[1.5rem]">
-            <span className="text-[1.3rem] text-gray-500">Email</span>: <br />
-            {email}
+            <span className="text-[1.3rem] text-gray-500">PID</span>: <br />
+            {performer_id}
           </p>
           <p className="text-[1.5rem]">
-            <span className="text-[1.3rem] text-gray-500">Role</span>: <br />
-            {role}
+            <span className="text-[1.3rem] text-gray-500">Type</span>: <br />
+            {type}
           </p>
+          <div className="w-[30rem] overflow-x-auto">
+            <p className="text-[1.3rem] font-bold text-gray-500">Description:</p>
+            <p>{description}</p>
+            <button className="mt-[.5rem] cursor-pointer text-[1.3rem] font-bold text-blue-400 underline">Copy</button>
+          </div>
           <p className="text-[1.5rem]">
             <span className="text-[1.3rem] text-gray-500">Created At</span>: <br />
-            {created_at?.toUTCString()}
+            {performed_at?.toLocaleDateString()} {performed_at?.toLocaleTimeString()}
           </p>
         </div>
         <button

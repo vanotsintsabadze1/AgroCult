@@ -1,6 +1,5 @@
 import Card from "./Card";
 import Stages from "./Stages";
-import ContactCard from "./ContactCard";
 import Partners from "./Partners";
 
 async function Introduction() {
@@ -20,13 +19,8 @@ async function Introduction() {
       <section className="flex w-full flex-col items-center gap-[1rem] pb-[2rem]">
         <Stages />
       </section>
-      <section className="mt-[3rem] flex w-full flex-col items-center gap-[1rem]">
-        <ContactCard />
-      </section>
       <section className="mt-[2rem] flex w-full flex-col items-center bg-gray-100 py-[3rem]  dark:bg-dark-primary">
-        <h2 className="text-[2.3rem] font-bold uppercase tracking-wide text-gray-400">
-          Our Partners
-        </h2>
+        <h2 className="text-[2.3rem] font-bold uppercase tracking-wide text-gray-400">Our Partners</h2>
         <Partners />
       </section>
     </>

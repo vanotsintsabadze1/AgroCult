@@ -13,7 +13,7 @@ interface Props extends ShopItem {
 // @ts-ignore
 function ItemCard({ images, id, title, description, price, layout }: Props) {
   const multiColView =
-    "flex max-w-[32rem] flex-col items-center rounded-lg bg-white px-[2rem] pb-[3rem] pt-[2rem] shadow-md";
+    "flex max-w-[30rem] flex-col items-center rounded-lg bg-white px-[2rem] pb-[3rem] py-[2rem] shadow-md ";
   const singleColView =
     "flex w-[32rem] flex-col items-center rounded-lg bg-white px-[2rem] pb-[3rem] pt-[2rem] shadow-md lg:min-w-[60rem] xl:min-w-[80rem] lg:flex-row lg:gap-x-[2rem]";
   const word = useScopedI18n("store");
@@ -27,27 +27,23 @@ function ItemCard({ images, id, title, description, price, layout }: Props) {
   function onAddToCart() {
     if (user) {
       addToCart(user.sub as string, id);
-    } else {}
+    }
   }
 
   return (
     <div className={layout === "multi" ? multiColView : singleColView}>
-      <div className="flex w-full items-center justify-center lg:w-auto lg:flex-shrink-0">
-        <Image
-          src="/images/bgs/about-us/about-us-bg.webp"
-          alt={title}
-          width={300}
-          height={300}
-          className="rounded-md shadow-md"
-        />
+      <div className="grid- flex w-full items-center justify-center lg:w-auto lg:flex-shrink-0">
+        <div className="relative h-[20rem] w-[25rem] lg:h-[18rem] lg:w-[25rem]">
+          <Image src={images[0]} alt={title} fill className="rounded-md shadow-md" />
+        </div>
       </div>
-      <div className="flex flex-grow flex-col lg:gap-y-[3rem]">
+      <div className="flex flex-col lg:gap-y-[3rem]">
         <div className="flex w-full flex-grow flex-col gap-[.5rem] lg:w-auto lg:flex-shrink-0">
           <h4 className="mt-[1rem] text-[1.8rem] font-bold">{title}</h4>
-          <p className="line-clamp-2 text-[1.3rem] font-medium">
-            {description}
+          <p className="line-clamp-2 text-[1.3rem] font-medium">{description}</p>
+          <p className="line-clamp-2 text-[1.5rem] font-medium">
+            <b>Price</b>: {price === 0 ? "Negotiable" : `$${price}`}
           </p>
-          <p className="line-clamp-2 text-[1.5rem] font-bold">${price}</p>
         </div>
         <div className="mt-[2rem] flex w-full justify-evenly">
           <button className="min-w-[17rem] rounded-lg bg-green-700 py-[.7rem] text-[1.4rem] font-bold text-white">

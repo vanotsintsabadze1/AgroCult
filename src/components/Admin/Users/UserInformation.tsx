@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const parentModalAnimations = {
   hidden: { opacity: 0 },
@@ -35,7 +36,7 @@ export default function UserInformation({ user_id, name, email, role, image, cre
         exit="hidden"
         className="z-[8] flex flex-col items-center justify-center rounded-lg bg-white px-[1rem] py-[2.5rem] shadow-md"
       >
-        <img src={image} alt={name} className="h-[10rem] w-[10rem] rounded-[50%]" />
+        {image && <Image src={image} alt={name} width={30} height={30} className="h-[10rem] w-[10rem] rounded-[50%]" />}
         <div className="mt-[2rem] flex w-full flex-col gap-[1rem] px-[1rem]">
           <div className="w-[30rem] overflow-x-auto">
             <p className="text-[1.3rem] font-bold text-gray-500">User ID:</p>

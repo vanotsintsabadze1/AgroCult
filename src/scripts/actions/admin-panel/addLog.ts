@@ -10,7 +10,7 @@ export async function addLog(type: string, description: string) {
 
   if (session) {
     performerId = session?.user.sub;
-    performerName = session?.user.name;
+    performerName = session?.user.nickname;
   }
 
   if (!type || !description) {

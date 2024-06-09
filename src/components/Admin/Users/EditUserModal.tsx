@@ -92,8 +92,9 @@ export default function EditUserModal({ userDetails, initialUserData, setUserDet
           <input
             type="text"
             name="email"
-            className="w-full rounded-lg border-2 border-gray-300 px-[1.2rem] py-[1rem] text-[1.5rem] text-black shadow-sm placeholder:text-gray-300"
+            className={`w-full rounded-lg border-2 border-gray-300 px-[1.2rem] py-[1rem] text-[1.5rem] text-black ${userDetails.user_id.startsWith("google") ? "bg-gray-200 text-gray-400" : ""} shadow-sm placeholder:text-gray-300`}
             placeholder="username"
+            disabled={userDetails.user_id.startsWith("google") ? true : false}
             value={userDetails.email}
             onChange={onEmailChange}
           />

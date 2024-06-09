@@ -40,10 +40,10 @@ export default function UserActions({ user_id, name, email, role, image, created
     setEditModalOpen(true);
   }
 
-  async function handleUserDelete(id: string) {
+  async function handleUserDelete() {
     if (session) {
       setShouldLoadingModalOpen(true);
-      if (session.user?.sub === id) {
+      if (session.user?.sub === user_id) {
         setModalMessage({ type: "error", message: "You cannot delete yourself!" });
         setTimeout(() => {
           setShouldLoadingModalOpen(false);
@@ -51,10 +51,10 @@ export default function UserActions({ user_id, name, email, role, image, created
         return;
       }
 
-      const res = await deleteUser(id);
+      const res = await deleteUser(user_id);
       if (res.status === 200) {
         setModalMessage({ type: "success", message: "User deleted successfully!" });
-        addLog("Delete", `Deleted user - ${user_id}`)
+        addLog("Delete", `Deleted user - ${user_id}`);
       } else {
         setModalMessage({ type: "error", message: "Failed to delete user!" });
       }
@@ -70,13 +70,7 @@ export default function UserActions({ user_id, name, email, role, image, created
   return (
     <>
       <AnimatePresence>
-        {confirmationModal && (
-          <ConfirmationModal
-            setConfirmationModal={setConfirmationModal}
-            handleUserDelete={handleUserDelete}
-            id={user_id}
-          />
-        )}
+        {confirmationModal && <ConfirmationModal setConfirmationModal={setConfirmationModal} cb={handleUserDelete} />}
       </AnimatePresence>
       <AnimatePresence>{shouldLoadingModalOpen && <DeleteActionModal modalMessage={modalMessage} />}</AnimatePresence>
       <AnimatePresence>

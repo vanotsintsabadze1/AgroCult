@@ -12,20 +12,38 @@ export async function editUser(id: string, name: string, email: string, role: st
   }
 
   try {
-    const res = await fetch(`${url}/api/v2/users/${id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        name,
-      }),
-      redirect: "follow",
-    });
+    let res;
 
-    if (!res.ok) {
+    if (id.startsWith("google")) {
+      res = await fetch(`${url}/api/v2/users/${id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name,
+        }),
+        redirect: "follow",
+      });
+    } else {
+      res = await fetch(`${url}/api/v2/users/${id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+        }),
+        redirect: "follow",
+      });
+    }
+
+    if (res && !res.ok) {
       return { message: "Failed to edit user", status: 500 };
     } else {
       try {

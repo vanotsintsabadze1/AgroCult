@@ -12,29 +12,28 @@ const childModalAnimations = {
 };
 
 interface Props {
-  id: string;
-  handleUserDelete: (id: string) => void;
+  cb: () => void;
   setConfirmationModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function ConfirmationModal({ id, handleUserDelete, setConfirmationModal }: Props) {
+export default function ConfirmationModal({ cb, setConfirmationModal }: Props) {
   function onPositiveConfirmation() {
     setConfirmationModal(false);
-    handleUserDelete(id);
+    cb();
   }
 
   function onNegativeConfirmation() {
     setConfirmationModal(false);
   }
+
   return (
     <motion.div
       variants={parentModalAnimations}
       initial="hidden"
       animate="visible"
       exit="hidden"
-      className="absolute left-0 top-0 z-[8] flex h-screen w-screen items-center justify-center"
+      className="absolute left-0 top-0 z-[8] flex h-screen w-screen items-center justify-center pl-[6rem]"
     >
-      <canvas className="absolute h-full w-full bg-gray-300 opacity-50" />
       <motion.div
         variants={childModalAnimations}
         initial="hidden"

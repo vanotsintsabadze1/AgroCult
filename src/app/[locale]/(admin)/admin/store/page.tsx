@@ -2,10 +2,11 @@ import { sql } from "@vercel/postgres";
 import Image from "next/image";
 import ItemActions from "../../../../../components/Admin/Store/ItemActions";
 import CreateItemButton from "../../../../../components/Admin/Store/CreateItemButton";
+import { unstable_noStore as noStore } from "next/cache";
 
 async function getCurrentItems() {
   try {
-    const res = await sql`SELECT * FROM products`;
+    const res = await sql`SELECT * FROM products ORDER BY id ASC`;
 
     return res.rows;
   } catch (error) {
@@ -15,11 +16,12 @@ async function getCurrentItems() {
 }
 
 export default async function page() {
+  noStore();
   const items = (await getCurrentItems()) as ShopItem[];
 
   return (
     <div className="flex w-full flex-col items-center pl-[6rem] lg:px-[8rem]">
-      <div className="mt-[10rem] flex w-full flex-col overflow-x-auto last:rounded-lg">
+      <div className="flex w-full flex-col overflow-x-auto py-[2rem] last:rounded-lg lg:items-center">
         <div className="flex flex-grow flex-col gap-[2rem] px-[1rem] py-[2rem] lg:items-end">
           <CreateItemButton />
           <div className="lg:flex lg:w-full lg:items-center lg:justify-center">
@@ -33,35 +35,35 @@ export default async function page() {
             </button>
           </div>
         </div>
-        <div className="grid min-w-[105rem] grid-cols-5 rounded-t-lg bg-green-600 py-[1.5rem] text-[1.5rem] text-white shadow-md">
+        <div className="grid w-[100rem] grid-cols-5 rounded-t-lg bg-green-600 py-[1.5rem] text-[1.5rem] text-white shadow-md">
           <div className="col-span-1 m-auto">ID</div>
           <div className="col-span-1 m-auto">Name</div>
-          <div className="col-span-1 m-auto">Description</div>
+          <div className="col-span-1 m-auto">Category</div>
           <div className="col-span-1 m-auto">Price Per Unit</div>
           <div className="col-span-1 m-auto">Actions</div>
         </div>
         {items.map((item) => (
-          <div
-            key={item.id}
-            className="grid min-w-[105rem] grid-cols-5 rounded-t-lg bg-white py-[1.5rem] text-[1.5rem]"
-          >
+          <div key={item.id} className="grid w-[100rem] grid-cols-5 rounded-t-lg bg-white py-[2rem] text-[1.5rem]">
             <div className="col-span-1 m-auto">{item.id}</div>
             <div className="col-span-1 m-auto flex items-center gap-[.5rem]">
-              <div className="flex w-[18rem] gap-[1rem] px-[1rem]">
-                <Image
-                  src={"/images/logos/main-logo-colored.webp"}
-                  alt={item.title}
-                  className="rounded-sm"
-                  width={20}
-                  height={20}
-                />
+              <div className="flex w-[20rem] items-center gap-[1rem] px-[1rem]">
+                <div className="relative h-[2.5rem] w-[2.5rem]">
+                  <Image src={item.images[0]} alt={item.title} className="rounded-sm" fill />
+                </div>
                 <p className="line-clamp-1">{item.title}</p>
               </div>
             </div>
-            <div className="col-span-1 line-clamp-1 ">{item.description}</div>
             <div className="col-span-1 m-auto">${item.price}</div>
-            <div className="col-span-1 m-auto flex justify-center gap-[1.5rem]">
-              <ItemActions id={item.id} />
+            <div className="col-span-1 m-auto flex gap-[.5rem]">
+              {item.category.map((category, idx) => (
+                <p key={category + item.title}>
+                  {category}
+                  {idx === item.category.length - 1 ? null : ","}
+                </p>
+              ))}
+            </div>
+            <div className="col-span-1 m-auto flex justify-center gap-[2.5rem]">
+              <ItemActions id={item.id} item={item} />
             </div>
           </div>
         ))}

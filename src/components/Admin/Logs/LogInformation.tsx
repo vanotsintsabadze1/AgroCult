@@ -23,6 +23,9 @@ export default function LogInformation({
   performed_at,
   setModal,
 }: Props) {
+  function copyOnClick(arg: string) {
+    navigator.clipboard.writeText(arg);
+  }
   return (
     <motion.div
       variants={parentModalAnimations}
@@ -43,7 +46,12 @@ export default function LogInformation({
           <div className="w-[30rem] overflow-x-auto">
             <p className="text-[1.3rem] font-bold text-gray-500">Action ID:</p>
             <p>{id}</p>
-            <button className="mt-[.5rem] cursor-pointer text-[1.3rem] font-bold text-blue-400 underline">Copy</button>
+            <button
+              className="mt-[.5rem] cursor-pointer text-[1.3rem] font-bold text-blue-400 underline"
+              onClick={() => copyOnClick(id.toString())}
+            >
+              Copy
+            </button>
           </div>
           <p className="text-[1.5rem]">
             <span className="text-[1.3rem] text-gray-500">Performer</span>: <br />
@@ -60,7 +68,12 @@ export default function LogInformation({
           <div className="w-[30rem] overflow-x-auto">
             <p className="text-[1.3rem] font-bold text-gray-500">Description:</p>
             <p>{description}</p>
-            <button className="mt-[.5rem] cursor-pointer text-[1.3rem] font-bold text-blue-400 underline">Copy</button>
+            <button
+              className="mt-[.5rem] cursor-pointer text-[1.3rem] font-bold text-blue-400 underline"
+              onClick={() => copyOnClick(description)}
+            >
+              Copy
+            </button>
           </div>
           <p className="text-[1.5rem]">
             <span className="text-[1.3rem] text-gray-500">Created At</span>: <br />

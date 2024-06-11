@@ -12,10 +12,10 @@ export default function CartIndividualItem({ item }: Props) {
         <div className="mt-[2rem] flex h-[14rem] w-full py-[2rem]">
           <div className="relative mx-[1rem] h-[10rem] w-[10rem]">
             <Image
-              src="/images/mockups/combine.webp"
+              src={item.images[0]}
               fill
               alt={`item-images-${item.title}`}
-              className="rounded-[.5rem]"
+              className="rounded-[.5rem] object-cover"
             />
           </div>
           <div className="relative flex h-full w-[30rem] flex-col xs:w-[20rem]">

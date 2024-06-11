@@ -11,7 +11,6 @@ export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const session = await getSession();
   const user = session?.user;
-  console.log(session?.user);
 
   if (!user && (pathname === "/en/profile" || pathname === "/ka/profile")) {
     return NextResponse.redirect(new URL("/", request.url));

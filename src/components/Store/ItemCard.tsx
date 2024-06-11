@@ -26,7 +26,9 @@ function ItemCard({ images, id, title, description, price, layout }: Props) {
 
   function onAddToCart() {
     if (user) {
-      addToCart(user.sub as string, id);
+      if (price !== 0) {
+        addToCart(user.sub as string, id);
+      }
     }
   }
 
@@ -46,10 +48,15 @@ function ItemCard({ images, id, title, description, price, layout }: Props) {
           </p>
         </div>
         <div className="mt-[2rem] flex w-full justify-evenly">
-          <button className="min-w-[17rem] rounded-lg bg-green-700 py-[.7rem] text-[1.4rem] font-bold text-white">
-            {word("buy")}
+          <button
+            className={`min-w-[17rem] rounded-lg ${price === 0 ? "bg-green-800/50" : "bg-green-700"} py-[.7rem] text-[1.4rem] font-bold text-white`}
+          >
+            {price === 0 ? "Contact Sales Team" : word("buy")}
           </button>
-          <button className="rounded-md bg-gray-200 p-[.5rem] px-[1rem] shadow-sm" onClick={onAddToCart}>
+          <button
+            className={`rounded-md bg-gray-200 p-[.5rem] px-[1rem] shadow-sm ${price === 0 ? "cursor-not-allowed opacity-30" : ""}`}
+            onClick={onAddToCart}
+          >
             <Image
               width={25}
               height={25}

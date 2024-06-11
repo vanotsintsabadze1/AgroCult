@@ -6,7 +6,7 @@ interface ShopItem {
   images: string[];
   brand: string;
   extra_details: {
-    s: string;
+    [key: string]: string;
   };
   category: string[];
   discount: number;

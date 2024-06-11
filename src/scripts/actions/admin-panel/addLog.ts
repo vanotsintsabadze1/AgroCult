@@ -22,6 +22,6 @@ export async function addLog(type: string, description: string) {
     return { message: "Success", status: 200 };
   } catch (error) {
     console.error(error);
-    return { error, status: 200 };
+    return { error: "Failed to add logs", status: 200 };
   }
 }

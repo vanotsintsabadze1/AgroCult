@@ -32,7 +32,7 @@ export default function ConfirmationModal({ cb, setConfirmationModal }: Props) {
       initial="hidden"
       animate="visible"
       exit="hidden"
-      className="absolute left-0 top-0 z-[8] flex h-screen w-screen items-center justify-center pl-[6rem]"
+      className="absolute left-0 top-0 z-[8] flex h-screen w-screen items-center justify-center bg-[rgba(0,0,0,0.5)] pl-[6rem]"
     >
       <motion.div
         variants={childModalAnimations}

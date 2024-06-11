@@ -15,7 +15,7 @@ export default function SearchBar() {
         <input
           type="submit"
           value="Search"
-          className="h-[4.5rem] cursor-pointer rounded-r-lg bg-gray-400 px-[2rem] text-[1.5rem] text-white shadow-sm lg:h-[4rem]"
+          className="h-[4.5rem] cursor-pointer rounded-r-lg bg-green-600 px-[2rem] text-[1.5rem] text-white shadow-sm lg:h-[4rem]"
         />
       </form>
     </div>

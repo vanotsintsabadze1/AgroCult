@@ -31,7 +31,6 @@ export default function DeleteActionModal({ modalMessage }: Props) {
       exit="hidden"
       className="absolute left-0 top-0 z-[8] flex h-screen w-screen items-center justify-center pl-[6rem]"
     >
-      <canvas className="absolute h-full w-full bg-gray-300 opacity-50" />
       <motion.div
         variants={childModalAnimations}
         initial="hidden"

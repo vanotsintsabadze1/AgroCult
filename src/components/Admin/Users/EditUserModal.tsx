@@ -71,13 +71,13 @@ export default function EditUserModal({ userDetails, initialUserData, setUserDet
       exit="hidden"
       className="absolute left-0 top-0 z-[8] flex h-screen w-full items-center justify-center pl-[6rem]"
     >
-      <canvas className="absolute h-full w-full bg-gray-300 opacity-50" />
       <motion.div
         variants={childModalAnimations}
         initial="hidden"
         animate="visible"
         exit="hidden"
-        className="z-[8] flex w-[30rem] flex-col items-center justify-center rounded-lg bg-white px-[1rem] py-[2rem] shadow-md md:px-[2rem]"
+        className="z-[8] flex w-[30rem] flex-col items-center justify-center rounded-lg bg-[rgba(0,0,0,0.5)] bg-white px-[1rem] py-[2rem] shadow-md md:px-[2rem]"
+        data-lenis-prevent
       >
         <h2 className="py-[1rem] text-[2rem] font-bold">Edit User</h2>
         <div className="relative flex w-full flex-col items-center gap-[3rem] px-[1rem] py-[1rem]">

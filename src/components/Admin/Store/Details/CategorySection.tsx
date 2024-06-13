@@ -4,10 +4,11 @@ interface Props {
   itemDetails: ShopItem;
   newCategoryModal: boolean;
   setNewCategoryModal: React.Dispatch<React.SetStateAction<boolean>>;
-  editMode: boolean;
+  editMode?: boolean;
   newCategory: string;
   setNewCategory: React.Dispatch<React.SetStateAction<string>>;
   setItemDetails: React.Dispatch<React.SetStateAction<ShopItem>>;
+  setErrorModal?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function CategorySection({
@@ -18,10 +19,18 @@ export default function CategorySection({
   setNewCategory,
   newCategory,
   setItemDetails,
+  setErrorModal,
 }: Props) {
   function removeCategory(category: string) {
-    if (!editMode) {
-      return;
+    if (typeof setErrorModal === "function") {
+      if (!editMode) {
+        setErrorModal(true);
+
+        setTimeout(() => {
+          setErrorModal(false);
+        }, 1500);
+        return;
+      }
     }
 
     setItemDetails((prev) => ({
@@ -31,14 +40,39 @@ export default function CategorySection({
   }
 
   function addNewCategory() {
-    if (!editMode) {
-      return;
+    if (typeof setErrorModal === "function") {
+      if (!editMode) {
+        setErrorModal(true);
+
+        setTimeout(() => {
+          setErrorModal(false);
+        }, 1500);
+        return;
+      }
     }
 
-    newCategory !== "" ? setItemDetails((prev) => ({ ...prev, category: [...prev.category, newCategory] })) : null;
+    if (newCategory === "") {
+      return;
+    } else {
+      setItemDetails((prev) => ({ ...prev, category: [...prev.category, newCategory] }));
+      setNewCategoryModal(false);
+      setNewCategory("");
+    }
+  }
 
-    setNewCategoryModal(false);
-    setNewCategory("");
+  function enableNewCategoryModal() {
+    if (typeof setErrorModal === "function") {
+      if (!editMode) {
+        setErrorModal(true);
+
+        setTimeout(() => {
+          setErrorModal(false);
+        }, 1500);
+        return;
+      }
+    }
+
+    setNewCategoryModal(true);
   }
   return (
     <div className="flex w-full items-center gap-[1rem]">
@@ -51,6 +85,7 @@ export default function CategorySection({
           <button
             className="absolute right-[.5rem] top-[.1rem] text-[1rem] font-bold"
             onClick={() => removeCategory(category)}
+            type="button"
           >
             X
           </button>
@@ -63,14 +98,15 @@ export default function CategorySection({
             onChange={(e) => setNewCategory(e.target.value)}
             className="bg-transparent outline-none"
           />
-          <button onClick={addNewCategory} className="">
+          <button onClick={addNewCategory} className="" type="button">
             <Image src="/images/icons/misc/apply.webp" width={15} height={15} alt="apply-icon" />
           </button>
         </div>
       )}
       <button
+        type="button"
         className="rounded-lg px-[2rem] py-[.8rem] font-sans text-[2rem] font-semibold text-gray-800"
-        onClick={() => (editMode ? setNewCategoryModal(true) : null)}
+        onClick={enableNewCategoryModal}
       >
         +
       </button>

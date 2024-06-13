@@ -3,7 +3,6 @@ import { useState } from "react";
 import { ReactLenis } from "lenis/react";
 import StoreItemDetails from "./StoreItemDetails";
 import { editItem } from "../../../scripts/actions/admin-panel/editItem";
-import DeleteActionModal from "../DeleteActionModal";
 
 const parentModalAnimations = {
   hidden: { opacity: 0 },
@@ -23,9 +22,10 @@ interface Props {
 export default function ItemDetailsModal({ setEditModal, item }: Props) {
   const [editMode, setEditMode] = useState(false);
   const [itemDetails, setItemDetails] = useState<ShopItem>(item);
+  const [deletedImagesArr, setDeletedImagesArr] = useState<string[]>([]);
 
   async function onSubmit() {
-    const res = await editItem(itemDetails, item.id);
+    const res = await editItem(itemDetails, item.id, deletedImagesArr);
 
     if (res?.status === 200) {
       setEditMode(false);
@@ -58,6 +58,7 @@ export default function ItemDetailsModal({ setEditModal, item }: Props) {
               itemDetails={itemDetails}
               editMode={editMode}
               setItemDetails={setItemDetails}
+              setDeletedImagesArr={setDeletedImagesArr}
             />
             <div className="flex w-full items-center justify-center gap-[2rem] py-[2rem]">
               <button

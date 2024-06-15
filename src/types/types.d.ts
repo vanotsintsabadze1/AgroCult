@@ -11,6 +11,7 @@ interface ShopItem {
   category: string[];
   discount: number;
   amount: number;
+  buyable: string;
 }
 
 interface CartItem {
@@ -52,4 +53,22 @@ interface Logs {
   type: string;
   description: string;
   performed_at: Date;
+}
+
+interface ContactForm {
+  username: string;
+  email: string;
+  description: string;
+  topic: string;
+}
+
+interface Blog {
+  id: number;
+  wid: string;
+  wname: string;
+  title: string;
+  description: string;
+  tags: string[];
+  created_at: Date;
+  thumbnail: string;
 }

@@ -4,6 +4,7 @@ import { I18nProviderClient } from "@/locales/client";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
 import { Signika } from "next/font/google";
 import LenisWrapper from "../../components/Animation-Wrappers/LenisWrapper";
+import { Toaster } from "react-hot-toast";
 
 export const metadata = {
   title: "Create Next App",
@@ -32,6 +33,8 @@ export default function RootLayout({ children, params: { locale } }: Props) {
           <I18nProviderClient locale={locale}>
             <LenisWrapper>{children}</LenisWrapper>
           </I18nProviderClient>
+
+          <Toaster position="top-center" containerClassName="text-[1.3rem]" />
         </body>
       </UserProvider>
     </html>

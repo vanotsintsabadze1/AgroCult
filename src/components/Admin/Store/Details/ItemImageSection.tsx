@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { useRef } from "react";
 import { createImageBlob } from "../../../../scripts/actions/admin-panel/createImageBlobs";
-import { deleteImageBlob } from "../../../../scripts/actions/admin-panel/deleteImageBlob";
+import toast from "react-hot-toast";
 
 interface Props {
   setImageIndex: React.Dispatch<React.SetStateAction<number>>;
@@ -14,7 +14,6 @@ interface Props {
   editMode: boolean;
   setItemDetails: React.Dispatch<React.SetStateAction<ShopItem>>;
   itemDetails: ShopItem;
-  setErrorModal: React.Dispatch<React.SetStateAction<boolean>>;
   setDeletedImagesArr: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
@@ -32,28 +31,15 @@ export default function ItemImageSection({
   imageEditModal,
   setItemDetails,
   itemDetails,
-  setErrorModal,
   setDeletedImagesArr,
 }: Props) {
   const [imageAddModal, setImageAddModal] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
 
-  function nextSlide() {
-    imageIndex !== item.images.length - 1 ? setImageIndex((prev) => prev + 1) : setImageIndex(0);
-  }
-
-  function previousSlide() {
-    imageIndex !== 0 ? setImageIndex((prev) => prev - 1) : setImageIndex(item.images.length - 1);
-  }
-
   function enableImagesEdit() {
     if (!editMode) {
-      setErrorModal(true);
-
-      setTimeout(() => {
-        setErrorModal(false);
-      }, 1500);
+      toast.error("You need to enable edit mode to edit images");
       return;
     }
 
@@ -79,14 +65,13 @@ export default function ItemImageSection({
     e.preventDefault();
 
     if (!inputRef.current?.files) {
+      toast.error("Please upload an image");
       return;
     }
 
     const formData = new FormData(e.currentTarget);
 
     await createImageBlob(formData, itemDetails.images, itemDetails.id);
-
-    console.log(itemDetails);
   }
 
   return (

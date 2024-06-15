@@ -10,6 +10,10 @@ const config: Config = {
   darkMode: ["variant", ["@media (prefers-color-scheme: dark) { &:not(.light *) }", "&:is(.dark *)"]],
   theme: {
     extend: {
+      fontFamily: {
+        signika: ["var(--font-signika)"],
+        montserrat: ["var(--font-montserrat)"],
+      },
       backgroundColor: {
         primary: "#051923",
         secondary: "#5ebc67",
@@ -60,6 +64,7 @@ const config: Config = {
         },
       });
     }),
+    require("@tailwindcss/typography"),
   ],
 };
 export default config;

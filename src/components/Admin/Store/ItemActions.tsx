@@ -6,9 +6,8 @@ import { useRouter } from "next/navigation";
 import { addLog } from "../../../scripts/actions/admin-panel/addLog";
 import ConfirmationModal from "../Users/ConfirmationModal";
 import DeleteActionModal from "../DeleteActionModal";
-import ItemDetailsModal from "./DetailsModal";
+import ItemDetailsModal from "./ItemDetailsModal";
 import Image from "next/image";
-import ItemCreationModal from "./Item-Creation/ItemCreationModal";
 
 interface Props {
   id: number;

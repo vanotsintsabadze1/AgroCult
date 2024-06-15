@@ -21,7 +21,7 @@ export default async function page() {
 
   return (
     <div className="flex w-full flex-col items-center pl-[6rem] lg:px-[8rem]">
-      <div className="flex w-full flex-col overflow-x-auto last:rounded-lg lg:items-center">
+      <div className="flex w-full flex-col overflow-x-auto pb-[2rem] last:rounded-lg lg:items-center">
         <div className="flex flex-grow flex-col gap-[2rem] px-[1rem] lg:items-end">
           <CreateItemButton />
           <div className="lg:flex lg:w-full lg:items-center lg:justify-center">
@@ -35,7 +35,7 @@ export default async function page() {
             </button>
           </div>
         </div>
-        <div className="mt-[2rem] grid w-[100rem] grid-cols-5 rounded-t-lg bg-green-600 py-[1.5rem] text-[1.5rem] text-white shadow-md">
+        <div className="sticky mt-[2rem] grid w-[100rem] grid-cols-5 rounded-t-lg bg-green-600 py-[1.5rem] text-[1.5rem] text-white shadow-md">
           <div className="col-span-1 m-auto">ID</div>
           <div className="col-span-1 m-auto">Name</div>
           <div className="col-span-1 m-auto">Price Per Unit</div>

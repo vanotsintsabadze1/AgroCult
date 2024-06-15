@@ -121,9 +121,11 @@ export default {
       description: "აღწერა",
       topicLabel: "თემა",
       topics: {
+        purchaseExclusive: "ექსკლუზიური შესყიდვა",
         billing: "გადახდის პრობლემა",
         transportation: "ტრანსპორტირების პრობლემა",
         account: "ანგარიშის პრობლემა",
+        other: "სხვა",
       },
       submit: "გაგზავნა",
     },

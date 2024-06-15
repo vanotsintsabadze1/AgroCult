@@ -2,12 +2,6 @@ import { useState } from "react";
 import ItemImageSection from "./Details/ItemImageSection";
 import GenericInformationField from "./Details/GenericInformationField";
 import CategorySection from "./Details/CategorySection";
-import { AnimatePresence, motion } from "framer-motion";
-
-const errorModalAnimation = {
-  hidden: { opacity: 0, y: 0 },
-  visible: { opacity: 1, y: 20 },
-};
 
 interface Props {
   editMode: boolean;
@@ -22,7 +16,6 @@ export default function StoreItemDetails({ editMode, item, itemDetails, setItemD
   const [newCategoryModal, setNewCategoryModal] = useState(false);
   const [newCategory, setNewCategory] = useState("");
   const [imageEditModal, setImageEditModal] = useState(false);
-  const [errorModal, setErrorModal] = useState(false);
 
   function editCategory(e: React.ChangeEvent<HTMLInputElement>, key: string[]) {
     setItemDetails((prev) => ({
@@ -34,19 +27,6 @@ export default function StoreItemDetails({ editMode, item, itemDetails, setItemD
   return (
     <>
       <div className="relative flex h-[75rem] flex-col items-center overflow-y-scroll scrollbar-hide">
-        <AnimatePresence>
-          {errorModal && (
-            <motion.div
-              variants={errorModalAnimation}
-              initial="hidden"
-              animate="visible"
-              exit="hidden"
-              className="absolute left-[12rem] top-[2rem] z-20 flex w-[30rem] translate-x-[50%] items-center  justify-center rounded-lg bg-white py-[1rem] text-red-500 shadow-md"
-            >
-              You should have edit mode enabled!
-            </motion.div>
-          )}
-        </AnimatePresence>
         <ItemImageSection
           item={item}
           setImageEditModal={setImageEditModal}
@@ -56,7 +36,6 @@ export default function StoreItemDetails({ editMode, item, itemDetails, setItemD
           editMode={editMode}
           itemDetails={itemDetails}
           setItemDetails={setItemDetails}
-          setErrorModal={setErrorModal}
           setDeletedImagesArr={setDeletedImagesArr}
         />
         <div className="mt-[1rem] flex w-full flex-col items-center gap-[2rem] px-[.5rem]">
@@ -87,7 +66,6 @@ export default function StoreItemDetails({ editMode, item, itemDetails, setItemD
               newCategoryModal={newCategoryModal}
               setItemDetails={setItemDetails}
               newCategory={newCategory}
-              setErrorModal={setErrorModal}
             />
           </GenericInformationField>
           <GenericInformationField title="Description">

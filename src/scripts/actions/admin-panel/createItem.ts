@@ -4,7 +4,7 @@ import { sql } from "@vercel/postgres";
 import { put } from "@vercel/blob";
 
 export async function createItem(itemDetails: ShopItem, formData: FormData) {
-  const { title, description, price, brand, extra_details, category, discount, amount } = itemDetails;
+  const { title, description, price, brand, extra_details, category, discount, amount, buyable } = itemDetails;
 
   if (title === "" || description === "" || brand === "" || category.length === 0) {
     return {
@@ -23,11 +23,13 @@ export async function createItem(itemDetails: ShopItem, formData: FormData) {
     };
   }
 
+  console.log(itemDetails);
+
   try {
     const strExtraDetails = JSON.stringify(extra_details);
     const strCategories = JSON.stringify(category);
     const res =
-      await sql`INSERT INTO products (title, description, price, brand, extra_details, category, discount, amount, buyable) VALUES (${title}, ${description}, ${price}, ${brand}, ${strExtraDetails}, ${strCategories}, ${discount}, ${amount}, 'no') RETURNING id`;
+      await sql`INSERT INTO products (title, description, price, brand, extra_details, category, discount, amount, buyable) VALUES (${title}, ${description}, ${price}, ${brand}, ${strExtraDetails}, ${strCategories}, ${discount}, ${amount}, ${buyable}) RETURNING id`;
 
     const id = res.rows[0].id;
 

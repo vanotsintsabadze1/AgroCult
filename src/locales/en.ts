@@ -126,9 +126,11 @@ export default {
       description: "Description",
       topicLabel: "Topic",
       topics: {
+        purchaseExclusive: "Purchase an Exclusive Product",
         billing: "Billing Issue",
         transportation: "Transportation Issue",
         account: "Problem with an account",
+        other: "Other",
       },
       submit: "Submit",
     },

@@ -35,3 +35,47 @@ body::-webkit-scrollbar {
   flex-direction: column;
   position: relative;
 }
+
+#blog-card-description-div p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Limit text to 2 lines */
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+}
+
+#blog-card-description-div h1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* Limit text to 2 lines */
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+}
+
+#blog-card-description-div {
+  mask-image: linear-gradient(180deg, #000 60%, transparent);
+}
+
+#blog-card-description-div img {
+  display: none;
+}
+
+.tiptap p.is-editor-empty:first-child::before {
+  color: #adb5bd;
+  content: "Write your blog..";
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+#ind-blog h1 {
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+#ind-blog p {
+  font-size: 1.4rem;
+  font-weight: medium;
+}

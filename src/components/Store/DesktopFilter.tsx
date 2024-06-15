@@ -49,7 +49,7 @@ export default function DesktopFilter() {
           ))}
         </div>
       </section>
-      <div className="mt-[3rem] flex w-full items-center justify-center">
+      <div className="flex w-full items-center justify-center">
         <button className="h-[4rem] w-[25rem] rounded-lg bg-green-600 text-[1.5rem] font-bold text-white shadow-md">
           Submit
         </button>

@@ -22,6 +22,10 @@ async function Navigation({ className }: Props) {
       path: "/store",
     },
     {
+      title: word("blogs"),
+      path: "/blogs",
+    },
+    {
       title: word("contact"),
       path: "/contact",
     },

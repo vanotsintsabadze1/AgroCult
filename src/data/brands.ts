@@ -1,1 +1,1 @@
-export const brands = ["John Deere", "Kubota", "JCB"];
+export const brands = ["John Deere", "Massey Ferguson", "JCB"];

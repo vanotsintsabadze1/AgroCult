@@ -5,9 +5,9 @@ import { deleteDbStoreItem } from "../../../scripts/actions/admin-panel/deleteDb
 import { useRouter } from "next/navigation";
 import { addLog } from "../../../scripts/actions/admin-panel/addLog";
 import ConfirmationModal from "../Users/ConfirmationModal";
-import DeleteActionModal from "../DeleteActionModal";
 import ItemDetailsModal from "./ItemDetailsModal";
 import Image from "next/image";
+import toast from "react-hot-toast";
 
 interface Props {
   id: number;
@@ -18,32 +18,23 @@ export default function ItemActions({ id, item }: Props) {
   const router = useRouter();
   const [confirmationModal, setConfirmationModal] = useState(false);
   const [detailsModal, setDetailsModal] = useState(false);
-  const [deleteModal, setDeleteModal] = useState(false);
-  const [modalMessage, setModalMessage] = useState({ type: "", message: "" });
 
   async function deleteItemFromDB() {
-    setDeleteModal(true);
-
     try {
       const res = await deleteDbStoreItem(id);
 
       if (res?.status === 200) {
-        setModalMessage({ type: "success", message: "Item successfully deleted" });
+        toast.success("Item deleted successfully!");
         addLog("Delete", `Deleted Item - ${id}`);
       } else {
-        setModalMessage({ type: "error", message: "Failed to delete the item" });
+        toast.error("An error occurred while deleting the item!");
       }
     } catch (err) {
       console.error(err);
-      setModalMessage({ type: "error", message: "Failed to delete the item" });
+      toast.error("An error occurred while deleting the item!");
     }
 
-    setTimeout(() => {
-      setDeleteModal(false);
-    }, 3000);
-    setTimeout(() => {
-      router.refresh();
-    }, 2000);
+    router.refresh();
   }
 
   return (
@@ -51,9 +42,7 @@ export default function ItemActions({ id, item }: Props) {
       <AnimatePresence>
         {confirmationModal && <ConfirmationModal setConfirmationModal={setConfirmationModal} cb={deleteItemFromDB} />}
       </AnimatePresence>
-
-      <AnimatePresence>{deleteModal && <DeleteActionModal modalMessage={modalMessage} />}</AnimatePresence>
-
+      
       <AnimatePresence>
         {detailsModal && <ItemDetailsModal item={item} setEditModal={setDetailsModal} />}
       </AnimatePresence>

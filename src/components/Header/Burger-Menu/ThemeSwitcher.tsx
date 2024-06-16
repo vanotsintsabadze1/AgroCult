@@ -17,6 +17,11 @@ interface Props {
 export default function ThemeSwitcher({ className, animationVariant }: Props) {
   const [isThemeSwitcherVisible, setThemeSwitcherVisible] = useState(false);
   const [image, setImage] = useState(""); // There's a bug here.
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   function showThemeSwitcher() {
     setThemeSwitcherVisible(!isThemeSwitcherVisible);
@@ -34,8 +39,10 @@ export default function ThemeSwitcher({ className, animationVariant }: Props) {
   }
 
   useEffect(() => {
-    setThemeImage();
-  }, []);
+    if (mounted) {
+      setThemeImage();
+    }
+  }, [mounted]);
 
   return (
     <div className={className}>
@@ -43,12 +50,14 @@ export default function ThemeSwitcher({ className, animationVariant }: Props) {
         onClick={showThemeSwitcher}
         className={`flex h-[3.8rem] w-[3.8rem] items-center justify-center rounded-[50%] ${!isThemeSwitcherVisible ? "border border-black" : ""} bg-white p-[1rem]`}
       >
-        <Image
-          src={image === "" ? "/images/icons/header-icons/system-mode.webp" : image}
-          width={20}
-          height={20}
-          alt="mode"
-        />
+        {image !== "" && (
+          <Image
+            src={image === "" ? "/images/icons/header-icons/system-mode.webp" : image}
+            width={20}
+            height={20}
+            alt="mode"
+          />
+        )}
       </button>
       <AnimatePresence>
         {isThemeSwitcherVisible && (

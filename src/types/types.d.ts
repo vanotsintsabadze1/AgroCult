@@ -43,7 +43,12 @@ interface UserDB {
   email: string;
   image?: string;
   role: string;
-  created_at?: Date;
+  extra_details: {
+    country: string;
+    city: string;
+    address: string;
+    postal_code: string;
+  };
 }
 
 interface Logs {

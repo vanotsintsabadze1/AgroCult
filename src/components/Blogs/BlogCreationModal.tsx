@@ -5,7 +5,8 @@ import { useState } from "react";
 import { z } from "zod";
 import toast from "react-hot-toast";
 import { Check } from "lucide-react";
-import { createBlog } from "@/scripts/actions/blogs/createBlog";
+import { useUser } from "@auth0/nextjs-auth0/client";
+import { useRouter } from "next/navigation";
 
 const schema = z.object({
   title: z.string().min(10, "Title is too short - Min. 10 characters"),
@@ -32,6 +33,12 @@ export default function BlogCreationModal({ setModal }: Props) {
   const [tags, setTags] = useState<string[]>([]);
   const [newTag, setNewTag] = useState("");
   const [shouldNewTagBeVisible, setShouldNewTagBeVisible] = useState(false);
+  const { user } = useUser();
+  const router = useRouter();
+
+  if (!user) {
+    return null;
+  }
 
   function newTagModal() {
     if (shouldNewTagBeVisible) {
@@ -86,12 +93,35 @@ export default function BlogCreationModal({ setModal }: Props) {
       return;
     }
 
-    const res = await createBlog(form as Blog, formData);
+    const wid = user?.sub;
+    const wname = user?.nickname;
 
-    if (res.status === 200) {
-      toast.success("Blog created successfully");
-      setModal(false);
+    if (!wid || !wname) {
+      toast.error("An error occurred");
+      return;
     }
+
+    formData.append("wid", wid);
+    formData.append("wname", wname);
+    formData.append("tags", JSON.stringify(tags));
+    formData.append("description", description);
+
+    toast
+      .promise(
+        fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/create-blog`, {
+          method: "POST",
+          body: formData,
+        }),
+        {
+          loading: "Creating blog...",
+          success: "Blog created successfully",
+          error: (err) => {
+            console.log(err);
+            return "An error occurred";
+          },
+        },
+      )
+      .then(() => router.refresh());
   }
 
   return (
@@ -107,7 +137,7 @@ export default function BlogCreationModal({ setModal }: Props) {
           <form
             action={onBlogFormSubmit}
             id="blogForm"
-            className="flex w-[40rem] flex-col gap-[2rem] rounded-lg bg-white px-[2rem] py-[2rem] shadow-md md:h-[82rem] md:w-[75rem] lg:w-[100rem] xs:w-[30rem]"
+            className="relative flex w-[40rem] flex-col gap-[2rem] rounded-lg bg-white px-[2rem] py-[2rem] shadow-md md:h-[82rem] md:w-[75rem] lg:w-[100rem] xs:w-[30rem]"
           >
             <div className="flex flex-col gap-[.5rem] px-[.5rem]">
               <h2 className="text-[1.2rem] font-bold uppercase tracking-wide text-gray-400">Title</h2>

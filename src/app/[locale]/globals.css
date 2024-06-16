@@ -54,7 +54,8 @@ body::-webkit-scrollbar {
   word-break: break-all;
 }
 
-#blog-card-description-div {
+#blog-card-description-div,
+#item-description-div {
   mask-image: linear-gradient(180deg, #000 60%, transparent);
 }
 
@@ -71,7 +72,7 @@ body::-webkit-scrollbar {
 }
 
 #ind-blog h1 {
-  font-size: 4rem;
+  font-size: 2.5rem;
   font-weight: bold;
 }
 

@@ -9,7 +9,6 @@ import BulletList from "@tiptap/extension-bullet-list";
 import ListItem from "@tiptap/extension-list-item";
 import Image from "@tiptap/extension-image";
 import Placeholder from "@tiptap/extension-placeholder";
-import HardBreak from "@tiptap/extension-hard-break";
 
 interface Props {
   description: string;
@@ -19,12 +18,14 @@ interface Props {
 const Tiptap = ({ setDescription }: Props) => {
   const editor = useEditor({
     extensions: [
-      StarterKit,
-      Heading.configure({
-        HTMLAttributes: {
-          levels: [1],
+      StarterKit.configure({
+        paragraph: {
+          HTMLAttributes: {
+            class: "min-h-[1rem] mt-[1rem]",
+          },
         },
       }),
+      Heading,
       OrderedList.configure({
         HTMLAttributes: {
           class: "list-decimal",
@@ -36,21 +37,18 @@ const Tiptap = ({ setDescription }: Props) => {
         },
       }),
       ListItem,
-      Image,
-      Placeholder,
-      HardBreak.extend({
-        addKeyboardShortcuts() {
-          return {
-            Enter: () => this.editor.commands.setHardBreak(),
-          };
+      Image.configure({
+        HTMLAttributes: {
+          class: "w-[30rem] h-[30rem]",
         },
       }),
+      Placeholder,
     ],
     content: "",
     editorProps: {
       attributes: {
         class:
-          "prose-2xl prose-a:text-blue-600 prose-img:rounded h-[30rem] border-2 border-gray-300 p-[1.5rem] outline-none rounded-[.5rem] prose-h1:text-[4rem] md:h-[40rem] overflow-auto",
+          "prose-2xl prose-a:text-blue-600 prose-img:rounded h-[30rem] border-2 border-gray-300 px-[1.5rem] outline-none rounded-[.5rem] prose-h1:text-[2.5rem] md:h-[40rem] overflow-auto",
       },
     },
     onUpdate({ editor }) {

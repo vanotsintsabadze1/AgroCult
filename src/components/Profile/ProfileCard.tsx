@@ -1,72 +1,37 @@
-import Image from "next/image";
-import { getScopedI18n } from "@/locales/server";
-import { getSession } from "@auth0/nextjs-auth0";
-import ImageUpload from "./ImageUpload";
+import { Store, BookOpenCheck, FileText, Edit } from "lucide-react";
+import ProfileUserID from "./ProfileUserID";
+import ProfileUserInformation from "./ProfileUserInformation";
+import ProfileUserAddress from "./ProfileUserAddress";
+import ProfileUserImage from "./ProfileUserImage";
 
-async function getProfileInfo(userId: string) {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-profile-info`,
-    {
-      method: "POST",
-      body: JSON.stringify({ userId }),
-      next: {
-        tags: ["profile"],
-      },
-    }
-  );
-  const data = await res.json();
-
-  return data;
+interface Props {
+  user: UserDB;
 }
 
-export default async function ProfileCard() {
-  const word = await getScopedI18n("profile");
-  const session = await getSession();
-  const profile: User = await getProfileInfo(session?.user.sub);
-
+export default async function ProfileCard({ user }: Props) {
   return (
-    <div className="w-full min-h-[65rem] shadow-soft rounded-[1rem] flex flex-col items-center p-[2rem] lg:w-[80rem] md:w-[65rem] sm:w-[40rem] dark:bg-white">
-      <section className="w-full flex  justify-center items-center p-[1rem] flex-col gap-[2rem] mt-[2rem]">
-        <div className="w-[15rem] h-[15rem] relative">
-          <Image
-            src={profile.image}
-            fill
-            className="rounded-[50%]"
-            alt="user-profile-icon"
-          />
+    <div className="flex w-[40rem] flex-col items-center rounded-[2rem] py-[4rem] md:w-[50rem] xs:w-full">
+      <ProfileUserImage user={user} />
+      <ProfileUserInformation username={user.name} userId={user.user_id} email={user.email} />
+      <div className="flex w-full items-center justify-center">
+        <p className="text-[1.2rem] font-light">{user.role} </p>
+      </div>
+      <ProfileUserID userId={user.user_id} />
+      <div className="mt-[4rem] flex flex-wrap items-center justify-center gap-[6rem] gap-y-[5rem]">
+        <div className="flex flex-col items-center gap-[.5rem]">
+          <Store size={30} />
+          <p className="text-[1.4rem] font-medium">0 Items Bought</p>
         </div>
-        <h2 className="font-bold text-[2rem] bg-gradient-to-r from-green-500 to-orange-300 bg-clip-text text-transparent">
-          {word("title")}
-        </h2>
-      </section>
-      <section className="w-full flex flex-col gap-[2rem] mt-[2rem] flex-grow lg:w-[40rem]">
-        <ImageUpload />
-        <div className="flex flex-col gap-[0.5rem]">
-          <p className="font-bold text-[1.4rem]">Username:</p>
-          <input
-            type="text"
-            value={profile.name}
-            readOnly
-            disabled
-            className="w-[24rem] px-[1.2rem] py-[0.5rem] text-[1.4rem] border-2 border-gray-400 rounded-[0.5rem] bg-gray-300 text-gray-500"
-          />
+        <div className="flex flex-col items-center gap-[.5rem]">
+          <FileText size={30} />
+          <p className="text-[1.4rem] font-medium">0 Open Tickets</p>
         </div>
-        <div className="flex flex-col gap-[0.5rem]">
-          <p className="font-bold text-[1.4rem]">Email:</p>
-          <input
-            type="text"
-            value={profile.email}
-            readOnly
-            disabled
-            className="w-[24rem] px-[1.2rem] py-[0.5rem] text-[1.4rem] border-2 border-gray-400 rounded-[0.5rem] bg-gray-300 text-gray-500"
-          />
+        <div className="flex flex-col items-center gap-[.5rem]">
+          <BookOpenCheck size={30} />
+          <p className="text-[1.4rem] font-medium">0 Created Blogs</p>
         </div>
-        <input
-          type="submit"
-          value={word("submit")}
-          className="w-[15rem] h-[4rem] text-white bg-green-500 rounded-lg uppercase tracking-wider font-semibold text-[1.2rem] cursor-pointer self-center my-[2rem] "
-        />
-      </section>
+      </div>
+      <ProfileUserAddress userId={user.user_id} extra_details={user.extra_details} />
     </div>
   );
 }

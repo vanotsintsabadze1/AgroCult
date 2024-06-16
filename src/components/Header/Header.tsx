@@ -28,7 +28,7 @@ async function getCartItems(userId: string) {
 export default async function Header() {
   const session = await getSession();
   const user = session?.user;
-  const cart: CartItem[] = await getCartItems(user?.sub);
+  // const cart: CartItem[] = await getCartItems(user?.sub);
   const locale = getCurrentLocale();
 
   return (
@@ -54,10 +54,10 @@ export default async function Header() {
             }}
           />
           <LocaleSwitcher locale={locale} />
-          {user && <Cart className="relative hidden lg:block" usedFor="desktop" cart={cart} />}
+          {/* {user && <Cart className="relative hidden lg:block" usedFor="desktop" cart={cart} />} */}
           {user ? <UserButton /> : <LoginButton />}
         </section>
-        {user && <Cart className="absolute right-[7rem] lg:hidden" usedFor="mobile" cart={cart} />}
+        {/* {user && <Cart className="absolute right-[7rem] lg:hidden" usedFor="mobile" cart={cart} />} */}
         <MobileMenu />
       </div>
     </header>

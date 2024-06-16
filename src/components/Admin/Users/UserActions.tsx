@@ -6,23 +6,16 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import EditUserModal from "./EditUserModal";
-import DeleteActionModal from "../DeleteActionModal";
 import ConfirmationModal from "./ConfirmationModal";
 import Image from "next/image";
 import UserInformation from "./UserInformation";
 import { addLog } from "../../../scripts/actions/admin-panel/addLog";
-
-interface ModalMessage {
-  type: string;
-  message: string;
-}
+import toast from "react-hot-toast";
 
 export default function UserActions({ user_id, name, email, role, image, created_at }: UserDB) {
   const session = useUser();
   const router = useRouter();
   const [editModalOpen, setEditModalOpen] = useState(false);
-  const [shouldLoadingModalOpen, setShouldLoadingModalOpen] = useState(false);
-  const [modalMessage, setModalMessage] = useState<ModalMessage>({ type: "loading", message: "" });
   const [confirmationModal, setConfirmationModal] = useState(false);
   const [userDetailsModal, setUserDetailsModal] = useState(false);
   const initialUserData: UserDB = { user_id, name, email, role };
@@ -42,28 +35,20 @@ export default function UserActions({ user_id, name, email, role, image, created
 
   async function handleUserDelete() {
     if (session) {
-      setShouldLoadingModalOpen(true);
       if (session.user?.sub === user_id) {
-        setModalMessage({ type: "error", message: "You cannot delete yourself!" });
-        setTimeout(() => {
-          setShouldLoadingModalOpen(false);
-        }, 2000);
+        toast.error("You can't delete yourself!");
         return;
       }
 
       const res = await deleteUser(user_id);
       if (res.status === 200) {
-        setModalMessage({ type: "success", message: "User deleted successfully!" });
+        toast.success("User deleted successfully!");
         addLog("Delete", `Deleted user - ${user_id}`);
       } else {
-        setModalMessage({ type: "error", message: "Failed to delete user!" });
+        toast.error("An error occurred while deleting the user!");
       }
-      setTimeout(() => {
-        setShouldLoadingModalOpen(false);
-      }, 2500);
-      setTimeout(() => {
-        router.refresh();
-      }, 1500);
+
+      router.refresh();
     }
   }
 
@@ -72,7 +57,6 @@ export default function UserActions({ user_id, name, email, role, image, created
       <AnimatePresence>
         {confirmationModal && <ConfirmationModal setConfirmationModal={setConfirmationModal} cb={handleUserDelete} />}
       </AnimatePresence>
-      <AnimatePresence>{shouldLoadingModalOpen && <DeleteActionModal modalMessage={modalMessage} />}</AnimatePresence>
       <AnimatePresence>
         {editModalOpen && (
           <EditUserModal

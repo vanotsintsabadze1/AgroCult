@@ -35,9 +35,9 @@ export default async function page({ params: { id } }: Props) {
       <div className="relative rounded-lg p-[1rem] sm:h-[25rem] sm:w-[40rem] md:h-[40rem] md:w-[60rem] lg:h-[40rem] lg:w-[80rem] xs:h-[10rem] xs:w-[30rem]">
         <Image src={blog?.thumbnail} alt={`thumbnail-${id}`} fill className="object-contain" />
       </div>
-      <div className="flex flex-col gap-[2rem] sm:w-[40rem] md:w-[60rem] lg:w-[72rem] xs:w-full" id="ind-blog">
-        <h1 className="text-[2rem] font-bold text-gray-800">{blog.title}</h1>
-        <div className="flex flex-col" dangerouslySetInnerHTML={{ __html: sanitizedDescription }}></div>
+      <div className="flex flex-col gap-[2rem] sm:w-[40rem] md:w-[60rem] lg:w-[72rem] xs:w-full">
+        <h1 className="text-[3rem] font-bold text-gray-800">{blog.title}</h1>
+        <div className="flex flex-col" dangerouslySetInnerHTML={{ __html: sanitizedDescription }} id="ind-blog"></div>
       </div>
     </main>
   );

@@ -5,7 +5,7 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 
 const divAnimations = {
   hidden: { opacity: 0, y: 0 },
-  visible: { opacity: 1, y: 35 },
+  visible: { opacity: 1, y: 40 },
 };
 
 export default function UserDropdown() {
@@ -19,7 +19,7 @@ export default function UserDropdown() {
       initial="hidden"
       animate="visible"
       exit="hidden"
-      className="shadow-soft absolute right-[1rem] top-0 z-10 hidden w-[12rem] flex-col items-center justify-center rounded-bl-[.5rem] rounded-br-[.5rem] border border-gray-300 bg-body text-[1.4rem] lg:flex dark:bg-white"
+      className="shadow-soft absolute right-[1rem] top-0 z-10 hidden w-[14rem] flex-col items-center justify-center rounded-bl-[.5rem] rounded-br-[.5rem] border border-gray-300 bg-body text-[1.4rem] lg:flex dark:bg-white"
     >
       <button
         className="h-[4rem] w-full duration-150 ease-out hover:bg-gray-100"

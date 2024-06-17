@@ -19,13 +19,81 @@ export default {
     alreadyHaveAnAccount: "Already have an account?",
   },
 
+  admin: {
+    navigation: {
+      dashboard: "Dashboard",
+      users: "Users",
+      products: "Products",
+      orders: "Orders",
+      action_logs: "Action Logs",
+      tickets: "Tickets",
+      go_back: "Go Back",
+    },
+    dashboard: {
+      title: "Dasboard",
+      users: "Users",
+      purchases: "Purchases",
+      new_users: "New Users",
+      todays_revenue: "Today's Revenue",
+      open_tickets: "Open Tickets",
+    },
+    users: {
+      manage_users: "Manage Users",
+      placeholder: "Username",
+      search: "Search",
+      name: "Name",
+      email: "Email",
+      role: "Role",
+      id: "User ID",
+      action: "Action",
+      copy: "Copy",
+      created_at: "Created At",
+      close: "Close",
+      submit: "Submit",
+    },
+    store: {
+      add_item: "Add Item",
+      search: "Search",
+      search_item: "Search Item",
+      id: "ID",
+      name: "Name",
+      price: "Price",
+      category: "Category",
+      actions: "Actions",
+      title: "Manage Products",
+      product: {
+        title: "Title",
+        description: "Description",
+        brand: "Brand",
+        category: "Category",
+        details: "Details",
+        price: "Price",
+        amount: "Amount",
+        discount: "Discount",
+        edit: "Edit",
+        submit: "Submit",
+        cancel: "Cancel",
+      },
+    },
+    logs: {
+      action_logs: "Action Logs",
+      id: "ID",
+      performer_name: "Performer",
+      performer_id: "PID",
+      type: "Type",
+      action: "Action",
+      description: "Description",
+      timestamp: "Timestamp",
+      copy: "Copy",
+    },
+  },
+
   searchBar: {
     placeholder: "Search for products...",
   },
   landing: {
-    welcome: "Welcome To VUENNO",
     phrase:
-      "World's finest farming machinery now available for you anywhere. We bring you the best quality products at the best prices.",
+      "The world's best agricultural machinery is now available anywhere. We offer the best products, unparalleled in quality and efficiency, ensuring optimal performance for all your farming needs.",
     goToStore: "Go To The Store",
     stages: {
       first: {
@@ -51,11 +119,9 @@ export default {
           "Our team members are more than just employees; they’re the backbone of our company. We invest in their growth and well-being, knowing that their expertise and dedication drive our success. Our shared commitment to excellence in agricultural technology makes us a strong and innovative partner for farmers everywhere.",
       },
     },
-    aboutCompany: "About The Company",
-    aboutUs:
-      "AgroCult was founded in 1980 by visionary agricultural engineer Amiran Zhvania, who had a dream to revolutionize farming practices.",
-    aboutUsSecond:
-      " With a deep passion for the land and a relentless drive for innovation, Amiran set out to create a company that would provide farmers with the most advanced and reliable agricultural machinery available.",
+    partners: {
+      title: "Our Partners",
+    },
   },
 
   about: {
@@ -80,9 +146,53 @@ export default {
     },
   },
   store: {
-    topSelling: "Top Sellers",
-    startPayingPhrase: "Start Paying monthly for",
-    buy: "Buy Now",
+    search: {
+      submit: "Submit",
+      placeholder: "Search for items..",
+    },
+    buy: "Purchase",
+    categories: {
+      tractors: "Tractors",
+      plowers: "Plowers",
+      accessories: "Accessories",
+      fertilizers: "Fertilizers",
+      pesticides: "Pesticides & Herbicides",
+      tools: "Tools & Supplies",
+      livestock: "Livestock Equipment",
+      submit: "Submit",
+    },
+    sort: {
+      title: "Sort By",
+      mostrelevant: "Most Relevant",
+      bestSelling: "Best Selling",
+      priceLowToHigh: "Price: Low to High",
+      priceHighToLow: "Price: High to Low",
+    },
+    price: {
+      title: "Price:",
+      from: "From",
+      to: "To",
+    },
+    brand: "Brand",
+    loadMore: "Load More",
+    loadLess: "Load Less",
+    product: {
+      description: "Description",
+      cantBuy: "Submit a support ticket if you want to purchase this product",
+      showMore: "Show More",
+      showLess: "Show Less",
+      details: "Details",
+      price: "Price",
+      amount: "Amount",
+      discount: "Discount",
+    },
+  },
+  header: {
+    dropDown: {
+      profile: "Profile",
+      admin: "Admin",
+      logout: "Log Out",
+    },
   },
 
   navigation: {
@@ -138,7 +248,7 @@ export default {
   footer: {
     rights: "© 2024 Agrocult. All Rights Reserved",
     links: {
-      trackShipment: "Track Shipment",
+      trackShipment: "Shipments",
       about: "About",
       contact: "Contact",
       profile: "Profile",

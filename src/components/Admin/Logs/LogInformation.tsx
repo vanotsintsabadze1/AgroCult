@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useScopedI18n } from "@/locales/client";
 
 const parentModalAnimations = {
   hidden: { opacity: 0 },
@@ -23,6 +24,8 @@ export default function LogInformation({
   performed_at,
   setModal,
 }: Props) {
+  const word = useScopedI18n("admin.logs");
+
   function copyOnClick(arg: string) {
     navigator.clipboard.writeText(arg);
   }
@@ -44,39 +47,39 @@ export default function LogInformation({
       >
         <div className="mt-[2rem] flex w-full flex-col gap-[1rem] px-[1rem]">
           <div className="w-[30rem] overflow-x-auto">
-            <p className="text-[1.3rem] font-bold text-gray-500">Action ID:</p>
+            <p className="text-[1.3rem] font-bold text-gray-500">{word("id")}:</p>
             <p>{id}</p>
             <button
               className="mt-[.5rem] cursor-pointer text-[1.3rem] font-bold text-blue-400 underline"
               onClick={() => copyOnClick(id.toString())}
             >
-              Copy
+              {word("copy")}
             </button>
           </div>
           <p className="text-[1.5rem]">
-            <span className="text-[1.3rem] text-gray-500">Performer</span>: <br />
+            <span className="text-[1.3rem] text-gray-500">{word("performer_name")}</span>: <br />
             {performer_name}
           </p>
           <p className="text-[1.5rem]">
-            <span className="text-[1.3rem] text-gray-500">PID</span>: <br />
+            <span className="text-[1.3rem] text-gray-500">{word("performer_id")}</span>: <br />
             {performer_id}
           </p>
           <p className="text-[1.5rem]">
-            <span className="text-[1.3rem] text-gray-500">Type</span>: <br />
+            <span className="text-[1.3rem] text-gray-500">{word("type")}</span>: <br />
             {type}
           </p>
           <div className="w-[30rem] overflow-x-auto">
-            <p className="text-[1.3rem] font-bold text-gray-500">Description:</p>
+            <p className="text-[1.3rem] font-bold text-gray-500">{word("description")}:</p>
             <p>{description}</p>
             <button
               className="mt-[.5rem] cursor-pointer text-[1.3rem] font-bold text-blue-400 underline"
               onClick={() => copyOnClick(description)}
             >
-              Copy
+              {word("copy")}
             </button>
           </div>
           <p className="text-[1.5rem]">
-            <span className="text-[1.3rem] text-gray-500">Created At</span>: <br />
+            <span className="text-[1.3rem] text-gray-500">{word("timestamp")}</span>: <br />
             {performed_at?.toLocaleDateString()} {performed_at?.toLocaleTimeString()}
           </p>
         </div>

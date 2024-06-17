@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useScopedI18n } from "@/locales/client";
 
 const parentModalAnimations = {
   hidden: { opacity: 0 },
@@ -16,6 +17,8 @@ interface Props extends UserDB {
 }
 
 export default function UserInformation({ user_id, name, email, role, image, created_at, setModal }: Props) {
+  const word = useScopedI18n("admin.users");
+
   function onCopyUserId() {
     navigator.clipboard.writeText(user_id);
   }
@@ -39,29 +42,29 @@ export default function UserInformation({ user_id, name, email, role, image, cre
         {image && <Image src={image} alt={name} width={30} height={30} className="h-[10rem] w-[10rem] rounded-[50%]" />}
         <div className="mt-[2rem] flex w-full flex-col gap-[1rem] px-[1rem]">
           <div className="w-[30rem] overflow-x-auto">
-            <p className="text-[1.3rem] font-bold text-gray-500">User ID:</p>
+            <p className="text-[1.3rem] font-bold text-gray-500">{word("id")}:</p>
             <p>{user_id}</p>
             <button
               className="mt-[.5rem] cursor-pointer text-[1.3rem] font-bold text-blue-400 underline"
               onClick={onCopyUserId}
             >
-              Copy
+              {word("copy")}
             </button>
           </div>
           <p className="text-[1.5rem]">
-            <span className="text-[1.3rem] text-gray-500">Name</span>: <br />
+            <span className="text-[1.3rem] text-gray-500">{word("name")}</span>: <br />
             {name}
           </p>
           <p className="text-[1.5rem]">
-            <span className="text-[1.3rem] text-gray-500">Email</span>: <br />
+            <span className="text-[1.3rem] text-gray-500">{word("email")}</span>: <br />
             {email}
           </p>
           <p className="text-[1.5rem]">
-            <span className="text-[1.3rem] text-gray-500">Role</span>: <br />
+            <span className="text-[1.3rem] text-gray-500">{word("role")}</span>: <br />
             {role}
           </p>
           <p className="text-[1.5rem]">
-            <span className="text-[1.3rem] text-gray-500">Created At</span>: <br />
+            <span className="text-[1.3rem] text-gray-500">{word("created_at")}</span>: <br />
             {created_at?.toUTCString()}
           </p>
         </div>
@@ -69,7 +72,7 @@ export default function UserInformation({ user_id, name, email, role, image, cre
           onClick={() => setModal(false)}
           className="mt-[2rem] rounded-md bg-green-600 px-[1rem] py-[0.5rem] text-white"
         >
-          Close
+          {word("close")}
         </button>
       </motion.div>
     </motion.div>

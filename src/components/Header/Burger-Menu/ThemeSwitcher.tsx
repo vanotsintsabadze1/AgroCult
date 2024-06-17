@@ -1,10 +1,9 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { setTheme } from "../../../scripts/theme/themeSetter";
-import { retrieveTheme } from "../../../scripts/theme/themeRetriever";
+import { SunMedium, Moon, Computer } from "lucide-react";
 
 interface Props {
   className?: string;
@@ -12,37 +11,22 @@ interface Props {
     hidden: { [key: string]: number | string };
     visible: { [key: string]: number | string };
   };
+  curTheme: string;
 }
 
-export default function ThemeSwitcher({ className, animationVariant }: Props) {
+export default function ThemeSwitcher({ curTheme, className, animationVariant }: Props) {
   const [isThemeSwitcherVisible, setThemeSwitcherVisible] = useState(false);
-  const [image, setImage] = useState(""); // There's a bug here.
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const [theme, setCurTheme] = useState(curTheme);
 
   function showThemeSwitcher() {
     setThemeSwitcherVisible(!isThemeSwitcherVisible);
   }
 
   async function setDesiredTheme(theme: string) {
-    await setTheme(theme);
+    setCurTheme(theme);
+    setTheme(theme);
     setThemeSwitcherVisible(false);
-    setImage(`/images/icons/header-icons/${theme}-mode.webp`);
   }
-
-  async function setThemeImage() {
-    const theme = await retrieveTheme();
-    setImage(`/images/icons/header-icons/${theme}-mode.webp`);
-  }
-
-  useEffect(() => {
-    if (mounted) {
-      setThemeImage();
-    }
-  }, [mounted]);
 
   return (
     <div className={className}>
@@ -50,14 +34,7 @@ export default function ThemeSwitcher({ className, animationVariant }: Props) {
         onClick={showThemeSwitcher}
         className={`flex h-[3.8rem] w-[3.8rem] items-center justify-center rounded-[50%] ${!isThemeSwitcherVisible ? "border border-black" : ""} bg-white p-[1rem]`}
       >
-        {image !== "" && (
-          <Image
-            src={image === "" ? "/images/icons/header-icons/system-mode.webp" : image}
-            width={20}
-            height={20}
-            alt="mode"
-          />
-        )}
+        {theme === "light" ? <SunMedium size={20} /> : theme === "dark" ? <Moon size={20} /> : <Computer size={20} />}
       </button>
       <AnimatePresence>
         {isThemeSwitcherVisible && (
@@ -68,18 +45,15 @@ export default function ThemeSwitcher({ className, animationVariant }: Props) {
             exit="hidden"
             className="absolute right-[.5rem] top-0 flex h-[4rem] items-center justify-center gap-[3rem] rounded-[2rem] bg-white"
           >
-            {["light", "dark", "system"].map((theme) => {
-              return (
-                <button key={theme} onClick={() => setDesiredTheme(theme)}>
-                  <Image
-                    src={`/images/icons/header-icons/${theme}-mode.webp`}
-                    width={20}
-                    height={20}
-                    alt={`mode-${theme}`}
-                  />
-                </button>
-              );
-            })}
+            <button onClick={() => setDesiredTheme("light")}>
+              <SunMedium size={20} />
+            </button>
+            <button onClick={() => setDesiredTheme("dark")}>
+              <Moon size={20} />
+            </button>
+            <button onClick={() => setDesiredTheme("system")}>
+              <Computer size={20} />
+            </button>
           </motion.div>
         )}
       </AnimatePresence>

@@ -23,8 +23,6 @@ export async function createItem(itemDetails: ShopItem, formData: FormData) {
     };
   }
 
-  console.log(itemDetails);
-
   try {
     const strExtraDetails = JSON.stringify(extra_details);
     const strCategories = JSON.stringify(category);

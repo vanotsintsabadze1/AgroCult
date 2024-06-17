@@ -1,19 +1,22 @@
 import Image from "next/image";
 import UserActions from "./UserActions";
+import { getScopedI18n } from "@/locales/server";
 
 interface Props {
   users: UserDB[];
 }
 
-export default function UserList({ users }: Props) {
+export default async function UserList({ users }: Props) {
+  const word = await getScopedI18n("admin.users");
+
   return (
     <div className="m-auto mt-[2rem] flex h-full w-full flex-col overflow-x-auto px-[1rem] lg:items-center">
       <div className="grid w-[90rem] grid-cols-5 rounded-t-xl bg-green-600 px-[1rem] py-[1.5rem] text-white">
-        <div className="cols-span-1 m-auto text-[1.5rem]">Name</div>
-        <div className="cols-span-1 m-auto text-[1.5rem]">Email</div>
-        <div className="cols-span-1 m-auto text-[1.5rem]">Role</div>
-        <div className="cols-span-1 m-auto text-[1.5rem]">ID</div>
-        <div className="cols-span-1 m-auto text-[1.5rem]">Action</div>
+        <div className="cols-span-1 m-auto text-[1.5rem]">{word("name")}</div>
+        <div className="cols-span-1 m-auto text-[1.5rem]">{word("email")}</div>
+        <div className="cols-span-1 m-auto text-[1.5rem]">{word("role")}</div>
+        <div className="cols-span-1 m-auto text-[1.5rem]">{word("id")}</div>
+        <div className="cols-span-1 m-auto text-[1.5rem]">{word("action")}</div>
       </div>
 
       {users.map((user) => (

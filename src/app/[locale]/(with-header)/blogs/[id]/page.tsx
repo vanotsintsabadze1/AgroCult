@@ -28,8 +28,6 @@ export default async function page({ params: { id } }: Props) {
   if (!blog) return null;
   const sanitizedDescription = DOMPurify.sanitize(blog.description);
 
-  console.log(blog);
-
   return (
     <main className="flex w-full flex-col items-center gap-[2rem] p-[2rem]">
       <div className="relative rounded-lg p-[1rem] sm:h-[25rem] sm:w-[40rem] md:h-[40rem] md:w-[60rem] lg:h-[40rem] lg:w-[80rem] xs:h-[10rem] xs:w-[30rem]">

@@ -5,7 +5,7 @@ export const revalidate = 0;
 
 export async function GET() {
   try {
-    const res = await sql`SELECT * FROM products`;
+    const res = await sql`SELECT * FROM products ORDER BY RANDOM()`;
 
     return NextResponse.json(res.rows, { status: 200 });
   } catch (err) {

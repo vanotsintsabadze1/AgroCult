@@ -5,6 +5,9 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import AdminNav from "./AdminNav";
 import { usePathname } from "next/navigation";
+import { useCurrentLocale } from "@/locales/client";
+import { LucideArrowRight } from "lucide-react";
+import { useChangeLocale } from "@/locales/client";
 
 interface Props {
   profilePicture: string;
@@ -14,12 +17,18 @@ interface Props {
 export default function SideBar({ profilePicture, name }: Props) {
   const [shouldSideBarBeVisible, setShouldSideBarBeVisible] = useState(false);
   const pathname = usePathname();
+  const locale = useCurrentLocale();
+  const setLocale = useChangeLocale();
 
   useEffect(() => {
     if (shouldSideBarBeVisible) {
       setShouldSideBarBeVisible(false);
     }
   }, [pathname]);
+
+  function changeLocale() {
+    setLocale(locale === "en" ? "ka" : "en");
+  }
 
   return (
     <>
@@ -40,11 +49,19 @@ export default function SideBar({ profilePicture, name }: Props) {
         <div className="relative h-full w-full">
           <AdminNav active={shouldSideBarBeVisible} />
         </div>
-        <button onClick={() => setShouldSideBarBeVisible(!shouldSideBarBeVisible)}>
-          <p className={`fixed bottom-[1.5rem] left-[1rem] ${shouldSideBarBeVisible ? "rotate-[180deg]" : ""}`}>
-            <Image width={40} height={40} alt="caret" src="/images/icons/misc/arrow-right.webp" />
-          </p>
-        </button>
+        <div className="fixed bottom-[2.5rem] left-[1.5rem] flex flex-grow flex-col items-center gap-[1.5rem]">
+          <div className="">
+            <button onClick={changeLocale} className="text-[1.3rem] font-light uppercase">
+              {locale === "en" ? "ka" : "en"}
+            </button>
+          </div>
+          <button
+            className={`${shouldSideBarBeVisible ? "rotate-[180deg]" : ""}`}
+            onClick={() => setShouldSideBarBeVisible(!shouldSideBarBeVisible)}
+          >
+            <LucideArrowRight size={25} />
+          </button>
+        </div>
       </div>
     </>
   );

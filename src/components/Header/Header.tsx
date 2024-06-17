@@ -1,25 +1,39 @@
 import Image from "next/image";
 import MobileMenu from "./MobileMenu";
 import Navigation from "./Navigation";
-import Cart from "./Cart/Cart";
+// import Cart from "./Cart/Cart";
 import LoginButton from "./LoginButton";
 import UserButton from "./UserButton";
 import LocaleSwitcher from "./LocaleSwitcher";
 import ThemeSwitcher from "./Burger-Menu/ThemeSwitcher";
 import { getCurrentLocale } from "../../locales/server";
 import { getSession } from "@auth0/nextjs-auth0";
+import { retrieveTheme } from "@/scripts/theme/themeRetriever";
 
-async function getCartItems(userId: string) {
+// async function getCartItems(userId: string) {
+//   if (!userId) {
+//     return [];
+//   }
+
+//   const res = await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-cart-items`, {
+//     method: "POST",
+//     body: JSON.stringify({ userId }),
+//     next: {
+//       tags: ["cart"],
+//     },
+//   });
+
+//   return await res.json();
+// }
+
+async function getProfileInfo(userId: string) {
   if (!userId) {
-    return [];
+    return null;
   }
 
-  const res = await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-cart-items`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-profile-info`, {
     method: "POST",
     body: JSON.stringify({ userId }),
-    next: {
-      tags: ["cart"],
-    },
   });
 
   return await res.json();
@@ -27,9 +41,10 @@ async function getCartItems(userId: string) {
 
 export default async function Header() {
   const session = await getSession();
-  const user = session?.user;
-  // const cart: CartItem[] = await getCartItems(user?.sub);
+  const userSesh = session?.user;
   const locale = getCurrentLocale();
+  const user = (await getProfileInfo(userSesh?.sub)) as UserDB;
+  const theme = await retrieveTheme();
 
   return (
     <header className="sticky top-0 z-[10] flex w-full items-center justify-center bg-body py-[1rem] lg:py-[1rem] dark:bg-dark-primary">
@@ -47,6 +62,7 @@ export default async function Header() {
         </section>
         <section className="relative hidden items-center justify-center gap-[2.5rem] px-[1rem] lg:flex">
           <ThemeSwitcher
+            curTheme={theme}
             className="relative"
             animationVariant={{
               hidden: { opacity: 0, width: "0" },
@@ -55,7 +71,7 @@ export default async function Header() {
           />
           <LocaleSwitcher locale={locale} />
           {/* {user && <Cart className="relative hidden lg:block" usedFor="desktop" cart={cart} />} */}
-          {user ? <UserButton /> : <LoginButton />}
+          {user ? <UserButton username={user.name} userAvatar={user.image as string} /> : <LoginButton />}
         </section>
         {/* {user && <Cart className="absolute right-[7rem] lg:hidden" usedFor="mobile" cart={cart} />} */}
         <MobileMenu />

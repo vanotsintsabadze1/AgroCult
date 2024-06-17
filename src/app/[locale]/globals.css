@@ -54,9 +54,8 @@ body::-webkit-scrollbar {
   word-break: break-all;
 }
 
-#blog-card-description-div,
-#item-description-div {
-  mask-image: linear-gradient(180deg, #000 60%, transparent);
+#blog-card-description-div {
+  mask-image: linear-gradient(180deg, #000 50%, transparent);
 }
 
 #blog-card-description-div img {
@@ -79,4 +78,10 @@ body::-webkit-scrollbar {
 #ind-blog p {
   font-size: 1.4rem;
   font-weight: medium;
+}
+
+@layer components {
+  .item-description-div {
+    mask-image: linear-gradient(180deg, #000 50%, transparent);
+  }
 }

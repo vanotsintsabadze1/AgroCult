@@ -1,4 +1,4 @@
-import { Store, BookOpenCheck, FileText, Edit } from "lucide-react";
+import { Store, BookOpenCheck, FileText } from "lucide-react";
 import ProfileUserID from "./ProfileUserID";
 import ProfileUserInformation from "./ProfileUserInformation";
 import ProfileUserAddress from "./ProfileUserAddress";
@@ -31,7 +31,7 @@ export default async function ProfileCard({ user }: Props) {
           <p className="text-[1.4rem] font-medium">0 Created Blogs</p>
         </div>
       </div>
-      <ProfileUserAddress userId={user.user_id} extra_details={user.extra_details} />
+      {user.extra_details && <ProfileUserAddress extra_details={user.extra_details} userId={user.user_id} />}
     </div>
   );
 }

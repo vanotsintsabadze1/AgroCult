@@ -1,10 +1,13 @@
 import Image from "next/image";
+import { useScopedI18n } from "@/locales/client";
 
 interface Props {
   setLayout: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export default function SearchBar({ setLayout }: Props) {
+  const word = useScopedI18n("store");
+
   function setMultiColumnLayout() {
     setLayout("multi");
   }
@@ -19,17 +22,12 @@ export default function SearchBar({ setLayout }: Props) {
         <div className="relative">
           <input
             type="text"
-            placeholder="Search for items.."
-            className="h-[4rem] w-[30rem] rounded-lg p-[1rem] text-[1.5rem] shadow-md xs:w-[22rem] md:w-[40rem] lg:w-[55rem]"
+            placeholder={word("search.placeholder")}
+            className="h-[4rem] w-[30rem] rounded-lg p-[1rem] text-[1.5rem] shadow-md md:w-[40rem] lg:w-[55rem]"
           />
-          <div className="absolute right-0 top-0 flex h-full items-center justify-center gap-[1rem] rounded-r-lg bg-green-600 px-[1.5rem] text-[1.4rem] font-bold text-white shadow-md">
-            Submit
-            <Image
-              src="/images/icons/store-icons/search-icon.webp"
-              width={18}
-              height={18}
-              alt="search-icon"
-            />
+          <div className="absolute right-0 top-0 flex h-full items-center justify-center gap-[1rem] rounded-r-lg bg-green-600 px-[1.5rem] text-[1.4rem] text-white shadow-md">
+            {word("search.submit")}
+            <Image src="/images/icons/store-icons/search-icon.webp" width={18} height={18} alt="search-icon" />
           </div>
         </div>
         <div className="hidden gap-[1rem] lg:flex">

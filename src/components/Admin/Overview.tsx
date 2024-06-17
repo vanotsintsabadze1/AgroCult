@@ -1,11 +1,12 @@
 import { sql } from "@vercel/postgres";
+import { getScopedI18n } from "@/locales/server";
 
 async function getUsers() {
   try {
     const res = await sql`SELECT * FROM users`;
     return res.rows;
   } catch (error) {
-    console.error(error)
+    console.error(error);
     return [];
   }
 }
@@ -13,26 +14,27 @@ async function getUsers() {
 export default async function UserInformation() {
   const users = await getUsers();
   const amountOfUsers = users.length;
+  const word = await getScopedI18n("admin.dashboard");
 
   const data = [
     {
-      label: "Users",
+      label: "users",
       data: amountOfUsers,
     },
     {
-      label: "Purchases",
+      label: "purchases",
       data: Number(Math.random() * 100).toFixed(),
     },
     {
-      label: "New Users",
+      label: "new_users",
       data: Number(Math.random() * 100).toFixed(),
     },
     {
-      label: "Today's Revenue",
+      label: "todays_revenue",
       data: Number(Math.random() * 100).toFixed(),
     },
     {
-      label: "Open Tickets",
+      label: "open_tickets",
       data: Number(Math.random() * 100).toFixed(),
     },
   ];
@@ -46,7 +48,10 @@ export default async function UserInformation() {
       <div className="flex flex-wrap place-items-center justify-center gap-[2rem] gap-y-[5rem] py-[2rem]">
         {data.map((d, idx) => (
           <div key={idx} className="flex basis-[33%] flex-col items-center gap-[1rem]">
-            <h4 className="text-center text-[1.8rem] font-semibold uppercase text-gray-400">{d.label}</h4>
+            <h4 className="text-center text-[1.8rem] font-semibold uppercase text-gray-400">
+              {" "}
+              {word(d.label as "users" | "title" | "purchases" | "new_users" | "todays_revenue" | "open_tickets")}
+            </h4>
             <p className="text-[2.5rem] font-light">{d.data}</p>
           </div>
         ))}

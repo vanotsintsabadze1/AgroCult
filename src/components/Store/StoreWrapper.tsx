@@ -23,7 +23,7 @@ export default function StoreWrapper({ items }: Props) {
       <SearchBar setLayout={setLayout} />
       <button
         onClick={handleMobileFilter}
-        className="mt-[3rem] flex h-[4rem] w-[35rem] items-center justify-center gap-[.5rem] rounded-lg bg-green-600 text-[1.6rem] font-bold text-white shadow-md xs:w-[25rem] lg:hidden"
+        className="mt-[3rem] flex h-[4rem] w-[35rem] items-center justify-center gap-[.5rem] rounded-lg bg-green-600 text-[1.6rem] font-bold text-white shadow-md lg:hidden xs:w-[25rem]"
       >
         <Image width={17} height={17} src="/images/icons/store-icons/filter-icon.webp" alt="filter-icon" />
         Filter
@@ -31,7 +31,7 @@ export default function StoreWrapper({ items }: Props) {
 
       {shouldMobileFilterOpen && <MobileFilter />}
 
-      <div className="flex w-full justify-center gap-[1rem] py-[4rem]">
+      <div className="flex w-full justify-center gap-[2rem] py-[4rem]">
         <DesktopFilter />
         <ItemsWrapper items={items} layout={layout} />
       </div>

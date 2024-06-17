@@ -7,11 +7,6 @@ export async function editUser(id: string, name: string, email: string, role: st
   const url = process.env.AUTH0_ISSUER_BASE_URL;
   const token = await getAuthToken();
 
-  console.log("id: ", typeof id, id)
-  console.log("name: ", typeof name, name)
-  console.log("email: ", typeof email, email)
-  console.log("role: ", typeof role, role)
-
   if (token === "") {
     return { message: "Invalid Token", status: 500 };
   }

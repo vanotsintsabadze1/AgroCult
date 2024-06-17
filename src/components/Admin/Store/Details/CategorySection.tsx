@@ -1,4 +1,5 @@
 import Image from "next/image";
+import toast from "react-hot-toast";
 
 interface Props {
   itemDetails: ShopItem;
@@ -8,7 +9,6 @@ interface Props {
   newCategory: string;
   setNewCategory: React.Dispatch<React.SetStateAction<string>>;
   setItemDetails: React.Dispatch<React.SetStateAction<ShopItem>>;
-  setErrorModal?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function CategorySection({
@@ -19,18 +19,11 @@ export default function CategorySection({
   setNewCategory,
   newCategory,
   setItemDetails,
-  setErrorModal,
 }: Props) {
   function removeCategory(category: string) {
-    if (typeof setErrorModal === "function") {
-      if (!editMode) {
-        setErrorModal(true);
-
-        setTimeout(() => {
-          setErrorModal(false);
-        }, 1500);
-        return;
-      }
+    if (!editMode) {
+      toast.error("You need to enable edit mode to remove a category");
+      return;
     }
 
     setItemDetails((prev) => ({
@@ -40,17 +33,6 @@ export default function CategorySection({
   }
 
   function addNewCategory() {
-    if (typeof setErrorModal === "function") {
-      if (!editMode) {
-        setErrorModal(true);
-
-        setTimeout(() => {
-          setErrorModal(false);
-        }, 1500);
-        return;
-      }
-    }
-
     if (newCategory === "") {
       return;
     } else {
@@ -61,17 +43,10 @@ export default function CategorySection({
   }
 
   function enableNewCategoryModal() {
-    if (typeof setErrorModal === "function") {
-      if (!editMode) {
-        setErrorModal(true);
-
-        setTimeout(() => {
-          setErrorModal(false);
-        }, 1500);
-        return;
-      }
+    if (!editMode) {
+      toast.error("You need to enable edit mode to add a new category");
+      return;
     }
-
     setNewCategoryModal(true);
   }
   return (

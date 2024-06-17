@@ -1,36 +1,36 @@
 export const options = [
   {
-    name: "Dashboard",
+    name: "dashboard",
     icon: "/images/icons/admin-icons/sidebar-icons/dashboard.webp",
     path: "/admin",
   },
   {
-    name: "Users",
+    name: "users",
     icon: "/images/icons/admin-icons/sidebar-icons/users.webp",
     path: "/admin/users",
   },
   {
-    name: "Store",
+    name: "products",
     icon: "/images/icons/admin-icons/sidebar-icons/store.webp",
     path: "/admin/store",
   },
   {
-    name: "Shipments",
+    name: "orders",
     icon: "/images/icons/admin-icons/sidebar-icons/shipment.webp",
     path: "/admin/shipments",
   },
   {
-    name: "Action Logs",
+    name: "action_logs",
     icon: "/images/icons/admin-icons/sidebar-icons/logs.webp",
     path: "/admin/logs",
   },
   {
-    name: "Tickets",
+    name: "tickets",
     icon: "/images/icons/admin-icons/sidebar-icons/customer-support.webp",
     path: "/admin/tickets",
   },
   {
-    name: "Go Back",
+    name: "go_back",
     icon: "/images/icons/admin-icons/sidebar-icons/go-back.webp",
     path: "/",
   },

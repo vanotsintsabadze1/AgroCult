@@ -3,6 +3,7 @@ import { useState } from "react";
 import { ReactLenis } from "lenis/react";
 import StoreItemDetails from "./StoreItemDetails";
 import { editItem } from "../../../scripts/actions/admin-panel/editItem";
+import { useScopedI18n } from "@/locales/client";
 
 const parentModalAnimations = {
   hidden: { opacity: 0 },
@@ -23,6 +24,7 @@ export default function ItemDetailsModal({ setEditModal, item }: Props) {
   const [editMode, setEditMode] = useState(false);
   const [itemDetails, setItemDetails] = useState<ShopItem>(item);
   const [deletedImagesArr, setDeletedImagesArr] = useState<string[]>([]);
+  const word = useScopedI18n("admin.store");
 
   async function onSubmit() {
     const res = await editItem(itemDetails, item.id, deletedImagesArr);
@@ -63,15 +65,15 @@ export default function ItemDetailsModal({ setEditModal, item }: Props) {
             <div className="flex w-full items-center justify-center gap-[2rem] py-[2rem]">
               <button
                 onClick={editMode ? onSubmit : enableEditMode}
-                className="h-[4rem] w-[12rem] rounded-lg bg-green-600 px-[1rem] py-[.5rem] font-bold text-white "
+                className="h-[4rem] rounded-lg bg-green-600 px-[2rem] py-[.5rem] font-bold text-white "
               >
-                {editMode ? "Submit" : "Edit"}
+                {editMode ? word("product.submit") : word("product.edit")}
               </button>
               <button
                 onClick={() => setEditModal(false)}
-                className="h-[4rem] w-[12rem] rounded-lg border-2  border-green-600 px-[1rem] py-[.5rem] font-bold text-black "
+                className="h-[4rem] w-[12rem] rounded-lg border-2 border-green-600 px-[1rem] py-[.5rem] font-bold text-black "
               >
-                Cancel
+                {word("product.cancel")}
               </button>
             </div>
           </motion.div>

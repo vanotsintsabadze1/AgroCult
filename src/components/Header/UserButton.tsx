@@ -4,8 +4,14 @@ import { useState, useEffect } from "react";
 import UserDropdown from "./UserDropdown";
 import { AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
+import { ChevronDown } from "lucide-react";
 
-export default function UserButton() {
+interface Props {
+  username: string;
+  userAvatar: string;
+}
+
+export default function UserButton({ username, userAvatar }: Props) {
   const [isUserDropdownVisible, setUserDropdownVisible] = useState(false);
   const pathname = usePathname();
 
@@ -23,12 +29,12 @@ export default function UserButton() {
     <>
       <button
         onClick={showUserDropdown}
-        className={`flex h-[3.5rem] w-[12rem] items-center justify-center gap-[1rem] ${isUserDropdownVisible ? "rounded-tl-[.5rem] rounded-tr-[.5rem]" : "rounded-[.5rem]"} border border-gray-300 text-[1.5rem] font-bold shadow-md dark:bg-white`}
+        className={`flex h-[3.5rem] w-[14rem] items-center justify-center gap-[1rem] px-[2rem] py-[2rem] ${isUserDropdownVisible ? "rounded-tl-[.5rem] rounded-tr-[.5rem]" : "rounded-[.5rem]"} border border-gray-300 text-[1.5rem] shadow-md dark:bg-white`}
       >
-        <Image src="/images/icons/header-icons/user-profile.webp" width={20} height={20} alt="user-profile-icon" />
+        <Image src={userAvatar} width={20} height={20} alt="user-profile-icon" className="rounded-[50%]" />
         <div className="flex items-center gap-[.3rem]">
-          <p>User</p>
-          <Image src="/images/icons/misc/caret.webp" width={10} height={10} alt="caret" />
+          <p className="truncate">{username}</p>
+          <ChevronDown size={15} />
         </div>
       </button>
       <AnimatePresence>{isUserDropdownVisible ? <UserDropdown /> : null}</AnimatePresence>

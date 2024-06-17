@@ -17,14 +17,14 @@ export const categories = [
   },
   {
     imageUrl: "/images/icons/store-icons/desktop-categories-icons/pesticides.webp",
-    category: "Pesticides & Herbicides",
+    category: "Pesticides",
   },
   {
     imageUrl: "/images/icons/store-icons/desktop-categories-icons/tools.webp",
-    category: "Tools & Supplies",
+    category: "Tools",
   },
   {
     imageUrl: "/images/icons/store-icons/desktop-categories-icons/livestock.webp",
-    category: "Livestock Equipment",
+    category: "Livestock",
   },
 ];

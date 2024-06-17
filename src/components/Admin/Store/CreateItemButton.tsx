@@ -2,9 +2,11 @@
 import { AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import ItemCreationModal from "./Item-Creation/ItemCreationModal";
+import { useScopedI18n } from "@/locales/client";
 
 export default function CreateItemButton() {
   const [shouldModalBeVisible, setShouldModalBeVisible] = useState(false);
+  const word = useScopedI18n("admin.store");
 
   return (
     <>
@@ -14,9 +16,9 @@ export default function CreateItemButton() {
 
       <button
         onClick={() => setShouldModalBeVisible(true)}
-        className="ml-[.2rem] mt-[6rem] w-[12rem] rounded-lg bg-green-600 py-[.5rem] text-[1.5rem] font-semibold text-white"
+        className="ml-[.2rem] mt-[6rem] w-[12rem] rounded-lg bg-green-600 py-[.8rem] text-[1.3rem] font-medium text-white"
       >
-        + Add Item
+        + {word("add_item")}
       </button>
     </>
   );

@@ -2,6 +2,7 @@ import { useState } from "react";
 import ItemImageSection from "./Details/ItemImageSection";
 import GenericInformationField from "./Details/GenericInformationField";
 import CategorySection from "./Details/CategorySection";
+import { useScopedI18n } from "@/locales/client";
 
 interface Props {
   editMode: boolean;
@@ -16,6 +17,7 @@ export default function StoreItemDetails({ editMode, item, itemDetails, setItemD
   const [newCategoryModal, setNewCategoryModal] = useState(false);
   const [newCategory, setNewCategory] = useState("");
   const [imageEditModal, setImageEditModal] = useState(false);
+  const word = useScopedI18n("admin.store.product")
 
   function editCategory(e: React.ChangeEvent<HTMLInputElement>, key: string[]) {
     setItemDetails((prev) => ({
@@ -39,7 +41,7 @@ export default function StoreItemDetails({ editMode, item, itemDetails, setItemD
           setDeletedImagesArr={setDeletedImagesArr}
         />
         <div className="mt-[1rem] flex w-full flex-col items-center gap-[2rem] px-[.5rem]">
-          <GenericInformationField title="title">
+          <GenericInformationField title={word("title")}>
             <input
               readOnly={!editMode}
               type="text"
@@ -48,7 +50,7 @@ export default function StoreItemDetails({ editMode, item, itemDetails, setItemD
               onChange={(e) => setItemDetails((prev) => ({ ...prev, title: e.target.value }))}
             />
           </GenericInformationField>
-          <GenericInformationField title="brand">
+          <GenericInformationField title={word("brand")}>
             <input
               readOnly={!editMode}
               type="text"
@@ -57,7 +59,7 @@ export default function StoreItemDetails({ editMode, item, itemDetails, setItemD
               className={`rounded-md border-gray-300 bg-gray-200 ${editMode ? "text-black" : "text-gray-400"} px-[1.2rem] py-[1rem] shadow-md`}
             />
           </GenericInformationField>
-          <GenericInformationField title="Category">
+          <GenericInformationField title={word("category")}>
             <CategorySection
               itemDetails={itemDetails}
               setNewCategory={setNewCategory}
@@ -68,7 +70,7 @@ export default function StoreItemDetails({ editMode, item, itemDetails, setItemD
               newCategory={newCategory}
             />
           </GenericInformationField>
-          <GenericInformationField title="Description">
+          <GenericInformationField title={word("description")}>
             <textarea
               readOnly={!editMode}
               defaultValue={itemDetails.description}
@@ -76,7 +78,7 @@ export default function StoreItemDetails({ editMode, item, itemDetails, setItemD
               className={`rounded-md border-gray-300 bg-gray-200 ${editMode ? "text-black" : "text-gray-400"} h-[10rem] max-w-full overflow-y-auto px-[1.2rem] py-[1rem] shadow-md`}
             />
           </GenericInformationField>
-          <GenericInformationField title="Details">
+          <GenericInformationField title={word("details")}>
             {Object.entries(itemDetails.extra_details).map((key, val) => (
               <div key={val} className="mt-[1rem] flex w-full items-center justify-between gap-[.5rem]">
                 <p className="w-[10rem] text-[1.3rem]">{key[0]}</p>
@@ -89,7 +91,7 @@ export default function StoreItemDetails({ editMode, item, itemDetails, setItemD
               </div>
             ))}
           </GenericInformationField>
-          <GenericInformationField title="Amount">
+          <GenericInformationField title={word("amount")}>
             <input
               readOnly={!editMode}
               type="text"
@@ -103,7 +105,7 @@ export default function StoreItemDetails({ editMode, item, itemDetails, setItemD
               className={`rounded-md border-gray-300 bg-gray-200 ${editMode ? "text-black" : "text-gray-400"} px-[1.2rem] py-[1rem] shadow-md`}
             />
           </GenericInformationField>
-          <GenericInformationField title="Discount">
+          <GenericInformationField title={word("discount")}>
             <input
               readOnly={!editMode}
               type="text"
@@ -117,7 +119,7 @@ export default function StoreItemDetails({ editMode, item, itemDetails, setItemD
               className={`rounded-md border-gray-300 bg-gray-200 ${editMode ? "text-black" : "text-gray-400"} px-[1.2rem] py-[1rem] shadow-md`}
             />
           </GenericInformationField>
-          <GenericInformationField title="Price">
+          <GenericInformationField title={word("price")}>
             <input
               readOnly={!editMode}
               type="text"

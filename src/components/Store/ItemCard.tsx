@@ -6,12 +6,16 @@ import { addToCart } from "../../scripts/actions/cart/addToCart";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { useRouter } from "next/navigation";
 import { ShoppingCart } from "lucide-react";
+import { useState } from "react";
+import toast from "react-hot-toast";
 
 interface Props extends ShopItem {
   layout: string;
 }
 
 function ItemCard({ images, id, title, description, price, layout }: Props) {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const multiColView =
     "flex md:w-[30rem] sm:w-[38rem] flex-col m-auto items-center rounded-lg bg-white p-[2rem] shadow-md ";
   const singleColView =
@@ -24,14 +28,21 @@ function ItemCard({ images, id, title, description, price, layout }: Props) {
     router.push(`/store/${id}`);
   }
 
-  function onAddToCart() {
+  async function onAddToCart() {
+    setIsSubmitting(true);
     if (!user) {
       window.location.href = "/api/auth/login";
     }
 
     if (user) {
       if (price !== 0) {
-        addToCart(user.sub as string, id);
+        const res = await addToCart(user.sub as string, id);
+
+        if (res?.status !== 200) {
+          toast.error("Failed to add to cart");
+        }
+        router.refresh();
+        setIsSubmitting(false);
       }
     }
   }
@@ -61,7 +72,8 @@ function ItemCard({ images, id, title, description, price, layout }: Props) {
             {word("buy")}
           </button>
           <button
-            className={`rounded-md bg-gray-200 p-[.5rem] px-[1rem] shadow-sm ${price === 0 ? "cursor-not-allowed opacity-30" : ""} flex items-center justify-center ${layout === "multi" ? "w-[20%]" : "w-[10%]"}`}
+            disabled={price === 0 || isSubmitting}
+            className={`rounded-md bg-gray-200 p-[.5rem] px-[1rem] shadow-sm ${price === 0 ? "cursor-not-allowed opacity-30" : ""} ${isSubmitting ? "opacity-30" : ""} flex items-center justify-center ${layout === "multi" ? "w-[20%]" : "w-[10%]"}`}
             onClick={onAddToCart}
           >
             <ShoppingCart className="" />

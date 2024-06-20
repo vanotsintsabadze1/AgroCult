@@ -6,7 +6,7 @@ interface Props {
 
 export default function PurchaseButton({ price }: Props) {
   return (
-    <div className="flex w-full flex-col gap-[1.5rem] lg:mt-[4rem] lg:flex-grow lg:justify-end">
+    <div className="flex w-full flex-col gap-[1.5rem] pt-[2rem] lg:flex-grow lg:justify-end">
       <div className="flex w-full items-center justify-between">
         <p className="text-[1.5rem] font-medium">{price === 0 ? "Not available for direct purchase" : `$${price}`}</p>
         <div className="flex items-center gap-[1rem]">

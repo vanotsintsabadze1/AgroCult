@@ -72,7 +72,7 @@ export default function ProfileUserAddress({ extra_details, userId }: Props) {
   }
 
   return (
-    <div className="flex w-full flex-col gap-[1rem] p-[2rem]">
+    <div className="mt-[2rem] flex w-full flex-col gap-[1rem] px-[2rem]">
       <h4 className="ml-[.2rem] text-[1.5rem] font-bold uppercase text-black dark:text-white">Shipping Details:</h4>
 
       <div className="flex w-full flex-col gap-[.5rem]">
@@ -115,7 +115,7 @@ export default function ProfileUserAddress({ extra_details, userId }: Props) {
           className="h-[4rem] w-full rounded-[.5rem] border-2 border-gray-300 px-[1.2rem] text-[1.4rem] shadow-md"
         />
       </div>
-      <div className="mt-[2rem] flex w-full items-center justify-center" onClick={onCredentialSubmit}>
+      <div className="flex w-full items-center justify-center py-[1rem]" onClick={onCredentialSubmit}>
         <button className="h-[3.7rem] w-[15rem] rounded-lg bg-green-600 text-[1.4rem] font-bold text-white shadow-md">
           Submit
         </button>

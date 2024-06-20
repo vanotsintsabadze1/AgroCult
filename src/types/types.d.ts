@@ -14,6 +14,12 @@ interface ShopItem {
   buyable: string;
 }
 
+interface StripeProduct {
+  id: string;
+  name: string;
+  description: string;
+}
+
 interface CartItem {
   product_id: number;
   title: string;
@@ -27,6 +33,30 @@ interface CartItem {
 interface CartItemDB {
   id: number;
   quantity: number;
+}
+
+interface Payment {
+  id: string;
+  status: string;
+  amount: number;
+  metadata: {
+    id: string;
+    email: string;
+  };
+  created: number;
+  latest_charge: {
+    receipt_url: string;
+    billing_details: {
+      name: string;
+    };
+
+    payment_method_details: {
+      card: {
+        brand: string;
+      }
+    };
+    receipt_number: string;
+  };
 }
 
 interface User {

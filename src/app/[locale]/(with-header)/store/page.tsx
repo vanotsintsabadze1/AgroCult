@@ -1,5 +1,4 @@
 import StoreWrapper from "../../../../components/Store/StoreWrapper";
-import { unstable_noStore as noStore } from "next/cache";
 
 async function fetchItems() {
   const response = await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-all-items`);
@@ -9,7 +8,6 @@ async function fetchItems() {
 }
 
 export default async function page() {
-  noStore();
   const items = await fetchItems();
 
   return (

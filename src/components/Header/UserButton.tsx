@@ -33,7 +33,7 @@ export default function UserButton({ username, userAvatar }: Props) {
       >
         <Image src={userAvatar} width={20} height={20} alt="user-profile-icon" className="rounded-[50%]" />
         <div className="flex items-center gap-[.3rem]">
-          <p className="truncate">{username}</p>
+          <p className="w-[5rem] truncate">{username}</p>
           <ChevronDown size={15} />
         </div>
       </button>

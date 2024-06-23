@@ -1,10 +1,5 @@
-import { Montserrat } from "next/font/google";
 import ProfileCard from "@/components/Profile/ProfileCard";
 import { getSession } from "@auth0/nextjs-auth0";
-
-const montserrat = Montserrat({
-  subsets: ["latin"],
-});
 
 async function getUserInformation(userId: string) {
   try {
@@ -29,7 +24,7 @@ export default async function Profile() {
   const user = (await getUserInformation(session?.user.sub)) as UserDB;
 
   return (
-    <main className={`flex w-full justify-center p-[2rem] ${montserrat.className}`}>
+    <main className={`flex w-full justify-center p-[2rem]`}>
       <ProfileCard user={user} />
     </main>
   );

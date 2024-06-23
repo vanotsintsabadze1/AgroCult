@@ -89,13 +89,13 @@ export default function BlogCommentSection({ id, comments }: Props) {
             <>
               <AnimatePresence>
                 {isEditing && (
-                  <CommentEditModal currComment={comment.comment} setModal={setIsEditing} comment_id={comment.id} />
+                  <CommentEditModal key={comment.id} currComment={comment.comment} setModal={setIsEditing} comment_id={comment.id} />
                 )}
               </AnimatePresence>
 
               <AnimatePresence>
                 {shouldConfirmationOpen && (
-                  <ConfirmationModal setConfirmationModal={setConfirmationOpen} cb={() => removeComment(comment.id)} />
+                  <ConfirmationModal key={comment.id} setConfirmationModal={setConfirmationOpen} cb={() => removeComment(comment.id)} />
                 )}
               </AnimatePresence>
 

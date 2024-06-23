@@ -45,11 +45,12 @@ interface Payment {
   };
   created: number;
   latest_charge: {
+    id: string;
     receipt_url: string;
     billing_details: {
       name: string;
     };
-
+    refunded: boolean;
     payment_method_details: {
       card: {
         brand: string;
@@ -118,4 +119,15 @@ interface BlogComment {
   commenter_id: string;
   comment: string;
   created_at: Date;
+}
+
+interface Ticket {
+  id: number;
+  issuer_id: string;
+  issuer_name: string;
+  issuer_email: string;
+  topic: string;
+  description: string;
+  created_at: Date;
+  stage: "open" | "in progress" | "closed";
 }

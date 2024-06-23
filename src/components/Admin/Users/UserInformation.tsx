@@ -31,7 +31,7 @@ export default function UserInformation({ user_id, name, email, role, image, cre
       exit="hidden"
       className="absolute left-0 top-0 z-[8] flex h-screen w-screen items-center justify-center pl-[6rem]"
     >
-      <canvas className="absolute h-full w-full bg-gray-300 opacity-50" />
+      <canvas className="absolute h-full w-full bg-[rgba(0,0,0,0.5)] opacity-50" />
       <motion.div
         variants={childModalAnimations}
         initial="hidden"

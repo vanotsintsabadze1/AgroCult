@@ -4,15 +4,29 @@ import Link from "next/link";
 import { getSession } from "@auth0/nextjs-auth0";
 import BlogActions from "./BlogActions";
 
-export default async function BlogCard({ id, wname, title, description, tags, created_at, thumbnail, wid }: Blog) {
+interface Props extends Blog {
+  usedFor?: string;
+}
+
+export default async function BlogCard({
+  id,
+  wname,
+  title,
+  description,
+  tags,
+  created_at,
+  thumbnail,
+  wid,
+  usedFor,
+}: Props) {
   const session = await getSession();
   const user = session?.user;
   const sanitizedDescription = DOMPurify.sanitize(description);
 
   return (
-    <div className="mt-[2rem] flex h-[40rem] w-[35rem] flex-col items-center rounded-[2rem] bg-white p-[2rem] shadow-md xs:w-[30rem]">
-      <div className="relative h-[22rem] w-[32rem]">
-        <Image src={thumbnail} fill alt={`blog-image-${title}`} className=" rounded-[1rem] shadow-sm" />
+    <div className="mt-[2rem] flex h-[40rem] w-[35rem] flex-col items-center rounded-[2rem] bg-white p-[2rem] shadow-md xs:w-[32rem]">
+      <div className="relative h-[22rem] w-[32rem] xs:w-[30rem]">
+        <Image src={thumbnail} fill alt={`blog-image-${title}`} className=" rounded-[1rem] object-cover shadow-sm" />
         <div className="absolute bottom-[1.2rem] left-[1rem] flex items-center justify-center gap-[1rem]">
           {tags.map((tag, idx) => (
             <div
@@ -23,7 +37,7 @@ export default async function BlogCard({ id, wname, title, description, tags, cr
             </div>
           ))}
         </div>
-        {user && user.sub === wid && (
+        {user && user.sub === wid && usedFor === "blogs" && (
           <BlogActions id={id} title={title} description={description} tags={tags} thumbnail={thumbnail} />
         )}
       </div>

@@ -35,7 +35,7 @@ async function getBlogComments(id: string) {
     return comments;
   } catch (error) {
     console.error(error);
-    return null;
+    return [];
   }
 }
 

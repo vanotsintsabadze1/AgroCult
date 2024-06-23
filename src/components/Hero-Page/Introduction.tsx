@@ -2,6 +2,8 @@ import Card from "./Card";
 import Stages from "./Stages";
 import Partners from "./Partners";
 import { getScopedI18n } from "@/locales/server";
+import LatestBlogsSection from "./LatestBlogsSection";
+import FadeWrapper from "../Animation-Wrappers/FadeWrapper";
 
 export default async function Introduction() {
   const word = await getScopedI18n("landing");
@@ -22,9 +24,14 @@ export default async function Introduction() {
       <section className="flex w-full flex-col items-center gap-[1rem] pb-[2rem]">
         <Stages />
       </section>
+      <section className="flex w-full flex-col items-center gap-[1rem] pb-[2rem]">
+        <LatestBlogsSection />
+      </section>
       <section className="mt-[2rem] flex w-full flex-col items-center bg-gray-100 py-[3rem]  dark:bg-dark-primary">
-        <h2 className="text-[2.3rem] font-bold uppercase tracking-wide text-gray-400">{word("partners.title")}</h2>
-        <Partners />
+        <FadeWrapper direction="up" delay={0} duration={1000}>
+          <h2 className="text-[2.3rem] font-bold uppercase tracking-wide text-gray-400">{word("partners.title")}</h2>
+          <Partners />
+        </FadeWrapper>
       </section>
     </>
   );

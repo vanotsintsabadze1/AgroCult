@@ -5,7 +5,7 @@ import ReactLenis from "lenis/react";
 
 type Details = Pick<ShopItem, "extra_details" | "description" | "brand" | "discount" | "category">;
 
-export default function ItemExtraDetails({ brand, discount, description, extra_details }: Details) {
+export default function ItemExtraDetails({ brand, discount, description, extra_details, category }: Details) {
   const [showMore, setShowMore] = useState(false);
   const word = useScopedI18n("store.product");
 
@@ -34,7 +34,14 @@ export default function ItemExtraDetails({ brand, discount, description, extra_d
               </div>
               <div className="flex w-full items-center justify-between">
                 <p className="text-[1.3rem] font-medium">Category:</p>
-                <p className="text-[1.3rem] font-medium">{brand}</p>
+                <p className="text-[1.3rem] font-medium">
+                  {category.map((c, idx) => (
+                    <span key={idx}>
+                      {c}
+                      {idx === category.length - 1 ? "" : ","}
+                    </span>
+                  ))}
+                </p>
               </div>
               {Object.entries(extra_details).map(([key, val], idx) => (
                 <div className="flex w-full items-center justify-between" key={idx}>

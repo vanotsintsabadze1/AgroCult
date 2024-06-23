@@ -53,7 +53,7 @@ export default function BlogActions({ id, title, description, tags, thumbnail }:
         {shouldConfirmationOpen && <ConfirmationModal cb={removeBlog} setConfirmationModal={setConfirmationOpen} />}
       </AnimatePresence>
 
-      <div className="absolute right-[1rem] top-[1rem] flex items-center justify-center gap-[1rem] rounded-2xl bg-[rgba(0,0,0,0.4)] px-[1rem] py-[.5rem]">
+      <div className="absolute right-[1rem] top-[1rem] flex items-center justify-center gap-[1rem] rounded-2xl bg-[rgba(0,0,0,0.6)] px-[1rem] py-[.5rem]">
         <button onClick={enableEditMode}>
           <Pencil size={18} color="white" className="opacity-70 duration-300 ease-in-out hover:opacity-100" />
         </button>

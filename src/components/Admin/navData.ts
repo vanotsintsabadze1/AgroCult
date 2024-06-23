@@ -17,7 +17,7 @@ export const options = [
   {
     name: "orders",
     icon: "/images/icons/admin-icons/sidebar-icons/shipment.webp",
-    path: "/admin/shipments",
+    path: "/admin/orders",
   },
   {
     name: "action_logs",

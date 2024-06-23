@@ -10,6 +10,6 @@ export async function getAllPayments() {
     return paymentData;
   } catch (error) {
     console.error(error);
-    return null;
+    return [];
   }
 }

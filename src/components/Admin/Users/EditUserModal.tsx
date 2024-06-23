@@ -69,7 +69,7 @@ export default function EditUserModal({ userDetails, initialUserData, setUserDet
       initial="hidden"
       animate="visible"
       exit="hidden"
-      className="absolute left-0 top-0 z-[8] flex h-screen w-full items-center justify-center pl-[6rem]"
+      className="absolute left-0 top-0 z-[8] flex h-screen w-full items-center justify-center pl-[6rem] bg-[rgba(0,0,0,0.4)]"
     >
       <motion.div
         variants={childModalAnimations}

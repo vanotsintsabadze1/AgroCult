@@ -1,12 +1,12 @@
-import PaymentChartActions from "./PaymentChartActions";
+import OrderActions from "./OrderActions";
 
 interface Props {
   payments: Payment[];
 }
 
-export default function PaymentsChart({ payments }: Props) {
+export default function OrdersChart({ payments }: Props) {
   return (
-    <div className="m-auto mt-[2rem] flex h-full w-full flex-col overflow-x-auto px-[1rem] lg:items-center">
+    <div className="mt-[2rem] flex h-full w-full flex-col overflow-x-auto px-[1rem] lg:items-center">
       <div className="grid w-[100rem] grid-cols-6 rounded-t-xl bg-green-600 px-[1rem] py-[1.5rem] text-white">
         <div className="col-span-1 m-auto text-[1.5rem]">PID</div>
         <div className="col-span-1 m-auto text-[1.5rem]">Amount</div>
@@ -21,17 +21,17 @@ export default function PaymentsChart({ payments }: Props) {
           <div className="col-span-1 m-auto text-[1.5rem]">
             {!payment.latest_charge.refunded &&
               (payment.status === "succeeded" ? (
-                <div className="font -bold flex w-[12rem] items-center justify-center border-2 border-green-500 px-[1rem] py-[.5rem] text-[1.2rem] uppercase text-green-600">
+                <div className="font -bold flex items-center w-[12rem] justify-center border-2 border-green-500 px-[1rem] py-[.5rem] text-[1.2rem] uppercase text-green-600">
                   Succeeded
                 </div>
               ) : (
-                <div className="flex w-[12rem] items-center justify-center border-2 border-red-500 px-[1rem] py-[.5rem] text-[1.2rem] font-bold uppercase text-red-500">
+                <div className="flex items-center justify-center w-[12rem] border-2 border-red-500 px-[1rem] py-[.5rem] text-[1.2rem] font-bold uppercase text-red-500">
                   Cancelled
                 </div>
               ))}
 
             {payment.latest_charge.refunded && payment.status === "succeeded" && (
-              <div className="flex w-[12rem] items-center justify-center border-2 border-purple-500 px-[1rem] py-[.5rem] text-[1.2rem] font-bold uppercase text-purple-500">
+              <div className="flex items-center justify-center w-[12rem] border-2 border-purple-500 px-[1rem] py-[.5rem] text-[1.2rem] font-bold uppercase text-purple-500">
                 Refunded
               </div>
             )}
@@ -41,7 +41,7 @@ export default function PaymentsChart({ payments }: Props) {
             {new Date(payment.created * 1000).toLocaleTimeString()}
           </div>
           <div className="col-span-1 m-auto flex items-center justify-center gap-[2rem] text-[1.5rem]">
-            <PaymentChartActions payment={payment} />
+            <OrderActions payment={payment} />
           </div>
         </div>
       ))}

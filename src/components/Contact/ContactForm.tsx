@@ -4,11 +4,12 @@ import { useScopedI18n } from "@/locales/client";
 import { submitTicket } from "@/scripts/actions/contact/submitTicket";
 import toast from "react-hot-toast";
 import { z } from "zod";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 export default function ContactForm() {
   const word = useScopedI18n("contact");
   const formRef = useRef<HTMLFormElement>(null);
+  const [topic, setTopic] = useState("purchaseExclusive");
 
   const schema = z.object({
     username: z
@@ -25,7 +26,7 @@ export default function ContactForm() {
       username: formData.get("username"),
       email: formData.get("email"),
       description: formData.get("description"),
-      topic: formData.get("option"),
+      topic: topic,
     };
 
     const result = schema.safeParse(contactForm);
@@ -70,7 +71,7 @@ export default function ContactForm() {
             placeholder={word("form.description")}
             maxLength={100}
             name="description"
-            className="mt-[1rem] w-[25rem] resize-none rounded-[.5rem] border-[.2rem] border-b-gray-400 p-[1rem] text-[1.2rem] placeholder:text-gray-500 sm:w-[30rem] md:w-[32rem] lg:w-[35rem] lg:p-[1.5rem_1rem] lg:text-[1.3rem]"
+            className="mt-[1rem] h-[8rem] w-[25rem] resize-none overflow-y-auto rounded-[.5rem] border-[.2rem] border-b-gray-400 p-[1rem] text-[1.2rem] placeholder:text-gray-500 sm:w-[30rem] md:w-[32rem] lg:w-[35rem] lg:p-[1.5rem_1rem] lg:text-[1.3rem]"
           />
         </div>
         <div className="mt-[2rem] flex flex-row items-center gap-[2rem]">
@@ -81,18 +82,19 @@ export default function ContactForm() {
             id="topicSelector"
             className="w-[15rem] truncate text-ellipsis rounded-lg bg-gray-200 px-[1rem] py-[1rem] text-[1.2rem] shadow-md outline-none sm:text-[1.4rem] md:text-[1.4rem] lg:w-[22rem] lg:text-[1.4rem]"
             name="option"
+            onChange={(e) => setTopic(e.target.value)}
           >
-            <option>{word("form.topics.purchaseExclusive")}</option>
-            <option>{word("form.topics.billing")}</option>
-            <option>{word("form.topics.transportation")}</option>
-            <option>{word("form.topics.account")}</option>
-            <option>{word("form.topics.other")}</option>
+            <option value="Exclusive Product">{word("form.topics.purchaseExclusive")}</option>
+            <option value="Billing">{word("form.topics.billing")}</option>
+            <option value="Transportation">{word("form.topics.transportation")}</option>
+            <option value="Account">{word("form.topics.account")}</option>
+            <option value="Other">{word("form.topics.other")}</option>
           </select>
         </div>
         <input
           type="submit"
           value={word("form.submit")}
-          className="mt-[2rem] h-[4rem] w-[15rem] rounded-[.5rem] bg-green-600 text-[1.3rem] font-medium text-white shadow-sm"
+          className="mt-[2rem] h-[4rem] w-[15rem] cursor-pointer rounded-[.5rem] bg-green-600 text-[1.3rem] font-medium text-white shadow-sm"
         />
       </form>
     </div>

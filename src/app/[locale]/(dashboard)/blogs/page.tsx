@@ -48,7 +48,7 @@ export default async function page({ searchParams }: Props) {
       <BlogsIntro />
       <BlogSearch />
       <BlogsWrapper>
-        {blogs.length === 0 ? <h1>No blogs found</h1> : blogs.map((blog) => <BlogCard key={blog.id} {...blog} />)}
+        {blogs.length === 0 ? <h1>No blogs found</h1> : blogs.map((blog) => <BlogCard key={blog.id} {...blog} usedFor="blogs" />)}
       </BlogsWrapper>
     </>
   );

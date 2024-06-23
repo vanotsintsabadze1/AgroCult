@@ -1,4 +1,5 @@
 import BurgerMenu from "./Burger-Menu/BurgerMenu";
+import MobileLocaleSwitcher from "./Burger-Menu/MobileLocaleSwitcher";
 import MobileUserInfo from "./Burger-Menu/MobileUserInfo";
 import Sidebar from "./Burger-Menu/Sidebar";
 import ThemeSwitcher from "./Burger-Menu/ThemeSwitcher";
@@ -25,6 +26,9 @@ export default async function MobileMenu() {
           animationVariant={{ hidden: divAnimaton.hidden, visible: divAnimaton.visible }}
           className="relative mt-[3rem] flex h-[2rem] w-full justify-end px-[1.5rem]"
         />
+        <div className="mt-[4rem] flex w-full justify-end px-[2rem]">
+          <MobileLocaleSwitcher />
+        </div>
         {session && (
           <div className="flex w-full flex-grow items-end justify-end px-[1.5rem] pb-[3rem]">
             <a className="text-[1.4rem] font-bold text-white" href="/api/auth/logout">

@@ -16,7 +16,7 @@ async function getCartItems(userId: string) {
     return await res.json();
   } catch (error) {
     console.error(error);
-    return null;
+    return [];
   }
 }
 
@@ -28,7 +28,7 @@ export default async function page() {
   const cartItems = (await getCartItems(user?.sub as string)) as CartItem[];
 
   return (
-    <main className="flex w-full items-center justify-center py-[4rem] min-h-[60rem]">
+    <main className="flex min-h-[60rem] w-full items-center justify-center py-[4rem]">
       <CategoryWrapper items={cartItems} />
     </main>
   );

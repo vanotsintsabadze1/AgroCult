@@ -1,8 +1,5 @@
-import Overview from "@/components/Admin/Overview";
+import { redirect } from "next/navigation";
 
-export default async function page() {
-
-  return (
-      <Overview />
-  );
+export default function page() {
+  redirect("/admin/users");
 }

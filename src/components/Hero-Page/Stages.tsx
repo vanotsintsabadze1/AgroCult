@@ -45,7 +45,7 @@ export default async function Stages() {
               key={index}
               className={`flex w-[40rem] flex-col items-center gap-[1rem] md:w-[50rem] lg:w-auto lg:items-start lg:justify-between lg:gap-x-[3rem] xs:w-full ${index === 1 ? "lg:flex-row-reverse" : "lg:flex-row"}`}
             >
-              <div className="relative h-[28rem] w-[38rem] md:h-[35rem] md:w-[45rem] xl:h-[40rem] xl:w-[55rem] xs:h-[25rem] xs:w-[30rem]">
+              <div className="relative h-[28rem] w-[38rem] md:h-[35rem] md:w-[45rem] xl:h-[40rem] xl:w-[55rem] xs:h-[25rem] xs:w-[32rem]">
                 <Image
                   src={stage.imageUrl}
                   alt={`pic-${index}`}
@@ -57,7 +57,7 @@ export default async function Stages() {
                 </div>
               </div>
               <div className="pl-[1rem] xs:pl-0 dark:text-white">
-                <h4 className="mt-[1.5rem] break-words text-[3rem] font-bold text-[#121212] drop-shadow-lg sm:w-[40rem] lg:mt-0 lg:text-green-800 xs:w-full dark:text-green-600">
+                <h4 className="mt-[1.5rem] break-words text-[3rem] font-bold drop-shadow-lg sm:w-[40rem] lg:mt-0 text-green-800 xs:w-full dark:text-green-600">
                   {stage.title}
                 </h4>
                 <p className="mt-[1rem] max-w-[40rem] text-[1.5rem] font-medium md:max-w-[50rem] lg:max-w-[40rem]">

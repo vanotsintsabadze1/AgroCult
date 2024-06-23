@@ -24,7 +24,7 @@ export default function PaymentDetails({ payment, setModal }: Props) {
           exit="hidden"
           className="fixed z-[40] flex h-screen w-screen items-center justify-center bg-[rgba(0,0,0,0.4)]"
         >
-          <div className="h-[60rem] w-[40rem] rounded-[2rem] bg-white px-[2rem] shadow-md xs:w-full">
+          <div className="min-h-[55rem] w-[40rem] rounded-[2rem] bg-white px-[2rem] pb-[2rem] shadow-md xs:w-full">
             <div className="mt-[2rem] flex w-full flex-col gap-[.5rem] overflow-x-auto">
               <h4 className="text-[1.2rem] font-bold uppercase text-gray-400">PID</h4>
               <p className="text-[1.4rem] font-medium ">{payment.id}</p>
@@ -57,13 +57,20 @@ export default function PaymentDetails({ payment, setModal }: Props) {
             <div className="mt-[2rem] flex flex-col gap-[.5rem]">
               <h4 className="text-[1.2rem] font-bold uppercase text-gray-400">Status</h4>
               <p className="text-[1.4rem] font-medium ">
-                {payment.status === "succeeded" ? (
-                  <div className="flex w-[12rem] items-center justify-center border-2 border-green-500  px-[1rem] py-[.5rem] text-[1.2rem] font-bold uppercase text-green-600">
-                    {payment.status}
-                  </div>
-                ) : (
-                  <div className="flex w-[12rem] items-center justify-center border-2 border-red-500  px-[1rem] py-[.5rem] text-[1.2rem] font-bold uppercase text-red-500">
-                    {payment.status}
+                {!payment.latest_charge.refunded &&
+                  (payment.status === "succeeded" ? (
+                    <div className="font -bold flex w-[12rem] items-center justify-center border-2 border-green-500 px-[1rem] py-[.5rem] text-[1.2rem] uppercase text-green-600">
+                      Succeeded
+                    </div>
+                  ) : (
+                    <div className="flex w-[12rem] items-center justify-center border-2 border-red-500 px-[1rem] py-[.5rem] text-[1.2rem] font-bold uppercase text-red-500">
+                      Cancelled
+                    </div>
+                  ))}
+
+                {payment.latest_charge.refunded && payment.status === "succeeded" && (
+                  <div className="flex w-[12rem] items-center justify-center border-2 border-purple-500 px-[1rem] py-[.5rem] text-[1.2rem] font-bold uppercase text-purple-500">
+                    Refunded
                   </div>
                 )}
               </p>

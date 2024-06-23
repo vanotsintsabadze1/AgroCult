@@ -18,7 +18,7 @@ export function ImageSlider({ images }: Props) {
     <>
       <div className="relative h-[25rem] w-[35rem] lg:h-[35rem] lg:w-[50rem] xs:h-[20rem] xs:w-[30rem]">
         <div className="embla mt-[1rem] h-full max-w-full overflow-hidden" ref={emblaRef}>
-          <div className="embla__container flex h-full gap-[1rem] first:pl-[1rem]">
+          <div className="embla__container flex h-full gap-[1rem] first:px-[1rem]">
             {images.map((image, idx) => (
               <div key={idx} className="embla__slide relative min-w-0 flex-[0_0_100%]">
                 <Image src={image} alt={`image-${idx}`} fill className="rounded-[1rem]" />

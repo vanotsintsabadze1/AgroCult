@@ -21,7 +21,7 @@ export default async function MobileUserInfo() {
           {user ? (
             <Image src={user.picture} fill alt="image-avatar" className="rounded-[50%]" />
           ) : (
-            <User2 size={30} color="white" />
+            <User2 size={30} color="white" className="rounded-[50%]" />
           )}
         </div>
       </div>

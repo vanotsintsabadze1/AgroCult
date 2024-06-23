@@ -12,16 +12,29 @@ export async function middleware(request: NextRequest) {
   const session = await getSession();
   const user = session?.user;
 
-  if (!user && (pathname === "/en/profile" || pathname === "/ka/profile")) {
+  if (!user && (pathname.includes("/en/profile") || pathname.includes("/ka/profile"))) {
     return NextResponse.redirect(new URL("/", request.url));
   }
 
-  if (!user && (pathname === "/en/admin" || pathname === "/ka/admin")) {
+  if (!user && (pathname.includes("/en/admin") || pathname.includes("/ka/admin"))) {
+    return NextResponse.redirect(new URL("/", request.url));
+  }
+  if (!user && (pathname.includes("/en/checkout") || pathname.includes("/ka/checkout"))) {
+    return NextResponse.redirect(new URL("/", request.url));
+  }
+
+  if (!user && (pathname.includes("/en/checkout") || pathname.includes("/ka/checkout"))) {
+    return NextResponse.redirect(new URL("/", request.url));
+  }
+
+  const dynamicStoreRoutePattern = /^\/(en|ka)\/store\/.+$/;
+
+  if (!user && dynamicStoreRoutePattern.test(pathname)) {
     return NextResponse.redirect(new URL("/", request.url));
   }
 
   if (user) {
-    if (!user.role.includes("admin") && (pathname === "/en/admin" || pathname === "/ka/admin")) {
+    if (!user.role.includes("Admin") && (pathname.includes("/en/admin") || pathname.includes("/ka/admin"))) {
       return NextResponse.redirect(new URL("/", request.url));
     }
   }

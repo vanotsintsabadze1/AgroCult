@@ -14,12 +14,12 @@ async function Navigation({ className }: Props) {
       path: "/",
     },
     {
-      title: word("about"),
-      path: "/about",
-    },
-    {
       title: word("store"),
       path: "/store",
+    },
+    {
+      title: word("blogs"),
+      path: "/blogs",
     },
     {
       title: word("contact"),
@@ -33,7 +33,7 @@ async function Navigation({ className }: Props) {
         <Link
           key={idx}
           href={link.path}
-          className="easeOut font-bold uppercase duration-200 hover:scale-110 dark:text-dark-mode "
+          className="easeOut font-medium uppercase duration-200 hover:scale-110 dark:text-dark-mode "
         >
           {link.title}
         </Link>

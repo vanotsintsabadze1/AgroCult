@@ -1,37 +1,30 @@
-import { getSession } from "@auth0/nextjs-auth0";
 import { put } from "@vercel/blob";
 import { sql } from "@vercel/postgres";
-import { revalidateTag } from "next/cache";
 import { NextResponse } from "next/server";
 
 export const revalidate = 0;
 
-export async function POST(request: Request): Promise<NextResponse> {
-  const { searchParams } = new URL(request.url);
-  const filename = searchParams.get("filename");
-  const session = await getSession();
-  const name = session?.user.nickname;
-  console.log(name);
+export async function POST(request: Request) {
+  const formData = await request.formData();
 
-  if (!filename || !request.body) {
-    return NextResponse.json(new Error("Error while uploading image"), {
-      status: 400,
-    });
+  const file = formData.get("file") as File;
+  const userId = formData.get("userId") as string;
+
+  if (!file || !userId) {
+    return NextResponse.json({ message: "Bad Request" }, { status: 400 });
   }
-  const blob = await put(`${name}/${filename}`, request.body, {
+
+  const blob = await put(`users/${userId}/profile-picture/${file.name}`, file, {
     access: "public",
   });
 
   const url = blob.url;
-  const userId = session?.user.sub;
 
   try {
-    await sql`UPDATE users SET image = ${url} WHERE user_id = ${userId}`.catch(
-      (e) => console.log(e)
-    );
+    await sql`UPDATE users SET image = ${String(url)} WHERE user_id = ${userId}`;
+    return NextResponse.json({ message: "Avatar Updated" }, { status: 200 });
   } catch (err) {
-    NextResponse.json({ err }, { status: 500 });
+    console.error(err);
+    return NextResponse.json({ message: "Internal Server Error" }, { status: 500 });
   }
-  revalidateTag("profile");
-  return NextResponse.json(blob);
 }

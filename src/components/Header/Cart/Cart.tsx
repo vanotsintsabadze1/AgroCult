@@ -1,43 +1,41 @@
 "use client";
-import Image from "next/image";
-import { useState } from "react";
-import CartMiniList from "../Cart/CartMiniList";
+
+import { ShoppingCart } from "lucide-react";
+import { useEffect, useState } from "react";
+import CartMiniList from "./CartMiniList";
 import { AnimatePresence } from "framer-motion";
+import { usePathname } from "next/navigation";
+import ReactLenis from "lenis/react";
+
 interface Props {
-  className: string;
-  usedFor: string;
   cart: CartItem[];
 }
 
-export default function Cart({ className, usedFor, cart: cartItems }: Props) {
-  const [isCartModalVisible, setCartModalVisible] = useState(false);
-  const qty = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+export default function Cart({ cart }: Props) {
+  const [shouldModalOpen, setShouldModalOpen] = useState(false);
+  const pathname = usePathname();
+  const cartItemAmount = cart.reduce((acc, item) => acc + item.quantity, 0);
 
-  function showCartItems() {
-    setCartModalVisible(!isCartModalVisible);
-  }
+  useEffect(() => {
+    if (shouldModalOpen) {
+      setShouldModalOpen(false);
+    }
+  }, [pathname]);
 
   return (
-    <>
-      <div className={className}>
-        <div className="relative">
-          <button className="relative h-[3rem] w-[3rem]" onClick={showCartItems}>
-            <Image src="/images/icons/header-icons/cart.webp" fill alt="cart-black" className="dark:hidden" />
-            <Image
-              src="/images/icons/header-icons/cart-white.webp"
-              fill
-              alt="cart-black"
-              className="hidden dark:block"
-            />
-          </button>
-          {qty > 0 && (
-            <div className="absolute -right-1 -top-1 flex h-[1.5rem] min-w-[1.5rem] items-center justify-center rounded-full bg-orange-600 p-[.3rem]">
-              <p className="text-[1.0rem] font-semibold text-white">{qty > 10 ? "10+" : qty}</p>
-            </div>
-          )}
+    <div className="relative space-x-[1rem]">
+      <button onClick={() => setShouldModalOpen((prev) => !prev)}>
+        <ShoppingCart size={24} className="dark:text-white" />
+      </button>
+      {cartItemAmount > 0 && (
+        <div className="absolute -right-3 -top-5 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 p-[1rem] text-[1.2rem] text-white">
+          {cartItemAmount}
         </div>
-      </div>
-      <AnimatePresence>{isCartModalVisible && <CartMiniList cart={cartItems} usedFor={usedFor} />}</AnimatePresence>
-    </>
+      )}
+
+      <ReactLenis options={{ prevent: true }}>
+        <AnimatePresence>{shouldModalOpen && <CartMiniList cartItems={cart} />}</AnimatePresence>
+      </ReactLenis>
+    </div>
   );
 }

@@ -1,11 +1,29 @@
 "use server";
+import { sql } from "@vercel/postgres";
+import { getSession } from "@auth0/nextjs-auth0";
 
-import { revalidatePath } from "next/cache";
+interface Params {
+  search_name?: string;
+}
 
-export async function getAllUsers() {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-all-users`);
-  const { users } = await response.json();
-  revalidatePath("/admin");
+export async function getAllUsers(searchParam: Params) {
+  const session = await getSession();
+  const role = session?.user?.role;
 
-  return users.rows;
+  if (!role || !role.includes("Admin")) {
+    return [];
+  }
+
+  try {
+    if (searchParam.search_name) {
+      const users = await sql`SELECT * FROM users WHERE name ILIKE ${"%" + searchParam.search_name + "%"}`;
+      return users.rows;
+    } else {
+      const users = await sql`SELECT * FROM users`;
+      return users.rows;
+    }
+  } catch (err) {
+    console.error(err);
+    return [];
+  }
 }

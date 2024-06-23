@@ -5,7 +5,7 @@ async function ContactDetails() {
   const word = await getScopedI18n("contact");
 
   return (
-    <div className="flex h-[60rem] w-full flex-col divide-y-2 divide-black rounded-[.5rem]  shadow-soft sm:w-[40rem] md:w-[50rem] lg:h-[60rem] lg:w-[60rem] xl:w-[50rem] dark:bg-white">
+    <div className="shadow-soft flex h-[60rem] w-full flex-col divide-y-2 divide-black  rounded-[.5rem] bg-white shadow-md sm:w-[40rem] md:w-[50rem] lg:h-[60rem] lg:w-[60rem] xl:w-[50rem]">
       <section className="justify flex h-1/3 w-full p-[2rem]">
         <div className="flex h-full w-[20rem] items-center justify-center">
           <div className="relative h-[10rem] w-[10rem]">

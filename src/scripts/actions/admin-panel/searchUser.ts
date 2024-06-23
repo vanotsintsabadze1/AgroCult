@@ -8,7 +8,7 @@ export async function searchUser(formData: FormData) {
     return redirect("/admin/users");
   }
 
-  const params = new URLSearchParams({ searchName: searchName as string });
+  const params = new URLSearchParams({ search_name: searchName as string });
 
   return redirect(`/admin/users?${params.toString()}`);
 }

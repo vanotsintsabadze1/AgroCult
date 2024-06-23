@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import React from "react";
+import { createPortal } from "react-dom";
 
 const parentModalAnimations = {
   hidden: { opacity: 0 },
@@ -26,13 +27,13 @@ export default function ConfirmationModal({ cb, setConfirmationModal }: Props) {
     setConfirmationModal(false);
   }
 
-  return (
+  return createPortal(
     <motion.div
       variants={parentModalAnimations}
       initial="hidden"
       animate="visible"
       exit="hidden"
-      className="absolute left-0 top-0 z-[8] flex h-screen w-screen items-center justify-center bg-[rgba(0,0,0,0.5)] pl-[6rem]"
+      className="fixed left-0 top-0 z-[40] flex h-screen w-screen items-center justify-center bg-[rgba(0,0,0,0.5)] pl-[6rem]"
     >
       <motion.div
         variants={childModalAnimations}
@@ -45,19 +46,20 @@ export default function ConfirmationModal({ cb, setConfirmationModal }: Props) {
 
         <div className="flex justify-center gap-[2rem]">
           <button
-            className="w-[10rem] rounded-lg bg-green-600 py-[.5rem] text-white shadow-md"
+            className="w-[10rem] rounded-lg bg-green-600 py-[.5rem] text-[1.3rem] text-white shadow-md"
             onClick={onPositiveConfirmation}
           >
             Yes
           </button>
           <button
-            className="w-[10rem] rounded-lg border-2 border-green-600 py-[.5rem] text-black shadow-md"
+            className="w-[10rem] rounded-lg border-2 border-green-600 py-[.5rem] text-[1.3rem] text-black shadow-md"
             onClick={onNegativeConfirmation}
           >
             No
           </button>
         </div>
       </motion.div>
-    </motion.div>
+    </motion.div>,
+    document.body,
   );
 }

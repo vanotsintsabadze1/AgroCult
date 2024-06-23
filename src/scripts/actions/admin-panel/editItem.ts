@@ -14,7 +14,9 @@ export async function editItem(itemDetails: ShopItem, id: number, deletedImagesA
     const strExtraDetails = JSON.stringify(extra_details);
     const strImages = JSON.stringify(images);
 
-    await deleteImageBlob(deletedImagesArr);
+    if (deletedImagesArr.length > 0) {
+      await deleteImageBlob(deletedImagesArr);
+    }
 
     await sql`UPDATE products SET title = ${String(title)}, description = ${String(description)}, brand = ${String(brand)}, category = ${strCategory}, price = ${Number(price)}, discount = ${Number(discount)}, amount = ${Number(amount)}, extra_details = ${strExtraDetails}, images = ${strImages} WHERE id = ${Number(id)}`.catch(
       (e) => console.error(e),

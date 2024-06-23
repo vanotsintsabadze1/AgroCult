@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import { editUser } from "../../../scripts/actions/admin-panel/editUser";
 import { useRouter } from "next/navigation";
-import React from "react";
 import { addLog } from "../../../scripts/actions/admin-panel/addLog";
+import React from "react";
 
 const parentModalAnimations = {
   hidden: { opacity: 0 },

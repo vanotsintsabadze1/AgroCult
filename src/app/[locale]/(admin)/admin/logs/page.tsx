@@ -35,7 +35,7 @@ export default async function page() {
           logs.map((log) => (
             <div
               key={log.id}
-              className="grid min-w-[105rem] max-w-[120rem] grid-cols-7 overflow-x-auto bg-white py-[2rem] text-[1.5rem] text-black shadow-md"
+              className="grid min-w-[105rem] max-w-[120rem] grid-cols-7 bg-white py-[2rem] text-[1.5rem] text-black shadow-md"
             >
               <div className="col-span-1 m-auto flex justify-center">
                 <p className="truncate">{log.id}</p>

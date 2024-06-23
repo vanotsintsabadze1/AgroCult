@@ -10,7 +10,7 @@ export async function POST(request: NextRequest) {
 
   try {
     const products =
-      await sql`SELECT products.title, products.description, products.price, products.discount, products.images, cart.product_id, cart.quantity FROM cart JOIN products ON cart.product_id = products.id WHERE cart.user_id = ${String(userId)}`;
+      await sql`SELECT products.title, products.description, products.price, products.discount, products.images, cart.product_id, cart.quantity, cart.created_at FROM cart JOIN products ON cart.product_id = products.id WHERE cart.user_id = ${String(userId)} ORDER BY cart.created_at ASC`;
 
     return NextResponse.json(products.rows, { status: 200 });
   } catch (err) {

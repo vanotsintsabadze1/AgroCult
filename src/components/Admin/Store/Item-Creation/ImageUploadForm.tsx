@@ -44,8 +44,8 @@ export default function ImageUploadForm({ setImageFormData, setImages }: Props) 
   return (
     <form
       ref={formRef}
-      onSubmit={onImageUploadSubmit}
       className="relative flex w-[25rem] flex-col items-center justify-center gap-[1rem] rounded-lg bg-gray-300 py-[3rem] md:w-[30rem] xs:w-[30rem]"
+      onChange={onImageUploadSubmit}
     >
       <label htmlFor="new-item-image-upload" className="flex cursor-pointer flex-col items-center gap-[1rem]">
         <Image src="/images/icons/misc/upload.webp" width={70} height={70} alt="upload-icon" className="opacity-50" />
@@ -61,12 +61,6 @@ export default function ImageUploadForm({ setImageFormData, setImages }: Props) 
         multiple
         accept="image/webp, image/png, image/jpeg"
         className="hidden"
-      />
-
-      <input
-        type="submit"
-        value="Submit"
-        className="mt-[1rem] cursor-pointer rounded-lg bg-gray-400 px-[2rem] py-[.5rem] text-[1.5rem]"
       />
     </form>
   );

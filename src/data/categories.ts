@@ -1,5 +1,9 @@
 export const categories = [
   {
+    imageUrl: "/images/icons/store-icons/desktop-categories-icons/seeds.webp",
+    category: "Any",
+  },
+  {
     imageUrl: "/images/icons/store-icons/desktop-categories-icons/tractor.webp",
     category: "Tractors",
   },
@@ -18,13 +22,5 @@ export const categories = [
   {
     imageUrl: "/images/icons/store-icons/desktop-categories-icons/pesticides.webp",
     category: "Pesticides",
-  },
-  {
-    imageUrl: "/images/icons/store-icons/desktop-categories-icons/tools.webp",
-    category: "Tools",
-  },
-  {
-    imageUrl: "/images/icons/store-icons/desktop-categories-icons/livestock.webp",
-    category: "Livestock",
   },
 ];

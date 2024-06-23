@@ -3,7 +3,7 @@ import { sql } from "@vercel/postgres";
 import { getSession } from "@auth0/nextjs-auth0";
 
 interface Params {
-  searchName?: string;
+  search_name?: string;
 }
 
 export async function getAllUsers(searchParam: Params) {
@@ -15,8 +15,8 @@ export async function getAllUsers(searchParam: Params) {
   }
 
   try {
-    if (searchParam.searchName) {
-      const users = await sql`SELECT * FROM users WHERE name ILIKE ${"%" + searchParam.searchName + "%"}`;
+    if (searchParam.search_name) {
+      const users = await sql`SELECT * FROM users WHERE name ILIKE ${"%" + searchParam.search_name + "%"}`;
       return users.rows;
     } else {
       const users = await sql`SELECT * FROM users`;

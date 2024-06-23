@@ -1,14 +1,18 @@
+import { unstable_noStore as noStore } from "next/cache";
 import StoreWrapper from "../../../../components/Store/StoreWrapper";
+import { fetchItems } from "@/scripts/actions/store/fetchItems";
 
-async function fetchItems() {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-all-items`);
-  const data: ShopItem[] = await response.json();
-
-  return data;
+interface Props {
+  searchParams: {
+    category: string;
+    price: string;
+    search: string;
+  };
 }
 
-export default async function page() {
-  const items = await fetchItems();
+export default async function page({ searchParams }: Props) {
+  noStore();
+  const items = (await fetchItems({ searchParams })) as ShopItem[];
 
   return (
     <main className="flex w-full justify-center">

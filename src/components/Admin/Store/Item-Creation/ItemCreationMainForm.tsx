@@ -4,6 +4,8 @@ import GenericInformationField from "../Details/GenericInformationField";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { addLog } from "@/scripts/actions/admin-panel/addLog";
+import toast from "react-hot-toast";
+import { z } from "zod";
 
 interface Props {
   images: string[];
@@ -15,7 +17,26 @@ interface Props {
   setNewCategory: React.Dispatch<React.SetStateAction<string>>;
   imageFormData: FormData;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  setModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
+
+const scheme = z.object({
+  title: z
+    .string()
+    .min(5, "Title must be at least 5 characters long")
+    .max(40, "Title must be at most 300 characters long"),
+  description: z
+    .string()
+    .min(5, "Description must be at least 5 characters long")
+    .max(5000, "Description must be at most 5000 characters long"),
+  brand: z
+    .string()
+    .min(2, "Brand must be at least 2 characters long")
+    .max(40, "Brand must be at most 40 characters long"),
+  price: z.number().min(0, "Price must be at least 0"),
+  amount: z.number().min(0, "Amount must be at least 0"),
+  discount: z.number().min(0, "Discount must be at least 0"),
+});
 
 export default function ItemCreationMainForm({
   images,
@@ -27,6 +48,7 @@ export default function ItemCreationMainForm({
   setNewCategory,
   imageFormData,
   setLoading,
+  setModal,
 }: Props) {
   const router = useRouter();
   const [select, setSelect] = useState<string>("Tractors");
@@ -42,6 +64,24 @@ export default function ItemCreationMainForm({
     e.preventDefault();
 
     if (images.length === 0) {
+      toast.error("Please upload an image");
+      return;
+    }
+
+    const itemDetailsSchema = scheme.safeParse(itemDetails);
+
+    if (!itemDetailsSchema.success) {
+      toast.error(itemDetailsSchema.error.errors[0].message);
+      return;
+    }
+
+    if (Object.values(extraDetails).some((value) => value === "")) {
+      toast.error("Please fill all the details");
+      return;
+    }
+
+    if (newCategoryModal && newCategory === "") {
+      toast.error("Please submit a category");
       return;
     }
 
@@ -51,7 +91,9 @@ export default function ItemCreationMainForm({
 
     if (res.status === 200) {
       setLoading(false);
+      toast.success("Item created successfully");
       addLog("Created Item", `Created Item - ${itemDetails.title}`);
+      setModal(false);
       router.refresh();
     }
   }
@@ -89,20 +131,11 @@ export default function ItemCreationMainForm({
           "Application method": "",
         });
         break;
-      case "Tools & Supplies":
+      case "Pesticides":
         setExtraDetails({
-          "Tool Type": "",
-          "Tool Material": "",
-          "Tool Length": "",
-          "Tool Width": "",
-        });
-        break;
-      case "Livestock Equipment":
-        setExtraDetails({
-          Capacity: "",
-          Material: "",
-          Dimension: "",
-          "Power Source": "",
+          Type: "",
+          "Active Ingredient": "",
+          "Application method": "",
         });
         break;
     }
@@ -157,8 +190,7 @@ export default function ItemCreationMainForm({
             <option>Plowers</option>
             <option>Accessories</option>
             <option>Fertilizers</option>
-            <option>Tools & Supplies</option>
-            <option>Livestock Equipment</option>
+            <option>Pesticides</option>
           </select>
 
           <div className="mt-[2rem] flex w-full flex-col items-center gap-[1.5rem] text-[1.5rem]">
@@ -166,6 +198,7 @@ export default function ItemCreationMainForm({
               <div className="flex w-[40rem] items-center justify-between" key={index}>
                 <p>{key[0]}</p>
                 <input
+                  type="text"
                   value={key[1]}
                   placeholder="Write the details..."
                   onChange={(e) => setExtraDetails((prev) => ({ ...prev, [key[0]]: e.target.value }))}
@@ -199,7 +232,7 @@ export default function ItemCreationMainForm({
         <input
           type="text"
           name="price"
-          placeholder="Write the price..."
+          placeholder="Defaults to 0 if empty"
           className={`w-[20rem] rounded-md border-gray-300 bg-gray-200 px-[1.2rem] py-[1rem] text-[1.4rem] text-black shadow-md outline-none `}
           onChange={(e) =>
             setItemDetails((prev) => ({
@@ -213,7 +246,7 @@ export default function ItemCreationMainForm({
         <input
           type="text"
           name="quantity"
-          placeholder="Write the quantity..."
+          placeholder="Defaults to 0 if empty"
           className={`w-[20rem] rounded-md border-gray-300 bg-gray-200 px-[1.2rem] py-[1rem] text-[1.4rem] text-black shadow-md outline-none`}
           onChange={(e) =>
             setItemDetails((prev) => ({
@@ -227,7 +260,7 @@ export default function ItemCreationMainForm({
         <input
           type="text"
           name="discount"
-          placeholder="Write the discount..."
+          placeholder="Defaults to 0 if empty"
           className={`w-[20rem] rounded-md border-gray-300 bg-gray-200 px-[1.2rem] py-[1rem] text-[1.4rem] text-black shadow-md outline-none `}
           onChange={(e) =>
             setItemDetails((prev) => ({

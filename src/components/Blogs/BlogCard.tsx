@@ -1,8 +1,12 @@
 import Image from "next/image";
 import DOMPurify from "isomorphic-dompurify";
 import Link from "next/link";
+import { getSession } from "@auth0/nextjs-auth0";
+import BlogActions from "./BlogActions";
 
-export default function BlogCard({ id, wname, title, description, tags, created_at, thumbnail }: Blog) {
+export default async function BlogCard({ id, wname, title, description, tags, created_at, thumbnail, wid }: Blog) {
+  const session = await getSession();
+  const user = session?.user;
   const sanitizedDescription = DOMPurify.sanitize(description);
 
   return (
@@ -19,6 +23,9 @@ export default function BlogCard({ id, wname, title, description, tags, created_
             </div>
           ))}
         </div>
+        {user && user.sub === wid && (
+          <BlogActions id={id} title={title} description={description} tags={tags} thumbnail={thumbnail} />
+        )}
       </div>
       <div className="mt-[1rem] flex w-full flex-grow flex-col gap-[.5rem]">
         <h4 className="line-clamp-1 text-[1.5rem] font-bold text-gray-800">{title}</h4>

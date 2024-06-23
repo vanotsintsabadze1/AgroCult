@@ -2,7 +2,7 @@ import { getSession } from "@auth0/nextjs-auth0";
 import { sql } from "@vercel/postgres";
 import { redirect } from "next/navigation";
 import { NextResponse } from "next/server";
-import { getAuthToken } from "../../..//scripts/actions/admin-panel/getAuthToken";
+import { getAuthToken } from "../../../scripts/actions/admin-panel/getAuthToken";
 
 export async function GET() {
   const url = process.env.AUTH0_ISSUER_BASE_URL;

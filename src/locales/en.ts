@@ -152,6 +152,7 @@ export default {
     },
     buy: "Purchase",
     categories: {
+      any: "All Items",
       tractors: "Tractors",
       plowers: "Plowers",
       accessories: "Accessories",

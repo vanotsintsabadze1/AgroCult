@@ -117,7 +117,7 @@ export default function ProfileUserAddress({ extra_details, userId }: Props) {
       </div>
       <div className="flex w-full items-center justify-center py-[1rem]" onClick={onCredentialSubmit}>
         <button className="h-[3.7rem] w-[15rem] rounded-lg bg-green-600 text-[1.4rem] font-bold text-white shadow-md">
-          Submit
+          Save
         </button>
       </div>
     </div>

@@ -70,7 +70,7 @@ export default function ContactForm() {
             placeholder={word("form.description")}
             maxLength={100}
             name="description"
-            className="mt-[1rem] w-[25rem] rounded-[.5rem] border-[.2rem] border-b-gray-400 p-[1rem] text-[1.2rem] placeholder:text-gray-500 sm:w-[30rem] md:w-[32rem] lg:w-[35rem] lg:p-[1.5rem_1rem] lg:text-[1.3rem]"
+            className="mt-[1rem] w-[25rem] resize-none rounded-[.5rem] border-[.2rem] border-b-gray-400 p-[1rem] text-[1.2rem] placeholder:text-gray-500 sm:w-[30rem] md:w-[32rem] lg:w-[35rem] lg:p-[1.5rem_1rem] lg:text-[1.3rem]"
           />
         </div>
         <div className="mt-[2rem] flex flex-row items-center gap-[2rem]">

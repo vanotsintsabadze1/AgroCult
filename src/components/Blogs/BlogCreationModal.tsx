@@ -25,12 +25,26 @@ const parentAnimation = {
 };
 
 interface Props {
+  id?: number;
+  blogTags: string[] | [];
+  blogDescription: string;
+  usedFor: "create" | "edit";
+  title?: string;
+  imageThumbnail?: string;
   setModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function BlogCreationModal({ setModal }: Props) {
-  const [description, setDescription] = useState("");
-  const [tags, setTags] = useState<string[]>([]);
+export default function BlogCreationModal({
+  id,
+  title,
+  imageThumbnail,
+  blogTags,
+  blogDescription,
+  usedFor,
+  setModal,
+}: Props) {
+  const [description, setDescription] = useState(blogDescription);
+  const [tags, setTags] = useState<string[]>(blogTags);
   const [newTag, setNewTag] = useState("");
   const [shouldNewTagBeVisible, setShouldNewTagBeVisible] = useState(false);
   const { user } = useUser();
@@ -81,16 +95,18 @@ export default function BlogCreationModal({ setModal }: Props) {
       return;
     }
 
-    const thumbnail = formData.get("thumbnail") as File;
+    if (usedFor === "create") {
+      const thumbnail = formData.get("thumbnail") as File;
 
-    if (thumbnail.size === 0) {
-      toast.error("Please add a thumbnail");
-      return;
-    }
+      if (thumbnail.size === 0) {
+        toast.error("Please add a thumbnail");
+        return;
+      }
 
-    if (thumbnail.size > 4.5 * 1024 * 1024) {
-      toast.error("Thumbnail size is too large - Max. 4.5MB");
-      return;
+      if (thumbnail.size > 4.5 * 1024 * 1024) {
+        toast.error("Thumbnail size is too large - Max. 4.5MB");
+        return;
+      }
     }
 
     const wid = user?.sub;
@@ -105,6 +121,22 @@ export default function BlogCreationModal({ setModal }: Props) {
     formData.append("wname", wname);
     formData.append("tags", JSON.stringify(tags));
     formData.append("description", description);
+    formData.append("usedFor", usedFor);
+    if (usedFor === "edit" && imageThumbnail && id && imageThumbnail !== "") {
+      const thumbnail = formData.get("thumbnail") as File;
+      formData.append("id", id.toString());
+
+      if (thumbnail.size === 0) {
+        formData.append("thumbnail", imageThumbnail);
+      } else {
+        if (thumbnail.size > 4.5 * 1024 * 1024) {
+          toast.error("Thumbnail size is too large - Max. 4.5MB");
+          return;
+        } else {
+          formData.append("thumbnail", thumbnail);
+        }
+      }
+    }
 
     toast
       .promise(
@@ -113,15 +145,18 @@ export default function BlogCreationModal({ setModal }: Props) {
           body: formData,
         }),
         {
-          loading: "Creating blog...",
-          success: "Blog created successfully",
+          loading: usedFor === "edit" ? "Updating blog..." : "Creating blog...",
+          success: usedFor === "edit" ? "Blog updated successfully" : "Blog created successfully",
           error: (err) => {
             console.log(err);
             return "An error occurred";
           },
         },
       )
-      .then(() => router.refresh());
+      .finally(() => {
+        setModal(false);
+        router.refresh();
+      });
   }
 
   return (
@@ -132,18 +167,19 @@ export default function BlogCreationModal({ setModal }: Props) {
           initial="hidden"
           animate="visible"
           exit="hidden"
-          className="fixed z-[40] flex h-screen w-screen items-center justify-center bg-[rgba(0,0,0,0.4)]"
+          className="fixed z-[40] flex h-screen w-screen items-center justify-center overflow-y-auto bg-[rgba(0,0,0,0.4)]"
         >
           <form
             action={onBlogFormSubmit}
             id="blogForm"
-            className="relative flex w-[40rem] flex-col gap-[2rem] rounded-lg bg-white px-[2rem] py-[2rem] shadow-md md:h-[82rem] md:w-[75rem] lg:w-[100rem] xs:w-[30rem]"
+            className="relative m-auto flex w-[40rem] flex-col gap-[2rem] overflow-y-scroll rounded-lg bg-white px-[2rem] py-[2rem] shadow-md md:min-h-[82rem] md:w-[75rem] lg:w-[100rem] xs:w-[90%]"
           >
             <div className="flex flex-col gap-[.5rem] px-[.5rem]">
               <h2 className="text-[1.2rem] font-bold uppercase tracking-wide text-gray-400">Title</h2>
               <input
                 type="text"
-                className="h-[4rem] w-[30rem] rounded-lg border-2 border-gray-300 px-[1.2rem] py-[1rem] text-[1.5rem]"
+                defaultValue={usedFor === "edit" ? title : ""}
+                className="h-[4rem] w-[30rem] rounded-lg border-2 border-gray-300 px-[1.2rem] py-[1rem] text-[1.5rem] xs:w-full"
                 placeholder="Write the title.."
                 name="title"
               />
@@ -157,6 +193,7 @@ export default function BlogCreationModal({ setModal }: Props) {
                 accept="image/webp, image/png, image/jpeg"
                 name="thumbnail"
               />
+              {imageThumbnail && imageThumbnail !== "" && <p>* Leave empty if you don't want to change </p>}
             </div>
             <div className="flex flex-col px-[.5rem] ">
               <h2 className="text-[1.2rem] font-bold uppercase tracking-wide text-gray-400">Tags</h2>
@@ -187,8 +224,8 @@ export default function BlogCreationModal({ setModal }: Props) {
                         onChange={(e) => setNewTag(e.target.value)}
                         className="w-full rounded-lg bg-gray-200 px-[1rem] py-[.8rem] text-[1.3rem] font-medium text-gray-500"
                       />
-                      <button onClick={submitNewTag}>
-                        <Check className="absolute right-[.7rem] top-1/2 translate-y-[-50%]" size={18} />
+                      <button onClick={submitNewTag} type="button">
+                        <Check className="absolute right-[.7rem] top-1/2 translate-y-[-50%] bg-gray-200" size={18} />
                       </button>
                     </div>
                   </div>

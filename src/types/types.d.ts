@@ -53,7 +53,7 @@ interface Payment {
     payment_method_details: {
       card: {
         brand: string;
-      }
+      };
     };
     receipt_number: string;
   };
@@ -107,4 +107,15 @@ interface Blog {
   tags: string[];
   created_at: Date;
   thumbnail: string;
+  upvotes: number;
+  upvoters: string[];
+}
+
+interface BlogComment {
+  id: number;
+  blog_id: number;
+  commenter: string;
+  commenter_id: string;
+  comment: string;
+  created_at: Date;
 }

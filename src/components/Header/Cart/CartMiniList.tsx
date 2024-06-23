@@ -2,7 +2,6 @@
 import { motion } from "framer-motion";
 import CartItem from "./CartItem";
 import { useRouter } from "next/navigation";
-import { useUser } from "@auth0/nextjs-auth0/client";
 
 const divAnimation = {
   hidden: { opacity: 0 },
@@ -15,19 +14,11 @@ interface Props {
 
 export default function CartMiniList({ cartItems }: Props) {
   const router = useRouter();
-  const session = useUser();
-
-  const user = session?.user;
 
   async function onCheckout() {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/checkout`, {
-      method: "POST",
-      body: JSON.stringify({ products: cartItems, user }),
-    });
-
-    const data = await res.json();
-    router.push(data.url);
+    router.push("/checkout");
   }
+
   return (
     <motion.div
       variants={divAnimation}

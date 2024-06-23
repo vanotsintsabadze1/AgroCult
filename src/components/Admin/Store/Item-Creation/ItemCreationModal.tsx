@@ -55,6 +55,7 @@ export default function ItemCreationModal({ setModal }: Props) {
               setNewCategory={setNewCategory}
               imageFormData={imageFormData}
               setLoading={setLoading}
+              setModal={setModal}
             />
           </div>
           <div className="flex w-full items-center justify-center gap-[2rem] py-[1rem]">

@@ -172,6 +172,7 @@ export default {
     },
     buy: "ყიდვა",
     categories: {
+      any: "ყველა",
       tractors: "ტრაქტორები",
       plowers: "სახნავები",
       accessories: "აქსესუარები",
@@ -205,7 +206,7 @@ export default {
       price: "ფასი",
       amount: "რაოდენობა",
       discount: "ფასდაკლება",
-    }
+    },
   },
   profile: {
     title: "პროფილის რედაქტირება",

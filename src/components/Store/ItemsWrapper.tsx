@@ -18,13 +18,13 @@ export default function ItemsWrapper({ items, layout }: Props) {
   }
 
   function loadLessCards() {
-    setVisibleCards((prev) => prev - 6);
+    if (visibleCards > 6) setVisibleCards((prev) => prev - 6);
   }
 
   const multiColView =
-    "relative grid grid-cols-1 gap-[5rem] lg:gap-x-[2rem] pr-[1rem] py-[2rem] md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-2";
+    "relative grid grid-cols-1 gap-[5rem] mt-[2rem] py-[2rem] lg:gap-x-[2rem] md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3 items-start";
   const singleColView =
-    "relative grid grid-cols-1 gap-[5rem] md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3 lg:flex lg:flex-col lg:items-center lg:w-auto";
+    "relative grid grid-cols-1 mt-[4rem] mt-[2rem] py-[2rem] gap-[5rem] md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3 lg:flex lg:flex-col lg:items-center lg:w-auto items-start";
 
   return (
     <div className={layout === "multi" ? multiColView : singleColView}>
@@ -36,7 +36,7 @@ export default function ItemsWrapper({ items, layout }: Props) {
           onClick={visibleCards < items.length ? loadMoreCards : loadLessCards}
           className="text-[1.5rem] font-semibold text-green-600"
         >
-          {visibleCards < items.length ? word("loadMore") : word("loadLess")}
+          {visibleCards < items.length ? word("loadMore") : items.length > 6 && word("loadLess")}
         </button>
       </div>
     </div>

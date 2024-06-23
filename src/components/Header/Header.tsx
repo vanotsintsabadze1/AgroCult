@@ -17,7 +17,6 @@ async function getCartItems(userId: string) {
 
   const res = await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-cart-items`, {
     method: "POST",
-    cache: "force-cache",
     body: JSON.stringify({ userId }),
   });
 
@@ -48,7 +47,7 @@ export default async function Header() {
 
   return (
     <header className="sticky top-0 z-[10] flex w-full items-center justify-center bg-body py-[1rem] lg:py-[1rem] dark:bg-dark-primary">
-      <div className="relative flex w-full items-center justify-start px-[2rem] lg:justify-between">
+      <div className="relative flex w-full items-center justify-start md:px-[2rem] lg:justify-between">
         <section className="flex items-center gap-[2rem] px-[1rem] py-[1rem]">
           <Logo />
           <div className="hidden lg:block">

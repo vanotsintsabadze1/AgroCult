@@ -21,7 +21,7 @@ export default function CategorySection({
   setItemDetails,
 }: Props) {
   function removeCategory(category: string) {
-    if (!editMode) {
+    if (typeof editMode === "boolean" && !editMode) {
       toast.error("You need to enable edit mode to remove a category");
       return;
     }
@@ -43,7 +43,7 @@ export default function CategorySection({
   }
 
   function enableNewCategoryModal() {
-    if (!editMode) {
+    if (typeof editMode === "boolean" && !editMode) {
       toast.error("You need to enable edit mode to add a new category");
       return;
     }
@@ -72,6 +72,7 @@ export default function CategorySection({
             placeholder="Category"
             onChange={(e) => setNewCategory(e.target.value)}
             className="bg-transparent outline-none"
+            type="text"
           />
           <button onClick={addNewCategory} className="" type="button">
             <Image src="/images/icons/misc/apply.webp" width={15} height={15} alt="apply-icon" />

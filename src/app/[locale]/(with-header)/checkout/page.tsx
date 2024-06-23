@@ -1,10 +1,35 @@
 import React from "react";
+import { getSession } from "@auth0/nextjs-auth0";
+import CategoryWrapper from "@/components/Checkout/CategoryWrapper";
 
-export default function page() {
+async function getCartItems(userId: string) {
+  if (!userId) {
+    return [];
+  }
+
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-cart-items`, {
+      method: "POST",
+      body: JSON.stringify({ userId }),
+    });
+
+    return await res.json();
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+}
+
+export default async function page() {
+  const session = await getSession();
+
+  const user = session?.user;
+
+  const cartItems = (await getCartItems(user?.sub as string)) as CartItem[];
+
   return (
-    <main className="w-full flex items-center justify-center py-[4rem]">
-      <div className="xs:w-full w-[40rem] md:w-[60rem] lg:w-[110rem] rounded-[.5rem] shadow-soft bg-white p-[3rem]">
-      </div>
+    <main className="flex w-full items-center justify-center py-[4rem] min-h-[60rem]">
+      <CategoryWrapper items={cartItems} />
     </main>
   );
 }

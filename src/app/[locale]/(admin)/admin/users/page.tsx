@@ -3,13 +3,13 @@ import InteractionWrapper from "../../../../../components/Admin/Users/Interactio
 
 interface Props {
   searchParams: {
-    searchName: string;
+    search_name: string;
   };
 }
 
 export default async function page({ searchParams }: Props) {
-  const searchName = searchParams.searchName;
-  const users = await getAllUsers(searchName ? { searchName } : {});
+  const search_name = searchParams.search_name;
+  const users = await getAllUsers(search_name ? { search_name } : {});
 
   return <InteractionWrapper users={users as UserDB[]} />;
 }

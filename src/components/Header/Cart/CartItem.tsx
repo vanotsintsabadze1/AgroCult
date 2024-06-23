@@ -2,13 +2,13 @@
 
 import Image from "next/image";
 import toast from "react-hot-toast";
-import { Plus, Minus, Trash2 } from "lucide-react";
 import { useState } from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { addToCart } from "@/scripts/actions/cart/addToCart";
 import { deleteItem } from "@/scripts/actions/cart/deleteItem";
 import { decreaseItemAmount } from "@/scripts/actions/cart/decreaseItemAmount";
 import { useRouter } from "next/navigation";
+import CartActions from "./CartActions";
 
 interface Props {
   item: CartItem;
@@ -86,31 +86,12 @@ export default function CartItem({ item }: Props) {
             <b>Price</b>: ${(item.price * quantity).toLocaleString()}
           </span>
         </div>
-        <div className={`flex w-full items-center justify-between ${isSubmitting ? "opacity-50" : ""}`}>
-          <div className="flex items-center justify-center">
-            <button
-              disabled={isSubmitting}
-              onClick={onIncreaseQuantity}
-              className="flex items-center justify-center rounded-l-[2rem] bg-green-600 px-[1rem] py-[.5rem] text-white"
-            >
-              <Plus size={18} />
-            </button>
-            <button
-              onClick={() => onDecreaseQuantity()}
-              disabled={isSubmitting}
-              className="flex items-center justify-center rounded-r-[2rem] bg-green-600 px-[1rem] py-[.5rem] text-white"
-            >
-              <Minus size={18} />
-            </button>
-          </div>
-          <button
-            onClick={onRemoveFromCart}
-            disabled={isSubmitting}
-            className="flex items-center justify-center px-[1rem] py-[.5rem]"
-          >
-            <Trash2 size={20} />
-          </button>
-        </div>
+        <CartActions
+          isSubmitting={isSubmitting}
+          onDecreaseQuantity={onDecreaseQuantity}
+          onIncreaseQuantity={onIncreaseQuantity}
+          onRemoveFromCart={onRemoveFromCart}
+        />
       </div>
     </div>
   );

@@ -30,6 +30,10 @@ export default function BlogCommentSection({ id, comments }: Props) {
   const [shouldConfirmationOpen, setConfirmationOpen] = useState(false);
 
   async function onCommentSubmit() {
+    if (!user) {
+      window.location.href = "/api/auth/login";
+    }
+    
     const result = scheme.safeParse(comment);
 
     if (!result.success) {
@@ -37,9 +41,6 @@ export default function BlogCommentSection({ id, comments }: Props) {
       return;
     }
 
-    if (!user) {
-      window.location.href = "/api/auth/login";
-    }
 
     const res = await addComment(id, user?.sub as string, comment, user?.nickname as string);
 

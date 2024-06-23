@@ -26,7 +26,6 @@ async function getProductDetails(id: string) {
 
 async function getRecommendedItems(category: string) {
   try {
-    const c = ``;
     const res =
       await sql`SELECT * FROM products WHERE EXISTS (SELECT 1 FROM jsonb_array_elements_text(products.category) AS elem WHERE elem ILIKE ${String(category)}) ORDER BY RANDOM() LIMIT 4`;
 

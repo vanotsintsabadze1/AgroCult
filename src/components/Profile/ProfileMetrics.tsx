@@ -1,7 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 
-import { Store, BookOpenCheck, FileText, ArrowUpRightFromSquareIcon } from "lucide-react";
+import { Store, BookOpenCheck, ArrowUpRightFromSquareIcon } from "lucide-react";
 
 interface Props {
   orderAmount: number;
@@ -19,14 +19,6 @@ export default function ProfileMetrics({ orderAmount }: Props) {
         <ArrowUpRightFromSquareIcon size={15} className="absolute right-[1rem] top-0" />
         <Store size={30} />
         <p className="text-[1.4rem] font-medium">{orderAmount} Items Bought</p>
-      </div>
-      <div
-        className="relative flex cursor-pointer flex-col items-center gap-[.5rem]"
-        onClick={() => router.push("/profile/tickets")}
-      >
-        <ArrowUpRightFromSquareIcon size={15} className="absolute right-[1rem] top-0" />
-        <FileText size={30} />
-        <p className="text-[1.4rem] font-medium">0 Open Tickets</p>
       </div>
       <div
         className="relative flex cursor-pointer flex-col items-center gap-[.5rem]"

@@ -14,12 +14,11 @@ export default function BlogsWrapper({ children }: Props) {
   const [blogCreationModal, setBlogCreationModal] = useState(false);
 
   function onCreateNewBlog() {
-    if (!session) {
+    if (!session?.user) {
       window.location.href = "/api/auth/login";
-      return;
+    } else {
+      setBlogCreationModal(true);
     }
-
-    setBlogCreationModal(true);
   }
 
   return (

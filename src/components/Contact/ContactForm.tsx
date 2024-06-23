@@ -5,11 +5,13 @@ import { submitTicket } from "@/scripts/actions/contact/submitTicket";
 import toast from "react-hot-toast";
 import { z } from "zod";
 import { useRef, useState } from "react";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 export default function ContactForm() {
   const word = useScopedI18n("contact");
   const formRef = useRef<HTMLFormElement>(null);
   const [topic, setTopic] = useState("purchaseExclusive");
+  const session = useUser();
 
   const schema = z.object({
     username: z
@@ -22,6 +24,11 @@ export default function ContactForm() {
   });
 
   async function submitForm(formData: FormData) {
+    if (!session.user) {
+      window.location.href = "/api/auth/login";
+      return;
+    }
+
     const contactForm = {
       username: formData.get("username"),
       email: formData.get("email"),

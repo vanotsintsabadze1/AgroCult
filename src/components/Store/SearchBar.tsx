@@ -33,7 +33,7 @@ export default function SearchBar({ setLayout }: Props) {
           <input
             type="text"
             placeholder={word("search.placeholder")}
-            className="h-[4rem] w-[30rem] rounded-lg p-[1rem] text-[1.5rem] shadow-md md:w-[40rem] lg:w-[55rem]"
+            className="h-[4rem] w-[40rem] rounded-lg p-[1rem] text-[1.5rem] shadow-md md:w-[50rem] lg:w-[55rem] xs:w-[30rem]"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />

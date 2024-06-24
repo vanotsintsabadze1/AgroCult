@@ -55,8 +55,8 @@ export async function POST(req: NextRequest) {
     const session = await stripe.checkout.sessions.create({
       line_items: stripeItems,
       mode: "payment",
-      success_url: "http://localhost:3000/checkout/success",
-      cancel_url: "http://localhost:3000/checkout/cancel",
+      success_url: `${process.env.NEXT_PUBLIC_VERCEL_URL}/checkout/success`,
+      cancel_url: `${process.env.NEXT_PUBLIC_VERCEL_URL}/checkout/cancel`,
       customer_email: user.email,
       payment_intent_data: {
         metadata: {

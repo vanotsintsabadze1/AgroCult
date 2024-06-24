@@ -23,7 +23,7 @@ export async function fetchItems({ searchParams }: Props) {
     return res.rows;
   }
 
-  if (Object.keys(searchParams).length === 0 || searchParams.category === "any") {
+  if (Object.keys(searchParams).length === 0 || (searchParams.category === "any" && !searchParams.price)) {
     const res = await sql`SELECT * FROM products ORDER BY RANDOM()`;
 
     return res.rows;
@@ -44,8 +44,8 @@ export async function fetchItems({ searchParams }: Props) {
         Number(to) < 0 ||
         Number(from) === Number(to) ||
         Number(to) === 0 ||
-        Number(from) > 2000000 ||
-        Number(to) > 2000000
+        Number(from) > 2147483647 ||
+        Number(to) > 2147483647
       ) {
         return redirect("/store");
       }
@@ -53,15 +53,23 @@ export async function fetchItems({ searchParams }: Props) {
 
     let res;
 
+    if (searchParams.category === "any" && searchParams.price) {
+      res = await sql`SELECT * FROM products WHERE price BETWEEN ${Number(from)} AND ${Number(to)}`;
+      return res?.rows;
+    }
+
     if (searchParams.category && !searchParams.price) {
       res =
         await sql`SELECT * FROM products WHERE EXISTS (SELECT 1 FROM jsonb_array_elements_text(products.category) AS elem WHERE elem ILIKE ${String(category)})`;
-    } else if (searchParams.price && searchParams.category) {
+      return res?.rows;
+    } else if (searchParams.price && searchParams.category && searchParams.category !== "any") {
       res =
         await sql`SELECT * FROM products WHERE EXISTS (SELECT 1 FROM jsonb_array_elements_text(products.category) AS elem WHERE elem ILIKE ${String(category)}) AND price BETWEEN ${Number(from)} AND ${Number(to)};`;
+      return res?.rows;
     } else if (!searchParams.category && searchParams.price) {
       res = await sql`SELECT * FROM products WHERE price BETWEEN ${Number(from)} AND ${Number(to)}`;
+      return res?.rows;
     }
-    return res?.rows;
+    return [];
   }
 }

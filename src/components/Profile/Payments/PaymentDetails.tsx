@@ -13,7 +13,6 @@ interface Props {
 }
 
 export default function PaymentDetails({ payment, setModal }: Props) {
-  console.log(payment);
   return (
     <>
       {createPortal(

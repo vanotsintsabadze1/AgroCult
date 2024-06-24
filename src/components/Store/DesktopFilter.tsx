@@ -4,17 +4,11 @@ import SortPreference from "./SortPreference";
 import { useScopedI18n } from "@/locales/client";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { z } from "zod";
-import toast from "react-hot-toast";
+import { changeCategory, changePrice, onResetFilter } from "@/scripts/helpers/filter";
 
 interface Props {
   setPreference: React.Dispatch<React.SetStateAction<string>>;
 }
-
-const scheme = z.object({
-  from: z.number().min(0, "Minimum price is 0"),
-  to: z.number().min(100, "Minimum price is 100").max(2147483647, "Maximum price exceeded"),
-});
 
 export default function DesktopFilter({ setPreference }: Props) {
   const word = useScopedI18n("store");
@@ -33,65 +27,12 @@ export default function DesktopFilter({ setPreference }: Props) {
     }
   }, []);
 
-  function changeCategory(productCategory: string) {
-    if (!category && price) {
-      window.location.href = `/store?category=${productCategory}&price=${price}`;
-    }
-
-    if (category && price) {
-      window.location.href = `/store?category=${productCategory}&price=${price}`;
-    }
-
-    if (category && !price) {
-      window.location.href = `/store?category=${productCategory}`;
-    }
-
-    if (!category && !price) {
-      window.location.href = `/store?category=${productCategory}`;
-    }
-  }
-
-  function onPriceSubmit() {
-    const priceObj = {
-      from: parseInt(from),
-      to: parseInt(to),
-    };
-
-    const result = scheme.safeParse(priceObj);
-
-    if (from === "" || to === "") {
-      toast.error("Please fill in the price range");
-      return;
-    }
-
-    if (!result.success) {
-      toast.error(result.error.errors[0].message);
-      return;
-    }
-
-    if (category && !price) {
-      window.location.href = `/store?category=${category}&price=${from}-${to}`;
-    }
-
-    if (category && price) {
-      window.location.href = `/store?category=${category}&price=${from}-${to}`;
-    }
-
-    if (!category && !price) {
-      window.location.href = `/store?price=${from}-${to}`;
-    }
-  }
-
-  function onResetFilter() {
-    window.location.href = "/store";
-  }
-
   return (
     <div className="mt-[2rem] hidden h-fit w-[40rem] flex-col rounded-md px-[2rem] py-[2rem] lg:flex dark:bg-body">
       <div className="mb-[2rem] flex w-[35rem] flex-col divide-y divide-gray-200 border border-gray-200 bg-white">
         {categories.map((item, idx) => (
           <button
-            onClick={() => changeCategory(item.category.toLowerCase())}
+            onClick={() => changeCategory(item.category.toLowerCase(), price as string, category as string)}
             key={idx}
             className="group flex h-[3rem] w-full cursor-pointer items-center gap-[.5rem] rounded-md border px-[1.5rem] py-[2.5rem] duration-300 ease-out hover:translate-x-[3rem] hover:bg-green-600"
           >
@@ -138,7 +79,7 @@ export default function DesktopFilter({ setPreference }: Props) {
       </section>
       <div className="mt-[2rem] flex w-full flex-col items-center justify-center gap-[1rem]">
         <button
-          onClick={onPriceSubmit}
+          onClick={() => changePrice(from, to, setFrom, setTo, category as string, search as string)}
           className="h-[4rem] w-[25rem] rounded-lg bg-green-600 text-[1.5rem] font-bold text-white shadow-md"
         >
           {word("categories.submit")}

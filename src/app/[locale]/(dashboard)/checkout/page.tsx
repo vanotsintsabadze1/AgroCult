@@ -1,6 +1,6 @@
 import React from "react";
 import { getSession } from "@auth0/nextjs-auth0";
-import CategoryWrapper from "@/components/Checkout/CategoryWrapper";
+import CheckoutWrapper from "@/components/Checkout/CheckoutWrapper";
 
 async function getCartItems(userId: string) {
   if (!userId) {
@@ -29,7 +29,7 @@ export default async function page() {
 
   return (
     <main className="flex min-h-[60rem] w-full items-center justify-center py-[4rem]">
-      <CategoryWrapper items={cartItems} />
+      <CheckoutWrapper items={cartItems} />
     </main>
   );
 }

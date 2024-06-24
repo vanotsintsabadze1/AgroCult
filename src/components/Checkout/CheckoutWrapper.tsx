@@ -19,7 +19,7 @@ async function getProfileInfo(userId: string) {
   }
 }
 
-export default async function CategoryWrapper({ items }: Props) {
+export default async function CheckoutWrapper({ items }: Props) {
   const session = await getSession();
   const itemAmount = items.reduce((acc, item) => acc + item.quantity, 0);
   const total = items.reduce((acc, item) => acc + item.price * item.quantity, 0);

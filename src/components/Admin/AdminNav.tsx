@@ -28,8 +28,8 @@ export default function AdminNav({ active }: Props) {
             >
               {word(
                 `navigation.${opt.name.toLocaleLowerCase()}` as
-                  | "navigation.dashboard"
                   | "navigation.users"
+                  | "navigation.blogs"
                   | "navigation.products"
                   | "navigation.orders"
                   | "navigation.action_logs"

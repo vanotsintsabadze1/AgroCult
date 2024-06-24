@@ -7,6 +7,7 @@ import { refundPayment } from "@/scripts/actions/admin-panel/refundPayment";
 import ConfirmationModal from "../Users/ConfirmationModal";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { addLog } from "@/scripts/actions/admin-panel/addLog";
 
 interface Props {
   payment: Payment;
@@ -32,6 +33,7 @@ export default function OrderActions({ payment }: Props) {
     if (res?.status === 200) {
       toast.success("Payment refunded successfully");
       router.refresh();
+      addLog("Refunded payment", `Refunded payment with charge id: ${cid}`)
     }
   }
 

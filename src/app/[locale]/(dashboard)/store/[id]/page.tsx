@@ -41,7 +41,6 @@ export default async function page({ params: { id } }: Props) {
   if (!product) return null;
 
   const recommendedItems = await getRecommendedItems(product?.category[0] as string);
-  console.log("page  recommendedItems:", recommendedItems);
 
   return (
     <>

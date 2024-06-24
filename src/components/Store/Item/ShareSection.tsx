@@ -9,8 +9,6 @@ interface Props {
 export default function ShareSection({ id }: Props) {
   const url = process.env.NEXT_PUBLIC_VERCEL_URL;
 
-  console.log(`${url}/store/${id}`);
-
   return (
     <div className="rounded-white flex items-center justify-center gap-[2.5rem] rounded-[2rem] bg-white px-[4rem] py-[1rem] shadow-md">
       <FacebookShareButton url={`${url}/store/${id}`}>

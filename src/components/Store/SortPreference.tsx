@@ -9,7 +9,7 @@ export default function SortPreference({ setPreference }: Props) {
 
   return (
     <section className="flex flex-col gap-[1rem] px-[1rem] lg:px-0">
-      <h4 className="text-[1.8rem] font-bold">{word("title")}:</h4>
+      <h4 className="text-[1.8rem] font-bold dark:text-white">{word("title")}:</h4>
       <select
         onChange={(e) => setPreference(e.target.value)}
         className="h-[3.5rem] w-[25rem] rounded-lg bg-gray-200 px-[1rem] text-[1.4rem] shadow-sm"

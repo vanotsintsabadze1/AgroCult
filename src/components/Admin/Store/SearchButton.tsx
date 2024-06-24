@@ -7,7 +7,6 @@ export default function SearchButton() {
   const [search, setSearch] = useState("");
 
   function onSearch() {
-    console.log("sm");
     if (search === "") {
       window.location.href = "/admin/store";
     } else {

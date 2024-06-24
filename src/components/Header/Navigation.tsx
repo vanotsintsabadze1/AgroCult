@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getScopedI18n } from "@/locales/server";
+import { getSession } from "@auth0/nextjs-auth0";
 
 interface Props {
   className: string;
@@ -7,6 +8,12 @@ interface Props {
 
 async function Navigation({ className }: Props) {
   const word = await getScopedI18n("navigation");
+  const word_t = await getScopedI18n("header.dropDown");
+  const session = await getSession();
+
+  const user = session?.user;
+
+  const isAdmin = user?.role.includes("Admin");
 
   const links = [
     {
@@ -38,12 +45,14 @@ async function Navigation({ className }: Props) {
           {link.title}
         </Link>
       ))}
-      <Link
-        href="/admin"
-        className="easeOut font-medium uppercase duration-200 hover:scale-110 lg:hidden dark:text-dark-mode "
-      >
-        Admin
-      </Link>
+      {isAdmin && (
+        <Link
+          href="/admin"
+          className="easeOut font-medium uppercase duration-200 hover:scale-110 lg:hidden dark:text-dark-mode "
+        >
+          {word_t("admin")}
+        </Link>
+      )}
     </nav>
   );
 }

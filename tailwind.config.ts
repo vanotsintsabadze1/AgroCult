@@ -18,7 +18,7 @@ const config: Config = {
         primary: "#051923",
         secondary: "#5ebc67",
         "dark-primary": "#051923",
-        "dark-secondary": "#344e41",
+        "dark-secondary": "#052a3b",
         body: "#f5f5f5",
       },
       borderColor: {

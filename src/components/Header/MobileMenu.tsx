@@ -6,6 +6,7 @@ import ThemeSwitcher from "./Burger-Menu/ThemeSwitcher";
 import Navigation from "./Navigation";
 import { retrieveTheme } from "@/scripts/theme/themeRetriever";
 import { getSession } from "@auth0/nextjs-auth0";
+import { getScopedI18n } from "@/locales/server";
 
 const divAnimaton = {
   hidden: { opacity: 0, width: 0 },
@@ -15,6 +16,7 @@ const divAnimaton = {
 export default async function MobileMenu() {
   const theme = await retrieveTheme();
   const session = await getSession();
+  const word = await getScopedI18n("header.dropDown");
 
   return (
     <BurgerMenu>
@@ -32,7 +34,7 @@ export default async function MobileMenu() {
         {session && (
           <div className="flex w-full flex-grow items-end justify-end px-[1.5rem] pb-[3rem]">
             <a className="text-[1.4rem] font-bold text-white" href="/api/auth/logout">
-              Log Out
+              {word("logout")}
             </a>
           </div>
         )}

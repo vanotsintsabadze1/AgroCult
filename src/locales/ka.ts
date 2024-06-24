@@ -96,6 +96,7 @@ export default {
       status: "სტატუსი",
       date: "თარიღი",
       actions: "ქმედება",
+      title: "გადახდები",
     },
 
     users: {
@@ -235,6 +236,11 @@ export default {
       priceLowToHigh: "ფასი: დაბალი - მაღალი",
       priceHighToLow: "ფასი: მაღალი - დაბალი",
     },
+    category: {
+      title: "კატეგორია",
+      defaultCat: "აირჩიე",
+    },
+
     price: {
       title: "ფასი",
       from: "დან",
@@ -268,6 +274,7 @@ export default {
     total: "ჯამი",
     checkout: "გადახდა",
     price: "ფასი",
+    clear: "გასუფთავება",
   },
   blogs: {
     blogs: "ბლოგები",
@@ -358,7 +365,7 @@ export default {
     },
     secondPhrase: {
       main: "დაგვიკავშირდით ჩვენს ცხელ ხაზზე და გიპასუხებთ მალე!",
-      sub: "+(XXX)-XXX-XXX",
+      sub: "+(032)-254-254",
     },
     thirdPhrase: {
       main: "მოგვწერეთ ელექტრონულ ფოსტაზე და მიიღეთ დახმარება!",

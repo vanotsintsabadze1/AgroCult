@@ -35,16 +35,16 @@ export default function MobileFilter({ setPreference }: Props) {
   }
 
   return (
-    <div className="mt-[2rem] flex min-h-[40rem] w-[40rem] flex-col overflow-y-auto rounded-lg bg-white px-[1rem] py-[3rem] shadow-md lg:hidden xs:w-full">
+    <div className="mt-[2rem] flex min-h-[40rem] w-[40rem] flex-col overflow-y-auto rounded-lg bg-white px-[1rem] py-[3rem] shadow-md lg:hidden xs:w-full dark:bg-dark-secondary">
       <SortPreference setPreference={setPreference} />
       <section className="mt-[2rem] flex flex-col px-[1rem]">
-        <h4 className="text-[1.8rem] font-bold">{word("sort.title")}:</h4>
+        <h4 className="text-[1.8rem] font-bold dark:text-white">{word("category.title")}:</h4>
         <div className="mt-[1rem] flex items-center">
           <select
             onChange={onSelectChange}
             className="h-[4rem] overflow-y-auto rounded-lg bg-gray-200 px-[1rem] py-[.5rem] text-[1.4rem] text-black shadow-sm outline-none"
           >
-            <option>Select</option>
+            <option>{word("category.defaultCat")}</option>
             {categories.map((item, idx) => (
               <option value={item.category.toLowerCase()} key={idx}>
                 {word(
@@ -62,7 +62,7 @@ export default function MobileFilter({ setPreference }: Props) {
         </div>
       </section>
       <section className="mt-[2rem] flex flex-col px-[1rem]">
-        <h4 className="text-[1.8rem] font-bold">{word("price.title")}</h4>
+        <h4 className="text-[1.8rem] font-bold dark:text-white">{word("price.title")}</h4>
         <div className="mt-[1rem] flex items-center justify-center gap-[1rem]">
           <input
             value={from}
@@ -86,7 +86,7 @@ export default function MobileFilter({ setPreference }: Props) {
           Submit
         </button>
         {(category || price || search) && (
-          <button onClick={onResetFilter} className="mt-[1rem] text-[1.3rem] font-medium">
+          <button onClick={onResetFilter} className="mt-[1rem] text-[1.3rem] font-medium dark:text-white">
             Reset
           </button>
         )}

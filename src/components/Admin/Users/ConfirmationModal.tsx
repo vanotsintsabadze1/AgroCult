@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import React from "react";
 import { createPortal } from "react-dom";
+import { useScopedI18n } from "@/locales/client";
 
 const parentModalAnimations = {
   hidden: { opacity: 0 },
@@ -18,6 +19,8 @@ interface Props {
 }
 
 export default function ConfirmationModal({ cb, setConfirmationModal }: Props) {
+  const word = useScopedI18n("admin.confirmationModal");
+
   function onPositiveConfirmation() {
     setConfirmationModal(false);
     cb();
@@ -42,20 +45,20 @@ export default function ConfirmationModal({ cb, setConfirmationModal }: Props) {
         exit="hidden"
         className="z-[8] flex w-[30rem] flex-col items-center justify-center gap-[2rem] rounded-lg bg-white py-[3rem] shadow-md"
       >
-        <h4 className="text-[1.8rem] font-bold">Are you sure?</h4>
+        <h4 className="text-[1.8rem] font-bold">{word("areYouSure")}</h4>
 
         <div className="flex justify-center gap-[2rem]">
           <button
             className="w-[10rem] rounded-lg bg-green-600 py-[.5rem] text-[1.3rem] text-white shadow-md"
             onClick={onPositiveConfirmation}
           >
-            Yes
+            {word("yes")}
           </button>
           <button
             className="w-[10rem] rounded-lg border-2 border-green-600 py-[.5rem] text-[1.3rem] text-black shadow-md"
             onClick={onNegativeConfirmation}
           >
-            No
+            {word("no")}
           </button>
         </div>
       </motion.div>

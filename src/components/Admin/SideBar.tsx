@@ -33,7 +33,7 @@ export default function SideBar({ profilePicture, name }: Props) {
   return (
     <>
       <div
-        className={`fixed z-10 flex h-screen flex-col items-center overflow-hidden bg-white shadow-md ${shouldSideBarBeVisible ? "absolute left-0 top-0 w-[20rem]" : "w-[6rem]"} duration-300 ease-out`}
+        className={`fixed z-10 flex h-screen flex-col items-center overflow-hidden bg-white shadow-md ${shouldSideBarBeVisible ? "absolute left-0 top-0 w-[20rem]" : "w-[6rem]"} duration-300 ease-out dark:bg-dark-secondary dark:text-white`}
       >
         {profilePicture && name && (
           <div className="mb-[2rem] mt-[2rem] flex h-[5rem] w-full items-center gap-[1rem] overflow-hidden px-[1rem] py-[3rem]">

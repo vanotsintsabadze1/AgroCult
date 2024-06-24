@@ -51,7 +51,7 @@ export default async function page({ searchParams }: Props) {
       <BlogSearch />
       <BlogsWrapper>
         {blogs.length === 0 ? (
-          <h1 className="col-span-3 mt-[2rem] text-[1.5rem] font-light uppercase text-gray-400">
+          <h1 className="col-span-3 mt-[2rem] text-[1.5rem] font-light uppercase text-gray-400 dark:text-white">
             {word("noBlogsFound")}
           </h1>
         ) : (

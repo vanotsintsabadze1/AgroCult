@@ -54,13 +54,13 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="shadow-soft h-[55rem] w-full rounded-[.5rem] bg-white p-[2rem] shadow-md sm:w-[40rem] md:w-[50rem] lg:h-[60rem] lg:w-[60rem]">
+    <div className="shadow-soft h-[55rem] w-full rounded-[.5rem] bg-white p-[2rem] shadow-md sm:w-[40rem] md:w-[50rem] lg:h-[60rem] lg:w-[60rem] dark:bg-dark-secondary">
       <form
         className="flex h-full w-full flex-col items-center justify-center gap-[3rem]"
         action={submitForm}
         ref={formRef}
       >
-        <h1 className="text-[2rem] font-bold lg:text-[2.5rem]">{word("form.title")}</h1>
+        <h1 className="text-[2rem] font-bold lg:text-[2.5rem] dark:text-white">{word("form.title")}</h1>
         <div className="flex w-full flex-col items-center justify-center gap-[2rem]">
           <input
             type="text"
@@ -82,7 +82,10 @@ export default function ContactForm() {
           />
         </div>
         <div className="mt-[2rem] flex flex-row items-center gap-[2rem]">
-          <label htmlFor="topicSelector" className="text-[1.3rem] sm:text-[1.4rem] md:text-[1.4rem] lg:text-[1.4rem]">
+          <label
+            htmlFor="topicSelector"
+            className="text-[1.3rem] sm:text-[1.4rem] md:text-[1.4rem] lg:text-[1.4rem] dark:text-white"
+          >
             {word("form.topicLabel")}:
           </label>
           <select

@@ -112,7 +112,7 @@ export default function BlogCommentSection({ id, comments }: Props) {
 
               <div
                 key={comment.id}
-                className="relative flex w-full flex-col items-start gap-[1rem] rounded-lg p-[1rem] dark:bg-white dark:shadow-md"
+                className="relative flex w-full flex-col items-start gap-[1rem] rounded-lg p-[1rem] dark:bg-white dark:text-black dark:shadow-md"
               >
                 <p className="text-[1.3rem] font-bold">{comment.commenter}</p>
                 <p className="text-[1.2rem]">{comment.comment}</p>

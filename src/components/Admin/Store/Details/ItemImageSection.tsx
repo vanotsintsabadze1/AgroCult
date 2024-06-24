@@ -71,8 +71,6 @@ export default function ItemImageSection({
 
     const formData = new FormData(e.currentTarget);
 
-    console.log(formData.getAll("image-gallery"), itemDetails.images, itemDetails.id);
-
     const res = await createImageBlob(formData, itemDetails.images, itemDetails.id);
 
     if (res?.status === 200 && res?.images) {

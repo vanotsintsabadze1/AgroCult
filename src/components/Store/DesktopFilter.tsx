@@ -28,13 +28,13 @@ export default function DesktopFilter({ setPreference }: Props) {
   }, []);
 
   return (
-    <div className="mt-[2rem] hidden h-fit w-[40rem] flex-col rounded-md px-[2rem] py-[2rem] lg:flex dark:bg-body">
-      <div className="mb-[2rem] flex w-[35rem] flex-col divide-y divide-gray-200 border border-gray-200 bg-white">
+    <div className="mt-[2rem] hidden h-fit w-[40rem] flex-col rounded-md px-[2rem] py-[2rem] lg:flex ">
+      <div className="mb-[2rem] flex w-[35rem] flex-col divide-y divide-gray-200 border border-gray-200 dark:divide-opacity-0 dark:border-0 dark:border-none dark:bg-dark-secondary dark:text-white">
         {categories.map((item, idx) => (
           <button
             onClick={() => changeCategory(item.category.toLowerCase(), price as string, category as string)}
             key={idx}
-            className="group flex h-[3rem] w-full cursor-pointer items-center gap-[.5rem] rounded-md border px-[1.5rem] py-[2.5rem] duration-300 ease-out hover:translate-x-[3rem] hover:bg-green-600"
+            className="group flex h-[3rem] w-full cursor-pointer items-center gap-[.5rem] rounded-md border px-[1.5rem] py-[2.5rem] duration-300 ease-out hover:translate-x-[3rem] hover:bg-green-600 dark:border-0"
           >
             <Image
               src={item.imageUrl}
@@ -60,7 +60,7 @@ export default function DesktopFilter({ setPreference }: Props) {
       </div>
       <SortPreference setPreference={setPreference} />
       <section className="mt-[2rem] flex flex-col">
-        <h4 className="text-[1.8rem] font-bold">{word("price.title")}</h4>
+        <h4 className="text-[1.8rem] font-bold dark:text-white">{word("price.title")}:</h4>
         <div className="mt-[1rem] flex items-center justify-between px-[1]">
           <input
             placeholder={word("price.from")}
@@ -85,7 +85,7 @@ export default function DesktopFilter({ setPreference }: Props) {
           {word("categories.submit")}
         </button>
         {(category || price || search) && (
-          <button onClick={onResetFilter} className="mt-[1rem] text-[1.3rem] font-medium">
+          <button onClick={onResetFilter} className="mt-[1rem] text-[1.3rem] font-medium dark:text-white">
             Reset
           </button>
         )}

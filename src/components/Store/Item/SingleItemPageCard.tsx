@@ -12,7 +12,7 @@ export default async function SingleItemPageCard({ product }: Props) {
   const word = await getScopedI18n("store");
 
   return (
-    <div className="flex w-[40rem] flex-col items-center gap-[2rem] rounded-[2rem] bg-white p-[2rem] shadow-md lg:w-auto lg:flex-row lg:gap-[3rem] lg:pr-[4rem] xs:w-full dark:bg-[#020f15] dark:text-white dark:shadow-2xl">
+    <div className="flex w-[40rem] flex-col items-center gap-[2rem] rounded-[2rem] bg-white p-[2rem] shadow-md lg:w-auto lg:flex-row lg:gap-[3rem] lg:pr-[4rem] xs:w-full dark:bg-dark-secondary dark:text-white dark:shadow-2xl">
       <div className="flex flex-col items-center gap-[2rem] lg:h-full">
         <ImageSlider images={product.images} />
         <ServiceDetails />

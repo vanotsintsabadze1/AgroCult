@@ -7,7 +7,6 @@ export default function AdminBlogSearch() {
   const [search, setSearch] = useState("");
 
   function onSearch() {
-    console.log("sm");
     if (search === "") {
       window.location.href = "/admin/blogs";
     } else {

@@ -5,9 +5,8 @@ export default async function SearchBar() {
   const word = await getScopedI18n("admin.users");
   return (
     <div className="mt-[4rem] flex flex-col gap-[1rem] pl-[1rem] lg:w-full lg:items-center">
-      <h2 className="text-[2.8rem] font-bold">{word("manage_users")}</h2>
-      <canvas className="h-[.1rem] w-[80%] bg-gray-300" />
-      <form action={searchUser} className="mt-[1rem] flex max-w-[45rem] items-center">
+      <h2 className="text-[2.8rem] font-bold dark:text-white">{word("manage_users")}</h2>
+      <form action={searchUser} className="mt-[2rem] flex max-w-[45rem] items-center">
         <input
           type="text"
           name="search"

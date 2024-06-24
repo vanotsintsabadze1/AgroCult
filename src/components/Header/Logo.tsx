@@ -13,7 +13,7 @@ export default function Logo() {
           <Image src="/images/logos/main-logo-colored.webp" fill alt="company-logo" />
         </button>
       </div>
-      <div className="relative hidden md:h-[5rem] md:w-[18rem] dark:block">
+      <div className="relative hidden h-[4rem] w-[14rem] md:h-[5rem] md:w-[18rem] dark:block">
         <button onClick={() => router.push("/")}>
           <Image src="/images/logos/main-logo-white.webp" fill alt="company-logo-dark" />
         </button>

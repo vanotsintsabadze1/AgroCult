@@ -17,9 +17,9 @@ function ItemCard({ images, id, title, description, price, layout }: Props) {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const multiColView =
-    "flex md:w-[30rem] w-[32rem] sm:w-[38rem] flex-col items-center rounded-lg bg-white p-[2rem] shadow-md ";
+    "flex md:w-[30rem] w-[32rem] dark:bg-dark-secondary dark:text-white dark:shadow-xl sm:w-[38rem] flex-col items-center rounded-lg bg-white p-[2rem] shadow-md ";
   const singleColView =
-    "flex w-[32rem] flex-col items-center rounded-[1.5rem] bg-white p-[2rem] shadow-md sm:w-[40rem] lg:min-w-[60rem] xl:min-w-[80rem] lg:flex-row lg:gap-x-[2rem]";
+    "flex w-[32rem] flex-col dark:bg-dark-secondary dark:text-white dark:shadow-xl items-center rounded-[1.5rem] bg-white p-[2rem] shadow-md sm:w-[40rem] lg:min-w-[60rem] xl:min-w-[80rem] lg:flex-row lg:gap-x-[2rem]";
   const word = useScopedI18n("store");
   const router = useRouter();
   const { user } = useUser();
@@ -76,7 +76,7 @@ function ItemCard({ images, id, title, description, price, layout }: Props) {
             className={`rounded-md bg-gray-200 p-[.5rem] px-[1rem] shadow-sm ${price === 0 ? "cursor-not-allowed opacity-30" : ""} ${isSubmitting ? "opacity-30" : ""} flex items-center justify-center ${layout === "multi" ? "w-[20%]" : "w-[10%]"}`}
             onClick={onAddToCart}
           >
-            <ShoppingCart />
+            <ShoppingCart color="black" />
           </button>
         </div>
       </div>

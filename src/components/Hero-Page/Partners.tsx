@@ -12,7 +12,13 @@ export default function Partners() {
             src="/images/partners/agco.webp"
             fill
             alt="partners-image"
-            className="scale-75 opacity-70 dark:opacity-100"
+            className="scale-75 opacity-70 dark:hidden dark:opacity-100"
+          />
+          <Image
+            src="/images/partners/agco-white.webp"
+            fill
+            alt="partners-image"
+            className="hidden scale-75 opacity-70 dark:block dark:opacity-100"
           />
         </div>
         <div className="relative h-[15rem] w-[25rem]">

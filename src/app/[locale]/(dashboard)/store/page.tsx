@@ -1,6 +1,7 @@
 import { unstable_noStore as noStore } from "next/cache";
 import StoreWrapper from "../../../../components/Store/StoreWrapper";
 import { fetchItems } from "@/scripts/actions/store/fetchItems";
+import { Metadata } from "next";
 
 interface Props {
   searchParams: {
@@ -9,6 +10,11 @@ interface Props {
     search: string;
   };
 }
+
+export const metadata: Metadata = {
+  title: "Store",
+  description: "Official AgroCult store page. The best place to find the best agricultural products.",
+};
 
 export default async function page({ searchParams }: Props) {
   noStore();

@@ -150,7 +150,7 @@ export default function BlogCreationModal({
           loading: usedFor === "edit" ? "Updating blog..." : "Creating blog...",
           success: usedFor === "edit" ? "Blog updated successfully" : "Blog created successfully",
           error: (err) => {
-            console.log(err);
+            console.error(err);
             return "An error occurred";
           },
         },
@@ -174,10 +174,12 @@ export default function BlogCreationModal({
           <form
             action={onBlogFormSubmit}
             id="blogForm"
-            className="relative m-auto flex w-[40rem] flex-col gap-[2rem] overflow-y-scroll rounded-lg bg-white px-[2rem] py-[2rem] shadow-md md:min-h-[82rem] md:w-[75rem] lg:w-[100rem] xs:w-[90%]"
+            className="relative m-auto flex w-[40rem] flex-col gap-[2rem] overflow-y-scroll rounded-lg bg-white px-[2rem] py-[2rem] shadow-md md:min-h-[82rem] md:w-[75rem] lg:w-[100rem] xs:w-[90%] dark:bg-dark-secondary"
           >
             <div className="flex flex-col gap-[.5rem] px-[.5rem]">
-              <h2 className="text-[1.2rem] font-bold uppercase tracking-wide text-gray-400">{word("blog.title")}</h2>
+              <h2 className="text-[1.2rem] font-bold uppercase tracking-wide text-gray-400 dark:text-white">
+                {word("blog.title")}
+              </h2>
               <input
                 type="text"
                 defaultValue={usedFor === "edit" ? title : ""}
@@ -187,20 +189,22 @@ export default function BlogCreationModal({
               />
             </div>
             <div className="flex flex-col gap-[.5rem] px-[.5rem]">
-              <h2 className="text-[1.2rem] font-bold uppercase tracking-wide text-gray-400">
+              <h2 className="text-[1.2rem] font-bold uppercase tracking-wide text-gray-400 dark:text-white">
                 {word("blog.thumbnail")}
               </h2>
               <input
                 type="file"
-                className="text-[1.5rem] file:rounded-[2rem] file:border-none file:bg-green-600 file:px-[2rem] file:py-[.5rem] file:text-[1.5rem] file:text-white"
+                className="text-[1.5rem] file:rounded-[2rem] file:border-none file:bg-green-600 file:px-[2rem] file:py-[.5rem] file:text-[1.5rem] file:text-white dark:text-white"
                 placeholder="Write the title.."
                 accept="image/webp, image/png, image/jpeg"
                 name="thumbnail"
               />
-              {imageThumbnail && imageThumbnail !== "" && <p>* {word("blog.ifEmpty")} </p>}
+              {imageThumbnail && imageThumbnail !== "" && <p className="dark:text-white">* {word("blog.ifEmpty")} </p>}
             </div>
             <div className="flex flex-col px-[.5rem] ">
-              <h2 className="text-[1.2rem] font-bold uppercase tracking-wide text-gray-400">{word("blog.tags")}</h2>
+              <h2 className="text-[1.2rem] font-bold uppercase tracking-wide text-gray-400 dark:text-white">
+                {word("blog.tags")}
+              </h2>
               <div className="flex w-full items-center gap-[2rem] py-[.5rem]">
                 {tags.map((tag) => (
                   <div key={tag} className="relative flex w-[10rem] items-center justify-center">
@@ -240,7 +244,7 @@ export default function BlogCreationModal({
               </div>
             </div>
             <div className="flex w-full flex-col gap-[2rem] px-[.5rem]">
-              <h2 className="text-[1.2rem] font-bold uppercase tracking-wide text-gray-400">
+              <h2 className="text-[1.2rem] font-bold uppercase tracking-wide text-gray-400 dark:text-white">
                 {word("blog.description")}
               </h2>
 
@@ -256,7 +260,7 @@ export default function BlogCreationModal({
               <button
                 type="button"
                 onClick={() => setModal(false)}
-                className="h-[4rem] w-[12rem] rounded-lg border-2  border-green-600 px-[1rem] py-[.5rem] text-[1.3rem] font-bold text-black "
+                className="h-[4rem] w-[12rem] rounded-lg border-2 border-green-600  px-[1rem] py-[.5rem] text-[1.3rem] font-bold text-black dark:text-white "
               >
                 {word("blog.cancel")}
               </button>

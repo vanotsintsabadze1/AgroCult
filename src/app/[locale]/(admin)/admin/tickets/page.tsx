@@ -40,7 +40,7 @@ export default async function page() {
       {ticketSections.map((section, idx) => (
         <div key={idx} className="mt-[3rem] flex w-full flex-col gap-[2rem]">
           <div className="flex w-full px-[1rem] lg:justify-center">
-            <h2 className="text-[2rem] font-bold">{section.title}</h2>
+            <h2 className="text-[2rem] font-bold dark:text-white">{section.title}</h2>
           </div>
           <div className="flex max-h-[60rem] min-h-[4rem] w-full flex-col overflow-x-auto overflow-y-auto lg:items-center ">
             <div className="grid w-[100rem] grid-cols-4 rounded-t-xl bg-green-600 px-[1rem] py-[1.5rem] text-white">

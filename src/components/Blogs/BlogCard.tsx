@@ -26,7 +26,7 @@ export default async function BlogCard({
   const word = await getScopedI18n("blogs");
 
   return (
-    <div className="mt-[2rem] flex h-[40rem] w-[35rem] flex-col items-center rounded-[2rem] bg-white p-[2rem] shadow-md xs:w-[32rem]">
+    <div className="mt-[2rem] flex h-[40rem] w-[35rem] flex-col items-center rounded-[2rem] bg-white p-[2rem] shadow-md xs:w-[32rem] dark:bg-dark-secondary">
       <div className="relative h-[22rem] w-[32rem] xs:w-[30rem]">
         <Image src={thumbnail} fill alt={`blog-image-${title}`} className=" rounded-[1rem] object-cover shadow-sm" />
         <div className="absolute bottom-[1.2rem] left-[1rem] flex items-center justify-center gap-[1rem]">
@@ -44,19 +44,21 @@ export default async function BlogCard({
         )}
       </div>
       <div className="mt-[1rem] flex w-full flex-grow flex-col gap-[.5rem]">
-        <h4 className="line-clamp-1 text-[1.5rem] font-bold text-gray-800">{title}</h4>
+        <h4 className="line-clamp-1 text-[1.5rem] font-bold text-gray-800 dark:text-white">{title}</h4>
         <div
-          className="h-[5rem] overflow-hidden text-[1.2rem] font-semibold text-gray-500"
+          className="h-[5rem] overflow-hidden text-[1.2rem] font-semibold text-gray-500 dark:text-white"
           dangerouslySetInnerHTML={{ __html: sanitizedDescription }}
           id="blog-card-description-div"
         ></div>
         <div className="mt-[2rem] flex w-full items-center justify-between">
-          <Link href={`/blogs/${id}`} className="text-[1.3rem] font-bold text-black">
+          <Link href={`/blogs/${id}`} className="text-[1.3rem] font-bold text-black dark:text-white">
             {word("readMore")}
           </Link>
           <div className="flex flex-col items-end">
-            <p className="text-[1.3rem] font-medium text-gray-600">{new Date(created_at).toDateString()}</p>
-            <p className="text-[1.1rem] text-gray-600">@{wname}</p>
+            <p className="text-[1.3rem] font-medium text-gray-600 dark:text-white">
+              {new Date(created_at).toDateString()}
+            </p>
+            <p className="text-[1.1rem] text-gray-600 dark:text-white">@{wname}</p>
           </div>
         </div>
       </div>

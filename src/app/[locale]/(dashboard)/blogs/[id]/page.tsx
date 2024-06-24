@@ -49,7 +49,7 @@ export default async function page({ params: { id } }: Props) {
   const sanitizedDescription = DOMPurify.sanitize(blog.description);
 
   return (
-    <main className="flex min-h-[60rem] w-full flex-col items-center gap-[1rem] p-[2rem] md:min-h-[80rem]">
+    <main className="flex min-h-[60rem] w-full flex-col items-center gap-[1rem] p-[2rem] md:min-h-[80rem] dark:text-white">
       <div className="flex w-full flex-col items-center gap-[1rem] p-[2rem] xs:px-0 xs:py-[2rem]">
         <div className="relative rounded-lg p-[1rem] sm:h-[25rem] sm:w-[40rem] md:h-[40rem] md:w-[60rem] lg:h-[50rem] lg:w-[80rem] xs:h-[20rem] xs:w-[30rem]">
           <Image src={blog?.thumbnail} alt={`thumbnail-${id}`} fill className="rounded-[1rem] object-fill shadow-md" />
@@ -58,23 +58,29 @@ export default async function page({ params: { id } }: Props) {
           <div className="flex w-full flex-col gap-[.5rem] pt-[1rem]">
             <div className="flex items-center gap-[1rem]">
               <UserCircle2 size={15} />
-              <h1 className="text-[1.3rem] font-medium text-gray-400">{blog.wname}</h1>
+              <h1 className="text-[1.3rem] font-medium text-gray-400 dark:text-white">{blog.wname}</h1>
             </div>
             <div className="flex items-center gap-[1rem]">
               <Clock3 size={15} />
-              <h1 className="text-[1.3rem] font-medium text-gray-400">{blog.created_at.toDateString()}</h1>
+              <h1 className="text-[1.3rem] font-medium text-gray-400 dark:text-white">
+                {blog.created_at.toDateString()}
+              </h1>
             </div>
           </div>
           <div className="flex w-full justify-between">
-            <h1 className="max-w-[70rem] break-words text-[2rem] font-bold text-gray-800 md:text-[3rem]">
+            <h1 className="max-w-[70rem] break-words text-[2rem] font-bold text-gray-800 md:text-[3rem] dark:text-white">
               {blog.title}
             </h1>
             <div className="flex justify-end gap-[1rem] pr-[2rem]">
               <IndBlogActions id={blog.id} upvoters={blog.upvoters} blogUpvotes={blog.upvotes} />
             </div>
           </div>
-          <canvas className="h-[.2rem] w-[90%] bg-gray-300" />
-          <div className="flex flex-col" dangerouslySetInnerHTML={{ __html: sanitizedDescription }} id="ind-blog"></div>
+          <canvas className="h-[.2rem] w-[90%] bg-gray-300 dark:bg-white" />
+          <div
+            className="mt-[2rem] flex flex-col"
+            dangerouslySetInnerHTML={{ __html: sanitizedDescription }}
+            id="ind-blog"
+          ></div>
         </div>
       </div>
       {comments && <BlogCommentSection comments={comments} id={blog.id} />}

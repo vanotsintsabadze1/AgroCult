@@ -72,7 +72,7 @@ export default function CartItem({ item }: Props) {
   }
 
   return (
-    <div className="flex min-h-[12rem] w-full items-center gap-[1rem] px-[1.5rem] py-[2rem]">
+    <div className="flex min-h-[12rem] w-full items-center gap-[1rem] px-[1.5rem] py-[1rem]">
       <div className="relative h-[8rem] w-[11rem]">
         <Image src={item.images[0]} fill alt={`${item.product_id}`} className="rounded-[1rem] shadow-md" />
       </div>

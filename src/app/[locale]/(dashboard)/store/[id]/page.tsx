@@ -4,12 +4,18 @@ import Head from "next/head";
 import ShareSection from "@/components/Store/Item/ShareSection";
 import ItemCard from "@/components/Store/ItemCard";
 import { getScopedI18n } from "@/locales/server";
+import { Metadata } from "next";
 
 interface Props {
   params: {
     id: string;
   };
 }
+
+export const metadata: Metadata = {
+  title: "Store",
+  description: "AgroCult individual store item page",
+};
 
 async function getProductDetails(id: string) {
   if (!id) return null;
@@ -47,19 +53,19 @@ export default async function page({ params: { id } }: Props) {
   return (
     <>
       <Head>
-        <meta name="og:title" content={product.title} />
-        <meta name="og:description" content={product.description} />
-        <meta name="og:image" content={product.images[0]} />
-        <meta name="og:url" content={`https://tbc-react-pi.vercel.app/store/${id}`} />
+        <meta property="og:title" content={product.title} />
+        <meta property="og:description" content={product.description} />
+        <meta property="og:image" content={product.images[0]} />
+        <meta property="og:url" content={`https://tbc-react-pi.vercel.app/store/${id}`} />
       </Head>
       <main className="flex w-full flex-col items-center py-[4rem]">
         <SingleItemPageCard product={product} />
         <div className="mt-[2rem] flex w-full flex-col items-center gap-[2rem] py-[2rem]">
-          <p className="text-[2rem] font-medium">{word("product.shareProduct")}</p>
+          <p className="text-[2rem] font-medium dark:text-white">{word("product.shareProduct")}</p>
           <ShareSection id={id} />
         </div>
         <div className="mt-[3rem] flex w-full items-center justify-center">
-          <h2 className="text-[2.5rem] font-bold">{word("product.recommendedItems")}</h2>
+          <h2 className="text-[2.5rem] font-bold dark:text-white">{word("product.recommendedItems")}</h2>
         </div>
         <div className="mt-[1rem] flex w-full items-center gap-[5rem] overflow-x-auto py-[2rem] xl:justify-center">
           {recommendedItems.map((item) => (

@@ -41,6 +41,7 @@ export default {
       status: "Status",
       date: "Date",
       actions: "Actions",
+      title: "Payments",
     },
     users: {
       manage_users: "Manage Users",
@@ -209,6 +210,10 @@ export default {
       livestock: "Livestock Equipment",
       submit: "Submit",
     },
+    category: {
+      title: "Category",
+      defaultCat: "Select",
+    },
     sort: {
       title: "Sort By",
       mostrelevant: "Most Relevant",
@@ -266,6 +271,7 @@ export default {
     total: "Total",
     checkout: "Checkout",
     price: "Price",
+    clear: "Clear",
   },
   blogs: {
     blogs: "Blogs",
@@ -355,7 +361,7 @@ export default {
     },
     secondPhrase: {
       main: "Call us on our hotline and we will answer you ASAP!",
-      sub: "+(XXX)-XXX-XXX",
+      sub: "+(032)-254-254",
     },
     thirdPhrase: {
       main: "Email us at our support email and we will answer you ASAP!",

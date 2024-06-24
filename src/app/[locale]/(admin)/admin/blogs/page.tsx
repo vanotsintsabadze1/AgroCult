@@ -36,7 +36,7 @@ export default async function page({ searchParams }: Props) {
   return (
     <div className="flex w-full flex-col items-center pl-[6rem] lg:justify-center">
       <div className="mt-[8rem] flex w-full flex-col overflow-x-auto px-[1rem] lg:items-center">
-        <h4 className="text-[2.5rem] font-bold">{word("title")}</h4>
+        <h4 className="text-[2.5rem] font-bold dark:text-white">{word("title")}</h4>
         <div className="mt-[2rem] lg:flex lg:w-full lg:items-center lg:justify-center">
           <AdminBlogSearch />
         </div>

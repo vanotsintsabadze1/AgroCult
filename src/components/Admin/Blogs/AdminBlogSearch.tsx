@@ -3,7 +3,7 @@ import { useScopedI18n } from "@/locales/client";
 import { useState } from "react";
 
 export default function AdminBlogSearch() {
-  const word = useScopedI18n("admin.store");
+  const word = useScopedI18n("admin.blogs");
   const [search, setSearch] = useState("");
 
   function onSearch() {
@@ -20,7 +20,7 @@ export default function AdminBlogSearch() {
       <input
         type="text"
         className="h-[4rem] w-[25rem] rounded-l-lg border border-gray-300 px-[1.2rem] text-[1.4rem] shadow-md md:w-[40rem] lg:w-[50rem] xs:w-[15rem]"
-        placeholder={word("search_item")}
+        placeholder={word("searchPlaceholder")}
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
@@ -28,7 +28,7 @@ export default function AdminBlogSearch() {
         onClick={onSearch}
         className="h-[4rem] rounded-r-lg bg-green-600 px-[1rem] text-[1.3rem] text-white shadow-md lg:px-[2rem]"
       >
-        Search
+        {word("search")}
       </button>
     </>
   );

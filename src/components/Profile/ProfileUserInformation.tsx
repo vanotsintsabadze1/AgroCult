@@ -6,6 +6,7 @@ import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { useScopedI18n } from "@/locales/client";
 
 const divAnimation = {
   hidden: { opacity: 0 },
@@ -22,6 +23,7 @@ export default function ProfileUserInformation({ username, userId, email }: Prop
   const [isEditing, setIsEditing] = useState(false);
   const [newUsername, setNewUsername] = useState(username);
   const [newEmail, setNewEmail] = useState(email);
+  const word = useScopedI18n("profile");
   const router = useRouter();
 
   function onUsernameEdit() {
@@ -58,7 +60,7 @@ export default function ProfileUserInformation({ username, userId, email }: Prop
             exit="hidden"
             className="fixed z-[20] flex h-screen w-screen items-center justify-center bg-[rgba(0,0,0,0.4)]"
           >
-            <div className="flex w-[30rem] flex-col items-center gap-[2rem] rounded-[2rem] bg-white px-[2rem] py-[3rem] shadow-md">
+            <div className="flex w-[32rem] flex-col items-center gap-[2rem] rounded-[2rem] bg-white px-[2rem] py-[3rem] shadow-md">
               <input
                 type="text"
                 className="h-[4rem] w-full border-b-2 border-b-gray-300 px-[1rem] text-[1.5rem] leading-6 text-black outline-none placeholder:text-gray-300"
@@ -73,20 +75,20 @@ export default function ProfileUserInformation({ username, userId, email }: Prop
                 onChange={(e) => setNewEmail(e.target.value)}
               />
               {userId.startsWith("google") && (
-                <p className="text-[1.2rem] text-red-600">* Email cannot be changed if you signed up with Google</p>
+                <p className="text-[1.2rem] text-red-600">* {word("edit.cannotBeChanged")}</p>
               )}
               <div className="flex items-center justify-center gap-[2rem]">
                 <button
                   className="h-[3.5rem] rounded-[2rem] border-2 border-green-600 px-[3rem] text-[1.4rem] font-bold text-black"
                   onClick={() => setIsEditing(false)}
                 >
-                  Cancel
+                  {word("edit.cancel")}
                 </button>
                 <button
                   className="h-[3.5rem] rounded-[2rem] bg-green-600 px-[3rem] text-[1.4rem] font-bold text-white"
                   onClick={onSubmit}
                 >
-                  Submit
+                  {word("edit.submit")}
                 </button>
               </div>
             </div>

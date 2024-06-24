@@ -10,6 +10,7 @@ import CommentEditModal from "./CommentEditModal";
 import { AnimatePresence } from "framer-motion";
 import ConfirmationModal from "../Admin/Users/ConfirmationModal";
 import { deleteComment } from "@/scripts/actions/blogs/deleteComment";
+import { useScopedI18n } from "@/locales/client";
 
 interface Props {
   id: number;
@@ -28,19 +29,19 @@ export default function BlogCommentSection({ id, comments }: Props) {
   const [isEditing, setIsEditing] = useState(false);
   const [comment, setComment] = useState("");
   const [shouldConfirmationOpen, setConfirmationOpen] = useState(false);
+  const word = useScopedI18n("blogs");
 
   async function onCommentSubmit() {
     if (!user) {
       window.location.href = "/api/auth/login";
     }
-    
+
     const result = scheme.safeParse(comment);
 
     if (!result.success) {
       toast.error(result.error.errors[0].message);
       return;
     }
-
 
     const res = await addComment(id, user?.sub as string, comment, user?.nickname as string);
 
@@ -65,13 +66,13 @@ export default function BlogCommentSection({ id, comments }: Props) {
   return (
     <div className="flex w-full flex-col items-center gap-[2rem]">
       <div className="sm:w-[40rem] md:w-[60rem] lg:w-[80rem] xs:w-full">
-        <h2 className="text-[1.5rem] font-bold">Comments</h2>
+        <h2 className="text-[1.5rem] font-bold">{word("blog.comments")}</h2>
       </div>
       <div className="relative h-[10rem]  sm:w-[40rem] md:w-[60rem] lg:w-[80rem] xs:w-full">
         <textarea
           value={comment}
           className="h-full w-full resize-none rounded-lg p-[1rem] text-[1.3rem] shadow-md"
-          placeholder="Write your comment"
+          placeholder={word("blog.comment.placeholder")}
           name="comment"
           onChange={(e) => setComment(e.target.value)}
         />
@@ -79,24 +80,33 @@ export default function BlogCommentSection({ id, comments }: Props) {
           onClick={onCommentSubmit}
           className="absolute bottom-[1rem] right-[.5rem] z-[5] h-[3rem] w-[8rem] rounded-[1rem] bg-green-600 text-[1.2rem] font-bold text-white shadow-md"
         >
-          Submit
+          {word("blog.comment.submit")}
         </button>
       </div>
       <div className="flex flex-col gap-[2rem] sm:w-[40rem] md:w-[60rem] lg:w-[80rem] xs:w-full">
         {comments.length === 0 ? (
-          <p className="text-[1.3rem] font-medium">No comments yet, Be first!</p>
+          <p className="text-[1.3rem] font-medium">{word("blog.noComments")}</p>
         ) : (
           comments.map((comment) => (
             <>
               <AnimatePresence>
                 {isEditing && (
-                  <CommentEditModal key={comment.id} currComment={comment.comment} setModal={setIsEditing} comment_id={comment.id} />
+                  <CommentEditModal
+                    key={comment.id}
+                    currComment={comment.comment}
+                    setModal={setIsEditing}
+                    comment_id={comment.id}
+                  />
                 )}
               </AnimatePresence>
 
               <AnimatePresence>
                 {shouldConfirmationOpen && (
-                  <ConfirmationModal key={comment.id} setConfirmationModal={setConfirmationOpen} cb={() => removeComment(comment.id)} />
+                  <ConfirmationModal
+                    key={comment.id}
+                    setConfirmationModal={setConfirmationOpen}
+                    cb={() => removeComment(comment.id)}
+                  />
                 )}
               </AnimatePresence>
 

@@ -3,6 +3,7 @@ import SingleItemPageCard from "@/components/Store/Item/SingleItemPageCard";
 import Head from "next/head";
 import ShareSection from "@/components/Store/Item/ShareSection";
 import ItemCard from "@/components/Store/ItemCard";
+import { getScopedI18n } from "@/locales/server";
 
 interface Props {
   params: {
@@ -37,6 +38,7 @@ async function getRecommendedItems(category: string) {
 }
 export default async function page({ params: { id } }: Props) {
   const product = await getProductDetails(id);
+  const word = await getScopedI18n("store");
 
   if (!product) return null;
 
@@ -53,11 +55,11 @@ export default async function page({ params: { id } }: Props) {
       <main className="flex w-full flex-col items-center py-[4rem]">
         <SingleItemPageCard product={product} />
         <div className="mt-[2rem] flex w-full flex-col items-center gap-[2rem] py-[2rem]">
-          <p className="text-[2rem] font-medium">Share the product</p>
+          <p className="text-[2rem] font-medium">{word("product.shareProduct")}</p>
           <ShareSection id={id} />
         </div>
         <div className="mt-[3rem] flex w-full items-center justify-center">
-          <h2 className="text-[2.5rem] font-bold">Recommended items</h2>
+          <h2 className="text-[2.5rem] font-bold">{word("product.recommendedItems")}</h2>
         </div>
         <div className="mt-[1rem] flex w-full items-center gap-[5rem] overflow-x-auto py-[2rem] xl:justify-center">
           {recommendedItems.map((item) => (

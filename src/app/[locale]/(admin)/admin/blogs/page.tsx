@@ -2,6 +2,7 @@ import AdminBlogActions from "@/components/Admin/Blogs/AdminBlogActions";
 import AdminBlogSearch from "@/components/Admin/Blogs/AdminBlogSearch";
 import { sql } from "@vercel/postgres";
 import { unstable_noStore as noStore } from "next/cache";
+import { getScopedI18n } from "@/locales/server";
 
 interface Props {
   searchParams: {
@@ -30,20 +31,21 @@ async function getAllBlogs({ searchParams }: Props) {
 export default async function page({ searchParams }: Props) {
   noStore();
   const blogs = (await getAllBlogs({ searchParams })) as Blog[];
+  const word = await getScopedI18n("admin.blogs");
 
   return (
     <div className="flex w-full flex-col items-center pl-[6rem] lg:justify-center">
       <div className="mt-[8rem] flex w-full flex-col overflow-x-auto px-[1rem] lg:items-center">
-        <h4 className="text-[2.5rem] font-bold">Manage Blogs</h4>
+        <h4 className="text-[2.5rem] font-bold">{word("title")}</h4>
         <div className="mt-[2rem] lg:flex lg:w-full lg:items-center lg:justify-center">
           <AdminBlogSearch />
         </div>
         <div className="mt-[3rem] grid w-[90rem] grid-cols-5 rounded-t-xl bg-green-600 px-[1rem] py-[1.5rem] text-white">
           <div className="cols-span-1 m-auto text-[1.5rem]">ID</div>
-          <div className="cols-span-1 m-auto text-[1.5rem]">Title</div>
+          <div className="cols-span-1 m-auto text-[1.5rem]">{word("topic")}</div>
           <div className="cols-span-1 m-auto text-[1.5rem]">WID</div>
-          <div className="cols-span-1 m-auto text-[1.5rem]">Writer</div>
-          <div className="cols-span-1 m-auto text-[1.5rem]">Actions</div>
+          <div className="cols-span-1 m-auto text-[1.5rem]">{word("writer")}</div>
+          <div className="cols-span-1 m-auto text-[1.5rem]">{word("actions")}</div>
         </div>
         {blogs.map((blog) => (
           <div key={blog.id} className="grid w-[90rem] grid-cols-5 bg-white px-[1rem] py-[1.5rem]">

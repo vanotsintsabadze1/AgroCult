@@ -29,13 +29,18 @@ export default {
       tickets: "Tickets",
       go_back: "Go Back",
     },
-    dashboard: {
-      title: "Dasboard",
-      users: "Users",
-      purchases: "Purchases",
-      new_users: "New Users",
-      todays_revenue: "Today's Revenue",
-      open_tickets: "Open Tickets",
+
+    confirmationModal: {
+      areYouSure: "Are you sure?",
+      yes: "Yes",
+      no: "No",
+    },
+
+    payments: {
+      amount: "Amount",
+      status: "Status",
+      date: "Date",
+      actions: "Actions",
     },
     users: {
       manage_users: "Manage Users",
@@ -51,6 +56,44 @@ export default {
       close: "Close",
       submit: "Submit",
     },
+
+    tickets: {
+      openTickets: "Open Tickets",
+      inProgress: "In Progress Tickets",
+      closed: "Closed Tickets",
+      ticket: {
+        issuer_name: "Issuer Name",
+        issuer_email: "Issuer Email",
+        topic: "Topic",
+        description: "Description",
+        created_at: "Created At",
+        status: {
+          open: "Open",
+          inProgress: "In Progress",
+          closed: "Closed",
+        },
+        close: "Close",
+      },
+      actions: "Actions",
+    },
+    status_change: {
+      ticketStatus: "Ticket Status",
+      open: "Open",
+      inProgress: "In Progress",
+      closed: "Closed",
+      save: "Save",
+      close: "Close",
+    },
+
+    blogs: {
+      title: "Manage Blogs",
+      searchPlaceholder: "Search Blogs",
+      search: "Search",
+      topic: "Title",
+      writer: "Writer",
+      actions: "Actions",
+    },
+
     store: {
       add_item: "Add Item",
       search: "Search",
@@ -73,6 +116,9 @@ export default {
         edit: "Edit",
         submit: "Submit",
         cancel: "Cancel",
+        buyable: "Purchaseable",
+        noImagesUploadedYet: "No images uploaded yet",
+        uploaded: "Uploaded",
       },
     },
     logs: {
@@ -119,6 +165,7 @@ export default {
           "Our team members are more than just employees; they’re the backbone of our company. We invest in their growth and well-being, knowing that their expertise and dedication drive our success. Our shared commitment to excellence in agricultural technology makes us a strong and innovative partner for farmers everywhere.",
       },
     },
+    blogs: "Latest Blogs",
     partners: {
       title: "Our Partners",
     },
@@ -180,12 +227,21 @@ export default {
     product: {
       description: "Description",
       cantBuy: "Submit a support ticket if you want to purchase this product",
+      notAvailableDirect: "Not available for direct purchase",
       showMore: "Show More",
       showLess: "Show Less",
       details: "Details",
       price: "Price",
       amount: "Amount",
       discount: "Discount",
+      buy: "Purchase",
+      goBack: "Go Back",
+      nationWideShipping: "Nationwide Shipping",
+      globalWarranty: "Global Warranty",
+      availableToOrder: "Available to Order",
+      fastestDelivery: "Fastest Delivery",
+      shareProduct: "Share the Product",
+      recommendedItems: "Recommended Items",
     },
   },
   header: {
@@ -205,18 +261,92 @@ export default {
     contact: "Contact",
     logout: "Log Out",
   },
+  cart: {
+    noItems: "Cart is empty",
+    total: "Total",
+    checkout: "Checkout",
+    price: "Price",
+  },
   blogs: {
-    seeMore: "See More",
-    goBack: "Go Back",
+    blogs: "Blogs",
+    phrase:
+      "Here you can see blogs from our community members. You can also submit your own blog post and let others know about your thoughts or let them learn something new.",
+    search: "",
+    createBlog: "Create Blog",
+    searchTheBlogs: "Search the Blogs",
+    readMore: "Read More",
+    blog: {
+      title: "Title",
+      description: "Description",
+      thumbnail: "Thumbnail",
+      ifEmpty: "Leave empty if you don't want to change",
+      tags: "Tags",
+      submit: "Submit",
+      cancel: "Cancel",
+      comments: "Comments",
+      comment: {
+        editComment: "Edit Comment",
+        submit: "Submit",
+        placeholder: "Write a comment..",
+        cancel: "Cancel",
+      },
+      noComments: "No comments yet, Be First!",
+    },
+    noBlogsFound: "No blogs found",
   },
   profile: {
-    title: "Edit Your Profile",
-    username: "username",
-    email: "email",
-    currentPassword: "Current Password",
-    newPassword: "New Password",
-    confirmPassword: "Confirm Password",
-    submit: "Submit",
+    metrics: {
+      itemsBought: "Items Bought",
+      createdBlogs: "Created Blogs",
+      shippingDetails: {
+        title: "Shipping Details",
+        country: "Country",
+        city: "City",
+        address: "Address",
+        postalCode: "Postal Code",
+        save: "Save",
+      },
+    },
+    edit: {
+      changeYourAvatar: "Change Your Avatar",
+      submit: "Submit",
+      cancel: "Cancel",
+      cannotBeChanged: "Email cannot be changed if you signed up with Google",
+    },
+    payments: {
+      price: "Price",
+      date: "Date",
+      status: {
+        title: "Status",
+        succeeded: "Succeeded",
+        refunded: "Refunded",
+      },
+      actions: "Actions",
+      extra_details: {
+        receipt_number: "Receipt Number",
+        name: "Name",
+        email: "Email",
+        paidWith: "Payment Method",
+        date: "Date",
+        close: "Close",
+      },
+    },
+    blogs: {
+      manageBlogs: "Manage Blogs",
+      topic: "Topic",
+      actions: "Actions",
+    },
+  },
+  checkout: {
+    shipping_details: {
+      title: "Shipping Details",
+      country: "Country",
+      city: "City",
+      address: "Address",
+      postalCode: "Postal Code",
+      save: "Save",
+    },
+    proceedToPayment: "Proceed to Payment",
   },
   contact: {
     firstPhrase: {

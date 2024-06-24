@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { z } from "zod";
+import { useScopedI18n } from "@/locales/client";
 
 interface Props {
   extra_details: {
@@ -33,6 +34,7 @@ const schema = z.object({
 export default function ProfileUserAddress({ extra_details, userId }: Props) {
   const [extraDetails, setExtraDetails] = useState(extra_details);
   const router = useRouter();
+  const word = useScopedI18n("profile");
 
   async function onCredentialSubmit() {
     const form = {
@@ -73,51 +75,61 @@ export default function ProfileUserAddress({ extra_details, userId }: Props) {
 
   return (
     <div className="mt-[2rem] flex w-full flex-col gap-[1rem] px-[2rem]">
-      <h4 className="ml-[.2rem] text-[1.5rem] font-bold uppercase text-black dark:text-white">Shipping Details:</h4>
+      <h4 className="ml-[.2rem] text-[1.5rem] font-bold uppercase text-black dark:text-white">
+        {word("metrics.shippingDetails.title")}:
+      </h4>
 
       <div className="flex w-full flex-col gap-[.5rem]">
-        <h4 className="ml-[.2rem] text-[1.2rem] font-bold uppercase text-gray-400">Country:</h4>
+        <h4 className="ml-[.2rem] text-[1.2rem] font-bold uppercase text-gray-400">
+          {word("metrics.shippingDetails.country")}:
+        </h4>
         <input
           type="text"
           value={extraDetails.country}
           onChange={(e) => setExtraDetails({ ...extraDetails, country: e.target.value })}
-          placeholder="Country.."
+          placeholder={word("metrics.shippingDetails.country")}
           className="h-[4rem] w-full rounded-[.5rem] border-2 border-gray-300 px-[1.2rem] text-[1.4rem] shadow-md"
         />
       </div>
       <div className="flex w-full flex-col gap-[.5rem]">
-        <h4 className="ml-[.2rem] text-[1.2rem] font-bold uppercase text-gray-400">City:</h4>
+        <h4 className="ml-[.2rem] text-[1.2rem] font-bold uppercase text-gray-400">
+          {word("metrics.shippingDetails.city")}:
+        </h4>
         <input
           type="text"
           value={extraDetails.city}
           onChange={(e) => setExtraDetails({ ...extraDetails, city: e.target.value })}
-          placeholder="City.."
+          placeholder={word("metrics.shippingDetails.city")}
           className="h-[4rem] w-full rounded-[.5rem] border-2 border-gray-300 px-[1.2rem] text-[1.4rem] shadow-md"
         />
       </div>
       <div className="flex w-full flex-col gap-[.5rem]">
-        <h4 className="ml-[.2rem] text-[1.2rem] font-bold uppercase text-gray-400">Address:</h4>
+        <h4 className="ml-[.2rem] text-[1.2rem] font-bold uppercase text-gray-400">
+          {word("metrics.shippingDetails.address")}:
+        </h4>
         <input
           type="text"
           value={extraDetails.address}
           onChange={(e) => setExtraDetails({ ...extraDetails, address: e.target.value })}
-          placeholder="Address.."
+          placeholder={word("metrics.shippingDetails.address")}
           className="h-[4rem] w-full rounded-[.5rem] border-2 border-gray-300 px-[1.2rem] text-[1.4rem] shadow-md"
         />
       </div>
       <div className="flex w-full flex-col gap-[.5rem]">
-        <h4 className="ml-[.2rem] text-[1.2rem] font-bold uppercase text-gray-400">Postal Code:</h4>
+        <h4 className="ml-[.2rem] text-[1.2rem] font-bold uppercase text-gray-400">
+          {word("metrics.shippingDetails.postalCode")}:
+        </h4>
         <input
           type="text"
           value={extraDetails.postal_code}
           onChange={(e) => setExtraDetails({ ...extraDetails, postal_code: e.target.value })}
-          placeholder="Postal Code"
+          placeholder={word("metrics.shippingDetails.postalCode")}
           className="h-[4rem] w-full rounded-[.5rem] border-2 border-gray-300 px-[1.2rem] text-[1.4rem] shadow-md"
         />
       </div>
       <div className="flex w-full items-center justify-center py-[1rem]" onClick={onCredentialSubmit}>
         <button className="h-[3.7rem] w-[15rem] rounded-lg bg-green-600 text-[1.4rem] font-bold text-white shadow-md">
-          Save
+          {word("metrics.shippingDetails.save")}
         </button>
       </div>
     </div>

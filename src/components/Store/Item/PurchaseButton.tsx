@@ -4,6 +4,7 @@ import { PlusIcon, Minus } from "lucide-react";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { useScopedI18n } from "@/locales/client";
 import toast from "react-hot-toast";
 
 interface Props {
@@ -13,6 +14,7 @@ interface Props {
 export default function PurchaseButton({ product }: Props) {
   const router = useRouter();
   const session = useUser();
+  const word = useScopedI18n("store");
 
   const [quantity, setQuantity] = useState(1);
   const productToBuy = {
@@ -64,7 +66,7 @@ export default function PurchaseButton({ product }: Props) {
     <div className="flex w-full flex-col gap-[1.5rem] pt-[2rem] lg:justify-end">
       <div className="flex w-full items-center justify-between">
         <p className="text-[1.5rem] font-medium">
-          {product.price === 0 ? "Not available for direct purchase" : `$${product.price * quantity}`}
+          {product.price === 0 ? word("product.notAvailableDirect") : `$${product.price * quantity}`}
         </p>
         <div className="flex items-center gap-[1rem]">
           <button
@@ -89,14 +91,14 @@ export default function PurchaseButton({ product }: Props) {
         disabled={product.price === 0}
         className={`h-[4rem] w-full rounded-[1rem] ${product.price === 0 ? "cursor-not-allowed opacity-50" : "opacity-100"} bg-green-600 text-[1.6rem] font-medium text-white shadow-md`}
       >
-        Purchase
+        {word("product.buy")}
       </button>
       <button
         onClick={() => router.push("/store")}
         disabled={product.price === 0}
         className={`h-[4rem] w-full rounded-[1rem] ${product.price === 0 ? "cursor-not-allowed opacity-50" : "opacity-100"} border-2 border-green-600 text-[1.6rem] font-medium shadow-md`}
       >
-        Go Back
+        {word("product.goBack")}
       </button>
     </div>
   );

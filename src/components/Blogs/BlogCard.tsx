@@ -3,6 +3,7 @@ import DOMPurify from "isomorphic-dompurify";
 import Link from "next/link";
 import { getSession } from "@auth0/nextjs-auth0";
 import BlogActions from "./BlogActions";
+import { getScopedI18n } from "@/locales/server";
 
 interface Props extends Blog {
   usedFor?: string;
@@ -22,6 +23,7 @@ export default async function BlogCard({
   const session = await getSession();
   const user = session?.user;
   const sanitizedDescription = DOMPurify.sanitize(description);
+  const word = await getScopedI18n("blogs");
 
   return (
     <div className="mt-[2rem] flex h-[40rem] w-[35rem] flex-col items-center rounded-[2rem] bg-white p-[2rem] shadow-md xs:w-[32rem]">
@@ -50,7 +52,7 @@ export default async function BlogCard({
         ></div>
         <div className="mt-[2rem] flex w-full items-center justify-between">
           <Link href={`/blogs/${id}`} className="text-[1.3rem] font-bold text-black">
-            Read More
+            {word("readMore")}
           </Link>
           <div className="flex flex-col items-end">
             <p className="text-[1.3rem] font-medium text-gray-600">{new Date(created_at).toDateString()}</p>

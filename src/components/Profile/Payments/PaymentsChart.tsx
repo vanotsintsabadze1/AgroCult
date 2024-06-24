@@ -1,18 +1,21 @@
 import PaymentChartActions from "./PaymentChartActions";
+import { getScopedI18n } from "@/locales/server";
 
 interface Props {
   payments: Payment[];
 }
 
-export default function PaymentsChart({ payments }: Props) {
+export default async function PaymentsChart({ payments }: Props) {
+  const word = await getScopedI18n("profile.payments");
+
   return (
     <div className="m-auto mt-[2rem] flex h-full w-full flex-col overflow-x-auto px-[1rem] lg:items-center">
       <div className="grid w-[100rem] grid-cols-6 rounded-t-xl bg-green-600 px-[1rem] py-[1.5rem] text-white">
         <div className="col-span-1 m-auto text-[1.5rem]">PID</div>
-        <div className="col-span-1 m-auto text-[1.5rem]">Amount</div>
-        <div className="col-span-1 m-auto text-[1.5rem]">Status</div>
-        <div className="col-span-2 m-auto text-[1.5rem]">Date</div>
-        <div className="col-span-1 m-auto text-[1.5rem]">Actions</div>
+        <div className="col-span-1 m-auto text-[1.5rem]">{word("price")}</div>
+        <div className="col-span-1 m-auto text-[1.5rem]">{word("status.title")}</div>
+        <div className="col-span-2 m-auto text-[1.5rem]">{word("date")}</div>
+        <div className="col-span-1 m-auto text-[1.5rem]">{word("actions")}</div>
       </div>
       {payments.map((payment) => (
         <div key={payment.id} className="grid w-[100rem] grid-cols-6 bg-white px-[1rem] py-[1.5rem] text-black">
@@ -22,7 +25,7 @@ export default function PaymentsChart({ payments }: Props) {
             {!payment.latest_charge.refunded &&
               (payment.status === "succeeded" ? (
                 <div className="font -bold flex w-[12rem] items-center justify-center border-2 border-green-500 px-[1rem] py-[.5rem] text-[1.2rem] uppercase text-green-600">
-                  Succeeded
+                  {word("status.succeeded")}
                 </div>
               ) : (
                 <div className="flex w-[12rem] items-center justify-center border-2 border-red-500 px-[1rem] py-[.5rem] text-[1.2rem] font-bold uppercase text-red-500">
@@ -32,7 +35,7 @@ export default function PaymentsChart({ payments }: Props) {
 
             {payment.latest_charge.refunded && payment.status === "succeeded" && (
               <div className="flex w-[12rem] items-center justify-center border-2 border-purple-500 px-[1rem] py-[.5rem] text-[1.2rem] font-bold uppercase text-purple-500">
-                Refunded
+                {word("status.refunded")}
               </div>
             )}
           </div>

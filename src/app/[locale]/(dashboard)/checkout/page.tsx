@@ -1,6 +1,7 @@
 import React from "react";
 import { getSession } from "@auth0/nextjs-auth0";
 import CheckoutWrapper from "@/components/Checkout/CheckoutWrapper";
+import { redirect } from "next/navigation";
 
 async function getCartItems(userId: string) {
   if (!userId) {
@@ -26,6 +27,10 @@ export default async function page() {
   const user = session?.user;
 
   const cartItems = (await getCartItems(user?.sub as string)) as CartItem[];
+
+  if (cartItems.length === 0) {
+    return redirect("/");
+  }
 
   return (
     <main className="flex min-h-[60rem] w-full items-center justify-center py-[4rem]">

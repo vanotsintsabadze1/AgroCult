@@ -5,6 +5,7 @@ import { assignTicket } from "@/scripts/actions/admin-panel/assignTicket";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { addLog } from "@/scripts/actions/admin-panel/addLog";
+import { useScopedI18n } from "@/locales/client";
 
 const divAnimation = {
   hidden: {
@@ -23,6 +24,7 @@ interface Props {
 export default function TicketAssigner({ ticket, setModal }: Props) {
   const [stage, setStage] = useState("open");
   const router = useRouter();
+  const word = useScopedI18n("admin.status_change");
 
   async function onStageSubmit() {
     const res = await assignTicket(ticket.id, stage === "open" ? 1 : stage === "inp" ? 2 : 3);
@@ -48,14 +50,14 @@ export default function TicketAssigner({ ticket, setModal }: Props) {
     >
       <div className="w-[30rem] rounded-[1rem] bg-white py-[2rem] shadow-md">
         <div className="flex flex-col items-center justify-center gap-[1rem]">
-          <h2 className="text-[1.5rem] font-bold">Ticket Status</h2>
+          <h2 className="text-[1.5rem] font-bold">{word("ticketStatus")}</h2>
           <select
             onChange={(e) => setStage(e.target.value)}
             className="mt-[1rem] h-[3.5rem] w-[12rem] rounded-[1rem] bg-gray-200 px-[2rem] text-[1.3rem] font-medium shadow-md"
           >
-            <option value="open">Open</option>
-            <option value="inp">In Progress</option>
-            <option value="closed">Closed</option>
+            <option value="open">{word("open")}</option>
+            <option value="inp">{word("inProgress")}</option>
+            <option value="closed">{word("closed")}</option>
           </select>
         </div>
         <div className="mt-[3rem] flex w-full flex-col items-center justify-center gap-[1.5rem]">
@@ -63,13 +65,13 @@ export default function TicketAssigner({ ticket, setModal }: Props) {
             onClick={() => onStageSubmit()}
             className="h-[3.5rem] w-[12rem] rounded-[1rem] bg-green-600 px-[2rem] text-[1.3rem] font-bold text-white shadow-md"
           >
-            Save
+            {word("save")}
           </button>
           <button
             onClick={() => setModal(false)}
             className="h-[3.5rem] w-[12rem] rounded-[1rem] border-2 border-green-600 px-[2rem] text-[1.3rem] font-bold shadow-md"
           >
-            Close
+            {word("close")}
           </button>
         </div>
       </div>

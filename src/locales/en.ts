@@ -21,7 +21,7 @@ export default {
 
   admin: {
     navigation: {
-      dashboard: "Dashboard",
+      blogs: "Blogs",
       users: "Users",
       products: "Products",
       orders: "Orders",

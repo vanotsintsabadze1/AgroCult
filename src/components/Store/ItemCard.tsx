@@ -16,7 +16,8 @@ interface Props extends ShopItem {
 function ItemCard({ images, id, title, description, price, layout }: Props) {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const multiColView = "flex md:w-[30rem] sm:w-[38rem] flex-col items-center rounded-lg bg-white p-[2rem] shadow-md ";
+  const multiColView =
+    "flex md:w-[30rem] w-[32rem] sm:w-[38rem] flex-col items-center rounded-lg bg-white p-[2rem] shadow-md ";
   const singleColView =
     "flex w-[32rem] flex-col items-center rounded-[1.5rem] bg-white p-[2rem] shadow-md sm:w-[40rem] lg:min-w-[60rem] xl:min-w-[80rem] lg:flex-row lg:gap-x-[2rem]";
   const word = useScopedI18n("store");
@@ -66,7 +67,7 @@ function ItemCard({ images, id, title, description, price, layout }: Props) {
         >
           <button
             onClick={redirectOnClick}
-            className={`w-[80%] rounded-lg bg-green-700 py-[.7rem] text-[1.4rem] text-white ${layout === "multi" ? "w-[80%]" : "w-[90%]"}`}
+            className={`w-[80%] rounded-lg bg-green-700 py-[.7rem] text-[1.4rem] text-white xs:mt-[1rem] ${layout === "multi" ? "w-[80%]" : "w-[90%]"}`}
           >
             {word("buy")}
           </button>
@@ -75,7 +76,7 @@ function ItemCard({ images, id, title, description, price, layout }: Props) {
             className={`rounded-md bg-gray-200 p-[.5rem] px-[1rem] shadow-sm ${price === 0 ? "cursor-not-allowed opacity-30" : ""} ${isSubmitting ? "opacity-30" : ""} flex items-center justify-center ${layout === "multi" ? "w-[20%]" : "w-[10%]"}`}
             onClick={onAddToCart}
           >
-            <ShoppingCart className="" />
+            <ShoppingCart />
           </button>
         </div>
       </div>

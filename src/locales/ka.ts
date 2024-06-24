@@ -66,7 +66,7 @@ export default {
 
   admin: {
     navigation: {
-      dashboard: "მთავარი",
+      blogs: "ბლოგები",
       users: "მომხმარებები",
       products: "პროდუქტები",
       orders: "შეკვეთები",

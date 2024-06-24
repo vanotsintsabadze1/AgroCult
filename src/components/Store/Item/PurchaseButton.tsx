@@ -35,7 +35,6 @@ export default function PurchaseButton({ product }: Props) {
         }),
       });
       const data = await res.json();
-      console.log(data);
 
       if (data.url) {
         router.push(data.url);
@@ -69,6 +68,7 @@ export default function PurchaseButton({ product }: Props) {
         <div className="flex items-center gap-[1rem]">
           <button
             onClick={decreaseQuantity}
+            disabled={product.price === 0}
             className={`flex h-[3rem] w-[3rem] items-center justify-center rounded-[.5rem] bg-green-600 text-white ${product.price === 0 ? "cursor-not-allowed opacity-50" : "opacity-100"}`}
           >
             <Minus size={20} />
@@ -76,6 +76,7 @@ export default function PurchaseButton({ product }: Props) {
           <p className={`text-[1.6rem] font-bold ${product.price === 0 ? "opacity-50" : "opacity-100"}`}>{quantity}</p>
           <button
             onClick={increaseQuantity}
+            disabled={product.price === 0}
             className={`flex h-[3rem] w-[3rem] items-center justify-center rounded-[.5rem] bg-green-600 text-white ${product.price === 0 ? "cursor-not-allowed opacity-50" : "opacity-100"}`}
           >
             <PlusIcon size={20} />

@@ -12,7 +12,7 @@ export default function SortPreference({ setPreference }: Props) {
       <h4 className="text-[1.8rem] font-bold">{word("title")}:</h4>
       <select
         onChange={(e) => setPreference(e.target.value)}
-        className="h-[3.5rem] w-[25rem] rounded-lg bg-gray-300 px-[1rem] text-[1.4rem] shadow-sm"
+        className="h-[3.5rem] w-[25rem] rounded-lg bg-gray-200 px-[1rem] text-[1.4rem] shadow-sm"
       >
         <option value="most_relevant">{word("mostrelevant")}</option>
         <option value="p_low_high">{word("priceLowToHigh")}</option>

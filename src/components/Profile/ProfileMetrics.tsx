@@ -5,9 +5,10 @@ import { Store, BookOpenCheck, ArrowUpRightFromSquareIcon } from "lucide-react";
 
 interface Props {
   orderAmount: number;
+  blogAmount: number;
 }
 
-export default function ProfileMetrics({ orderAmount }: Props) {
+export default function ProfileMetrics({ orderAmount, blogAmount }: Props) {
   const router = useRouter();
 
   return (
@@ -26,7 +27,7 @@ export default function ProfileMetrics({ orderAmount }: Props) {
       >
         <ArrowUpRightFromSquareIcon size={15} className="absolute right-[1rem] top-0" />
         <BookOpenCheck size={30} />
-        <p className="text-[1.4rem] font-medium">0 Created Blogs</p>
+        <p className="text-[1.4rem] font-medium">{blogAmount} Created Blogs</p>
       </div>
     </div>
   );

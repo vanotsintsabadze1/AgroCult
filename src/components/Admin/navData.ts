@@ -1,13 +1,13 @@
 export const options = [
   {
-    name: "dashboard",
-    icon: "/images/icons/admin-icons/sidebar-icons/dashboard.webp",
-    path: "/admin",
-  },
-  {
     name: "users",
     icon: "/images/icons/admin-icons/sidebar-icons/users.webp",
     path: "/admin/users",
+  },
+  {
+    name: "blogs",
+    icon: "/images/icons/admin-icons/sidebar-icons/blogs.webp",
+    path: "/admin/blogs",
   },
   {
     name: "products",

@@ -32,9 +32,7 @@ export async function POST(request: NextRequest) {
     }
 
     if (usedFor === "edit" && typeof thumbnail === "string") {
-      console.log("editshi shemovedi");
       const id = formData.get("id") as string;
-      console.log("id", id);
       await sql`UPDATE blogs SET title = ${title}, description = ${description}, tags = ${tags} WHERE id = ${Number(id)}`;
 
       return NextResponse.json({ message: "Blog updated successfully", status: 200 });

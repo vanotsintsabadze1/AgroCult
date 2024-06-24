@@ -31,7 +31,6 @@ async function getProfileInfo(userId: string) {
   const res = await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-profile-info`, {
     method: "POST",
     body: JSON.stringify({ userId }),
-    cache: "force-cache",
   });
 
   return await res.json();

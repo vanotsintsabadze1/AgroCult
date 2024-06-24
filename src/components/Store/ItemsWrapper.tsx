@@ -22,9 +22,9 @@ export default function ItemsWrapper({ items, layout }: Props) {
   }
 
   const multiColView =
-    "relative grid grid-cols-1 gap-[5rem] mt-[2rem] py-[2rem] lg:gap-x-[2rem] md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3 items-start";
+    "relative grid grid-cols-1 gap-[5rem] py-[2rem] lg:gap-x-[2rem] md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3 items-start";
   const singleColView =
-    "relative grid grid-cols-1 mt-[4rem] mt-[2rem] py-[2rem] gap-[5rem] md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3 lg:flex lg:flex-col lg:items-center lg:w-auto items-start";
+    "relative grid grid-cols-1 py-[2rem] gap-[5rem] md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3 lg:flex lg:flex-col lg:items-center lg:w-auto items-start";
 
   return (
     <div className={layout === "multi" ? multiColView : singleColView}>

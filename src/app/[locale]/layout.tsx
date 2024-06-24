@@ -34,6 +34,7 @@ const geoLocalFont = localFont({
       style: "bold",
     },
   ],
+  display: "swap",
 });
 
 interface Props {

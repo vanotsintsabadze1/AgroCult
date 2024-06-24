@@ -16,6 +16,8 @@ export default async function Introduction() {
           autoPlay
           muted
           loop
+          preload="none"
+          poster="/images/video-poster/1.webp"
         >
           <source src="/images/output.mp4" type="video/mp4" />
         </video>

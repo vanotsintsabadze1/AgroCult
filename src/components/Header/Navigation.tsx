@@ -38,6 +38,12 @@ async function Navigation({ className }: Props) {
           {link.title}
         </Link>
       ))}
+      <Link
+        href="/admin"
+        className="easeOut font-medium uppercase duration-200 hover:scale-110 lg:hidden dark:text-dark-mode "
+      >
+        Admin
+      </Link>
     </nav>
   );
 }

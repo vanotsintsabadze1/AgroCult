@@ -13,6 +13,7 @@ interface Props {
 export default function PurchaseButton({ product }: Props) {
   const router = useRouter();
   const session = useUser();
+
   const [quantity, setQuantity] = useState(1);
   const productToBuy = {
     title: product.title,
@@ -60,7 +61,7 @@ export default function PurchaseButton({ product }: Props) {
   }
 
   return (
-    <div className="flex h-[10rem] w-full flex-col gap-[1.5rem] pt-[2rem] lg:justify-end">
+    <div className="flex w-full flex-col gap-[1.5rem] pt-[2rem] lg:justify-end">
       <div className="flex w-full items-center justify-between">
         <p className="text-[1.5rem] font-medium">
           {product.price === 0 ? "Not available for direct purchase" : `$${product.price * quantity}`}
@@ -89,6 +90,13 @@ export default function PurchaseButton({ product }: Props) {
         className={`h-[4rem] w-full rounded-[1rem] ${product.price === 0 ? "cursor-not-allowed opacity-50" : "opacity-100"} bg-green-600 text-[1.6rem] font-medium text-white shadow-md`}
       >
         Purchase
+      </button>
+      <button
+        onClick={() => router.push("/store")}
+        disabled={product.price === 0}
+        className={`h-[4rem] w-full rounded-[1rem] ${product.price === 0 ? "cursor-not-allowed opacity-50" : "opacity-100"} border-2 border-green-600 text-[1.6rem] font-medium shadow-md`}
+      >
+        Go Back
       </button>
     </div>
   );

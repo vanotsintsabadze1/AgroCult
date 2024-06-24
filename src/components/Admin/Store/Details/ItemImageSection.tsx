@@ -71,18 +71,31 @@ export default function ItemImageSection({
 
     const formData = new FormData(e.currentTarget);
 
-    await createImageBlob(formData, itemDetails.images, itemDetails.id);
+    console.log(formData.getAll("image-gallery"), itemDetails.images, itemDetails.id);
+
+    const res = await createImageBlob(formData, itemDetails.images, itemDetails.id);
+
+    if (res?.status === 200 && res?.images) {
+      try {
+        setItemDetails((prev) => ({ ...prev, images: res.images }));
+        toast.success("Images have been uploaded");
+        setImageAddModal(false);
+      } catch (error) {
+        console.error(error);
+        toast.error("An error occurred while uploading images");
+      }
+    }
   }
 
   return (
     <>
-      <div className="relative h-[20rem] w-[100%] flex-shrink-0 md:h-[35rem] md:w-[50rem] xs:h-[15rem] xs:w-full">
+      <div className="relative h-[20rem] w-[100%] flex-shrink-0 px-[3rem] md:h-[30rem] md:w-[45rem] xs:h-[15rem] xs:w-full">
         {imageAddModal && (
           <div className="absolute right-0 top-0 flex h-full w-full items-center justify-center">
             <form
               ref={formRef}
               onSubmit={onNewImageSubmit}
-              className="relative z-[40] flex h-[23rem] w-[30rem] items-center justify-center rounded-lg bg-gray-100 shadow-2xl"
+              className="relative z-[40] flex h-[22rem] w-[30rem] flex-col items-center justify-center gap-[2rem] rounded-lg bg-gray-100 shadow-2xl"
             >
               <button
                 className="absolute right-[1rem] top-[.5rem] text-[1.4rem] font-medium text-gray-400"
@@ -112,7 +125,7 @@ export default function ItemImageSection({
                 ref={inputRef}
                 name="image-gallery"
               />
-              <button className="absolute bottom-[1.2rem] left-1/2 z-[12] -translate-x-1/2 rounded-lg bg-gray-600 px-[1.5rem] py-[.6rem] text-[1.2rem] font-semibold uppercase text-white">
+              <button className="z-[12] rounded-lg bg-gray-600 px-[1.5rem] py-[.6rem] text-[1.2rem] font-semibold uppercase text-white">
                 Submit
               </button>
             </form>

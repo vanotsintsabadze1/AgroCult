@@ -68,6 +68,11 @@ export default function ItemCreationMainForm({
       return;
     }
 
+    if (itemDetails.category.length === 0) {
+      toast.error("Please submit a category");
+      return;
+    }
+
     const itemDetailsSchema = scheme.safeParse(itemDetails);
 
     if (!itemDetailsSchema.success) {
@@ -146,7 +151,11 @@ export default function ItemCreationMainForm({
   }, [extraDetails]);
 
   return (
-    <form id="mainForm" className="flex w-full flex-col gap-[1rem] pb-[1rem]" onSubmit={onMainFormSubmit}>
+    <form
+      id="mainForm"
+      className="flex w-full flex-col items-center gap-[1rem] pb-[1rem] sm:px-[1rem]"
+      onSubmit={onMainFormSubmit}
+    >
       <GenericInformationField title="Images">
         {images.length === 0 ? (
           <p className="text-[1.4rem]">You haven't uploaded any images yet.</p>
@@ -193,10 +202,10 @@ export default function ItemCreationMainForm({
             <option>Pesticides</option>
           </select>
 
-          <div className="mt-[2rem] flex w-full flex-col items-center gap-[1.5rem] text-[1.5rem]">
+          <div className="mt-[2rem] flex w-full flex-col gap-[1.5rem] overflow-x-auto text-[1.5rem]">
             {Object.entries(extraDetails).map((key, index) => (
-              <div className="flex w-[40rem] items-center justify-between" key={index}>
-                <p>{key[0]}</p>
+              <div className="flex items-center justify-between" key={index}>
+                <p className="max-w-[10rem] truncate">{key[0]}</p>
                 <input
                   type="text"
                   value={key[1]}

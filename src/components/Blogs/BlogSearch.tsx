@@ -1,10 +1,12 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { useScopedI18n } from "@/locales/client";
 
 export default function BlogSearch() {
   const router = useRouter();
   const [search, setSearch] = useState("");
+  const word = useScopedI18n("blogs");
   function onSearch(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
@@ -22,7 +24,7 @@ export default function BlogSearch() {
         <input
           type="text"
           name="search"
-          placeholder="Search the blogs.."
+          placeholder={word("searchTheBlogs")}
           className="h-[4rem] w-full rounded-2xl border  border-gray-400 px-[1.2rem] py-[.5rem] text-[1.4rem] shadow-md "
           value={search}
           onChange={(e) => setSearch(e.target.value)}
@@ -31,7 +33,7 @@ export default function BlogSearch() {
           type="submit"
           className="absolute right-0 top-0 h-full w-[9rem] rounded-l-md rounded-r-2xl bg-green-600 px-[2rem] text-[1.3rem] font-bold text-white"
         >
-          Submit
+          {word("search")}
         </button>
       </form>
     </div>

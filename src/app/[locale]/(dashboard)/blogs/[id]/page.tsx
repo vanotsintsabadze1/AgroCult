@@ -4,6 +4,7 @@ import DOMPurify from "isomorphic-dompurify";
 import IndBlogActions from "@/components/Blogs/IndBlogActions";
 import { unstable_noStore as noStore } from "next/cache";
 import BlogCommentSection from "@/components/Blogs/BlogCommentSection";
+import { UserCircle2, Clock3 } from "lucide-react";
 
 interface Props {
   params: {
@@ -54,6 +55,16 @@ export default async function page({ params: { id } }: Props) {
           <Image src={blog?.thumbnail} alt={`thumbnail-${id}`} fill className="rounded-[1rem] object-fill shadow-md" />
         </div>
         <div className="flex flex-col gap-[1rem] sm:w-[40rem] md:w-[60rem] lg:w-[80rem] xs:w-full">
+          <div className="flex w-full flex-col gap-[.5rem] pt-[1rem]">
+            <div className="flex items-center gap-[1rem]">
+              <UserCircle2 size={15} />
+              <h1 className="text-[1.3rem] font-medium text-gray-400">{blog.wname}</h1>
+            </div>
+            <div className="flex items-center gap-[1rem]">
+              <Clock3 size={15} />
+              <h1 className="text-[1.3rem] font-medium text-gray-400">{blog.created_at.toDateString()}</h1>
+            </div>
+          </div>
           <div className="flex w-full justify-between">
             <h1 className="max-w-[70rem] break-words text-[2rem] font-bold text-gray-800 md:text-[3rem]">
               {blog.title}

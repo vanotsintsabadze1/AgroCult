@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useUser } from "@auth0/nextjs-auth0/client";
+import { useScopedI18n } from "@/locales/client";
 
 const divAnimations = {
   hidden: { opacity: 0, y: 0 },
@@ -12,6 +13,7 @@ export default function UserDropdown() {
   const router = useRouter();
   const session = useUser();
   const role = session ? (session?.user?.role as string[])?.includes("Admin") : null;
+  const word = useScopedI18n("header");
 
   return (
     <motion.div
@@ -25,19 +27,19 @@ export default function UserDropdown() {
         className="h-[4rem] w-full duration-150 ease-out hover:bg-gray-100"
         onClick={() => router.push("/profile")}
       >
-        Profile
+        {word("dropDown.profile")}
       </button>
       {role && (
         <button
           className="h-[4rem] w-full duration-150 ease-out hover:bg-gray-100"
           onClick={() => router.push("/admin/users")}
         >
-          Admin
+          {word("dropDown.admin")}
         </button>
       )}
       <button className="h-[4rem] w-full duration-150 ease-out hover:bg-gray-100">
         <a href="/api/auth/logout" className="flex h-full w-full items-center justify-center">
-          Log Out
+          {word("dropDown.logout")}
         </a>
       </button>
     </motion.div>

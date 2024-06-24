@@ -5,6 +5,7 @@ import BlogsWrapper from "@/components/Blogs/BlogsWrapper";
 import { sql } from "@vercel/postgres";
 import BlogCard from "@/components/Blogs/BlogCard";
 import { redirect } from "next/navigation";
+import { getScopedI18n } from "@/locales/server";
 
 async function getBlogs({ searchParams }: { searchParams: { blog_name: string } }) {
   if (Object.keys(searchParams).length > 0 && !searchParams.blog_name) {
@@ -42,6 +43,7 @@ interface Props {
 export default async function page({ searchParams }: Props) {
   noStore();
   const blogs = (await getBlogs({ searchParams })) as Blog[];
+  const word = await getScopedI18n("blogs");
 
   return (
     <>
@@ -49,7 +51,9 @@ export default async function page({ searchParams }: Props) {
       <BlogSearch />
       <BlogsWrapper>
         {blogs.length === 0 ? (
-          <h1 className="col-span-3 mt-[2rem] text-[1.5rem] font-light uppercase text-gray-400">No blogs found</h1>
+          <h1 className="col-span-3 mt-[2rem] text-[1.5rem] font-light uppercase text-gray-400">
+            {word("noBlogsFound")}
+          </h1>
         ) : (
           blogs.map((blog) => <BlogCard key={blog.id} {...blog} usedFor="blogs" />)
         )}

@@ -66,6 +66,9 @@ export default async function Header() {
           <Cart cart={cartItems} />
           {user ? <UserButton username={user.name} userAvatar={user.image as string} /> : <LoginButton />}
         </section>
+        <div className="absolute right-[7rem] top-[2rem] lg:hidden">
+          <Cart cart={cartItems} />
+        </div>
         <MobileMenu />
       </div>
     </header>

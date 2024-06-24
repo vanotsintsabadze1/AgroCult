@@ -51,6 +51,7 @@ export default {
           "ჩვენი გუნდის წევრები უფრო მეტია, ვიდრე უბრალოდ თანამშრომლები. ისინი ჩვენი კომპანიის ხერხემალი არიან. ზრდა და კეთილდღეობა ჩვენი უპირველესი მიზანია. ჩვენ ვიცით, რომ მათი გამოცდილება და ერთგულება განაპირობებს ჩვენს წარმატებას. ჩვენი ერთობლივი ვალდებულება სოფლის მეურნეობის ტექნოლოგიებში სრულყოფილებისადმი გვაქცევს ძლიერ და ინოვაციურ პარტნიორად ფერმერებისთვის ყველგან.",
       },
     },
+    blogs: "უახლესი ბლოგები",
     partners: {
       title: "ჩვენი პარტნიორები",
     },
@@ -59,7 +60,7 @@ export default {
   header: {
     dropDown: {
       profile: "პროფილი",
-      admin: "ადმინისტრატორი",
+      admin: "ადმინი",
       logout: "გასვლა",
     },
   },
@@ -75,13 +76,26 @@ export default {
       go_back: "უკან",
     },
 
-    dashboard: {
-      title: "მთავარი",
-      users: "მომხმარებლები",
-      purchases: "შეკვეთები",
-      new_users: "ახალი მომხმარებლები",
-      todays_revenue: "დღის შემოსავლები",
-      open_tickets: "მოთხოვნები",
+    blogs: {
+      title: "ბლოგების მართვა",
+      searchPlaceholder: "მოძებნე ბლოგი..",
+      search: "ძიება",
+      topic: "სათაური",
+      writer: "ავტორი",
+      actions: "ქმედება",
+    },
+
+    confirmationModal: {
+      areYouSure: "ნამდვილად გსურთ?",
+      yes: "დიახ",
+      no: "არა",
+    },
+
+    payments: {
+      amount: "თანხა",
+      status: "სტატუსი",
+      date: "თარიღი",
+      actions: "ქმედება",
     },
 
     users: {
@@ -98,6 +112,35 @@ export default {
       close: "დახურვა",
       submit: "ძიება",
     },
+
+    tickets: {
+      openTickets: "ღია",
+      inProgress: "პროცესშია",
+      closed: "დახურულია",
+      ticket: {
+        issuer_name: "მომხმარებელი",
+        issuer_email: "ელ. ფოსტა",
+        topic: "თემა",
+        description: "აღწერა",
+        created_at: "შექმნის თარიღი",
+        status: {
+          open: "ღია",
+          inProgress: "პროცესშია",
+          closed: "დახურულია",
+        },
+        close: "დახურვა",
+      },
+      actions: "ქმედება",
+    },
+    status_change: {
+      ticketStatus: "მოთხოვნის სტატუსი",
+      open: "ღია",
+      inProgress: "პროცესშია",
+      closed: "დახურულია",
+      save: "შენახვა",
+      close: "დახურვა",
+    },
+
     store: {
       add_item: "დამატება",
       search: "ძებნა",
@@ -120,6 +163,9 @@ export default {
         edit: "რედაქტირება",
         submit: "დადასტურება",
         cancel: "გაუქმება",
+        buyable: "შესყიდვადი",
+        noImagesUploadedYet: "ჯერ არ არის ატვირთული სურათები",
+        uploaded: "ატვირთულია",
       },
     },
     logs: {
@@ -200,22 +246,110 @@ export default {
     product: {
       description: "აღწერა",
       cantBuy: "დაგვიკავშირდით თუ გსურთ შეკვეთა",
+      notAvailableDirect: "პროდუქტი არ არის შესყიდვადი",
       showMore: "მეტის ჩვენება",
       showLess: "ნაკლების ჩვენება",
       details: "დეტალები",
       price: "ფასი",
       amount: "რაოდენობა",
       discount: "ფასდაკლება",
+      buy: "ყიდვა",
+      goBack: "უკან",
+      nationWideShipping: "უპრობლემო მიწოდება",
+      globalWarranty: "გლობალური გარანტია",
+      availableToOrder: "შესაძლოა შეკვეთა",
+      fastestDelivery: "სწრაფი მიწოდება",
+      shareProduct: "პროდუქტის გაზიარება",
+      recommendedItems: "მსგავსი პროდუქტები",
     },
   },
+  cart: {
+    noItems: "კალათა ცარიელია",
+    total: "ჯამი",
+    checkout: "გადახდა",
+    price: "ფასი",
+  },
+  blogs: {
+    blogs: "ბლოგები",
+    phrase:
+      "აქ შეგიძლიათ ნახოთ ჩვენი საზოგადოების წევრების ბლოგები. თქვენ ასევე შეგიძლიათ წარადგინოთ თქვენი საკუთარი ბლოგის პოსტი და აცნობოთ სხვებს თქვენი აზრების შესახებ ან მიეცით მათ საშუალება ისწავლონ რაიმე ახალი.",
+    search: "ძებნა",
+    createBlog: "შექმენი",
+    searchTheBlogs: "მოძებნე ბლოგები..",
+    readMore: "მეტი",
+    blog: {
+      title: "სათაური",
+      description: "აღწერა",
+      thumbnail: "გარეკანი",
+      ifEmpty: "თუ შეცვლა არ გსურთ დატოვეთ ცარიელი",
+      tags: "თეგები",
+      submit: "დადასტურება",
+      cancel: "გაუქმება",
+      comments: "კომენტარები",
+      comment: {
+        editComment: "კომენტარის რედაქტირება",
+        submit: "შენახვა",
+        placeholder: "დაწერე კომენტარი..",
+        cancel: "გაუქმება",
+      },
+      noComments: "ჯერ-ჯერობით კომენტარები არ არის, იყავი პირველი!",
+    },
+    noBlogsFound: "ბლოგები არ მოიძებნა",
+  },
   profile: {
-    title: "პროფილის რედაქტირება",
-    username: "სახელი",
-    email: "ელ. ფოსტა",
-    currentPassword: "ამჯამინდელი პაროლი",
-    newPassword: "ახალი პაროლი",
-    confirmPassword: "გაიმეორეთ ახალი პაროლი",
-    submit: "შენახვა",
+    metrics: {
+      itemsBought: "ნაყიდი ნივთი",
+      createdBlogs: "შექმნილი ბლოგი",
+      shippingDetails: {
+        title: "მიწოდების დეტალები",
+        country: "ქვეყანა",
+        city: "ქალაქი",
+        address: "მისამართი",
+        postalCode: "საფოსტო კოდი",
+        save: "შენახვა",
+      },
+    },
+    edit: {
+      changeYourAvatar: "შეცვალე შენი ავატარი",
+      submit: "შენახვა",
+      cancel: "გაუქმება",
+      cannotBeChanged: "ელ. ფოსტას ვერ შეცვლით თუ თქვენ დარეგისტრირებული ხართ Google-ით",
+    },
+    payments: {
+      price: "ფასი",
+      date: "თარიღი",
+      status: {
+        title: "სტატუსი",
+        succeeded: "წარმატებით",
+        refunded: "დაბრუნებულია",
+      },
+      actions: "ქმედება",
+      extra_details: {
+        receipt_number: "რეცეპტის ნომერი",
+        name: "სახელი",
+        email: "ელ. ფოსტა",
+        paidWith: "გადახდის მეთოდი",
+        date: "თარიღი",
+        close: "დახურვა",
+      },
+    },
+    blogs: {
+      manageBlogs: "ბლოგების მართვა",
+      topic: "თემა",
+      actions: "ქმედება",
+    },
+  },
+  checkout: {
+    shipping_details: {
+      title: "მიწოდების დეტალები",
+      country: "ქვეყანა",
+      city: "ქალაქი",
+      address: "მისამართი",
+      postalCode: "საფოსტო კოდი",
+      save: "შენახვა",
+    },
+    proceedToPayment: "გადახდა",
+    total: "ჯამი",
   },
   contact: {
     firstPhrase: {

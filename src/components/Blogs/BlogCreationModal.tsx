@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 import { Check } from "lucide-react";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { useRouter } from "next/navigation";
+import { useScopedI18n } from "@/locales/client";
 
 const schema = z.object({
   title: z.string().min(10, "Title is too short - Min. 10 characters"),
@@ -47,6 +48,7 @@ export default function BlogCreationModal({
   const [tags, setTags] = useState<string[]>(blogTags);
   const [newTag, setNewTag] = useState("");
   const [shouldNewTagBeVisible, setShouldNewTagBeVisible] = useState(false);
+  const word = useScopedI18n("blogs");
   const { user } = useUser();
   const router = useRouter();
 
@@ -175,7 +177,7 @@ export default function BlogCreationModal({
             className="relative m-auto flex w-[40rem] flex-col gap-[2rem] overflow-y-scroll rounded-lg bg-white px-[2rem] py-[2rem] shadow-md md:min-h-[82rem] md:w-[75rem] lg:w-[100rem] xs:w-[90%]"
           >
             <div className="flex flex-col gap-[.5rem] px-[.5rem]">
-              <h2 className="text-[1.2rem] font-bold uppercase tracking-wide text-gray-400">Title</h2>
+              <h2 className="text-[1.2rem] font-bold uppercase tracking-wide text-gray-400">{word("blog.title")}</h2>
               <input
                 type="text"
                 defaultValue={usedFor === "edit" ? title : ""}
@@ -185,7 +187,9 @@ export default function BlogCreationModal({
               />
             </div>
             <div className="flex flex-col gap-[.5rem] px-[.5rem]">
-              <h2 className="text-[1.2rem] font-bold uppercase tracking-wide text-gray-400">Thumbnail</h2>
+              <h2 className="text-[1.2rem] font-bold uppercase tracking-wide text-gray-400">
+                {word("blog.thumbnail")}
+              </h2>
               <input
                 type="file"
                 className="text-[1.5rem] file:rounded-[2rem] file:border-none file:bg-green-600 file:px-[2rem] file:py-[.5rem] file:text-[1.5rem] file:text-white"
@@ -193,10 +197,10 @@ export default function BlogCreationModal({
                 accept="image/webp, image/png, image/jpeg"
                 name="thumbnail"
               />
-              {imageThumbnail && imageThumbnail !== "" && <p>* Leave empty if you don't want to change </p>}
+              {imageThumbnail && imageThumbnail !== "" && <p>* {word("blog.ifEmpty")} </p>}
             </div>
             <div className="flex flex-col px-[.5rem] ">
-              <h2 className="text-[1.2rem] font-bold uppercase tracking-wide text-gray-400">Tags</h2>
+              <h2 className="text-[1.2rem] font-bold uppercase tracking-wide text-gray-400">{word("blog.tags")}</h2>
               <div className="flex w-full items-center gap-[2rem] py-[.5rem]">
                 {tags.map((tag) => (
                   <div key={tag} className="relative flex w-[10rem] items-center justify-center">
@@ -236,14 +240,16 @@ export default function BlogCreationModal({
               </div>
             </div>
             <div className="flex w-full flex-col gap-[2rem] px-[.5rem]">
-              <h2 className="text-[1.2rem] font-bold uppercase tracking-wide text-gray-400">Description</h2>
+              <h2 className="text-[1.2rem] font-bold uppercase tracking-wide text-gray-400">
+                {word("blog.description")}
+              </h2>
 
               <Tiptap description={description} setDescription={setDescription} />
             </div>
             <div className="flex w-full items-center justify-center gap-[2rem] py-[.5rem]">
               <input
                 type="submit"
-                value="Submit"
+                value={word("blog.submit")}
                 form="blogForm"
                 className="h-[4rem] w-[12rem] cursor-pointer rounded-lg bg-green-600 px-[1rem] py-[.5rem] text-[1.3rem] font-bold text-white"
               />
@@ -252,7 +258,7 @@ export default function BlogCreationModal({
                 onClick={() => setModal(false)}
                 className="h-[4rem] w-[12rem] rounded-lg border-2  border-green-600 px-[1rem] py-[.5rem] text-[1.3rem] font-bold text-black "
               >
-                Cancel
+                {word("blog.cancel")}
               </button>
             </div>
           </form>

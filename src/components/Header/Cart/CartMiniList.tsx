@@ -25,7 +25,7 @@ export default function CartMiniList({ cartItems }: Props) {
       initial="hidden"
       animate="visible"
       exit="hidden"
-      className="absolute right-[-1rem] top-[4rem] flex min-h-[15rem] w-[35rem] flex-col items-center justify-center rounded-[1rem] bg-white shadow-md"
+      className="absolute right-[-1rem] top-[4rem] flex min-h-[15rem] w-[35rem] flex-col items-center justify-center rounded-[1rem] bg-white shadow-md sm:right-[-6rem] xs:right-[-6rem] xs:w-[30rem]"
     >
       {cartItems.length === 0 ? (
         <p className="text-[1.4rem] font-bold uppercase text-gray-400">No Items</p>

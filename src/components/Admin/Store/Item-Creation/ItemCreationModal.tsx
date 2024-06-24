@@ -3,6 +3,7 @@ import { useState } from "react";
 import ReactLenis from "lenis/react";
 import ImageUploadForm from "./ImageUploadForm";
 import ItemCreationMainForm from "./ItemCreationMainForm";
+import { createPortal } from "react-dom";
 
 const parentModalAnimation = {
   hidden: { opacity: 0 },
@@ -33,18 +34,18 @@ export default function ItemCreationModal({ setModal }: Props) {
     buyable: "yes",
   });
 
-  return (
+  return createPortal(
     <motion.div
       variants={parentModalAnimation}
       initial="hidden"
       animate="visible"
       exit="hidden"
-      className="fixed left-0 z-[8] flex h-full w-screen items-center justify-center scroll-smooth bg-[rgba(0,0,0,0.5)] pl-[6rem] pt-[2rem]"
+      className="fixed left-0 z-[40] flex h-full w-screen items-center justify-center scroll-smooth bg-[rgba(0,0,0,0.5)] px-[2rem] pt-[2rem]"
     >
-      <div className="relative flex h-[60rem] flex-col items-center rounded-lg bg-white px-[1rem] py-[1rem] shadow-md md:w-[60rem]">
-        <ReactLenis options={{ prevent: true }}>
-          <div className="mt-[2rem] flex h-[50rem] flex-col items-center overflow-y-auto scrollbar-hide">
-            <ImageUploadForm setImageFormData={setImageFormData} setImages={setImages} />
+      <div className="relative flex h-[60rem] flex-col items-center rounded-lg bg-white px-[1rem] py-[1rem] shadow-md sm:min-w-[40rem] sm:max-w-[60rem] md:w-[60rem] xs:w-full">
+        <div className="mt-[2rem] flex h-[50rem] w-full flex-col items-center overflow-y-auto scrollbar-hide sm:min-w-[40rem] sm:max-w-[60rem]">
+          <ImageUploadForm setImageFormData={setImageFormData} setImages={setImages} />
+          <ReactLenis options={{ prevent: true }} className="sm:min-w-[40rem] sm:max-w-[60rem] md:w-full xs:w-full">
             <ItemCreationMainForm
               images={images}
               itemDetails={itemDetails}
@@ -57,32 +58,33 @@ export default function ItemCreationModal({ setModal }: Props) {
               setLoading={setLoading}
               setModal={setModal}
             />
-          </div>
-          <div className="flex w-full items-center justify-center gap-[2rem] py-[1rem]">
-            <input
-              type="submit"
-              value="Submit"
-              form="mainForm"
-              className="h-[4rem] w-[12rem] cursor-pointer rounded-lg bg-green-600 px-[1rem] py-[.5rem] text-[1.3rem] font-bold text-white"
-            />
+          </ReactLenis>
+        </div>
+        <div className="flex w-full items-center justify-center gap-[2rem] py-[1rem]">
+          <input
+            type="submit"
+            value="Submit"
+            form="mainForm"
+            className="h-[4rem] w-[12rem] cursor-pointer rounded-lg bg-green-600 px-[1rem] py-[.5rem] text-[1.3rem] font-bold text-white"
+          />
 
-            {loading && (
-              <div className="absolute right-[2rem] top-[2rem] z-[40] flex items-center justify-center gap-[1rem] rounded-lg bg-white px-[2rem] py-[1rem] shadow-md  ">
-                <p className="text-[1.4rem]">Uploading, please don't close the modal</p>
-                <div className="h-[2rem] w-[2rem] animate-spin rounded-[50%] border-t-2 border-t-gray-400"></div>
-              </div>
-            )}
+          {loading && (
+            <div className="absolute right-[2rem] top-[2rem] z-[40] flex items-center justify-center gap-[1rem] rounded-lg bg-white px-[2rem] py-[1rem] shadow-md  ">
+              <p className="text-[1.4rem]">Uploading, please don't close the modal</p>
+              <div className="h-[2rem] w-[2rem] animate-spin rounded-[50%] border-t-2 border-t-gray-400"></div>
+            </div>
+          )}
 
-            <button
-              type="button"
-              onClick={() => setModal(false)}
-              className="h-[4rem] w-[12rem] rounded-lg border-2  border-green-600 px-[1rem] py-[.5rem] text-[1.3rem] font-bold text-black "
-            >
-              Cancel
-            </button>
-          </div>
-        </ReactLenis>
+          <button
+            type="button"
+            onClick={() => setModal(false)}
+            className="h-[4rem] w-[12rem] rounded-lg border-2  border-green-600 px-[1rem] py-[.5rem] text-[1.3rem] font-bold text-black "
+          >
+            Cancel
+          </button>
+        </div>
       </div>
-    </motion.div>
+    </motion.div>,
+    document.body,
   );
 }

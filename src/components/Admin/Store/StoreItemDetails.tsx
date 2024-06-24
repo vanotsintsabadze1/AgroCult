@@ -17,7 +17,7 @@ export default function StoreItemDetails({ editMode, item, itemDetails, setItemD
   const [newCategoryModal, setNewCategoryModal] = useState(false);
   const [newCategory, setNewCategory] = useState("");
   const [imageEditModal, setImageEditModal] = useState(false);
-  const word = useScopedI18n("admin.store.product")
+  const word = useScopedI18n("admin.store.product");
 
   function editCategory(e: React.ChangeEvent<HTMLInputElement>, key: string[]) {
     setItemDetails((prev) => ({
@@ -28,7 +28,7 @@ export default function StoreItemDetails({ editMode, item, itemDetails, setItemD
 
   return (
     <>
-      <div className="relative flex h-[75rem] flex-col items-center overflow-y-scroll scrollbar-hide">
+      <div className="relative flex h-[45rem] w-full flex-col items-center overflow-y-scroll px-[1rem] pb-[1rem] text-[1.3rem] scrollbar-hide md:h-[65rem] xs:min-w-[32rem] xs:max-w-[35rem]">
         <ItemImageSection
           item={item}
           setImageEditModal={setImageEditModal}
@@ -75,7 +75,7 @@ export default function StoreItemDetails({ editMode, item, itemDetails, setItemD
               readOnly={!editMode}
               defaultValue={itemDetails.description}
               onChange={(e) => setItemDetails((prev) => ({ ...prev, description: e.target.value }))}
-              className={`rounded-md border-gray-300 bg-gray-200 ${editMode ? "text-black" : "text-gray-400"} h-[10rem] max-w-full overflow-y-auto px-[1.2rem] py-[1rem] shadow-md`}
+              className={`rounded-md border-gray-300 bg-gray-200 ${editMode ? "text-black" : "text-gray-400"} h-[10rem] max-w-full overflow-y-auto px-[1.2rem] py-[1.5rem] shadow-md`}
             />
           </GenericInformationField>
           <GenericInformationField title={word("details")}>

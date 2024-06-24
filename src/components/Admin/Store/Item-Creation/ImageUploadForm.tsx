@@ -44,7 +44,7 @@ export default function ImageUploadForm({ setImageFormData, setImages }: Props) 
   return (
     <form
       ref={formRef}
-      className="relative flex w-[25rem] flex-col items-center justify-center gap-[1rem] rounded-lg bg-gray-300 py-[3rem] md:w-[30rem] xs:w-[30rem]"
+      className="relative flex w-[25rem] flex-col items-center justify-center gap-[1rem] rounded-lg bg-gray-300 py-[3rem] md:w-[30rem] xs:w-full"
       onChange={onImageUploadSubmit}
     >
       <label htmlFor="new-item-image-upload" className="flex cursor-pointer flex-col items-center gap-[1rem]">

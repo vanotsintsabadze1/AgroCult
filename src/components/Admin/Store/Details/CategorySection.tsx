@@ -34,6 +34,7 @@ export default function CategorySection({
 
   function addNewCategory() {
     if (newCategory === "") {
+      toast.error("Category cannot be empty");
       return;
     } else {
       setItemDetails((prev) => ({ ...prev, category: [...prev.category, newCategory] }));
@@ -43,6 +44,16 @@ export default function CategorySection({
   }
 
   function enableNewCategoryModal() {
+    if (itemDetails.category.length === 2) {
+      toast.error("You can only have 2 categories");
+      return;
+    }
+
+    if (newCategoryModal) {
+      toast.error("You need to finish adding the previous category first");
+      return;
+    }
+
     if (typeof editMode === "boolean" && !editMode) {
       toast.error("You need to enable edit mode to add a new category");
       return;
@@ -74,7 +85,7 @@ export default function CategorySection({
             className="bg-transparent outline-none"
             type="text"
           />
-          <button onClick={addNewCategory} className="" type="button">
+          <button onClick={addNewCategory} type="button" className="bg-gray-200">
             <Image src="/images/icons/misc/apply.webp" width={15} height={15} alt="apply-icon" />
           </button>
         </div>

@@ -1,5 +1,11 @@
 import ProfileCard from "@/components/Profile/ProfileCard";
 import { getSession } from "@auth0/nextjs-auth0";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Profile",
+  description: "Official AgroCult Profile Page",
+};
 
 async function getUserInformation(userId: string) {
   try {

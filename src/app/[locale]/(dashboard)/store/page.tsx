@@ -13,7 +13,7 @@ interface Props {
 
 export const metadata: Metadata = {
   title: "Store",
-  description: "Official AgroCult store page. The best place to find the best agricultural products.",
+  description: "Official AgroCult store page.",
 };
 
 export default async function page({ searchParams }: Props) {

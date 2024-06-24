@@ -14,7 +14,7 @@ interface Props {
 
 export const metadata: Metadata = {
   title: "Store",
-  description: "AgroCult individual store item page",
+  description: "AgroCult Store Item Page",
 };
 
 async function getProductDetails(id: string) {

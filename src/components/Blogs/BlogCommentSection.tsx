@@ -88,25 +88,16 @@ export default function BlogCommentSection({ id, comments }: Props) {
           <p className="text-[1.3rem] font-medium">{word("blog.noComments")}</p>
         ) : (
           comments.map((comment) => (
-            <>
+            <div key={comment.id}>
               <AnimatePresence>
                 {isEditing && (
-                  <CommentEditModal
-                    key={comment.id}
-                    currComment={comment.comment}
-                    setModal={setIsEditing}
-                    comment_id={comment.id}
-                  />
+                  <CommentEditModal currComment={comment.comment} setModal={setIsEditing} comment_id={comment.id} />
                 )}
               </AnimatePresence>
 
               <AnimatePresence>
                 {shouldConfirmationOpen && (
-                  <ConfirmationModal
-                    key={comment.id}
-                    setConfirmationModal={setConfirmationOpen}
-                    cb={() => removeComment(comment.id)}
-                  />
+                  <ConfirmationModal setConfirmationModal={setConfirmationOpen} cb={() => removeComment(comment.id)} />
                 )}
               </AnimatePresence>
 
@@ -131,7 +122,7 @@ export default function BlogCommentSection({ id, comments }: Props) {
                   <p>{comment.created_at.toLocaleDateString()}</p>
                 </div>
               </div>
-            </>
+            </div>
           ))
         )}
       </div>

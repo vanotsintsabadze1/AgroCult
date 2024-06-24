@@ -19,7 +19,10 @@ export default async function Introduction() {
           preload="none"
           poster="/images/video-poster/1.webp"
         >
-          <source src="/images/output.mp4" type="video/mp4" />
+          <source
+            src="https://ejsxlnalxfptpsfk.public.blob.vercel-storage.com/videos/output-MFphLPd3ZfxiS9NKpdADxwcJTcoO8F.mp4"
+            type="video/mp4"
+          />
         </video>
         <Card />
       </section>

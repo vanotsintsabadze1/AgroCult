@@ -2,6 +2,12 @@ import React from "react";
 import { getSession } from "@auth0/nextjs-auth0";
 import CheckoutWrapper from "@/components/Checkout/CheckoutWrapper";
 import { redirect } from "next/navigation";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Checkout",
+  description: "Official AgroCult Checkout Page",
+};
 
 async function getCartItems(userId: string) {
   if (!userId) {

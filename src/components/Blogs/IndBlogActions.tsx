@@ -19,6 +19,11 @@ export default function IndBlogActions({ id, blogUpvotes, upvoters }: Props) {
   const [upvoting, setUpvoting] = useState(false);
 
   async function onUpvote() {
+    if (!user) {
+      window.location.href = "/api/auth/login";
+      return;
+    }
+
     setUpvoting(true);
 
     if (isUpvoted) {

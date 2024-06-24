@@ -1,3 +1,10 @@
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Blogs",
+  description: "Official AgroCult Blogs Page",
+};
+
 interface Props {
   children: React.ReactNode;
 }

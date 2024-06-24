@@ -1,5 +1,11 @@
 import ContactDetails from "../../../../components/Contact/ContactDetails";
 import ContactForm from "../../../../components/Contact/ContactForm";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Contact Us",
+  description: "Official AgroCult Contact Page",
+};
 
 function Contact() {
   return (

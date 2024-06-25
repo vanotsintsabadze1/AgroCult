@@ -25,7 +25,7 @@ export default {
       users: "Users",
       products: "Products",
       orders: "Orders",
-      action_logs: "Action Logs",
+      action_logs: "Logs",
       tickets: "Tickets",
       go_back: "Go Back",
     },

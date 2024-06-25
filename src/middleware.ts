@@ -23,14 +23,10 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL("/", request.url));
   }
 
-  if (!user && (pathname.includes("/en/checkout") || pathname.includes("/ka/checkout"))) {
-    return NextResponse.redirect(new URL("/", request.url));
-  }
-
   const dynamicStoreRoutePattern = /^\/(en|ka)\/store\/.+$/;
 
   if (!user && dynamicStoreRoutePattern.test(pathname)) {
-    return NextResponse.redirect(new URL("/", request.url));
+    return NextResponse.redirect(new URL("/api/auth/login", request.url));
   }
 
   if (user) {

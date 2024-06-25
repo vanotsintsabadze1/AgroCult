@@ -42,6 +42,12 @@ export default {
       date: "Date",
       actions: "Actions",
       title: "Payments",
+      post: {
+        viewYourPayment: "View Your Payment",
+        willBeRedirected: "You'll automatically be redirected",
+        paymentSuccessful: "Payment was Successful",
+        paymentFailed: "Payment Failed",
+      },
     },
     users: {
       manage_users: "Manage Users",

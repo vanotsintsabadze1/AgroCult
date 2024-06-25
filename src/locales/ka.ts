@@ -97,6 +97,12 @@ export default {
       date: "თარიღი",
       actions: "ქმედება",
       title: "გადახდები",
+      post: {
+        viewYourPayment: "ნახეთ თქვენი გადახდები",
+        willBeRedirected: "თქვენ ავტომატურად გადამისამართდებით",
+        paymentSuccessful: "გადახდა წარმატებით შესრულდა",
+        paymentFailed: "გადახდა ვერ შესრულდა",
+      },
     },
 
     users: {

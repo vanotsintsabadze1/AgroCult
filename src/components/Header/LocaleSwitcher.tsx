@@ -1,8 +1,9 @@
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useChangeLocale } from "../../locales/client";
 import { useCurrentLocale } from "../../locales/client";
+import { usePathname } from "next/navigation";
 
 interface Props {
   locale: string;
@@ -16,12 +17,19 @@ const divAnimaiton = {
 export default function LocaleSwitcher({ locale }: Props) {
   const changeLocale = useChangeLocale();
   const currLocale = useCurrentLocale();
+  const pathname = usePathname();
 
   const [isDropdownOpen, setDropdown] = useState(false);
 
   function handleDropdown() {
     setDropdown(!isDropdownOpen);
   }
+
+  useEffect(() => {
+    if (isDropdownOpen) {
+      setDropdown(false);
+    }
+  }, [pathname]);
 
   function handleLocaleChange(locale: string) {
     if (currLocale === locale) {

@@ -54,7 +54,7 @@ export default function PaymentDetails({ payment, setModal }: Props) {
             </div>
             <div className="mt-[2rem] flex flex-col gap-[.5rem]">
               <h4 className="text-[1.2rem] font-bold uppercase text-gray-400">{word("status.title")}</h4>
-              <p className="text-[1.4rem] font-medium ">
+              <div className="text-[1.4rem] font-medium ">
                 {!payment.latest_charge.refunded &&
                   (payment.status === "succeeded" ? (
                     <div className="font -bold flex w-[12rem] items-center justify-center border-2 border-green-500 px-[1rem] py-[.5rem] text-[1.2rem] uppercase text-green-600">
@@ -71,7 +71,7 @@ export default function PaymentDetails({ payment, setModal }: Props) {
                     {word("status.refunded")}
                   </div>
                 )}
-              </p>
+              </div>
             </div>
             <div className="mt-[2rem] flex w-full flex-col gap-[.5rem] overflow-x-auto">
               <h4 className="text-[1.2rem] font-bold uppercase text-gray-400">{word("price")}</h4>

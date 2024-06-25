@@ -391,8 +391,9 @@ export default {
   footer: {
     rights: "© 2024 Agrocult. All Rights Reserved",
     links: {
-      trackShipment: "Shipments",
-      about: "About",
+      home: "Home",
+      store: "Store",
+      blogs: "Blogs",
       contact: "Contact",
       profile: "Profile",
     },

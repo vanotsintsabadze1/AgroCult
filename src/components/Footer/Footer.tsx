@@ -11,17 +11,20 @@ export default async function Footer() {
           <Image src="/images/logos/main-logo-white.webp" width={200} height={200} alt="footer-main-logo" />
         </div>
         <div className="mt-[2rem] flex w-full flex-wrap items-center justify-evenly gap-x-[2rem] gap-y-[1rem] text-[1.5rem] text-gray-500 lg:justify-start lg:gap-x-[3rem]">
-          <Link className="hover:underline" href="/about">
-            {word("links.about")}
+          <Link className="hover:underline" href="/home">
+            {word("links.home")}
+          </Link>
+          <Link className="hover:underline" href="/store">
+            {word("links.store")}
+          </Link>
+          <Link className="hover:underline" href="/blogs">
+            {word("links.blogs")}
           </Link>
           <Link className="hover:underline" href="/contact">
             {word("links.contact")}
           </Link>
           <Link className="hover:underline" href="/profile">
             {word("links.profile")}
-          </Link>
-          <Link className="hover:underline" href="/store">
-            {word("links.trackShipment")}
           </Link>
         </div>
         <hr className="mt-[2rem]"></hr>

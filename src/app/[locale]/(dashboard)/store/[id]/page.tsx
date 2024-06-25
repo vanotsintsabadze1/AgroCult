@@ -34,7 +34,7 @@ async function getProductDetails(id: string) {
 async function getRecommendedItems(category: string) {
   try {
     const res =
-      await sql`SELECT * FROM products WHERE EXISTS (SELECT 1 FROM jsonb_array_elements_text(products.category) AS elem WHERE elem ILIKE ${String(category)}) ORDER BY RANDOM() LIMIT 4`;
+      await sql`SELECT * FROM products WHERE EXISTS (SELECT 1 FROM jsonb_array_elements_text(products.category) AS elem WHERE elem ILIKE ${String(category)}) ORDER BY RANDOM() LIMIT 3`;
 
     return res.rows as ShopItem[];
   } catch (error) {
@@ -67,7 +67,7 @@ export default async function page({ params: { id } }: Props) {
         <div className="mt-[3rem] flex w-full items-center justify-center">
           <h2 className="text-[2.5rem] font-bold dark:text-white">{word("product.recommendedItems")}</h2>
         </div>
-        <div className="mt-[1rem] flex w-full items-center gap-[5rem] overflow-x-auto py-[2rem] xl:justify-center">
+        <div className="mt-[1rem] flex w-full items-center gap-[5rem] overflow-x-auto py-[2rem] lg:justify-center">
           {recommendedItems.map((item) => (
             <ItemCard key={item.id} {...item} layout="multi" />
           ))}

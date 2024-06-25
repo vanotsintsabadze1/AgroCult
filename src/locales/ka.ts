@@ -395,8 +395,9 @@ export default {
   footer: {
     rights: "© 2024 Agrocult. ყველა უფლება დაცულია",
     links: {
-      trackShipment: "ამანათები",
-      about: "ჩვენს შესახებ",
+      home: "მთავარი",
+      store: "მაღაზია",
+      blogs: "ბლოგები",
       contact: "კონტაქტი",
       profile: "პროფილი",
     },

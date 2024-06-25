@@ -2,7 +2,10 @@ import { motion } from "framer-motion";
 import { editUser } from "../../../scripts/actions/admin-panel/editUser";
 import { useRouter } from "next/navigation";
 import { addLog } from "../../../scripts/actions/admin-panel/addLog";
+import { useScopedI18n } from "@/locales/client";
 import React from "react";
+import { createPortal } from "react-dom";
+import toast from "react-hot-toast";
 
 const parentModalAnimations = {
   hidden: { opacity: 0 },
@@ -16,39 +19,29 @@ const childModalAnimations = {
 
 interface Props {
   userDetails: UserDB;
-  initialUserData: UserDB;
   setUserDetails: React.Dispatch<React.SetStateAction<UserDB>>;
   setEditModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function EditUserModal({ userDetails, initialUserData, setUserDetails, setEditModalOpen }: Props) {
+export default function EditUserModal({ userDetails, setUserDetails, setEditModalOpen }: Props) {
   const router = useRouter();
+  const word = useScopedI18n("admin");
 
   async function onEditSubmit() {
     if (userDetails.name === "" || userDetails.email === "") {
-      setEditModalOpen(false);
-      setUserDetails(initialUserData);
-      return;
-    }
-
-    if (
-      userDetails.name === initialUserData.name &&
-      userDetails.email === initialUserData.email &&
-      userDetails.role === initialUserData.role
-    ) {
-      setEditModalOpen(false);
+      toast.error("Please fill out all fields");
       return;
     }
 
     const res = await editUser(userDetails.user_id, userDetails.name, userDetails.email, userDetails.role);
+
     if (res.status === 200) {
       addLog("Edit", `Edited user - ${userDetails.user_id}`);
+      toast.success("User edited successfully");
     }
 
     setEditModalOpen(false);
-    setTimeout(() => {
-      router.refresh();
-    }, 1000);
+    router.refresh();
   }
 
   function onUsernameChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -63,23 +56,23 @@ export default function EditUserModal({ userDetails, initialUserData, setUserDet
     setUserDetails((prev) => ({ ...prev, role: e.target.value }));
   }
 
-  return (
+  return createPortal(
     <motion.div
       variants={parentModalAnimations}
       initial="hidden"
       animate="visible"
       exit="hidden"
-      className="absolute left-0 top-0 z-[8] flex h-screen w-full items-center justify-center pl-[6rem] bg-[rgba(0,0,0,0.4)]"
+      className="absolute left-0 top-0 z-40 flex h-screen w-full items-center justify-center bg-[rgba(0,0,0,0.4)]"
     >
       <motion.div
         variants={childModalAnimations}
         initial="hidden"
         animate="visible"
         exit="hidden"
-        className="z-[8] flex w-[30rem] flex-col items-center justify-center rounded-lg bg-[rgba(0,0,0,0.5)] bg-white px-[1rem] py-[2rem] shadow-md md:px-[2rem]"
+        className="z-[8] flex w-[32rem] flex-col items-center justify-center rounded-lg bg-[rgba(0,0,0,0.5)] bg-white px-[1rem] py-[2rem] shadow-md md:px-[2rem]"
         data-lenis-prevent
       >
-        <h2 className="py-[1rem] text-[2rem] font-bold">Edit User</h2>
+        <h2 className="py-[1rem] text-[2rem] font-bold">{word("users.editUser")}</h2>
         <div className="relative flex w-full flex-col items-center gap-[3rem] px-[1rem] py-[1rem]">
           <input
             type="text"
@@ -99,14 +92,14 @@ export default function EditUserModal({ userDetails, initialUserData, setUserDet
             onChange={onEmailChange}
           />
           <div className="flex items-center justify-center gap-[1rem]">
-            <h2 className="text-[1.3rem] font-medium">Edit Role:</h2>
+            <h2 className="text-[1.3rem] font-medium">{word("users.editRole")}:</h2>
             <select
               onChange={onRoleChange}
               name="role"
               className="h-[4rem] w-[10rem] rounded-lg bg-gray-300 px-[1rem] text-[1.5rem] font-medium shadow-sm"
             >
-              <option>{userDetails.role}</option>
-              <option>{userDetails.role.toLowerCase() === "member" ? "Admin" : "Member"}</option>
+              <option value="user">{word("users.user")}</option>
+              <option value="admin">{word("users.admin")}</option>
             </select>
           </div>
         </div>
@@ -115,16 +108,17 @@ export default function EditUserModal({ userDetails, initialUserData, setUserDet
             onClick={onEditSubmit}
             className="h-[4rem] w-[15rem] rounded-lg bg-green-600 text-[1.5rem] text-white shadow-md"
           >
-            Submit
+            {word("users.editSubmit")}
           </button>
           <button
             onClick={() => setEditModalOpen(false)}
             className="h-[4rem] w-[15rem] rounded-lg border-2 border-green-600 text-[1.5rem] text-black shadow-md"
           >
-            Close
+            {word("users.close")}
           </button>
         </div>
       </motion.div>
-    </motion.div>
+    </motion.div>,
+    document.body,
   );
 }

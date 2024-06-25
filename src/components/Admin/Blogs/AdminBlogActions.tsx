@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { addLog } from "@/scripts/actions/admin-panel/addLog";
 import { deleteBlog } from "@/scripts/actions/blogs/deleteBlog";
+import { Link } from "lucide-react";
 
 interface Props {
   blog: Blog;
@@ -26,11 +27,18 @@ export default function AdminBlogActions({ blog }: Props) {
     }
   }
 
+  function redirectOnLink() {
+    router.push(`/blogs/${blog.id}`);
+  }
+
   return (
     <>
       {confirmationModal && <ConfirmationModal cb={() => onBlogDelete()} setConfirmationModal={setConfirmationModal} />}
       <button onClick={() => setConfirmationModal(true)}>
         <Trash2Icon size={20} className="duration-300 ease-in-out hover:text-green-600" />
+      </button>
+      <button onClick={redirectOnLink}>
+        <Link size={20} className="duration-300 ease-in-out hover:text-green-600" />
       </button>
     </>
   );

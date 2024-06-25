@@ -50,7 +50,7 @@ export default function SideBar({ profilePicture, name }: Props) {
           <AdminNav active={shouldSideBarBeVisible} />
         </div>
         <div className="fixed bottom-[2.5rem] left-[1.5rem] flex flex-grow flex-col items-center gap-[1.5rem]">
-          <div className="">
+          <div>
             <button onClick={changeLocale} className="text-[1.3rem] font-light uppercase">
               {locale === "en" ? "ka" : "en"}
             </button>

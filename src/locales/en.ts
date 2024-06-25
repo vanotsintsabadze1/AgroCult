@@ -62,6 +62,11 @@ export default {
       created_at: "Created At",
       close: "Close",
       submit: "Submit",
+      editUser: "Edit User",
+      editRole: "Edit Role",
+      user: "User",
+      admin: "Admin",
+      editSubmit: "Submit",
     },
 
     tickets: {

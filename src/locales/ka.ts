@@ -118,6 +118,11 @@ export default {
       created_at: "შექმნის თარიღი",
       close: "დახურვა",
       submit: "ძიება",
+      editUser: "მომხ. რედაქტირება",
+      editRole: "როლი",
+      user: "მომხმარებელი",
+      admin: "ადმინი",
+      editSubmit: "შენახვა",
     },
 
     tickets: {

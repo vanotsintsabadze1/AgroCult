@@ -54,10 +54,10 @@ function ItemCard({ images, id, title, description, price, layout }: Props) {
           <Image src={images[0]} alt={title} fill className="rounded-md" />
         </div>
       </div>
-      <div className="flex flex-col lg:gap-y-[3rem] xs:gap-[1rem]">
-        <div className="flex w-full flex-grow flex-col gap-[.5rem] lg:w-auto lg:flex-shrink-0">
+      <div className="flex max-w-full flex-col lg:gap-y-[3rem] xs:gap-[1rem]">
+        <div className="flex w-full flex-grow flex-col gap-[.5rem] lg:flex-shrink-0">
           <h4 className="mt-[1rem] line-clamp-1 text-[1.8rem] font-bold">{title}</h4>
-          <p className="line-clamp-2 text-[1.3rem] font-medium">{description}</p>
+          <p className="line-clamp-2 w-full break-words text-[1.3rem] font-medium">{description}</p>
           <p className="line-clamp-2 text-[1.5rem] font-medium">
             <b>Price</b>: {price === 0 ? "Negotiable" : `$${price}`}
           </p>
@@ -67,7 +67,7 @@ function ItemCard({ images, id, title, description, price, layout }: Props) {
         >
           <button
             onClick={redirectOnClick}
-            className={`w-[80%] rounded-lg bg-green-700 py-[.7rem] text-[1.4rem] text-white xs:mt-[1rem] ${layout === "multi" ? "w-[80%]" : "w-[90%]"}`}
+            className={`w-[20rem]rounded-lg bg-green-700 py-[.7rem] text-[1.4rem] text-white xs:mt-[1rem] ${layout === "multi" ? "w-[20rem]" : "w-[20rem]"}`}
           >
             {word("buy")}
           </button>

@@ -7,6 +7,8 @@ export async function editUser(id: string, name: string, email: string, role: st
   const url = process.env.AUTH0_ISSUER_BASE_URL;
   const token = await getAuthToken();
 
+  const roleId = role.toLowerCase() === "admin" ? "rol_usmH5nYmCyIk8357" : "rol_37wxXWucoteCFyfk";
+
   if (token === "") {
     return { message: "Invalid Token", status: 500 };
   }
@@ -43,7 +45,19 @@ export async function editUser(id: string, name: string, email: string, role: st
       });
     }
 
-    if (res && !res.ok) {
+    const restwo = await fetch(`${url}/api/v2/users/${id}/roles`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        roles: [roleId],
+      }),
+      redirect: "follow",
+    });
+
+    if (res && !res.ok && restwo && !restwo.ok) {
       return { message: "Failed to edit user", status: 500 };
     } else {
       try {

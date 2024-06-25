@@ -18,7 +18,6 @@ export default function UserActions({ user_id, name, email, role, image, created
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [confirmationModal, setConfirmationModal] = useState(false);
   const [userDetailsModal, setUserDetailsModal] = useState(false);
-  const initialUserData: UserDB = { user_id, name, email, role };
   const [userDetails, setUserDetails] = useState({
     user_id: user_id,
     name: name,
@@ -61,7 +60,6 @@ export default function UserActions({ user_id, name, email, role, image, created
         {editModalOpen && (
           <EditUserModal
             userDetails={userDetails}
-            initialUserData={initialUserData}
             setUserDetails={setUserDetails}
             setEditModalOpen={setEditModalOpen}
           />

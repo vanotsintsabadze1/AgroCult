@@ -48,7 +48,7 @@ export default function Tiptap({ setDescription, description }: Props) {
     editorProps: {
       attributes: {
         class:
-          "prose-2xl prose-a:text-blue-600 prose-img:rounded h-[30rem] border-2 border-gray-300 px-[1.5rem] outline-none rounded-[.5rem] prose-h1:text-[2.5rem] md:h-[40rem] overflow-auto prose-h1:mt-[1rem] dark:bg-white",
+          "prose-2xl prose-a:text-blue-600 prose-img:rounded h-[30rem] border-2 border-gray-300 px-[1.5rem] outline-none rounded-[.5rem] prose-h1:text-[2.5rem] md:h-[25rem] overflow-auto prose-h1:mt-[1rem] dark:bg-white",
       },
     },
     onUpdate({ editor }) {

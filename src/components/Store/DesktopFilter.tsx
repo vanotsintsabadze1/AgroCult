@@ -60,7 +60,7 @@ export default function DesktopFilter({ setPreference }: Props) {
       </div>
       <SortPreference setPreference={setPreference} />
       <section className="mt-[2rem] flex flex-col">
-        <h4 className="text-[1.8rem] font-bold dark:text-white">{word("price.title")}:</h4>
+        <h4 className="text-[1.8rem] font-bold dark:text-white">{word("price.title")}</h4>
         <div className="mt-[1rem] flex items-center justify-between px-[1]">
           <input
             placeholder={word("price.from")}

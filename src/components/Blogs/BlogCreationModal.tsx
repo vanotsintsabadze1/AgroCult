@@ -174,7 +174,7 @@ export default function BlogCreationModal({
           <form
             action={onBlogFormSubmit}
             id="blogForm"
-            className="relative m-auto flex w-[40rem] flex-col gap-[2rem] overflow-y-scroll rounded-lg bg-white px-[2rem] py-[2rem] shadow-md md:min-h-[82rem] md:w-[75rem] lg:w-[100rem] xs:w-[90%] dark:bg-dark-secondary"
+            className="relative m-auto flex w-[40rem] flex-col gap-[2rem] overflow-y-scroll rounded-lg bg-white px-[2rem] py-[2rem] shadow-md md:h-[67rem] md:w-[75rem] lg:w-[100rem] xs:w-[90%] dark:bg-dark-secondary"
           >
             <div className="flex flex-col gap-[.5rem] px-[.5rem]">
               <h2 className="text-[1.2rem] font-bold uppercase tracking-wide text-gray-400 dark:text-white">

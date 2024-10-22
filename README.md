@@ -26,9 +26,6 @@ npm run dev - to run in development.
 npm run build - create a build.
 npm run start - run the production build
 ```
-
-You can visit the live version here: https://tbc-react-pi.vercel.app/
-
 Tech stack used in this project:
 ```
 NextJS, Typescript, TailwindCSS, PostgreSQL, Vercel Blob, Auth0. 
